@@ -26,7 +26,7 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
-    repo: 'xiaotianxia/blog',
+    repo: 'xiaotianxia',
     editLinks: true,
     docsDir: 'docs',
     locales: {
