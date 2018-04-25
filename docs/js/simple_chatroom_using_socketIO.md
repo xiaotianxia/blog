@@ -14,18 +14,18 @@
 ![demo](https://user-gold-cdn.xitu.io/2017/10/26/34c9135fe3ffb9296de42e2cbb58340a)
 
 ### Build Setup
-```
+```bash
 npm install
 ```
 
 ### run client
-```
+```bash
 cd vue-chat
 npm run dev
 ```
 
 ### run server
-```
+```bash
 cd server
 node index.js
 ```
