@@ -8,8 +8,8 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Denzel\'s blog',
-      description: 'Welcome'
+      title: 'Denzel',
+      description: '前端'
     }
   },
   head: [
@@ -36,16 +36,16 @@ module.exports = {
         // editLinkText: '在 GitHub 上编辑此页',
         nav: [
           {
-            text: 'HTML',
-            link: '/html/',
+            text: 'JS',
+            link: '/js/'
           },
           {
             text: 'CSS',
             link: '/css/'
           },
           {
-            text: 'JS',
-            link: '/js/'
+            text: 'HTML',
+            link: '/html/',
           },
           {
             text: '其他',

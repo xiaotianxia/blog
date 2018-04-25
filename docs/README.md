@@ -2,7 +2,7 @@
 home: true
 heroImage: /hero.png
 actionText: 进入 →
-actionLink: /html/
+actionLink: /js/
 features:
 - title: 哈哈哈
   details: blabla
