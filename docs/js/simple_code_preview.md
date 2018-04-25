@@ -4,7 +4,7 @@
 
 [demo地址](https://xiaotianxia.github.io/demos-2017/%E4%BB%A3%E7%A0%81%E9%A2%84%E8%A7%88/test.html)
 
-#### 其实代码很简单，还是利用URL.createObjectURL生成url赋给iframe，就可以不借助服务器实现代码预览了。
+#### 代码很简单，利用URL.createObjectURL生成url赋给iframe，就可以不借助服务器实现代码预览了。
 
 ### demo截图
 ![demo截图](https://user-gold-cdn.xitu.io/2017/11/4/b895b72865e7f026815fd9a0e29e7fac)
