@@ -1,13 +1,13 @@
 <template>
-    <div class="wrapper">
-        <p>
-            <a class="previewBtn" href="javascript:;" @click="onPreview">预览</a>
+    <div class="cp-wrapper">
+        <!-- <p>
+            <el-button type="primary" @click="onPreview" size="small">预览</el-button>
         </p>
-        <div class="title-wrapper">
+        <div class="cp-title-wrapper">
             <h2 class="title">编辑代码：</h2>
             <h2 class="title">查看效果：</h2>
         </div>
-        <div class="code-wrapper">
+        <div class="cp-code-wrapper">
             <div class="code">
                 <textarea>{{code}}</textarea>
             </div>
@@ -16,36 +16,42 @@
                     <iframe :src="url" ></iframe>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <iframe src="https://xiaotianxia.github.io/demos-2017/%E4%BB%A3%E7%A0%81%E9%A2%84%E8%A7%88/test.html" frameborder="0"></iframe>
     </div>
 </template>
 
 <script>
 export default {
-    data () {
-        return {
-            code: '',
-            url: ''
-        }
-    },
+    // data () {
+    //     return {
+    //         code: '',
+    //         url: ''
+    //     }
+    // },
 
-    methods: {
-        onPreview () {
-            let blob = new Blob([this.code], {  //注意一定要写type
-                    'type': 'text/html'
-                });
-            this.url = URL.createObjectURL(blob); //生成url
-        }
-    }
+    // methods: {
+    //     onPreview () {
+    //         let blob = new Blob([this.code], {  //注意一定要写type
+    //                 'type': 'text/html'
+    //             });
+    //         this.url = URL.createObjectURL(blob); //生成url
+    //     }
+    // }
 }
 </script>
 
 <style>
-    .wrapper {
-        height: 400px;
+    .cp-wrapper {
+        width: 100%;
+        height: 500px;
     }
-    .title-wrapper,
-    .code-wrapper {
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+    /*.cp-title-wrapper,
+    .cp-code-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -55,29 +61,30 @@ export default {
         color: red;
         padding: 0 20px;
         font-size: 14px;
+        border: none;
     }
-    .code-wrapper {
+    .cp-code-wrapper {
         width: 100%;
-        height: 100%;
+        height: 405px;
     }
-    .previewBtn {
+    .cp-btn {
         display: inline-block;
         padding: 5px 30px;
         background-color: red;
         color: #fff;
-        text-decoration: none;
+        text-decoration: none!important;
     }
-    .code,
+    .cp-code-wrapper .code,
     .preview-container {
         width: 50%;
         height: 100%;
         overflow: hidden;
         border: 1px solid #ccc;
     }
-    .code {
+    .cp-code-wrapper .code {
         margin-right: 10px;
     }
-    .code textarea {
+    .cp-code-wrapper .code textarea {
         width: 100%;
         height: 100%;
         white-space: pre;
@@ -95,5 +102,5 @@ export default {
         outline: none;
         width: 100%;
         height: 100%;
-    }
+    }*/
 </style>
