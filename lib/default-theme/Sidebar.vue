@@ -73,6 +73,13 @@ function resolveOpenGroupIndex (route, items) {
 @import './styles/config.styl'
 
 .sidebar
+  transition transform 0.5s ease
+  transform translateX(-100%)
+.sidebar-open
+  .sidebar
+    transform translateX(0)
+
+.sidebar
   ul
     padding 0
     margin 0

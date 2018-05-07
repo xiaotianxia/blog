@@ -42,7 +42,7 @@ export default {
 @import './styles/config.styl'
 
 .navbar
-  padding 0.7rem 1.5rem
+  padding 0.7rem 4rem
   line-height $navbarHeight - 1.4rem
   position relative
   a, span, img
@@ -62,10 +62,4 @@ export default {
     position absolute
     right 1.5rem
     top 0.7rem
-
-@media (max-width: $MQMobile)
-  .navbar
-    padding-left 4rem
-    .can-hide
-      display none
 </style>

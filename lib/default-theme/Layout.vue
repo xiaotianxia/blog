@@ -36,7 +36,7 @@ export default {
   components: { Home, Page, Sidebar, Navbar },
   data () {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: true
     }
   },
 
@@ -123,7 +123,10 @@ export default {
 
     this.$router.afterEach(() => {
       nprogress.done()
-      this.isSidebarOpen = false
+      this.isSidebarOpen = true
+      setTimeout(() => {
+        this.isSidebarOpen = false
+      }, 1000)
     })
   },
 
@@ -134,6 +137,7 @@ export default {
   methods: {
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+      // this.isSidebarOpen = !this.isSidebarOpen
     },
     // side swipe
     onTouchStart (e) {

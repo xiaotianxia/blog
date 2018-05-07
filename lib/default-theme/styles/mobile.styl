@@ -7,10 +7,9 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
   .sidebar
     font-size 15px
     width $mobileSidebarWidth
-  .page
-    padding-left $mobileSidebarWidth
   .content:not(.custom)
     padding 2rem
+
 
 // wide mobile
 @media (max-width: $MQMobile)
@@ -21,9 +20,6 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
     transition transform .2s ease
   .page
     padding-left 0
-  .theme-container.sidebar-open
-    .sidebar
-      transform translateX(0)
 
 // narrow mobile
 @media (max-width: $MQMobileNarrow)
