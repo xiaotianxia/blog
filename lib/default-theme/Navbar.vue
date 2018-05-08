@@ -14,7 +14,7 @@
     <div class="links">
       <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
       <SearchBox v-else-if="$site.themeConfig.search !== false"/>
-      <NavLinks class="can-hide"/>
+      <NavLinks v-if="!isMobile" class="can-hide"/>
     </div>
   </header>
 </template>
@@ -33,6 +33,9 @@ export default {
     },
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    },
+    isMobile () {
+      return /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent)
     }
   }
 }
