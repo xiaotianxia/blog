@@ -1,6 +1,6 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <SidebarButton v-if="$page.title != 'Home'" @toggle-sidebar="$emit('toggle-sidebar')"/>
     <router-link :to="$localePath" class="home-link">
       <img class="logo"
         v-if="$site.themeConfig.logo"

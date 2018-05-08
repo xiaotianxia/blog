@@ -5,20 +5,12 @@
     @touchend="onTouchEnd">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
     <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-      <!-- 广告 -->
-      <!-- <slot name="sidebar-top" slot="top"/> -->
-      <!-- <slot name="sidebar-bottom" slot="bottom"/> -->
-    </Sidebar>
+    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar"></Sidebar>
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
     </div>
     <Home v-else-if="$page.frontmatter.home"/>
-    <Page v-else :sidebar-items="sidebarItems">
-      <!-- 广告 -->
-      <!-- <slot name="page-top" slot="top"/> -->
-      <!-- <slot name="page-bottom" slot="bottom"/> -->
-    </Page>
+    <Page v-else :sidebar-items="sidebarItems"></Page>
   </div>
 </template>
 
@@ -36,7 +28,8 @@ export default {
   components: { Home, Page, Sidebar, Navbar },
   data () {
     return {
-      isSidebarOpen: true
+      isSidebarOpen: true,
+      closeTimer: null
     }
   },
 
@@ -94,7 +87,6 @@ export default {
   },
 
   mounted () {
-    // update title / meta tags
     this.currentMetaTags = []
     const updateMeta = () => {
       document.title = this.$title
@@ -124,7 +116,7 @@ export default {
     this.$router.afterEach(() => {
       nprogress.done()
       this.isSidebarOpen = true
-      setTimeout(() => {
+      this.closeTimer = setTimeout(() => {
         this.isSidebarOpen = false
       }, 1000)
     })
@@ -136,8 +128,10 @@ export default {
 
   methods: {
     toggleSidebar (to) {
+      if(to) {
+        clearTimeout(this.closeTimer);
+      }
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
-      // this.isSidebarOpen = !this.isSidebarOpen
     },
     // side swipe
     onTouchStart (e) {
