@@ -73,9 +73,11 @@ function resolveOpenGroupIndex (route, items) {
 .sidebar
   transition transform 0.5s ease
   transform translateX(-100%)
+  box-shadow 0 0 0 rgba(0, 0, 0, 0)
 .sidebar-open
   .sidebar
     transform translateX(0)
+    box-shadow 1px 1px 10px rgba(0, 0, 0, .5)
 
 .sidebar
   ul
