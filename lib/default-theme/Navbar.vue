@@ -35,7 +35,7 @@ export default {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
     },
     isMobile () {
-      return /Android|webOS|iPhone|iPod|BlackBerry/i.test(window.navigator.userAgent)
+      return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
     }
   }
 }
