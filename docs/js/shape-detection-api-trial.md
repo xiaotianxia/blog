@@ -29,7 +29,8 @@
 能识别出二维码的具体坐标，并能给出解析后的链接地址（rawValue中返回）
 
 目前只有chrome浏览器支持，且确保chrome的实验性特性已经激活
-::: tip
+
+::: warning 注意
 	地址栏输入：chrome://flags/#enable-experimental-web-platform-features
 	找到Experimental Web Platform features，选择Enabled
 :::
