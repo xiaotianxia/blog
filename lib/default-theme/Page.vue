@@ -86,6 +86,9 @@ export default {
         `Edit this page`
       )
     }
+  },
+  mounted () {
+    initComment();
   }
 }
 
