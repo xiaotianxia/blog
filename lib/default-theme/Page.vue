@@ -19,7 +19,6 @@
         </span>
       </p>
     </div>
-    <div id="comment-container"></div>
   </div>
 </template>
 
@@ -86,23 +85,7 @@ export default {
         `Edit this page`
       )
     }
-  },
-  mounted () {
-    initComment();
   }
-}
-
-function initComment () {
-  var gitment = new Gitment({
-    id: 'Denzel',
-    owner: 'xiaotianxia',
-    repo: 'blog',
-    oauth: {
-      client_id: 'a57e9245872c968a247c',
-      client_secret: '537db1f2fe58008a9dabfbb7b1cb1a33e02da462',
-    }
-  })
-  gitment.render('comment-container')
 }
 
 function resolvePrev (page, items) {
@@ -133,7 +116,6 @@ function find (page, items, offset) {
 
 <style lang="stylus">
 @import './styles/config.styl'
-@import 'https://imsun.github.io/gitment/style/default.css'
 
 .page
   padding-bottom 2rem
