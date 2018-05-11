@@ -5,9 +5,9 @@
 
 [github地址](https://github.com/xiaotianxia/postMessage-test)
 
-## demo截图
+## demo演示
 
-<video src="http://7xlxgg.com1.z0.glb.clouddn.com/11.mov" controls autoplay width="500"></video>
+![demo演示](https://user-gold-cdn.xitu.io/2018/5/11/1634ddbac775667d?w=1420&h=818&f=gif&s=4853771)
 
 ## 代码片段
 
