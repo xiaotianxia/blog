@@ -97,3 +97,5 @@ barcodeDetector.detect(image)
 ## 亲自试一下吧
 
 <my-iframe :src="'https://xiaotianxia.github.io/demos-2018/image-detection/dist/index.html#/face'"></my-iframe>
+
+<comment-tool></comment-tool>

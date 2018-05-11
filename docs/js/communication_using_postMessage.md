@@ -112,3 +112,5 @@ export default {
     }
 }
 ```
+
+<comment-tool></comment-tool>

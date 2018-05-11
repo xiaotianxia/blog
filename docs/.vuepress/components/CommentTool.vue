@@ -6,7 +6,7 @@
 export default {
 	mounted () {
 		let urls = document.location.href.split('/'),
-			id = urls[urls.length - 1],
+			id = urls[urls.length - 1].split('.')[0],
 			gitment = new Gitment({
 			    id: id,
 			    owner: 'xiaotianxia',
