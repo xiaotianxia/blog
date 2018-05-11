@@ -6,6 +6,7 @@
 [github地址](https://github.com/xiaotianxia/postMessage-test)
 
 ## demo截图
+
 <video src="http://7xlxgg.com1.z0.glb.clouddn.com/11.mov" controls autoplay width="500"></video>
 
 ## 代码片段
