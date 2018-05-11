@@ -10,8 +10,7 @@
 <script>
 export default {
 	mounted () {
-		let urls = document.location.href.split('/'),
-			id = urls[urls.length - 1].split('.')[0],
+		let id = window.location.pathname,
 			gitment = new Gitment({
 			    id: id,
 			    owner: 'xiaotianxia',
