@@ -1,5 +1,10 @@
 <template>
-	<div id="comment-container"></div>
+	<div>
+		<hr>
+		<p>感谢反馈</p>
+		<hr>
+		<div id="comment-container"></div>
+	</div>
 </template>
 
 <script>
@@ -20,3 +25,12 @@ export default {
 	}
 }
 </script>
+
+<style>
+	hr:first-child {
+		margin-top: 50px;
+	}
+	hr + p {
+		text-align: center;
+	}
+</style>
