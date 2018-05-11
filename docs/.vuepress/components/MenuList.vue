@@ -18,11 +18,11 @@ export default {
 	},
 
 	mounted () {
-		let curPath = this.$page.path;
-		this.menuList = this.$site.pages.filter(item => {
+		let curPath = this.$page.path,
+			$pages = this.$site.pages || [];
+		this.menuList = $pages.filter(item => {
 			return item.path.indexOf(curPath) == 0 && item.path != curPath;
 		});
-		console.log(this.menuList)
 	}
 }
 </script>
