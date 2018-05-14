@@ -7,6 +7,7 @@
 
 ### 获取设备摄像头
 html中添加一个video元素，设置属性为autoplay，也可以在获取视频流之后手动控制播放(play方法)。
+目前pc端高级浏览器支持比较好，手机端貌似只有Safari支持:cry: 。
 
 ```html
 <video autoplay></video>
@@ -78,10 +79,119 @@ navigator.mediaDevices.getUserMedia({
 <show-in-codepen :href="'https://codepen.io/_tianxia/pen/YLjPNq'"></show-in-codepen>
 
 ### 手动控制前后置摄像头
-待续。。。
 
-## 亲自试一下吧
+#### 获取可用摄像头
+添加select用于获取可用摄像头并手动选择指定摄像头：
+```html
+<div class="wrapper">
+    <video autoplay playsinline></video>
+    <select></select>
+    <a class="button confirm" href="javascript:;">确定</a>
+    <a class="button snap" href="javascript:;">截图</a>
+    <a class="button save hide" download="test.png">保存</a>
+    <canvas></canvas>
+</div>
+```
+navigator.mediaDevices.enumerateDevices用于获取所有可用音频和视频输入设备的方式。
+
+facingMode可用于移动端前后置摄像头的调整，其值为'user(前置)'、'environment(后置)'、'left(前置左)'、'right(前置右)'，后两种不常见，目前还没有两个前置摄像头的手机吧:joy: 。
+
+切换摄像头时首先切断当前视频流（所有轨道)，用stream.getTracks()获取所轨道，stop()方法停止该轨道。
+```js
+let flag = true,
+    select = document.querySelector('select'),
+    confirmBtn = document.querySelector('.confirm'),
+    video = document.querySelector('video'),
+    snapBtn = document.querySelector('.snap'),
+    saveBtn = document.querySelector('.save'),
+    canvas = document.querySelector('canvas'),
+    cxt = canvas.getContext('2d');
+
+navigator.mediaDevices.enumerateDevices().then(getDevices);
+
+navigator.mediaDevices.getUserMedia({ 
+    audio: false, 
+    video: true
+}).then(stream => {
+    video.srcObject = stream;
+    snapBtn.onclick = () => {
+        saveBtn.classList.remove('hide', 'show');
+        if(flag) {
+            cxt.drawImage(video, 0, 0, canvas.width, canvas.height);
+            snapBtn.innerText = '取消';
+            saveBtn.classList.add('show');
+            flag = false;
+
+            canvas.toBlob((blob) => {
+                let url = URL.createObjectURL(blob);
+                    saveBtn.href = url;
+            })
+        } else {
+            cxt.clearRect(0, 0, canvas.width, canvas.height);
+            snapBtn.innerText = '截图';
+            saveBtn.classList.add('hide');
+            flag = true;
+        }
+    }
+}).catch(err => {
+    alert('error: ' + err.message);
+});
+
+confirmBtn.onclick = () => {
+    if (typeof currentStream !== 'undefined') {
+        stopMediaTracks(currentStream);
+    }
+    const videoConstraints = {};
+    if (select.value === '') {
+        videoConstraints.facingMode = 'environment';
+    } else {
+        videoConstraints.deviceId = { exact: select.value };
+    }
+    const constraints = {
+        video: videoConstraints,
+        audio: false
+    };
+    navigator.mediaDevices
+        .getUserMedia(constraints)
+        .then(stream => {
+            currentStream = stream;
+            video.srcObject = stream;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
+function getDevices(devices) {
+    select.innerHTML = '';
+    select.appendChild(document.createElement('option'));
+    let count = 1;
+    devices.forEach(device => {
+        if (device.kind === 'videoinput') {
+            const option = document.createElement('option');
+            option.value = device.deviceId;
+            const label = device.label || `相机 ${count++}`;
+            const textNode = document.createTextNode(label);
+            option.appendChild(textNode);
+            select.appendChild(option);
+        }
+    });
+}
+
+function stopMediaTracks(stream) {
+    stream.getTracks().forEach(track => {
+        track.stop();
+    });
+}
+``` 
+<show-in-codepen :href="'https://codepen.io/_tianxia/pen/aGjvqa'"></show-in-codepen>
+
+## 或者看这里
 (没有？刷新之后‘允许使用摄像头’试试？)
 <my-iframe :src="'https://xiaotianxia.github.io/demos-2018/camera-in-js/index.html'"></my-iframe>
+
+## 参考资料
+- [MediaDevices.getUserMedia()](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)
+- [Choosing cameras in JavaScript with the mediaDevices API](https://www.twilio.com/blog/2018/04/choosing-cameras-javascript-mediadevices-api.html)
 
 <comment-tool></comment-tool>

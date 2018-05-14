@@ -1,6 +1,6 @@
 <template>
 	<div class="iframe-wrapper">
-		<iframe :src="src" frameborder="0"></iframe>
+		<iframe :src="fullSrc" frameborder="0"></iframe>
 	</div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
 	data () {
 		return {
-
+			fullSrc: this.src + (this.src.indexOf('?') > -1 ? '&' : '?') + '_=' + new Date().getTime()
 		}
 	},
 
