@@ -1,19 +1,23 @@
 # JS控制设备摄像头初探
 
 ## 主要内容
-- [获取设备摄像头](#获取设备摄像头)
+- [获取设备摄像头信息](#获取设备摄像头信息)
 - [利用摄像头截图并保存](#利用摄像头截图并保存)
 - [手动控制前后置摄像头](#手动控制前后置摄像头)
 
-### 获取设备摄像头
-html中添加一个video元素，设置属性为autoplay，也可以在获取视频流之后手动控制播放(play方法)。
-目前pc端高级浏览器支持比较好，手机端貌似只有Safari支持:cry: 。
+<hr>
+
+### 获取设备摄像头信息
+html中添加一个video元素，设置属性为autoplay，以便在获取视频流之后立即播放，也可以在获取视频流之后手动控制播放(play方法)。
 
 ```html
 <video autoplay></video>
 ```
 
 利用[navigator.mediaDevices.getUserMedia](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)获取视频流。之前的方法是[navigator.getUserMedia()](https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/getUserMedia),为向后兼容此方法已废弃。
+::: warning 注意
+目前pc端高级浏览器支持比较好，手机端貌似只有**Safari**支持:cry: 。
+:::
 
 ```js
 let video = document.querySelector('video');
@@ -29,7 +33,7 @@ navigator.mediaDevices.getUserMedia({
 <show-in-codepen :href="'https://codepen.io/_tianxia/pen/odMNxa'"></show-in-codepen>
 
 ### 利用摄像头截图并保存
-截图的思路无非就是把动态的video存为孙坚的静态的image。利用canvas可以很简单快速的把视频帧存为静态图片，首先在video上层覆盖一个透明的canvas容器。
+截图的思路无非就是把动态的video存为瞬间的静态的image。利用canvas可以很简单快速的把视频帧存为静态图片，首先在video上层覆盖一个透明的canvas容器。
 ```html
 <div class="wrapper">
     <video autoplay playsinline></video>
@@ -58,7 +62,7 @@ navigator.mediaDevices.getUserMedia({
             snapBtn.innerText = '取消';
             saveBtn.classList.add('show');
             flag = false;
-
+            //canvas转图片保存
             canvas.toBlob((blob) => {
                 let url = URL.createObjectURL(blob);
                     saveBtn.href = url;
@@ -74,7 +78,7 @@ navigator.mediaDevices.getUserMedia({
     alert('error: ' + err.message);
 });
 ```
-不足的是canvas和video的适配还有问题，导致截图和视频的比例不一致，望大神指点:pray: 。
+这里不足的是canvas和video的适配还有问题，导致截图和视频的比例很多时候不一致，还望大神指点:pray: 。
 
 <show-in-codepen :href="'https://codepen.io/_tianxia/pen/YLjPNq'"></show-in-codepen>
 
@@ -92,9 +96,9 @@ navigator.mediaDevices.getUserMedia({
     <canvas></canvas>
 </div>
 ```
-navigator.mediaDevices.enumerateDevices用于获取所有可用音频和视频输入设备的方式。
+[navigator.mediaDevices.enumerateDevices](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/enumerateDevices)用于获取所有可用音频和视频输入设备的方式。
 
-facingMode可用于移动端前后置摄像头的调整，其值为'user(前置)'、'environment(后置)'、'left(前置左)'、'right(前置右)'，后两种不常见，目前还没有两个前置摄像头的手机吧:joy: 。
+在移动端，[MediaTrackConstraints.facingMode](https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/facingModes)用于前后置摄像头的调整比较方便，其值为'user(前置)'、'environment(后置)'、'left(前置左)'、'right(前置右)'，后两种不常见，目前还没有两个前置摄像头的手机吧:joy: 。
 
 切换摄像头时首先切断当前视频流（所有轨道)，用stream.getTracks()获取所轨道，stop()方法停止该轨道。
 ```js
@@ -190,8 +194,13 @@ function stopMediaTracks(stream) {
 (没有？刷新之后‘允许使用摄像头’试试？)
 <my-iframe :src="'https://xiaotianxia.github.io/demos-2018/camera-in-js/index.html'"></my-iframe>
 
+## 还可以做什么
+- 结合上一篇的人脸识别，就可以实现视频中的人脸识别了 
+- 直播，尤其是手机浏览器端直播
+- 等你来头脑风暴
+
 ## 参考资料
-- [MediaDevices.getUserMedia()](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)
+- [MediaDevices.getUserMedia](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)
 - [Choosing cameras in JavaScript with the mediaDevices API](https://www.twilio.com/blog/2018/04/choosing-cameras-javascript-mediadevices-api.html)
 
 <comment-tool></comment-tool>

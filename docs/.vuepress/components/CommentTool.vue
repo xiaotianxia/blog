@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<hr>
-		<p>感谢反馈</p>
+		<p>感谢指正</p>
 		<hr>
 		<div id="comment-container"></div>
 	</div>
