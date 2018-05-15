@@ -19,6 +19,10 @@
                 <el-slider v-model="queryParams.volume" :min="0" :max="1" :step="0.1" show-input></el-slider>
             </el-form-item>
 
+            <el-form-item label="语速:">
+                <el-slider v-model="queryParams.rate" :min="0" :max="10" :step="1" show-input></el-slider>
+            </el-form-item>
+
             <el-form-item label="音调:">
                 <el-slider v-model="queryParams.pitch" :min="0" :max="2" :step="0.2" show-input></el-slider>
             </el-form-item>
@@ -42,6 +46,7 @@ export default {
                 lang: 'zh-CN',
                 volume: 1,
                 pitch: 1,
+                rate: 1,
                 text: '大家好，我是渣渣辉。'
             },
 
@@ -57,14 +62,12 @@ export default {
             this.queryParams.voiceURI = chosenItem[0].voiceURI;
         },
 
-        initSpeech () {
-            this.speechInstance = new SpeechSynthesisUtterance();
-        },
-
         onSpeak () {
+            this.speechInstance = new SpeechSynthesisUtterance();
             Object.keys(this.queryParams).forEach(key => {
                 this.speechInstance[key] = this.queryParams[key];
             })
+            console.log(this.speechInstance);
 
             speechSynthesis.speak(this.speechInstance);
         }
@@ -73,13 +76,12 @@ export default {
     mounted () {
         let timer = setInterval(() => {
             if(!this.voiceData.length) {
+                //获取语言包
                 this.voiceData = speechSynthesis.getVoices();
             } else {
                 clearInterval(timer);
             }
         }, 500);
-
-        this.initSpeech();
     }
 }
 </script>
