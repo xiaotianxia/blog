@@ -64,6 +64,8 @@ export default {
     font-weight 600
     color $textColor
     position relative
+    &:hover
+      font-weight bold
   .links
     font-size 0.9rem
     position absolute
