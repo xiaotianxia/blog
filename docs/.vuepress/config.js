@@ -7,7 +7,7 @@ module.exports = {
     dest: 'vuepress',
     llang: 'zh-CN',
     title: 'Denzel',
-    description: '前端',
+    description: '前端笔记',
     head: [
         ['link', { rel: 'icon', href: `/logo.png` }],
         ['link', { rel: 'manifest', href: '/manifest.json' }],

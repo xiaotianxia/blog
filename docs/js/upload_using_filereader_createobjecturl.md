@@ -1,7 +1,8 @@
 # FileReader与URL.createObjectURL实现图片、视频上传预览
 
-#### 之前做图片、视频上传预览常用的方案是先把文件上传到服务器，等服务器返回文件的地址后，再把该地址字符串赋给img或video的src属性，这才实现所谓的文件预览。实际上这只是文件“上传后再预览”，这既浪费了用户的时间，也浪费了不可轻视的流量。
-#### 最近上网查资料才知道其实可以很轻松地实现“上传前预览”。实现方法有两种：FileReader和URL.createObjectURL。
+之前做图片、视频上传预览常用的方案是先把文件上传到服务器，等服务器返回文件的地址后，再把该地址字符串赋给img或video的src属性，这才实现所谓的文件预览。实际上这只是文件“上传后再预览”，这既浪费了用户的时间，也浪费了不可轻视的流量。
+
+最近上网查资料才知道其实可以很轻松地实现“上传前预览”。实现方法有两种：FileReader和URL.createObjectURL。
 关于FileReader的讲解可以看[这里](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader)
 
 关于URL.createObjectURL方法的讲解和应用可以看[这里](https://developer.mozilla.org/en-US/docs/Using_files_from_web_applications#Example.3A_Using_object_URLs_to_display_images)
@@ -99,7 +100,8 @@
 ![方案2 上传视频](https://user-gold-cdn.xitu.io/2017/10/31/1369cacb3d77541ec913ca7d6906041a)
 
 
-#### 可以看出FileReader和URL.createObjectURL都能完美的实现图片的预览，但对于视频的上传，FileReader就不行了，浏览器立马崩溃了。。。，然而URL.createObjectURL方法却完美实现。
-#### 关于二者的具体区别在网上一时没查清楚，但总体感觉URL.createObjectURL比FileReader性能更好一些。有什么说错的地方还望指正。
+可以看出FileReader和URL.createObjectURL都能完美的实现图片的预览，但对于视频的上传，FileReader就不行了，浏览器立马崩溃了。。。，然而URL.createObjectURL方法却完美实现。
+
+关于二者的具体区别在网上一时没查清楚，但总体感觉URL.createObjectURL比FileReader性能更好一些。有什么说错的地方还望指正。
 
 <comment-tool></comment-tool>
