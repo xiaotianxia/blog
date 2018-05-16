@@ -2,7 +2,7 @@
     <div class="speech-wrapper" element-loading-text="加载语言包..." v-loading="!voiceData.length">
         <el-form v-model="queryParams" label-width="90px" label-position="left">
             <el-form-item label="文字:">
-                <el-input v-model="queryParams.text" type="textarea" :autosize="{ minRows: 2, maxRows: 6}"></el-input>
+                <el-input v-model="queryParams.text" type="textarea" :autosize="{ minRows: 2, maxRows: 6}" placeholder="想听啥？"></el-input>
             </el-form-item>
 
             <el-form-item label="选择语言:">
@@ -47,7 +47,7 @@ export default {
                 volume: 1,
                 pitch: 1,
                 rate: 1,
-                text: '大家好，我是渣渣辉。'
+                text: '大扎好，我西渣渣辉。'
             },
 
             speechInstance: null,
@@ -87,5 +87,7 @@ export default {
 </script>
 
 <style>
-    
+    .speech-wrapper {
+        padding-top: 10px;
+    }
 </style>

@@ -1,5 +1,6 @@
 module.exports = [
 	'',
+	'speech_in_js_recognition',
 	'speech_in_js_synthesis',
 	'camera_in_js_trial',
 	'shape_detection_api_trial',
