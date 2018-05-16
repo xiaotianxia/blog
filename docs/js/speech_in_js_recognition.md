@@ -5,7 +5,9 @@ HTML5中和Web Speech相关的API实际上有两类，一类是“语音识别(S
 本文介绍的是语音合成(Speech Recognition)，语音识别(Speech Synthesis)请移步[另一篇](speech_in_js_synthesis.html)。
 
 
-待续....
+直接扒的Google的代码，
+
+<my-iframe :src="'https://xiaotianxia.github.io/demos-2018/test/index.html'"></my-iframe>
 
 
 ## 参考资料
