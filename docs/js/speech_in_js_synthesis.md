@@ -88,7 +88,7 @@ mounted () {
 
 粗略测试，Mac下Chrome支持volume、pitch两个参数，语速rate不支持；Firefox和Safari对volume、rate和pitch三个参数都不支持。
 
-手机端试了IOS下的UC和Safari，竟然都完美支持:smile: ！
+手机端试了IOS下的Chrome、UC和Safari，安卓的Chrome，竟然都完美支持:smile: ！
 
 但是可能因为Google被墙的缘故，Chrome的语音功能很不稳定，Firefox和Safari反而比较稳定。
 

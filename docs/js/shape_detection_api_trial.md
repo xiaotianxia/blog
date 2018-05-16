@@ -98,4 +98,6 @@ barcodeDetector.detect(image)
 
 <my-iframe :src="'https://xiaotianxia.github.io/demos-2018/image-detection/dist/index.html#/face'"></my-iframe>
 
+[![](https://badge.juejin.im/entry/5af2c41a6fb9a07abd0da6c0/likes.svg?style=flat-square)](https://juejin.im/entry/5af2c41a6fb9a07abd0da6c0/detail)
+
 <comment-tool></comment-tool>

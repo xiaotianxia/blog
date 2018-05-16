@@ -203,4 +203,6 @@ function stopMediaTracks(stream) {
 - [MediaDevices.getUserMedia](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/getUserMedia)
 - [Choosing cameras in JavaScript with the mediaDevices API](https://www.twilio.com/blog/2018/04/choosing-cameras-javascript-mediadevices-api.html)
 
+[![](https://badge.juejin.im/entry/5afa4cfa51882542ab4a0d36/likes.svg?style=flat-square)](https://juejin.im/entry/5afa4cfa51882542ab4a0d36/detail)
+
 <comment-tool></comment-tool>
