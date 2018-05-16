@@ -40,7 +40,7 @@
 export default {
     data () {
         return {
-            voiceData: speechSynthesis.getVoices(),
+            voiceData: typeof speechSynthesis !== "undefined" && speechSynthesis.getVoices(),
             queryParams: {
                 voiceURI: 'Ting-Ting',
                 lang: 'zh-CN',
@@ -69,7 +69,7 @@ export default {
             })
             console.log(this.speechInstance);
 
-            speechSynthesis.speak(this.speechInstance);
+            typeof speechSynthesis !== "undefined" && speechSynthesis.speak(this.speechInstance);
         }
     },
 
@@ -77,7 +77,7 @@ export default {
         let timer = setInterval(() => {
             if(!this.voiceData.length) {
                 //获取语言包
-                this.voiceData = speechSynthesis.getVoices();
+                this.voiceData = typeof speechSynthesis !== "undefined" && speechSynthesis.getVoices();
             } else {
                 clearInterval(timer);
             }
