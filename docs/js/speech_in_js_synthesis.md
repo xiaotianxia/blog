@@ -84,7 +84,6 @@ mounted () {
 ```
 
 ## 试一下吧
-
 <Speech-Synthesis></Speech-Synthesis>
 
 粗略测试，Mac下Chrome支持volume、pitch两个参数，语速rate不支持；Firefox和Safari对volume、rate和pitch三个参数都不支持。
@@ -96,6 +95,14 @@ mounted () {
 多试几种其他语言，如日语(ja-JP)、粤语(zh-HK)、台湾话(zh-TW)等还是很有意思的:joy: 。前提是你的浏览器有这种语言包。
 
 奇怪的是汉语选择用英语(en-US)朗读的时候，返回的是一串听不太懂的男声，希望英语能力强的大神多多指教:pray: 。
+
+## 能做什么
+以后支持问题改进了，能想到的用途还是不少的。
+- 盲人阅读
+- 翻译？可能还要结合语音识别功能
+- 结合前一篇的文字识别，识别出的文字再转化成语音就完美了
+- 等等
+
 ## 参考资料
 - [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 - [HTML5语音合成Speech Synthesis API简介](http://www.zhangxinxu.com/wordpress/2017/01/html5-speech-recognition-synthesis-api/)
