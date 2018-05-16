@@ -28,7 +28,7 @@
             </el-form-item>
 
             <el-form-item>
-                <el-tooltip class="item" effect="dark" content="接口不稳定，有可能没有声音，刷新几次试试？" placement="top">
+                <el-tooltip class="item" effect="dark" content="功能不稳定，有可能没有声音，刷新几次试试？" placement="top">
                     <el-button type="primary" @click="onSpeak" size="small">朗读</el-button>
                 </el-tooltip>
             </el-form-item>

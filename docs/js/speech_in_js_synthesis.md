@@ -1,8 +1,12 @@
 # JS中的语音合成——Speech Synthesis API
 
-HTML5中和Web Speech相关的API实际上有两类，一类是“语音识别(Speech Recognition)”，另外一个就是“语音合成(Speech Synthesis)”，这两个名词听上去很高大上，实际上指的分别是“语音转文字”，和“文字变语音”。
+## 简介
+
+HTML5中和Web Speech相关的API实际上有两类，一类是“语音识别(Speech Recognition)”，另外一个就是“语音合成(Speech Synthesis)”，
+这两个名词实际上指的分别是“语音转文字”，和“文字变语音”。
 
 本文介绍的是语音合成(Speech Synthesis)，语音识别(Speech Recognition)请移步[另一篇](speech_in_js_recognition.html)。
+
 想要浏览器开口说话，只需要：
 ```js
 let speechInstance = new SpeechSynthesisUtterance('大家好，我是渣渣辉。');
@@ -44,13 +48,52 @@ speechSynthesis.getVoices()返回因每个浏览器不同及版本的不同返�
 语言包获取不稳定，有时候返回为空，可以用定时器多试几次。
 :::
 
+## 主要代码
+
+```js
+//vue 部分代码
+methods: {
+    onChange (e) {
+        let chosenItem = this.voiceData.filter(item => {
+            return e == item.lang;
+        });
+        this.queryParams.voiceURI = chosenItem[0].voiceURI;
+    },
+
+    onSpeak () {
+        this.speechInstance = new SpeechSynthesisUtterance();
+        Object.keys(this.queryParams).forEach(key => {
+            this.speechInstance[key] = this.queryParams[key];
+        })
+        console.log(this.speechInstance);
+
+        speechSynthesis.speak(this.speechInstance);
+    }
+},
+
+mounted () {
+    let timer = setInterval(() => {
+        if(!this.voiceData.length) {
+            //获取语言包
+            this.voiceData = speechSynthesis.getVoices();
+        } else {
+            clearInterval(timer);
+        }
+    }, 500);
+}
+```
 
 ## 试一下吧
 
 <Speech-Synthesis></Speech-Synthesis>
 
-粗略测试，Mac下Chrome最不稳定，经常不能转化，但rate、pitch两个参数好使，Firefox和Safari的稳定性最强，但是volume、rate和pitch参数都不好使。
+粗略测试，Mac下Chrome支持volume、pitch两个参数，语速rate不支持；Firefox和Safari对volume、rate和pitch三个参数都不支持。
 
+但是可能因为Google被墙的缘故，Chrome的语音功能很不稳定，Firefox和Safari反而比较稳定。
+
+多试集中其他语言，如日语(ja-JP)、粤语(zh-HK)、台湾话(zh-TW)等还是很有意思的:joy: 。前提是你的浏览器有这种语言包。
+
+奇怪的是汉语选择用英语(en-US)朗读的时候，返回的是一串听不太懂的男声，希望英语能力强的大神多多指教:pray: 。
 ## 参考资料
 - [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 - [HTML5语音合成Speech Synthesis API简介](http://www.zhangxinxu.com/wordpress/2017/01/html5-speech-recognition-synthesis-api/)
