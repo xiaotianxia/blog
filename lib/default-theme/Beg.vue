@@ -20,6 +20,12 @@ export default {
 		onClick () {
 			this.showShang = true;
 		}
+	},
+
+	mounted () {
+		this.$watch('$page.path', () => {
+			this.showShang = false;
+		})
 	}
 }	
 </script>
