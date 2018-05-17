@@ -112,3 +112,5 @@ mounted () {
 [![](https://badge.juejin.im/entry/5afbeec76fb9a07aa767d904/likes.svg?style=flat-square)](https://juejin.im/entry/5afbeec76fb9a07aa767d904/detail)
 
 <comment-tool></comment-tool>
+
+<beg></beg>
