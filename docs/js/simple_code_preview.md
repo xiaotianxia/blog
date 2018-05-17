@@ -1,5 +1,7 @@
 # 前端几行代码简单实现w3school代码预览
 
+[原文链接](https://denzel.netlify.com/js/simple_code_preview.html)
+
 [w3school案例](http://www.w3school.com.cn/tiy/t.asp?f=html5_video_all)
 
 [demo地址](https://xiaotianxia.github.io/demos-2017/%E4%BB%A3%E7%A0%81%E9%A2%84%E8%A7%88/test.html)

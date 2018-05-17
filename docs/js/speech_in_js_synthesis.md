@@ -1,5 +1,7 @@
 # JS中的语音合成——Speech Synthesis API
 
+[原文链接](https://denzel.netlify.com/js/speech_in_js_synthesis.html)
+
 ## 简介
 
 HTML5中和Web Speech相关的API实际上有两类，一类是“语音识别(Speech Recognition)”，另外一个就是“语音合成(Speech Synthesis)”，

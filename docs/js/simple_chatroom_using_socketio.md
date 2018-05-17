@@ -1,5 +1,7 @@
 # socket.io实现简单群聊
 
+[原文链接](https://denzel.netlify.com/js/simple_chatroom_using_socketio.html)
+
 * [github地址](https://github.com/xiaotianxia/vue-chat)
 ### DEMO截图
 

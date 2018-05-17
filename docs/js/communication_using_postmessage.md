@@ -1,5 +1,6 @@
 # postMessage实现父子页面简单通信
 
+[原文链接](https://denzel.netlify.com/js/communication_using_postmessage.html)
 
 关于postMessage的讲解可参考[这里](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage)
 

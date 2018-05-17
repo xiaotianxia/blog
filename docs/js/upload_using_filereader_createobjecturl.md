@@ -1,5 +1,7 @@
 # FileReader与URL.createObjectURL实现图片、视频上传预览
 
+[原文链接](https://denzel.netlify.com/js/upload_using_filereader_createobjecturl.html)
+
 之前做图片、视频上传预览常用的方案是先把文件上传到服务器，等服务器返回文件的地址后，再把该地址字符串赋给img或video的src属性，这才实现所谓的文件预览。实际上这只是文件“上传后再预览”，这既浪费了用户的时间，也浪费了不可轻视的流量。
 
 最近上网查资料才知道其实可以很轻松地实现“上传前预览”。实现方法有两种：FileReader和URL.createObjectURL。

@@ -1,5 +1,7 @@
 # JS控制设备摄像头初探
 
+[原文链接](https://denzel.netlify.com/js/camera_in_js_trial.html)
+
 ## 主要内容
 - [获取设备摄像头信息](#获取设备摄像头信息)
 - [利用摄像头截图并保存](#利用摄像头截图并保存)
