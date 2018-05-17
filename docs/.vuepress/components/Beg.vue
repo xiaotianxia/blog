@@ -1,7 +1,7 @@
 <template>
 	<div class="beg-wrapper">
 		<a :class="{show: !showShang, hide: showShang}" class="btn" href="javascript:;" @click="onClick"><img src="http://p8rbt50i2.bkt.clouddn.com/blogshang_log.png"></a>
-		<img :class="{shangShowed: showShang}" class="shangImg" src="http://p8rbt50i2.bkt.clouddn.com/blogshang.jpg">
+		<img :class="{shangShowed: showShang}" class="shangImg" src="http://p8rbt50i2.bkt.clouddn.com/blogshang1.jpg">
 	</div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
 	}
 	.shangImg {
 		width: 0;
-		transition: width ease 1s;
+		transition: width ease .5s;
 	}
 	.shangShowed {
 		width: 400px;
