@@ -7,7 +7,7 @@ HTML5中和Web Speech相关的API实际上有两类，一类是“语音识别(S
 
 直接扒的Google的代码：
 
-<my-iframe :src="'https://xiaotianxia.github.io/demos-2018/https://xiaotianxia.github.io/demos-2018/speech-recognition/index.html'"></my-iframe>
+<my-iframe :src="'https://xiaotianxia.github.io/demos-2018/speech-recognition/index.html'"></my-iframe>
 
 
 ## 参考资料
