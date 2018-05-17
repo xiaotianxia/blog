@@ -1,12 +1,15 @@
 <template>
 	<div class="beg-wrapper">
 		<a :class="{show: !showShang, hide: showShang}" class="btn" href="javascript:;" @click="onClick"><img src="http://p8rbt50i2.bkt.clouddn.com/blogshang_log.png"></a>
+		<p class="shang-txt">赏不赏，看您心情</p>
 		<img :class="{shangShowed: showShang}" class="shangImg" src="http://p8rbt50i2.bkt.clouddn.com/blogshang1.jpg">
 	</div>
 </template>
 
 <script>
 export default {
+	name: 'beg',
+
 	data() {
 		return {
 			showShang: false
@@ -27,13 +30,16 @@ export default {
 	}
 	.beg-wrapper a.btn {
 		display: inline-block;
-		width: 50px;
-		height: 50px;
+		width: 40px;
+		height: 40px;
 		border-radius: 50%;
 	}
 	.beg-wrapper a.btn img {
 		width: 100%;
 		height: 100%;
+	}
+	.shang-txt {
+		font-size: 12px;
 	}
 	.shangImg {
 		width: 0;

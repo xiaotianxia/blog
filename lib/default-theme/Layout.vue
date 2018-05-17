@@ -107,6 +107,7 @@ export default {
     nprogress.configure({ showSpinner: false })
 
     this.$router.beforeEach((to, from, next) => {
+      console.log(this.$page)
       if (to.path !== from.path && !Vue.component(pathToComponentName(to.path))) {
         nprogress.start()
       }

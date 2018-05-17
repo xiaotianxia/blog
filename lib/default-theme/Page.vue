@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <Content :custom="false"/>
+    <Beg v-if="showBeg"/>
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>
@@ -24,12 +25,18 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
+import Beg from './Beg.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
-  components: { OutboundLink },
+  components: { OutboundLink, Beg },
   props: ['sidebarItems'],
   computed: {
+    showBeg () {
+      //只在文章页显示
+      return /\.html/.test(this.$page.path);
+    },
+
     prev () {
       const prev = this.$page.frontmatter.prev
       if (prev === false) {
