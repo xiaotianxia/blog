@@ -1,4 +1,4 @@
-# radio和checkbox的样式化
+# radio和checkbox的自定义样式
 
 [原文链接](https://denzel.netlify.com/js/original_style_resizable_switch.html)
 
