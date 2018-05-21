@@ -34,6 +34,7 @@ export default {
   computed: {
     showBeg () {
       //只在文章页显示
+      return  false;
       return /\.html/.test(this.$page.path);
     },
 
