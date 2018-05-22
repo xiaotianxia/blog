@@ -1,4 +1,5 @@
 module.exports = [
 	'',
-	'styled_switch'
+	'styled_switch',
+	'use_of_checkbox'
 ]

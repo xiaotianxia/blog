@@ -2,8 +2,8 @@
 
 [原文链接](https://denzel.netlify.com/css/styled_switch.html)
 
-input控件中，checkboxhe和radio不像text可以比较随意的设置样式。
-在Firefox里同事设置宽和高可以改变checkboxhe和radio的大小，除此之外，在chrome等浏览器里对他们设置宽高是不起作用的。
+input控件中，checkbox和radio不像text可以比较随意的设置样式。
+在Firefox里同事设置宽和高可以改变checkbox和radio的大小，除此之外，在chrome等浏览器里对他们设置宽高是不起作用的。
 
 本文给出了两种自定义checkboxhe和radio样式的方法：
 
@@ -27,9 +27,9 @@ demo截图：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/blogswitch001.gif)
 
 
-## 方法二：opacity + 额外标签
-这个方法是多数UI库使用的方法：首先将checkbox和radio置为透明，然后让**一个**紧邻它的标签伪装成它，并设置样式，
-利用css3的“相邻兄弟选择器”（就是一个+号 :smile: ）,通过checkboxhe和radio的选中切换该元素不同的样式，
+## 方法二：opacity: 0(display:none) + 额外标签
+这个方法是多数UI库使用的方法：首先将checkbox和radio隐藏，然后让相邻它的标签（或label标签）伪装成它，并设置样式，
+利用css3的“相邻兄弟选择器”（ + 或  ~ ）,通过checkboxhe和radio的选中切换该元素不同的样式，
 
 直接看demo：
 
@@ -40,7 +40,7 @@ demo截图：
 
 - 方法一改变原控件的样式，只针对该控件做样式修改； 方法二相当于把原控件隐藏，添加其他标签代替了它
 - 方法一比较简单，但应用场景单一，只能用于这种表单填写的场景；方法二较复杂，需要更多的标签支持，
-但该方法**应用场景更灵活**，可用来实现tab页切换等效果
+但该方法**应用场景更灵活**，可用来实现tab页切换等效果，见另一篇[checkbox的几种应用](use_of_checkbox.html)
 - 两个缺点都是兼容性不好，只支持高版本浏览器，方法一的appearance在用时还需要加上浏览器前缀
 - 等等
 
