@@ -32,10 +32,15 @@ demo截图
 
 或者看这里
 
-<show-in-codepen :href="'https://codepen.io/_tianxia/pen/NMJyMR?editors=1100'"></show-in-codepen>
+<show-in-codepen :href="'https://codepen.io/_tianxia/pen/NMJyMR'"></show-in-codepen>
 
 
-## 应用二: 手风琴tab
+## 应用二: 手风琴菜单  
+
+<show-in-codepen :href="'https://codepen.io/_tianxia/pen/ZoPMeE'"></show-in-codepen>
+
+
+<show-in-codepen :href="'https://codepen.io/_tianxia/pen/vjPwmb'"></show-in-codepen>
 
 
 
