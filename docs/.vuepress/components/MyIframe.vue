@@ -21,9 +21,9 @@ export default {
 <style scoped>
 	.iframe-wrapper {
 		height: 400px;
-		border: 1px solid rgba(0, 0, 0, .3)
+		border: 1px solid rgba(0, 0, 0, .3);
 	}
-	iframe {
+	.iframe-wrapper iframe {
 		width: 100%;
 		height: 100%;
 	}
