@@ -1,6 +1,6 @@
 # radio和checkbox的自定义样式
 
-[原文链接](https://denzel.netlify.com/js/original_style_resizable_switch.html)
+[原文链接](https://denzel.netlify.com/css/styled_switch.html)
 
 input控件中，checkboxhe和radio不像text可以比较随意的设置样式。
 在Firefox里同事设置宽和高可以改变checkboxhe和radio的大小，除此之外，在chrome等浏览器里对他们设置宽高是不起作用的。
