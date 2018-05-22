@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 	.iframe-wrapper {
 		height: 400px;
 		border: 1px solid rgba(0, 0, 0, .3);

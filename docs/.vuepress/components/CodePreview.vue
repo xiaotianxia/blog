@@ -46,7 +46,7 @@ export default {
         width: 100%;
         height: 500px;
     }
-    iframe {
+    .cp-wrapper iframe {
         width: 100%;
         height: 100%;
     }
