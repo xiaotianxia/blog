@@ -15,3 +15,9 @@ export default {
 	]
 }
 </script>
+
+<style>
+	.codepen-wrapper {
+		margin: 20px 0;
+	}
+</style>
