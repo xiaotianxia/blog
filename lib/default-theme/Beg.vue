@@ -2,7 +2,7 @@
 	<div class="beg-wrapper">
 		<a :class="{show: !showShang, hide: showShang}" class="btn" href="javascript:;" @click="onClick"><img src="http://p8rbt50i2.bkt.clouddn.com/blogshang_log.png"></a>
 		<p class="shang-txt">赏不赏，看您心情</p>
-		<img :class="{shangShowed: showShang}" class="shangImg" src="http://p8rbt50i2.bkt.clouddn.com/blogshang1.jpg">
+		<img :class="{shangShowed: showShang}" class="shangImg" src="http://p8rbt50i2.bkt.clouddn.com/blogWechatIMG35.jpeg">
 	</div>
 </template>
 
