@@ -1,6 +1,6 @@
 <template>
 	<div class="geolocation-wrapper">
-		<remote-script :src="'http://webapi.amap.com/maps?v=1.4.6&key=127225798a44ffd56967d469fe90b7da'"></remote-script>
+		<RemoteScript :src="'https://webapi.amap.com/maps?v=1.4.6&key=127225798a44ffd56967d469fe90b7da'"/>
 		
 		<div id="geolocation-container"></div>
 	</div>
