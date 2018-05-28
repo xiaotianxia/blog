@@ -36,6 +36,8 @@ export default {
 			navigator.geolocation.getCurrentPosition(position => {
 				this.center = [position.coords.longitude, position.coords.latitude];
 			});
+		} else {
+			alert('您的浏览器不支持定位');
 		}
 	}
 }

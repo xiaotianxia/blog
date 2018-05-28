@@ -11,7 +11,7 @@ HTML5中和Web Speech相关的API实际上有两类，一类是“语音识别(S
 
 - 创建SpeechRecognition的新实例
 ```js
-var recognition = webkitSpeechRecognition();
+var recognition = new webkitSpeechRecognition();
 ```
 
 - 设置是持续听还是听到声音之后就关闭接收。
