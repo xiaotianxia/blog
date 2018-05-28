@@ -62,7 +62,7 @@ var watcherId = navigator.geolocation.watchPosition(successCallback, errorCallba
 navigator.geolocation.clearWatch(watcherId); //关闭追踪
 ```
 
-## Demo1: 原生navigator.geolocation.getCurrentPosition
+## Demo1: 原生geolocation.getCurrentPosition
 
 主要代码：
 ```js
