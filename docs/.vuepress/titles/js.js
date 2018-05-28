@@ -1,6 +1,6 @@
 module.exports = [
 	'',
-	'some_useful_webapis',
+	'useful_webapis_geolocation',
 	'speech_in_js_recognition',
 	'speech_in_js_synthesis',
 	'camera_in_js_trial',

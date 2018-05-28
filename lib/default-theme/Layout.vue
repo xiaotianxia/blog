@@ -28,7 +28,7 @@ export default {
   components: { Home, Page, Sidebar, Navbar },
   data () {
     return {
-      isSidebarOpen: true,
+      isSidebarOpen: false,
       closeTimer: null
     }
   },
@@ -115,10 +115,10 @@ export default {
 
     this.$router.afterEach(() => {
       nprogress.done()
-      this.isSidebarOpen = true
-      this.closeTimer = setTimeout(() => {
-        this.isSidebarOpen = false
-      }, 1000)
+      // this.isSidebarOpen = true
+      // this.closeTimer = setTimeout(() => {
+      //   this.isSidebarOpen = false
+      // }, 1000);
     })
   },
 
