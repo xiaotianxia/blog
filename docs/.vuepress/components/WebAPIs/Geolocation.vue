@@ -57,7 +57,7 @@ export default {
 
 <style>
 	.geolocation-wrapper #geolocation-container {
-		height: 300px;
+		height: 400px;
 		border: 1px solid #ccc;
 	}
 	.geolocation-wrapper .btn {

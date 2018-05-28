@@ -4,7 +4,6 @@
 		
 		<div class="btn">
 			<el-button @click="onGetGeoLocation" size="small">获取我的位置</el-button>
-			<p>地址：{{address}}</p>
 		</div>
 		<div id="geolocation-container2"></div>
 	</div>
@@ -53,7 +52,7 @@ export default {
 
 <style>
 	.geolocation-wrapper #geolocation-container2 {
-		height: 300px;
+		height: 400px;
 		border: 1px solid #ccc;
 	}
 	.geolocation-wrapper .btn {
