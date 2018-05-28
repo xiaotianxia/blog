@@ -7,7 +7,7 @@ navigator.geolocation返回一个geolocation对象，该对象有一个方法get
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
 ```
 successCallback定位成功后回调，返回一个position对象，其大概结构是这样的：
-![geolocation对象](http://p8rbt50i2.bkt.clouddn.com/blogWX20180528-105336.png)
+![geolocation对象](https://p8rbt50i2.bkt.clouddn.com/blogWX20180528-105336.png)
 
 ```js
 coords.latitude (十进制数的纬度)
@@ -58,10 +58,46 @@ var watcherId = navigator.geolocation.watchPosition(successCallback, errorCallba
 navigator.geolocation.clearWatch(watcherId); //关闭追踪
 ```
 
-## Demo
+## Demo1: 原生navigator.geolocation.getCurrentPosition
+
+主要代码：
+```js
+if('geolocation' in navigator) {
+	let options = {
+		enableHighAccuracy: false,
+		maximumAge: 10 * 1000,
+		timeout: 30 * 1000,
+	};
+	navigator.geolocation.getCurrentPosition(position => {
+		console.log(position);
+		this.errMsg = '';
+		//获取经纬度
+		this.center = [position.coords.longitude, position.coords.latitude];
+	}, err => {
+		console.log(err);
+		this.errMsg = err.message || '出错';
+	}, options);
+} else {
+	alert('您的浏览器不支持定位');
+}
+
+//借助高德地图，通过经纬度显示位置
+onGetGeo () {
+	let map = new AMap.Map('geolocation-container', {
+					resizeEnable: true,
+					zoom: 15,
+					center: this.center
+				}),
+		marker = new AMap.Marker({
+			position: this.center,
+			map: map
+		});
+}
+```
 <WebAPIs-Geolocation/>
 
 ## 几点注意
+
 ### 定位功能的主要影响因素
 影响定位功能的主要因素是网络。
 
@@ -78,10 +114,22 @@ GPS定位由于信号比较薄弱的关系定位成功率比较低，就算成�
 
 而getCurrentPosition的配置参数里的**enableHighAccuracy**设置为true，仅仅是启用GPS定位，根据GPS定位的特性，应用中使用的机会不多。所以一般都用默认flase就足够了。
 
+::: warning 注意
+Chrome、IOS10+等已不再支持非安全域的浏览器定位请求
+:::
+
+总之，单纯的浏览器定位由于种种原因，**很——不——准**:joy: 。
+
+如果用于业务开发，可以借助第三方地图工具，如高德地图的AMap.Geolocation插件，融合了浏览器定位、高精度IP定位、安卓定位sdk辅助定位等多种手段，
+提供了获取当前准确位置、获取当前城市信息、持续定位(浏览器定位)等功能。
+
+## Demo2: 高德地图插件AMap.Geolocation
+<WebAPIs-AmapGeolocation/>
 
 ## 参考资料
 - [Using geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation)
 - [HTML5定位使用心得](https://www.cnblogs.com/czf-zone/archive/2013/11/09/3415658.html)
+- [高德开放平台](http://lbs.amap.com/api/javascript-api/reference/location/)
 
 
 <comment-tool></comment-tool>

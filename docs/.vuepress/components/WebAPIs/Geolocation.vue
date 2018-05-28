@@ -4,7 +4,7 @@
 		
 		<div class="btn">
 			<el-button @click="onGetGeo" size="small">获取我的位置</el-button>
-			<p>{{errMsg}}</p>
+			<p class="color-red">{{errMsg}}</p>
 		</div>
 		<div id="geolocation-container"></div>
 	</div>
@@ -63,5 +63,8 @@ export default {
 	.geolocation-wrapper .btn {
 		margin: 10px 0;
 		text-align: center;
+	}
+	.geolocation-wrapper .btn .color-red {
+		color: red;
 	}
 </style>
