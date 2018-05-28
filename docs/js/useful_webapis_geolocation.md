@@ -10,21 +10,21 @@ successCallback定位成功后回调，返回一个position对象，其大概结
 ![geolocation对象](http://p8rbt50i2.bkt.clouddn.com/blogWX20180528-105336.png)
 
 ```js
-coords.latitude (十进制数的纬度)
+coords.latitude: 十进制数的纬度
 
-coords.longitude (十进制数的经度)
+coords.longitude: 十进制数的经度
 
-coords.accuracy (位置精度)
+coords.accuracy: 位置精度
 
-coords.altitude (海拔，海平面以上以米计)
+coords.altitude: 海拔，海平面以上以米计
 
-coords.altitudeAccuracy (位置的海拔精度)
+coords.altitudeAccuracy: 位置的海拔精度
 
-coords.heading (方向，从正北开始以度计)
+coords.heading: 方向，从正北开始以度计
 
-coords.speed (速度，以米/每秒计)
+coords.speed: 速度，以米/每秒计
 
-timestamp (响应的日期/时间)
+timestamp: 响应的日期/时间
 ```
 
 
@@ -33,9 +33,13 @@ errorCallback定位失败时返回错误信息，大致这样：
 ![geolocation对象](http://p8rbt50i2.bkt.clouddn.com/WX20180528-110527.png)
 
 ```js
-code (错误编码：“1”为用户禁止了定位信息获取，“2”为网络不可用或连接卫星失败，“3”为获取定位所花费的时间过长，“0”为出现未知错误)
+code: 错误编码：
+		1: 用户禁止了定位信息获取，
+		2: 为网络不可用或连接卫星失败，
+		3: 为获取定位所花费的时间过长，
+		0: 为出现未知错误
 
-message (错误信息)
+message: 错误信息
 ```
 
 options是一些设置参数，可以设置最大超时时间等。
