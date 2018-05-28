@@ -11,6 +11,9 @@
 
 
 ### js
+[0](https://developer.mozilla.org/zh-CN/docs/WebAPI)
+[1](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API)
+[2](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
 
 
 
