@@ -3,7 +3,7 @@
 		<RemoteScript :src="'https://webapi.amap.com/maps?v=1.4.6&key=127225798a44ffd56967d469fe90b7da'"/>
 		
 		<div class="btn">
-			<el-button @click="onGetGeo" size="small">获取我的位置</el-button>
+			<el-button @click="onGetGeoLocation" size="small">获取我的位置</el-button>
 			<p class="color-red">{{errMsg}}</p>
 		</div>
 		<div id="geolocation-container"></div>
@@ -14,42 +14,42 @@
 export default {
 	data () {
 		return {
-			center: [],
 			errMsg: ''
 		}
 	},
 
 	methods: {
-		onGetGeo () {
-			let map = new AMap.Map('geolocation-container', {
-							resizeEnable: true,
-							zoom: 15,
-							center: this.center
-						}),
-				marker = new AMap.Marker({
-					position: this.center,
-					map: map
-				});
-		}
-	},
+		onGetGeoLocation () {
+			if('geolocation' in navigator) {
+				let center,
+					map,
+					marker,
+					options = {
+					enableHighAccuracy: false,
+					maximumAge: 10 * 1000,
+					timeout: 30 * 1000,
+				};
 
-	mounted () {
-		if('geolocation' in navigator) {
-			let options = {
-				enableHighAccuracy: false,
-				maximumAge: 10 * 1000,
-				timeout: 30 * 1000,
-			};
-			navigator.geolocation.getCurrentPosition(position => {
-				console.log(position);
-				this.errMsg = '';
-				this.center = [position.coords.longitude, position.coords.latitude];
-			}, err => {
-				console.log(err);
-				this.errMsg = err.message || '出错';
-			}, options);
-		} else {
-			alert('您的浏览器不支持定位');
+				navigator.geolocation.getCurrentPosition(position => {
+					console.log(position);
+					this.errMsg = '';
+					center = [position.coords.longitude, position.coords.latitude];
+					map = new AMap.Map('geolocation-container', {
+								resizeEnable: true,
+								zoom: 15,
+								center: center
+							}),
+					marker = new AMap.Marker({
+						position: center,
+						map: map
+					});
+				}, err => {
+					console.log(err);
+					errMsg = err.message || '出错';
+				}, options);
+			} else {
+				alert('您的浏览器不支持定位');
+			}
 		}
 	}
 }

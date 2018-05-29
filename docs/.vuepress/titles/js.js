@@ -1,5 +1,6 @@
 module.exports = [
 	'',
+	'useful_webapis_connection',
 	'useful_webapis_geolocation',
 	'speech_in_js_recognition',
 	'speech_in_js_synthesis',

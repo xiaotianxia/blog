@@ -68,36 +68,39 @@ navigator.geolocation.clearWatch(watcherId); //关闭追踪
 
 主要代码：
 ```js
-if('geolocation' in navigator) {
-	let options = {
-		enableHighAccuracy: false,
-		maximumAge: 10 * 1000,
-		timeout: 30 * 1000,
-	};
-	navigator.geolocation.getCurrentPosition(position => {
-		console.log(position);
-		this.errMsg = '';
-		//获取经纬度
-		this.center = [position.coords.longitude, position.coords.latitude];
-	}, err => {
-		console.log(err);
-		this.errMsg = err.message || '出错';
-	}, options);
-} else {
-	alert('您的浏览器不支持定位');
-}
+onGetGeoLocation () {
+	if('geolocation' in navigator) {
+		let center,
+			map,
+			marker,
+			options = {
+			enableHighAccuracy: false,
+			maximumAge: 10 * 1000,
+			timeout: 30 * 1000,
+		};
 
-//借助高德地图，通过经纬度显示位置
-onGetGeo () {
-	let map = new AMap.Map('geolocation-container', {
-					resizeEnable: true,
-					zoom: 15,
-					center: this.center
-				}),
-		marker = new AMap.Marker({
-			position: this.center,
-			map: map
-		});
+		navigator.geolocation.getCurrentPosition(position => {
+			console.log(position);
+			this.errMsg = '';
+			//获取经纬度
+			center = [position.coords.longitude, position.coords.latitude];
+			//借助高德地图，通过经纬度显示位置
+			map = new AMap.Map('geolocation-container', {
+						resizeEnable: true,
+						zoom: 15,
+						center: center
+					}),
+			marker = new AMap.Marker({
+				position: center,
+				map: map
+			});
+		}, err => {
+			console.log(err);
+			errMsg = err.message || '出错';
+		}, options);
+	} else {
+		alert('您的浏览器不支持定位');
+	}
 }
 ```
 <WebAPIs-Geolocation/>
