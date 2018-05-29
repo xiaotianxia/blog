@@ -1,5 +1,7 @@
 # 几个有用的Web API——地理位置API
 
+[原文链接](https://denzel.netlify.com/js/useful_webapis_geolocation.html?_=2345677654321)
+
 ## API用法——一个对象三个方法
 navigator.geolocation返回一个geolocation对象，该对象有一个方法getCurrentPosition()，该方法是一个异步请求，会去调Google的api，
 所以可能需要翻墙，调用方法：
