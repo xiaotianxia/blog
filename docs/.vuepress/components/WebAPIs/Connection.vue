@@ -43,13 +43,13 @@ export default {
 
 	computed: {
 		canUseConnection () {
-			return navigator.connection;
+			return typeof navigator !== undefined && navigator.connection;
 		}
 	},
 
 	methods: {
 		update () {
-			this.connection = navigator.connection;
+			this.connection = typeof navigator !== undefined && navigator.connection;
 		},
 
 		bindEvents () {
@@ -65,19 +65,21 @@ export default {
 				self.$message.error('掉线啦（>_<）...');
 			});
 
-			navigator.connection.addEventListener('change', e => {
-				self.updateConnectionStatus(e);
-			});
+			if(typeof navigator !== undefined && navigator.connection) {
+				navigator.connection.addEventListener('change', e => {
+					self.updateConnectionStatus(e);
+				});
+			}
 		},
 
 		updateOnlineStatus () {
-			this.online = navigator.onLine;
+			this.online = typeof navigator !== undefined && navigator.onLine;
 		},
 
 		updateConnectionStatus (e) {
 			console.log(e);
-			this.connection = navigator.connection || initConnection;
-			this.$message.success('当前网络：' + (e ? e.currentTarget.type : this.connection.type));
+			this.connection = typeof navigator !== undefined && (navigator.connection || initConnection);
+			this.$message.success('当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown') );
 		}
 	},
 
@@ -85,7 +87,7 @@ export default {
 		this.updateConnectionStatus();
 
 		setTimeout(() => {
-			this.online = navigator.onLine;
+			this.online = typeof navigator !== undefined && navigator.onLine;
 		}, 1000);
 
 		this.bindEvents();
