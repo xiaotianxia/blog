@@ -20,7 +20,7 @@ export default {
 
 	methods: {
 		onGetGeoLocation () {
-			if('geolocation' in navigator) {
+			if(typeof navigator !== "undefined" && 'geolocation' in navigator) {
 				let center,
 					map,
 					marker,

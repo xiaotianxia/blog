@@ -62,24 +62,36 @@ export default {
 			window.addEventListener('offline', e => {
 				console.log(e);
 				self.updateOnlineStatus();
-				self.$message.error('掉线啦（>_<）...');
 			});
 
 			if(typeof navigator !== "undefined" && navigator.connection) {
+				let timer = null;
 				navigator.connection.addEventListener('change', e => {
-					self.updateConnectionStatus(e);
+					timer && clearTimeout(tiemr);
+					timer = setTimeout(() => {
+						self.updateConnectionStatus(e);
+					}, 500);
 				});
 			}
 		},
 
 		updateOnlineStatus () {
 			this.online = typeof navigator !== "undefined" && navigator.onLine;
+			console.log(this.online);
+			if(this.online) {
+				this.$message.success('有网啦❛‿˂̵✧');
+			} else {
+				this.$message.error('掉线啦（>_<）...');
+			}
 		},
 
 		updateConnectionStatus (e) {
 			console.log(e);
 			this.connection = typeof navigator !== "undefined" && (navigator.connection || initConnection);
-			this.$message.success('当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown') );
+			this.$notify.info({
+				title: '提示',
+          		message: '当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown')
+			});
 		}
 	},
 
