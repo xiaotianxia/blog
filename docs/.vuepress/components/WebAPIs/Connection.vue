@@ -3,6 +3,9 @@
 		<el-row>
 		  	<el-col :span="24"><div class="info-bg">切换或者断开网络试试？</div></el-col>
 		</el-row>
+		<div class="btn">
+			<el-button size="small" @click="onGetStatus">获取网络连接状态</el-button>
+		</div>
 		<div class="linestatus">
 			<span :class="{online: online}" class="point"></span>
 		</div>
@@ -19,7 +22,8 @@
 		</div>
 
 		<div v-else class="network">
-			<div>不支持获取当前connection状况</div>
+			<div>浏览器不支持navigator.connection</div>
+			<div>无法获取当前所用网络</div>
 		</div>
 	</div>
 </template>
@@ -48,6 +52,14 @@ export default {
 	},
 
 	methods: {
+		onGetStatus () {
+			if(!this.canUseConnection) {
+				this.$message.error('浏览器不支持navigator.connection（>_<）...');
+				return;
+			}
+			this.updateConnectionStatus();
+		},
+
 		update () {
 			this.connection = typeof navigator !== "undefined" && navigator.connection;
 		},
@@ -67,7 +79,7 @@ export default {
 			if(typeof navigator !== "undefined" && navigator.connection) {
 				let timer = null;
 				navigator.connection.addEventListener('change', e => {
-					timer && clearTimeout(tiemr);
+					timer && clearTimeout(timer);
 					timer = setTimeout(() => {
 						self.updateConnectionStatus(e);
 					}, 500);
@@ -96,8 +108,6 @@ export default {
 	},
 
 	mounted () {
-		this.updateConnectionStatus();
-
 		setTimeout(() => {
 			this.online = typeof navigator !== "undefined" && navigator.onLine;
 		}, 1000);
@@ -122,6 +132,9 @@ export default {
     	line-height: 36px;
 		background-color: #99a9bf;
 		color: #fff;
+	}
+	.connection-wrapper .btn {
+		margin-top: 10px;
 	}
 	.connection-wrapper .linestatus {
 		padding: 40px 0;
