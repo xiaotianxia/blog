@@ -43,13 +43,13 @@ export default {
 
 	computed: {
 		canUseConnection () {
-			return typeof navigator !== undefined && navigator.connection;
+			return typeof navigator !== "undefined" && navigator.connection;
 		}
 	},
 
 	methods: {
 		update () {
-			this.connection = typeof navigator !== undefined && navigator.connection;
+			this.connection = typeof navigator !== "undefined" && navigator.connection;
 		},
 
 		bindEvents () {
@@ -65,7 +65,7 @@ export default {
 				self.$message.error('掉线啦（>_<）...');
 			});
 
-			if(typeof navigator !== undefined && navigator.connection) {
+			if(typeof navigator !== "undefined" && navigator.connection) {
 				navigator.connection.addEventListener('change', e => {
 					self.updateConnectionStatus(e);
 				});
@@ -73,12 +73,12 @@ export default {
 		},
 
 		updateOnlineStatus () {
-			this.online = typeof navigator !== undefined && navigator.onLine;
+			this.online = typeof navigator !== "undefined" && navigator.onLine;
 		},
 
 		updateConnectionStatus (e) {
 			console.log(e);
-			this.connection = typeof navigator !== undefined && (navigator.connection || initConnection);
+			this.connection = typeof navigator !== "undefined" && (navigator.connection || initConnection);
 			this.$message.success('当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown') );
 		}
 	},
@@ -87,7 +87,7 @@ export default {
 		this.updateConnectionStatus();
 
 		setTimeout(() => {
-			this.online = typeof navigator !== undefined && navigator.onLine;
+			this.online = typeof navigator !== "undefined" && navigator.onLine;
 		}, 1000);
 
 		this.bindEvents();
