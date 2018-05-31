@@ -109,7 +109,7 @@ export default {
     &:hover, &.router-link-active
       color $accentColor
   .nav-item
-    cursor: pointer
+    cursor pointer
     position relative
     display inline-block
     margin-left 1.5rem
@@ -121,6 +121,9 @@ export default {
   .nav-links
     .nav-item, .repo-link
       margin-left 0
+
+  .can-hide 
+    display: none
 
 @media (min-width: $MQMobile)
   .nav-links a
