@@ -40,12 +40,55 @@ wx.getNetworkType({
 
 ## onLine：一个属性两个事件
 
-bla
+### navigator.onLine:
+Boolean类型，判断设备是否连接上网络。
+
+### online、offline事件
+通常绑定在window上，当设备有网和没网之间切换时触发。
+```js
+var online = navigator.onLine;  //是否在线
+//事件绑定
+window.addEventListener('online',  updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+```
 
 
 ## connection：一个对象一个事件
-bla
 
+### 一个对象：navigator.connection
+
+#### type
+网络类型
+```js
+bluetooth: 蓝牙
+cellular: 蜂窝网络(e.g., EDGE, HSPA, LTE, etc.)
+ethernet: 以太网
+none: 无连接
+mixed: 多类型混合
+other: 类型可知，但不可枚举
+unknown: 有链接，但类型未知
+wifi: Wi-Fi
+wimax: WiMAX
+```
+#### effectiveType
+有效连接类型
+```js
+'2g'
+'3g'
+'4g'
+'slow-2'
+```
+#### downlink
+有效带宽，M/s
+
+#### downlinkMax
+下行最大比特率
+
+####  rtt:
+往返时间（round-trip time）：表示从发送端发送数据开始，到发送端收到来自接收端的确认（接收端收到数据后便立即发送确认，不包含数据传输时间）总共经历的时间。
+
+### 一个事件： connection.onchange
+很简单，当设备网络连接类型发生变化时触发该事件
 
 ## Demo
 主要代码:
@@ -108,13 +151,18 @@ bla
 }
 ```
 
-
 <WebAPIs-Connection></WebAPIs-Connection>
+
+## 总结
+由于兼容性的限制，现在能做的功能真的**很——有——限**。
+
+但还是让我们寄希望于——**未来**:smile:。
+
 
 ## 参考资料
 - [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
 - [Online and offline events](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/Online_and_offline_events)
-- [Network Information API](http://wicg.github.io/netinfo/)
+- [http://wicg.github.io/netinfo/](http://wicg.github.io/netinfo/)
 
 
 <comment-tool></comment-tool>
