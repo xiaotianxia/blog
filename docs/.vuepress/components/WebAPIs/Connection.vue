@@ -37,6 +37,8 @@ var initConnection = {
 	effectiveType: ''
 };
 
+var navigator = typeof navigator !== "undefined" ? navigator : {}
+
 export default {
 	data () {
 		return {
@@ -47,7 +49,7 @@ export default {
 
 	computed: {
 		canUseConnection () {
-			return typeof navigator !== "undefined" && navigator.connection;
+			return navigator.connection;
 		}
 	},
 
@@ -61,7 +63,7 @@ export default {
 		},
 
 		update () {
-			this.connection = typeof navigator !== "undefined" && navigator.connection;
+			this.connection = navigator.connection;
 		},
 
 		bindEvents () {
@@ -76,7 +78,7 @@ export default {
 				self.updateOnlineStatus();
 			});
 
-			if(typeof navigator !== "undefined" && navigator.connection) {
+			if(navigator.connection) {
 				let timer = null;
 				navigator.connection.addEventListener('change', e => {
 					timer && clearTimeout(timer);
@@ -88,7 +90,7 @@ export default {
 		},
 
 		updateOnlineStatus () {
-			this.online = typeof navigator !== "undefined" && navigator.onLine;
+			this.online = navigator.onLine;
 			console.log(this.online);
 			if(this.online) {
 				this.$message.success('有网啦❛‿˂̵✧');
@@ -99,7 +101,7 @@ export default {
 
 		updateConnectionStatus (e) {
 			console.log(e);
-			this.connection = typeof navigator !== "undefined" && (navigator.connection || initConnection);
+			this.connection = navigator.connection || initConnection;
 			this.$notify.info({
 				title: '提示',
           		message: '当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown')
@@ -109,7 +111,7 @@ export default {
 
 	mounted () {
 		setTimeout(() => {
-			this.online = typeof navigator !== "undefined" && navigator.onLine;
+			this.online = navigator.onLine;
 		}, 1000);
 
 		this.bindEvents();
