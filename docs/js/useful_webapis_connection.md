@@ -153,7 +153,7 @@ wimax: WiMAX
 
 <WebAPIs-Connection></WebAPIs-Connection>
 
-看不到效果？大概是这样子的——
+不支持navigator.connection，看不到效果？大概是这样子的（截图）——
 ![demo截图](http://p8rbt50i2.bkt.clouddn.com/blog/WX20180531-115931@2x.png)
 
 ## 总结
