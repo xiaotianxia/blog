@@ -61,7 +61,7 @@ bla
 	},
 
 	update () {
-		this.connection = typeof navigator !== "undefined" && navigator.connection;
+		this.connection = navigator.connection;
 	},
 
 	bindEvents () {
@@ -76,10 +76,10 @@ bla
 			self.updateOnlineStatus();
 		});
 
-		if(typeof navigator !== "undefined" && navigator.connection) {
+		if(navigator.connection) {
 			let timer = null;
 			navigator.connection.addEventListener('change', e => {
-				timer && clearTimeout(tiemr);
+				timer && clearTimeout(timer);
 				timer = setTimeout(() => {
 					self.updateConnectionStatus(e);
 				}, 500);
@@ -88,7 +88,7 @@ bla
 	},
 
 	updateOnlineStatus () {
-		this.online = typeof navigator !== "undefined" && navigator.onLine;
+		this.online = navigator.onLine;
 		console.log(this.online);
 		if(this.online) {
 			this.$message.success('有网啦❛‿˂̵✧');
@@ -99,10 +99,10 @@ bla
 
 	updateConnectionStatus (e) {
 		console.log(e);
-		this.connection = typeof navigator !== "undefined" && (navigator.connection || initConnection);
+		this.connection = navigator.connection || initConnection;
 		this.$notify.info({
 			title: '提示',
-	  		message: '当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown')
+      		message: '当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown')
 		});
 	}
 }

@@ -37,7 +37,7 @@ var initConnection = {
 	effectiveType: ''
 };
 
-var navigator = typeof navigator !== "undefined" ? navigator : {}
+var _navigator = (typeof navigator !== "undefined") ? navigator : {};
 
 export default {
 	data () {
@@ -49,7 +49,7 @@ export default {
 
 	computed: {
 		canUseConnection () {
-			return navigator.connection;
+			return _navigator.connection;
 		}
 	},
 
@@ -63,7 +63,7 @@ export default {
 		},
 
 		update () {
-			this.connection = navigator.connection;
+			this.connection = _navigator.connection;
 		},
 
 		bindEvents () {
@@ -78,9 +78,9 @@ export default {
 				self.updateOnlineStatus();
 			});
 
-			if(navigator.connection) {
+			if(_navigator.connection) {
 				let timer = null;
-				navigator.connection.addEventListener('change', e => {
+				_navigator.connection.addEventListener('change', e => {
 					timer && clearTimeout(timer);
 					timer = setTimeout(() => {
 						self.updateConnectionStatus(e);
@@ -90,7 +90,7 @@ export default {
 		},
 
 		updateOnlineStatus () {
-			this.online = navigator.onLine;
+			this.online = _navigator.onLine;
 			console.log(this.online);
 			if(this.online) {
 				this.$message.success('有网啦❛‿˂̵✧');
@@ -101,7 +101,7 @@ export default {
 
 		updateConnectionStatus (e) {
 			console.log(e);
-			this.connection = navigator.connection || initConnection;
+			this.connection = _navigator.connection || initConnection;
 			this.$notify.info({
 				title: '提示',
           		message: '当前网络：' + (e ? e.currentTarget.type : this.connection.type || 'unknown')
