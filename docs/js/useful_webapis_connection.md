@@ -34,7 +34,7 @@ wx.getNetworkType({
 
 实际上，HTML5已经有这样的Web API来规范这个功能：onLine和connection API。
 
-现在，无论手机端还是PC端，对前者的实现比较好，后者只有PC端的某些高级版本才支持。所以，如果想用JS在手机上实现该功能，到这里就可以关掉了:joy: 。。。
+现在，手机端和PC端对前者的实现比较好，后者只有PC端的某些高级版本才支持（我用的Chrome67支持）。所以，如果想用JS在手机上实现该功能，到这里就可以关掉了:joy: 。。。
 
 如果寄希望于PC端，还是可以继续看一看的:smile: 。
 
@@ -51,7 +51,6 @@ var online = navigator.onLine;  //是否在线
 window.addEventListener('online',  updateOnlineStatus);
 window.addEventListener('offline', updateOnlineStatus);
 ```
-
 
 ## connection：一个对象一个事件
 
@@ -70,6 +69,7 @@ unknown: 有链接，但类型未知
 wifi: Wi-Fi
 wimax: WiMAX
 ```
+
 #### effectiveType
 有效连接类型
 ```js
@@ -78,6 +78,7 @@ wimax: WiMAX
 '4g'
 'slow-2'
 ```
+
 #### downlink
 有效带宽，M/s
 
@@ -92,7 +93,6 @@ wimax: WiMAX
 
 ## Demo
 主要代码:
-
 ```js
 {
 	onGetStatus () {
@@ -153,6 +153,9 @@ wimax: WiMAX
 
 <WebAPIs-Connection></WebAPIs-Connection>
 
+看不到效果？大概是这样子的——
+![demo截图](http://p8rbt50i2.bkt.clouddn.com/blog/WX20180531-115931@2x.png)
+
 ## 总结
 由于兼容性的限制，现在能做的功能真的**很——有——限**。
 
@@ -163,6 +166,5 @@ wimax: WiMAX
 - [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API)
 - [Online and offline events](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/Online_and_offline_events)
 - [http://wicg.github.io/netinfo/](http://wicg.github.io/netinfo/)
-
 
 <comment-tool></comment-tool>
