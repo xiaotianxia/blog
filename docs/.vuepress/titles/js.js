@@ -1,5 +1,6 @@
 module.exports = [
 	'',
+	'rich_text_editor',
 	'useful_webapis_connection',
 	'useful_webapis_geolocation',
 	'speech_in_js_recognition',
