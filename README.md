@@ -19,6 +19,7 @@
 #### AST相关
 #### editor：
 		selection
+		caret-color
 
 
 
