@@ -42,8 +42,6 @@ user-modify: read-write-plaintext-only;  //读写，但只可输入文本
 ```
 
 直接看张鑫旭大大的[Demo](http://www.zhangxinxu.com/study/201601/user-modify.html)吧。
-或者看这里：
-<my-iframe src="http://www.zhangxinxu.com/study/201601/user-modify.html"></my-iframe>
 
 ::: warning 注意
 但这时候，isContentEditable是检测不到的该元素是否可编辑的
@@ -67,9 +65,6 @@ contenteditable="false"     //不可编辑
 "events"、"caret"、"typing"看了半天[文档](https://w3c.github.io/editing/contentEditable.html#contenteditable)也没搞清楚啥意思，而且貌似现在的浏览器也不支持。
 可以自己试下：点[这里](http://www.w3school.com.cn/tiy/t.asp?f=html5_global_contenteditable)。有知道的大神还望指导一下下:pray: ~
 
-### 监听事件
-
-### 关于光标
 
 ## 总结
 只是蜻蜓点水般的介绍，具体细节没有深究。

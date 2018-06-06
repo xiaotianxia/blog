@@ -1,9 +1,8 @@
 # 富文本编辑器了解一下
 
 ## 简介
-
-user-modify
-contenteditable
+本来想学者造个轮子，做个功能还可以的富文本编辑器啥的。查了资料才发现，这玩意真实“天坑”啊。
+参考知乎这篇[文章](https://www.zhihu.com/question/38699645)。
 
 ### execCommand
 ```js

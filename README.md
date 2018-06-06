@@ -18,8 +18,9 @@
 #### babel
 #### AST相关
 #### editor：
-		selection
+		selection对象 range对象
 		caret-color
+#### 拖拽
 
 
 
