@@ -67,7 +67,7 @@ contenteditable="false"     //不可编辑
 可以自己试下：点[这里](http://www.w3school.com.cn/tiy/t.asp?f=html5_global_contenteditable)。有知道的大神还望指导一下下:pray: ~
 
 ## demo:
-<contenteditable-test></contenteditable-test>
+<Editor-ContenteditableTest/>
 
 ## 总结
 只是蜻蜓点水般的介绍，具体细节没有深究。后续的文章会就与contenteditable有关的几个对象展开学习。
