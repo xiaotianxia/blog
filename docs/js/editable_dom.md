@@ -6,7 +6,8 @@
 谁知道在查阅资料时还有一些额外的收获:smile: 。
 
 于是，今天不谈富文本编辑器，而是一起学一下跟它相关的几个神奇的属性。
-或许好多同学跟我一样，还从没见过，它们分别是：**isContentEditable**、**designMode**、**user-modify**和几乎人人都知道的**contenteditable**。
+或许好多同学跟我一样，还从没见过，它们分别是：**isContentEditable**、**designMode**、**user-modify**
+和几乎人人都知道的**contenteditable**。
 
 ## isContentEditable
 很简单，一个只读的属性，返回true或false，表示页面元素是否可编辑。
@@ -37,7 +38,7 @@ document.querySelector('#id').isContentEditable   //true
 ```css
 user-modify: read-only;   //只读
 user-modify: read-write;  //读写，支持富文本
-user-modify: write-only;  //只写？！:joy: 什么鬼，不知道啥意思
+user-modify: write-only;  //只写？！ 什么鬼，不知道啥意思
 user-modify: read-write-plaintext-only;  //读写，但只可输入文本
 ```
 
@@ -65,9 +66,11 @@ contenteditable="false"     //不可编辑
 "events"、"caret"、"typing"看了半天[文档](https://w3c.github.io/editing/contentEditable.html#contenteditable)也没搞清楚啥意思，而且貌似现在的浏览器也不支持。
 可以自己试下：点[这里](http://www.w3school.com.cn/tiy/t.asp?f=html5_global_contenteditable)。有知道的大神还望指导一下下:pray: ~
 
+## demo:
+<contenteditable-test></contenteditable-test>
 
 ## 总结
-只是蜻蜓点水般的介绍，具体细节没有深究。
+只是蜻蜓点水般的介绍，具体细节没有深究。后续的文章会就与contenteditable有关的几个对象展开学习。
 
 ## 参考资料
 - [HTMLElement.isContentEditable](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/isContentEditable)
