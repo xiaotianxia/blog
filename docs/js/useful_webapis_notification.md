@@ -8,12 +8,12 @@
 ```js
 let notification = new Notification(title, options);
 ```
-#### 参数
+### 参数
 
-##### title
+#### title
 一定会被显示的通知标题
 
-##### options (可选)
+#### options (可选)
 一个被允许用来设置通知的对象。它包含以下属性：
 
 ```js
@@ -39,13 +39,13 @@ let notification = new Notification(title, options);
 
 ```
 
-#### 静态属性
+### 静态属性
 **Notification.permission**
 
 一个用于表明当前通知显示授权状态的字符串。可能的值包括：denied (用户拒绝了通知的显示), 
 granted (用户允许了通知的显示), 或 default (因为不知道用户的选择，所以浏览器的行为与 denied 时相同)。
 
-#### 实例属性
+### 实例属性
 这些属性都是Notification实例中的属性，且都是只读的。
 
 ```js
@@ -57,7 +57,7 @@ granted (用户允许了通知的显示), 或 default (因为不知道用户的�
 - icon  通知的图标图片的url地址。在构造方法的 options 中指定。
 ```
 
-#### 事件
+### 事件
 ```js
 - onclick 每当用户点击通知时被触发。
 - onshow 当通知显示的时候被触发。
@@ -65,10 +65,15 @@ granted (用户允许了通知的显示), 或 default (因为不知道用户的�
 - onclose 当用户关闭通知时被触发。
 ```
 
-#### 静态方法
+### 静态方法
 **Notification.requestPermission()**
 
 用于当前页面想用户申请显示通知的权限。这个方法只能被用户行为调用（比如：onclick 事件），并且不能被其他的方式调用。
+
+
+
+### 其他
+样式？
 
 ## Demo
 
