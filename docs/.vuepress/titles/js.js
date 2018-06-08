@@ -1,7 +1,7 @@
 module.exports = [
 	'',
 	// 'rich_text_editor',
-	// 'editable_dom',
+	'editable_dom',
 	'useful_webapis_connection',
 	'useful_webapis_geolocation',
 	'speech_in_js_recognition',
