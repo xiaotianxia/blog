@@ -1,5 +1,6 @@
 # 可编辑的页面——designMode、contenteditable和user-modify
 
+[原文链接](https://denzel.netlify.com/js/editable_dom.html?_=5432542436436543)
 
 ## 简介
 前几天想研究一下富文本编辑器，发现这玩意涉及的知识点和“坑”还真不少。
