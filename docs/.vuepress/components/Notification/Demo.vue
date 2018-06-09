@@ -39,6 +39,7 @@
             </el-form-item>
 
             <el-form-item>
+            	<span class="txt-red">{{msg}}</span> <br>
                 <span>携带data:{{time}}</span>
             </el-form-item>
         </el-form>
@@ -63,7 +64,8 @@ export default {
 				},
 				vibrate: []
             },
-            time: ''
+            time: '',
+            msg: ''
 		}
 	},
 
@@ -72,6 +74,8 @@ export default {
 			if (!('Notification' in window)) {
 			    alert('您的浏览器不支持通知API');
 			}
+
+			this.msg = Notification.permission;
 			if (Notification.permission == "granted") {
 	            this.newNotification();
 	        } else if (Notification.permission != "denied") {
