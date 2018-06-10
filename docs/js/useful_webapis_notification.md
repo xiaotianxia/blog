@@ -11,7 +11,7 @@ let notification = new Notification(title, options);
 ### 参数
 
 #### title
-一定会被显示的通知标题
+通知标题
 
 #### options (可选)
 一个被允许用来设置通知的对象。它包含以下属性：
@@ -19,13 +19,13 @@ let notification = new Notification(title, options);
 ```js
 - dir : 文字的方向；它的值可以是 auto（自动）, ltr（从左到右）, or rtl（从右到左）
 - lang: 指定通知中所使用的语言。
-- badge: A USVString containing the URL of the image used to represent the notification when there is not enough space to display the notification itself.
+- badge: 一个图片的url，当桌面没有空间来展示该通知时，用来表示该通知的图标。
 - body: 通知中额外显示的字符串。
 - tag: 赋予通知一个id，以便在必要的时候对通知进行刷新、替换或移除。
 - icon: 一个图片的url，将被用于显示通知的图标。
 - image: 一个图片的url，显示在通知文字下方。
 - data: 与通知绑定的数据，可以是任意数据类型。
-- vibrate: 通知时设备震动，数组。
+- vibrate: 通知时设备震动，数组，例如[200, 100, 200]表示设备震动200毫秒，然后停止100毫秒，再震动200毫秒。
 - renotify: 是否重新通知，默认false。
 - requireInteraction: 是否持续显示通知，true表示通知会一直显示而不会自动消失，直到用户点击或者关闭。
 - actions: 数组，表示通知来时用户可操作的行为。(不太懂怎么用:joy:)
@@ -34,7 +34,7 @@ let notification = new Notification(title, options);
 
 - silent: 是否静音，默认为false。
 - sound: 声音文件的url，通知来时播放。
-- noscreen: 是否不激活屏幕，默认为false，表示通知来时激活屏幕。
+- noscreen: 是否不在屏幕上显示通知信息，默认为false，表示通知来时激活屏幕。
 - sticky: 通知是否“粘屏”？默认false。
 
 ```
@@ -70,22 +70,96 @@ granted (用户允许了通知的显示), 或 default (因为不知道用户的�
 
 用于当前页面想用户申请显示通知的权限。这个方法只能被用户行为调用（比如：onclick 事件），并且不能被其他的方式调用。
 
-
-
 ### 其他
-样式？
+样式？？？？？
 
 ## Demo
 
+### 部分代码
+```js
+data () {
+    return {
+        queryParams: {
+            title: '一条新通知',
+            body: '12345哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈12345',
+            icon: 'https://denzel.netlify.com/hero.png',
+            badge: 'https://denzel.netlify.com/hero.png',
+            image: 'https://denzel.netlify.com/hero.png',
+            // silent: true,
+            sound: 'http://p8rbt50i2.bkt.clouddn.com/blogsmile.wav',
+            dir: 'rtl',
+            data: {
+                t: new Date()
+            },
+            vibrate: []
+        },
+        time: '',
+        msg: ''
+    }
+},
+
+methods: {
+    onConfirm () {
+        if (!('Notification' in window)) {
+            alert('您的浏览器不支持通知API');
+        }
+
+        this.msg = Notification.permission;
+        //检查用户是否同意接受通知
+        //用户已同意
+        if (Notification.permission == "granted") {
+            this.newNotification();
+        //若没拒绝获取权限
+        } else if (Notification.permission != "denied") {
+            //向用户获取权限
+            Notification.requestPermission(function (permission) {
+                this.newNotification();
+            });
+        }
+    },
+
+    newNotification () {
+        let notification = new Notification(this.queryParams.title, {
+            ...this.queryParams
+        });
+
+        console.log(notification);
+
+        //事件绑定
+        notification.addEventListener('show', e => {
+            console.log(e);
+            this.$message.info('通知出现');
+            this.time = notification.data.t.toLocaleTimeString();
+        });
+
+
+        notification.addEventListener('click', e => {
+            console.log(e);
+            this.$message.info('你点击了通知');
+            // notification.close();
+        });
+
+        notification.addEventListener('close', e => {
+            console.log(e);
+            this.$message.info('你关闭了通知');
+        });
+    }
+}
+```
+### demo
+有些参数暂未支持
+
 <Notification-Demo/>
 
-## 总结
+## 兼容性
+PC端
 
+## 总结
 
 
 ## 参考资料
 - [notification](https://developer.mozilla.org/zh-CN/docs/Web/API/notification)
 - [Notification.Notification()](https://developer.mozilla.org/en-US/docs/Web/API/notification/Notification)
-- [http://wicg.github.io/netinfo/](http://wicg.github.io/netinfo/)
+- [简单了解HTML5中的Web Notification桌面通知](http://www.zhangxinxu.com/wordpress/2016/07/know-html5-web-notification/)
 
 <comment-tool></comment-tool>

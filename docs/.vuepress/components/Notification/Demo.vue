@@ -36,10 +36,10 @@
 
             <el-form-item>
                 <el-button type="primary" @click="onConfirm" size="small">通知一下~</el-button>
+            	<span class="txt-red">{{msg}}</span> 
             </el-form-item>
 
             <el-form-item>
-            	<span class="txt-red">{{msg}}</span> <br>
                 <span>携带data:{{time}}</span>
             </el-form-item>
         </el-form>
@@ -75,10 +75,14 @@ export default {
 			    alert('您的浏览器不支持通知API');
 			}
 
-			this.msg = Notification.permission;
+			this.msg = '获取通知权限：' + Notification.permission;
+			//检查用户是否同意接受通知
+			//用户已同意
 			if (Notification.permission == "granted") {
 	            this.newNotification();
+            //若没拒绝获取权限
 	        } else if (Notification.permission != "denied") {
+	        	//向用户获取权限
 	            Notification.requestPermission(function (permission) {
 	              	this.newNotification();
 	            });
@@ -92,6 +96,7 @@ export default {
 
 			console.log(notification);
 
+			//事件绑定
 			notification.addEventListener('show', e => {
 				console.log(e);
 				this.$message.info('通知出现');
