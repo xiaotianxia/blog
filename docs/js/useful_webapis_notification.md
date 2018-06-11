@@ -70,8 +70,6 @@ granted (用户允许了通知的显示), 或 default (因为不知道用户的�
 
 用于当前页面想用户申请显示通知的权限。这个方法只能被用户行为调用（比如：onclick 事件），并且不能被其他的方式调用。
 
-### 其他
-样式？？？？？
 
 ## Demo
 
@@ -151,11 +149,24 @@ methods: {
 
 <Notification-Demo/>
 
+## 样式
+主要看了mac下的chrome、chromium和Firefox。windows下的还请读者自行测试...
+
+chromium应该算是支持的最好的了
+![chromium](http://p8rbt50i2.bkt.clouddn.com/blog/notification_chromium.png)
+chrome67和Firefox样式基本一样
+
+chrome67
+![chrome](http://p8rbt50i2.bkt.clouddn.com/blog/notification%E2%80%94%E2%80%94chrome67.png)
+Firefox
+![Firefox](http://p8rbt50i2.bkt.clouddn.com/blog/natification_firefox.png)
+
 ## 兼容性
-PC端
+PC端的表现见上图，手机端嘛...chrome、Firefox等全跪:joy: ，反而UC浏览器貌似支持这个属性，但是我的UC显示是denied，
+不知道是我误操作拒绝了权限还是浏览器的bug，算了不深究了...
 
 ## 总结
-
+没啥好总结的，兼容性也就这样，算是为未来做点只是储备吧，我们依然坚定地——相信未来。
 
 ## 参考资料
 - [notification](https://developer.mozilla.org/zh-CN/docs/Web/API/notification)

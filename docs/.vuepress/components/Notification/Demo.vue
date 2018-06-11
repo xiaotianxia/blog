@@ -36,7 +36,7 @@
 
             <el-form-item>
                 <el-button type="primary" @click="onConfirm" size="small">通知一下~</el-button>
-            	<span class="txt-red">{{msg}}</span> 
+            	<span class="txt-red"> {{msg}}</span> 
             </el-form-item>
 
             <el-form-item>
@@ -122,5 +122,7 @@ export default {
 <style scoped>
 	.notification-wrapper {
 		margin-top: 20px;
+		padding: 10px;
+		border: 1px solid #ccc;
 	}
 </style>
