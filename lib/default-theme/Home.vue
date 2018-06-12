@@ -10,13 +10,15 @@
         <NavLink class="action-button" :item="actionLink"/>
       </p>
     </div>
-    <div class="features" v-if="data.features && data.features.length">
+    <!-- <div class="features" v-if="data.features && data.features.length">
       <div class="feature" v-for="feature in data.features">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
-    </div>
+    </div> -->
     <Content custom/>
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzI1Ni8xMzc5MA=="></div>
+    <RemoteScript :src="'https://cdn-city.livere.com/js/embed.dist.js'"/>
     <div class="footer" v-if="data.footer">
       {{ data.footer }}
     </div>
