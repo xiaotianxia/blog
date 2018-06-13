@@ -173,4 +173,4 @@ PC端的表现见上图，手机端嘛...chrome、Firefox等全跪:joy: ，反�
 - [Notification.Notification()](https://developer.mozilla.org/en-US/docs/Web/API/notification/Notification)
 - [简单了解HTML5中的Web Notification桌面通知](http://www.zhangxinxu.com/wordpress/2016/07/know-html5-web-notification/)
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

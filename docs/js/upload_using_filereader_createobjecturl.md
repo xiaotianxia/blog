@@ -106,4 +106,4 @@
 
 关于二者的具体区别在网上一时没查清楚，但总体感觉URL.createObjectURL比FileReader性能更好一些。有什么说错的地方还望指正。
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

@@ -2,6 +2,8 @@
   <div class="page">
     <Content :custom="false"/>
     <Beg v-if="showBeg"/>
+    <div id="lv-container" class="content" data-id="city" data-uid="MTAyMC8zNzI1Ni8xMzc5MA=="></div>
+    <RemoteScript :src="'https://cdn-city.livere.com/js/embed.dist.js'"/>
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>

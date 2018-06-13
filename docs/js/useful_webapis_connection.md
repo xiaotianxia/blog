@@ -168,4 +168,4 @@ wimax: WiMAX
 - [Online and offline events](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/Online_and_offline_events)
 - [http://wicg.github.io/netinfo/](http://wicg.github.io/netinfo/)
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

@@ -79,4 +79,4 @@ contenteditable="false"     //不可编辑
 - [ContentEditable](https://w3c.github.io/editing/contentEditable.html#contenteditable)
 - [小tip: 如何让contenteditable元素只能输入纯文本](http://www.zhangxinxu.com/wordpress/2016/01/contenteditable-plaintext-only/)
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

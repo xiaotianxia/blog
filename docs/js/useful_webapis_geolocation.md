@@ -169,4 +169,4 @@ function onError (data) {
 - [高德开放平台](http://lbs.amap.com/api/javascript-api/reference/location/)
 
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

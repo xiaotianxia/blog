@@ -83,4 +83,4 @@ recognition.onerror = function(event) {
 
 [![](https://badge.juejin.im/entry/5afe4ad3518825426539b0ca/likes.svg?style=flat-square)](https://juejin.im/entry/5afe4ad3518825426539b0ca/detail)
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

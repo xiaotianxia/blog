@@ -168,4 +168,4 @@ socket.on('editRoomName', data => {
 });
 ```
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

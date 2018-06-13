@@ -102,4 +102,4 @@ barcodeDetector.detect(image)
 
 [![](https://badge.juejin.im/entry/5af2c41a6fb9a07abd0da6c0/likes.svg?style=flat-square)](https://juejin.im/entry/5af2c41a6fb9a07abd0da6c0/detail)
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->
