@@ -147,7 +147,7 @@ methods: {
 ### demo
 有些参数暂未支持
 
-<Notification-Demo/>
+<WebAPIs-Notification/>
 
 ## 样式
 主要看了mac下的chrome、chromium和Firefox。windows下的还请读者自行测试...
