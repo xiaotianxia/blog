@@ -7,6 +7,7 @@
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen.jpeg)
 而在web里，好多元素都是可以全屏显示的。全屏模式下，一切“闲杂”元素退出，
 舞台只为你而亮，请开始你的表演。
+![](http://p8rbt50i2.bkt.clouddn.com/blogtimg.jpeg)
 
 今天跟大家一块学习HTML5的全屏模式——fullscreen API。
 
@@ -28,11 +29,11 @@ css 伪元素 :fullscreen  :backdrop
 
 可以看到，以上元素都是支持全屏模式的，但在全屏下元素的原本样式也发生了改变，
 Chrome下，貌似表现的与**display:inline**一样，虽然我设置的是**display:block**。
-Firefox下，则整个元素都是全屏的。
+不妨在Firefox下试试：Firefox下，则整个元素都是全屏的。
 如下图：
-chrome
+chrome：
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen002.png)
-firefox
+firefox：
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen003.png)
 关于样式下面会说，我们先从头开始。
 
@@ -40,7 +41,7 @@ firefox
 ::: tip 
 只有包含在顶层文档内部的标准HTML元素、svg元素和math元素，
 以及拥有**allowfullscreen**属性的iframe的内部元素可以进入全屏模式。
-这意味着在frame内部的元素，以及object的内部元素不能进入全屏模式。
+这意味着在iframe内部的元素，以及object的内部元素不能进入全屏模式。
 :::
 iframe可以全屏，但需要有属性allowfullscreen。
 
@@ -71,6 +72,9 @@ documen.fullscreenElement 查看全屏的元素，没有则返回null
 document.fullscreenEnabled 当前是否可进入全屏状态。
 
 ## 样式
+
+### :fullscreen 
+
 要改变全屏下元素的样式，需要用到:fullscreen伪类。
 ```css
 div:-webkit-full-screen {
@@ -91,6 +95,9 @@ div:-moz-full-screen {
 ```
 从这点上来看，自认为还是Chrome更合理一些呀。
 
+### :backdrop
+
+## 危险？？
 
 ## 兼容性
 

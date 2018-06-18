@@ -12,10 +12,6 @@
 <script>
 
 export default {
-	data () {
-		return {}
-	},
-
 	methods: {
 		onTriggerClick (e) {
 			this.requestFullscreen(e.target);
@@ -29,14 +25,12 @@ export default {
 				return ele.webkitRequestFullScreen();
 			} else if(dom.mozRequestFullScreen){
 				return ele.mozRequestFullScreen();
-			} else {
+			} else if(dom.msRequestFullscreen) {
 				return ele.msRequestFullscreen();
+			} else {
+				alert('浏览器不支持全屏API');
 			}
 		}
-	},
-
-	mounted () {
-		
 	}
 }
 </script>
