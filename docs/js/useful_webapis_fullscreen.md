@@ -123,6 +123,7 @@ backdrop这个词还有两个地方用到：一个是[dialog](https://developer.
 可以用来做啥呢？
 - 播放器全屏，司空见惯
 - 页面小游戏全屏，如canvas游戏等
+- 富文本编辑器全屏
 
 ## 参考资料
 - [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)
