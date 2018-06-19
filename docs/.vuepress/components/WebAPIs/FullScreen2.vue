@@ -1,7 +1,6 @@
 <template>
 	<div class="fullscreen-wrapper2">
 		<div class="block" @click="onTriggerClick"></div>
-		
 	</div>
 </template>
 
@@ -51,6 +50,17 @@ export default {
 				alert('浏览器不支持全屏API');
 			}
 		}
+	},
+
+	mounted () {
+		let block = document.querySelector('.block');
+		block.addEventListener('fullscreenchange', e => {
+			console.log(e);
+		});
+
+		block.addEventListener('fullscreenerror', e => {
+			console.log(e);
+		});
 	}
 }
 </script>

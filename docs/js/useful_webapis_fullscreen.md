@@ -5,7 +5,7 @@
 ## 前言
 全屏下播放视频已经很常见了，像这样
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen.jpeg)
-而在web里，好多元素都是可以全屏显示的。全屏模式下，一切“闲杂”元素退出，
+而在web页面里，几乎所有元素都是可以全屏显示的。全屏模式下，一切“闲杂”元素退出，
 舞台只为你而亮，请开始你的表演。
 ![](http://p8rbt50i2.bkt.clouddn.com/blogtimg.jpeg)
 
@@ -15,14 +15,15 @@
 <WebAPIs-FullScreen1/>
 
 可以看到，以上元素都是支持全屏模式的，但在全屏下元素的原本样式也发生了改变，
-Chrome下，貌似表现的与**display:inline**一样，虽然我设置的是**display:block**。
+Chrome和Safari下，貌似表现的与**display:inline**一样，虽然我设置的是**display:block**。
 不妨在Firefox下试试：Firefox下，则整个元素都是全屏的。
 如下图：
-chrome：
+
+Chrome、Safari：
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen002.png)
-firefox：
+Firefox：
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen003.png)
-关于样式下面会说，我们先从头开始。
+关于样式稍后再说，我们先从头开始看。
 
 首先看下mdn的解释：
 ::: tip 
@@ -48,10 +49,12 @@ iframe可以全屏，但需要有属性allowfullscreen。
 ### fullscreenerror
 元素进入和退出全屏发生错误时触发
 
+遗憾的是，浏览器目前还没支持...
+
 ## 两个属性
 
 ### fullscreenElement
-documen.fullscreenElement 查看全屏的元素，没有则返回null
+document.fullscreenElement 查看全屏的元素，没有则返回null
 
 注：之前是document.fullscreen，返回true/false，已废弃。
 
@@ -65,16 +68,17 @@ document.fullscreenEnabled 当前是否可进入全屏状态。
 要改变全屏下元素的样式，需要用到:fullscreen伪类。
 ```css
 div:-webkit-full-screen {
-	width: 50%;  /*chrome下，width是相对于屏幕宽度的，而且元素自动居中对齐*/
+	width: 50%;  /*Chrome下，width是相对于屏幕宽度的，而且元素自动居中对齐*/
 }
 ```
 
-全屏下chrome会有默认加上白背景色和一个很大的z-index，这样婶的
+全屏下Chrome会有默认加上白背景色和一个很大的z-index，这样婶的
 ![](http://p8rbt50i2.bkt.clouddn.com/blogfullscreen001.png)
 所以手动改变全屏下的样式是有必要的。
-而firefox下，则看到了这样的代码，
+
+而Firefox下，则看到了这样的代码，
 ![](http://p8rbt50i2.bkt.clouddn.com/fullscreen004.png)
-而且试着改变这些样式貌似都不好使，求大神指点啊
+而且试着改变这些样式貌似都不好使，求大神指点啊！！
 ```css
 div:-moz-full-screen {
 	width: 50%!important; 
@@ -97,10 +101,12 @@ backdrop这个词还有两个地方用到：一个是[dialog](https://developer.
 
 ## 危险？？http://jackyrong.iteye.com/blog/1830273
 
-## 兼容性
-手机端全军覆没，pc端如下：
+一次只能一个元素全屏？
 
-各个浏览器还真是任性，各自的写法真实五花八门呐！来感受一下~
+## 兼容性
+手机端不出意料的全军覆没，pc端如下：
+
+（各个浏览器还真是任性，各自的写法真实五花八门呐！来感受一下~）
 
 | 标准 | Blink (Chrome & Opera)、Safari (WebKit)、Edge | Gecko (Firefox) | Internet Explorer 11 |  
 | -   | -  | -  | - | - |
@@ -114,7 +120,9 @@ backdrop这个词还有两个地方用到：一个是[dialog](https://developer.
 
 
 ## 总结
-
+可以用来做啥呢？
+- 播放器全屏，司空见惯
+- 页面小游戏全屏，如canvas游戏等
 
 ## 参考资料
 - [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)
