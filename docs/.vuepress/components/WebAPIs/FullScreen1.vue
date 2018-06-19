@@ -18,14 +18,13 @@ export default {
 		},
 
 		requestFullscreen (ele) {
-			let dom = document.documentElement;
-			if(dom.requestFullscreen){
-				return ele.requestFullScreen();
-			} else if(dom.webkitRequestFullScreen){
+			if(ele.requestFullscreen){
+				return ele.requestFullscreen();
+			} else if(ele.webkitRequestFullScreen){
 				return ele.webkitRequestFullScreen();
-			} else if(dom.mozRequestFullScreen){
+			} else if(ele.mozRequestFullScreen){
 				return ele.mozRequestFullScreen();
-			} else if(dom.msRequestFullscreen) {
+			} else if(ele.msRequestFullscreen) {
 				return ele.msRequestFullscreen();
 			} else {
 				alert('浏览器不支持全屏API');
@@ -51,12 +50,6 @@ export default {
 		font-size: 18px;
 		color: #fff;
 	}
-/*	.block:-webkit-full-screen {
-		width: 50%;
-	}
-	.block:-moz-full-screen {
-		width: 50%;
-	}*/
 	.block.div {
 		background-color: #2d3436;
 	}

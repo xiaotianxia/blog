@@ -11,19 +11,6 @@
 
 今天跟大家一块学习HTML5的全屏模式——fullscreen API。
 
-<!-- 
-
-适用元素  demo
-iframe属性 allowfullscreen
-document属性 fullscreenElement fullscreenEnabled
-css 伪元素 :fullscreen  :backdrop
-攻击  http://jackyrong.iteye.com/blog/1830273
-浏览器差异
-
-全屏状态下事件响应？
-
- -->
-
 先看一个例子：
 <WebAPIs-FullScreen1/>
 
@@ -73,7 +60,7 @@ document.fullscreenEnabled 当前是否可进入全屏状态。
 
 ## 样式
 
-### :fullscreen 
+### :fullscreen 伪类
 
 要改变全屏下元素的样式，需要用到:fullscreen伪类。
 ```css
@@ -95,25 +82,42 @@ div:-moz-full-screen {
 ```
 从这点上来看，自认为还是Chrome更合理一些呀。
 
-### :backdrop
+### :backdrop 伪元素
+全屏模式的元素下的即刻渲染的盒子（并且在所有其他在堆中的层级更低的元素之上），可用来给下层文档设置样式或隐藏它。
+```css
+.block::backdrop {
+    background: red;
+}
+```
+然而在浏览器中并不好使:joy: 。
+<WebAPIs-FullScreen2/>
 
-## 危险？？
+backdrop这个词还有两个地方用到：一个是[dialog](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog)这个标签的伪元素，用来设置弹窗背景样式，这个浏览器的支持还是很好的。
+还有一个是css滤镜[backdrop-filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter)，可自行查看。
+
+## 危险？？http://jackyrong.iteye.com/blog/1830273
 
 ## 兼容性
+手机端全军覆没，pc端如下：
 
-| 标准 | Blink (Chrome & Opera)、Safari (WebKit) | Gecko (Firefox) | Internet Explorer 11 | Edge 
+各个浏览器还真是任性，各自的写法真实五花八门呐！来感受一下~
+
+| 标准 | Blink (Chrome & Opera)、Safari (WebKit)、Edge | Gecko (Firefox) | Internet Explorer 11 |  
 | -   | -  | -  | - | - |
-| document.fullscreenEnabled | webkitFullscreenEnabled | mozFullScreenEnabled | msFullscreenEnabled | webkitFullscreenEnabled |
-| document.fullscreenElement | webkitFullscreenElement | mozFullScreenElement | msFullscreenElement | webkitFullscreenElement |
-| document.onfullscreenchange | onwebkitfullscreenchange | onmozfullscreenchange | MSFullscreenChange | onwebkitfullscreenchange |
-| document.onfullscreenerror | onwebkitfullscreenerror | onmozfullscreenerror | MSFullscreenError | onwebkitfullscreenerror |
-| document.exitFullscreen()	 | webkitExitFullscreen() | mozCancelFullScreen() | msExitFullscreen() | webkitExitFullscreen() | 
-| element.requestFullscreen() | webkitRequestFullscreen() | mozRequestFullScreen() | msRequestFullscreen() | webkitRequestFullscreen() |
+| document.fullscreenEnabled | webkitFullscreenEnabled | mozFullScreenEnabled | msFullscreenEnabled |
+| document.fullscreenElement | webkitFullscreenElement | mozFullScreenElement | msFullscreenElement | 
+| document.onfullscreenchange | onwebkitfullscreenchange | onmozfullscreenchange | MSFullscreenChange | 
+| document.onfullscreenerror | onwebkitfullscreenerror | onmozfullscreenerror | MSFullscreenError | 
+| document.exitFullscreen()	 | webkitExitFullscreen() | mozCancelFullScreen() | msExitFullscreen() | 
+| element.requestFullscreen() | webkitRequestFullscreen() | mozRequestFullScreen() | msRequestFullscreen() |
+| :fullscreen | :-webkit-full-screen | :-moz-full-screen | :-ms-fullscreen |
 
 
-<!-- ## 总结 -->
+## 总结
 
 
-
-<!-- ## 参考资料 -->
-<!-- - [Network Information API](https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API) -->
+## 参考资料
+- [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)
+- [Element.requestFullscreen()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/requestFullScreen)
+- [Fullscreen API](https://fullscreen.spec.whatwg.org/)
+- [How to Use the HTML5 Full-Screen API](https://www.sitepoint.com/html5-full-screen-api/)
