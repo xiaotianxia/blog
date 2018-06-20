@@ -11,7 +11,7 @@
 
 今天跟大家一块学习HTML5的全屏模式——fullscreen API。
 
-先看一个例子：
+先看一个例子↓：
 <WebAPIs-FullScreen1/>
 
 可以看到，以上元素都是支持全屏模式的，但在全屏下元素的原本样式也发生了改变，
@@ -49,17 +49,18 @@ iframe可以全屏，但需要有属性allowfullscreen。
 ### fullscreenerror
 元素进入和退出全屏发生错误时触发
 
-遗憾的是，浏览器目前还没支持...
 
 ## 两个属性
 
 ### fullscreenElement
 document.fullscreenElement 查看全屏的元素，没有则返回null
 
+这个的支持度不高。
+
 注：之前是document.fullscreen，返回true/false，已废弃。
 
 ### fullscreenEnabled
-document.fullscreenEnabled 当前是否可进入全屏状态。
+document.fullscreenEnabled 当前是否支持进入全屏状态。
 
 ## 样式
 
@@ -90,18 +91,130 @@ div:-moz-full-screen {
 全屏模式的元素下的即刻渲染的盒子（并且在所有其他在堆中的层级更低的元素之上），可用来给下层文档设置样式或隐藏它。
 ```css
 .block::backdrop {
-    background: red;
+    background: green;
 }
 ```
-然而在浏览器中并不好使:joy: 。
-<WebAPIs-FullScreen2/>
+这个自测只有最新的Firefox支持。
+如下图：
+![](http://p8rbt50i2.bkt.clouddn.com/blogfullscreen005.png)
 
-backdrop这个词还有两个地方用到：一个是[dialog](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog)这个标签的伪元素，用来设置弹窗背景样式，这个浏览器的支持还是很好的。
+>另：backdrop这个词还有两个地方用到：一个是[dialog](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog)这个标签的伪元素，用来设置弹窗背景样式，这个浏览器的支持还是很好的。
 还有一个是css滤镜[backdrop-filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter)，可自行查看。
 
-## 危险？？http://jackyrong.iteye.com/blog/1830273
+再来一个例子↓，里面用到了[这个库](https://github.com/rafrex/fscreen)，它对各个方法和属性做了很好的兼容，在开发中可以作参考。
+用法很简单，如
+```js
+fscreen.requestFullscreen(element); //用来代替element.requestFullscreen()
+```
+<WebAPIs-FullScreen2/>
 
-一次只能一个元素全屏？
+其中部分代码：
+```js
+import fscreen from './fscreen.js';
+
+export default {
+	data () {
+		return {
+			fullscreen: false
+		}
+	},
+
+	computed: {
+		fullscreenEnabled () {
+			return fscreen.fullscreenEnabled;
+		},
+
+		fullscreenElement () {
+			return JSON.stringify(fscreen.fullscreenElement)
+		}
+	},
+
+	methods: {
+		onTriggerClick (e) {
+			if(this.fullscreen) {
+				this.onExitFullsreen();
+			} else {
+				this.requestFullscreen(document.querySelector('.fullscreen-content'));
+			}
+			this.fullscreen = !this.fullscreen;
+		},
+
+		requestFullscreen (ele) {
+			if(fscreen.requestFullscreen) {
+				return fscreen.requestFullscreen(ele);
+			} else {
+				alert('浏览器不支持全屏API');
+			}
+		},
+
+		onExitFullsreen () {
+			if(fscreen.exitFullscreen) {
+				return fscreen.exitFullscreen();
+			} else {
+				alert('浏览器不支持全屏API');
+			}
+		}
+	},
+
+	mounted () {
+		fscreen.addEventListener('fullscreenchange', e => {
+			this.$message.info(this.fullscreen ? '进入全屏' : '退出全屏');
+			console.log(e);
+		});
+
+		fscreen.addEventListener('fullscreenerror', e => {
+			this.$message.info('全屏切换出错');
+			console.log(e);
+		});
+	}
+}
+```
+
+```css
+.block {
+	display: block;
+	height: 50px;
+	width: 200px;
+	margin: 10px auto;
+	cursor: pointer;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+	color: #fff;
+	background-color: #2d3436;
+}
+.block:before {
+	content: '正常模式';
+	color: #fff;
+}
+.fullscreen-content {
+	width: 400px;
+	margin: 10px auto;
+	text-align: center;
+}
+.fullscreen-content:fullscreen .block {
+	background-color: #ff7675;
+}
+.fullscreen-content:fullscreen .block:before {
+	content: '全屏模式(点击退出)';
+}
+.fullscreen-content::backdrop {
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: green;
+}
+```
+
+## 危险
+
+有人提出这个API有个问题，那就是容易造成欺骗。在[这里](http://feross.org/html5-fullscreen-api-attack/)有个demo，
+比如某个链结写的是 http://www.×××.com ，大家以为是美国银行， 但是一点进去，因为使用了全屏幕API，就会欺骗到人，被成功钓鱼。
+大概意思是这样婶的，看另一个例子↓：
+<WebAPIs-FullScreen3/>
 
 ## 兼容性
 手机端不出意料的全军覆没，pc端如下：
@@ -124,9 +237,11 @@ backdrop这个词还有两个地方用到：一个是[dialog](https://developer.
 - 播放器全屏，司空见惯
 - 页面小游戏全屏，如canvas游戏等
 - 富文本编辑器全屏
+- 还有啥呢...
 
 ## 参考资料
 - [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API)
 - [Element.requestFullscreen()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/requestFullScreen)
 - [Fullscreen API](https://fullscreen.spec.whatwg.org/)
 - [How to Use the HTML5 Full-Screen API](https://www.sitepoint.com/html5-full-screen-api/)
+- [https://github.com/rafrex/fscreen](https://github.com/rafrex/fscreen/blob/master/src/index.js)

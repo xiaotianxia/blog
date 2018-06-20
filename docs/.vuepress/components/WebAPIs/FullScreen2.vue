@@ -1,10 +1,16 @@
 <template>
 	<div class="fullscreen-wrapper2">
-		<div class="block" @click="onTriggerClick"></div>
+		<div class="fullscreen-content">
+			<p>是否可全屏：<strong>{{fullscreenEnabled}}</strong></p>
+			<p>全屏模式：<strong>{{fullscreen}}</strong></p>
+			<p>fullscreenElement：<strong>{{fullscreenElement}}</strong></p>
+			<div class="block" @click="onTriggerClick"></div>
+		</div>
 	</div>
 </template>
 
 <script>
+import fscreen from './fscreen.js';
 
 export default {
 	data () {
@@ -13,39 +19,37 @@ export default {
 		}
 	},
 
+	computed: {
+		fullscreenEnabled () {
+			return fscreen.fullscreenEnabled;
+		},
+
+		fullscreenElement () {
+			return JSON.stringify(fscreen.fullscreenElement)
+		}
+	},
+
 	methods: {
 		onTriggerClick (e) {
 			if(this.fullscreen) {
 				this.onExitFullsreen();
 			} else {
-				this.requestFullscreen(e.target);
+				this.requestFullscreen(document.querySelector('.fullscreen-content'));
 			}
 			this.fullscreen = !this.fullscreen;
 		},
 
 		requestFullscreen (ele) {
-			if(ele.requestFullscreen){
-				return ele.requestFullscreen();
-			} else if(ele.webkitRequestFullScreen){
-				return ele.webkitRequestFullScreen();
-			} else if(ele.mozRequestFullScreen){
-				return ele.mozRequestFullScreen();
-			} else if(ele.msRequestFullscreen) {
-				return ele.msRequestFullscreen();
+			if(fscreen.requestFullscreen) {
+				return fscreen.requestFullscreen(ele);
 			} else {
 				alert('浏览器不支持全屏API');
 			}
 		},
 
 		onExitFullsreen () {
-			if(document.exitFullscreen){
-				return document.exitFullscreen();
-			} else if(document.webkitExitFullscreen){
-				return document.webkitExitFullscreen();
-			} else if(document.mozCancelFullScreen){
-				return document.mozCancelFullScreen();
-			} else if(document.msExitFullscreen) {
-				return document.msExitFullscreen();
+			if(fscreen.exitFullscreen) {
+				return fscreen.exitFullscreen();
 			} else {
 				alert('浏览器不支持全屏API');
 			}
@@ -53,12 +57,13 @@ export default {
 	},
 
 	mounted () {
-		let block = document.querySelector('.block');
-		block.addEventListener('fullscreenchange', e => {
+		fscreen.addEventListener('fullscreenchange', e => {
+			this.$message.info(this.fullscreen ? '进入全屏' : '退出全屏');
 			console.log(e);
 		});
 
-		block.addEventListener('fullscreenerror', e => {
+		fscreen.addEventListener('fullscreenerror', e => {
+			this.$message.info('全屏切换出错');
 			console.log(e);
 		});
 	}
@@ -87,18 +92,23 @@ export default {
 		content: '正常模式';
 		color: #fff;
 	}
-	.block:fullscreen {
+	.fullscreen-content {
+		width: 400px;
+		margin: 10px auto;
+		text-align: center;
+	}
+	.fullscreen-content:fullscreen .block {
 		background-color: #ff7675;
 	}
-	.block:fullscreen:before {
+	.fullscreen-content:fullscreen .block:before {
 		content: '全屏模式(点击退出)';
 	}
-	.block::backdrop {
+	.fullscreen-content::backdrop {
 		position: fixed;
 	    top: 0;
 	    left: 0;
 	    right: 0;
 	    bottom: 0;
-	    background: red;
+	    background: green;
 	}
 </style>
