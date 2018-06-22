@@ -1,6 +1,6 @@
 <template>
     <div class="dialog-wrapper1">
-        <button @click="onShow">显示弹窗</button>
+        <button @click="onShow">弹一下</button>
         <dialog id="dialog">
             这是一个native弹窗。
         </dialog>
@@ -22,6 +22,5 @@ export default {
     .dialog-wrapper1 {
         padding-bottom: 40px;
         margin: 40px;
-        text-align: center;
     }
 </style>
