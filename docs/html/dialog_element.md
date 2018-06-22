@@ -1,4 +1,4 @@
-# &lt;dialog&gt;标签
+# HTML5.2新标签 —— dialog 
 
 [原文地址](https://denzel.netlify.com/html/dialog_element.html)
 
