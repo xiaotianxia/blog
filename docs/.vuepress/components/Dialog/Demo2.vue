@@ -3,11 +3,17 @@
         <button @click="onShow">弹一下</button>
         <dialog ref="dialog2">
             <div class="dialog-header">
-                <span class="title">标题</span>
+                <span class="title">提示</span>
                 <span class="close js-close">&times;</span>
             </div>
-            <div class="dialog-content">内容</div>
-            <div class="dialog-footer">按钮</div>
+            <div class="dialog-content">
+                这是一段消息。<br>
+                这是另一段消息。
+            </div>
+            <div class="dialog-footer">
+                <a class="btn js-confirm" href="javascript:;">确定</a>
+                <a class="btn js-cancel" href="javascript:;">取消</a>
+            </div>
         </dialog>
     </div>
 </template>
@@ -30,6 +36,8 @@ export default {
     mounted () {
         this.dialog = this.$refs.dialog2;
         let closeBtn = this.dialog.querySelector('.js-close');
+        let confirmBtn = this.dialog.querySelector('.js-confirm');
+        let cancelBtn = this.dialog.querySelector('.js-cancel');
 
         //按esc关闭弹窗，同时会触发close事件
         this.dialog.addEventListener('cancel', e => {
@@ -57,7 +65,17 @@ export default {
 
         //点×关闭
         closeBtn.addEventListener('click', e => {
-            this.dialog.close('主动关闭');
+            this.dialog.close('点击了关闭');
+        });
+
+        //点确定
+        confirmBtn.addEventListener('click', e => {
+            this.dialog.close('点击了确定');
+        });
+
+        //点取消
+        cancelBtn.addEventListener('click', e => {
+            this.dialog.close('点击了取消');
         });
     }
 }
@@ -65,7 +83,61 @@ export default {
 
 <style scoped>
     .dialog-wrapper2 {
-        padding-bottom: 40px;
+        border: 1px solid #ccc;
+        padding: 10px 40px;
         margin: 40px;
+    }
+    /*改变dialog样式*/
+    dialog {
+        position: fixed;
+        margin: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 300px;
+        max-width: 80%;
+        border: none;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    }
+    dialog[open] {
+        animation: slide-up 0.4s ease-out;
+    }
+    /*改变遮罩样式*/
+    dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .dialog-header {
+        box-shadow: 0 1px rgba(0, 0, 0, .1);
+    }
+    .dialog-header span {
+        display: inline-block;
+    }
+    .dialog-header .close {
+        float: right;
+        cursor: pointer;
+    }
+    .dialog-content {
+        padding: 20px;
+        box-shadow: 0 1px rgba(0, 0, 0, .1);
+    }
+    .dialog-footer {
+        padding-top: 10px;
+        text-align: right;
+    }
+    .dialog-footer a {
+        margin-right: 10px;
+        outline: none;
+        text-decoration: none!important;
+    }
+    @keyframes slide-up {
+        0% {
+            opacity: 0;
+            transform: translate(-50%, -40%);
+        }
+      
+        100% {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
     }
 </style>

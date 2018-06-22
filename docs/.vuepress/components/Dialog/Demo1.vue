@@ -20,7 +20,8 @@ export default {
 
 <style scoped>
     .dialog-wrapper1 {
-        padding-bottom: 40px;
-        margin: 40px;
+        border: 1px solid #ccc;
+        padding: 10px 40px;
+        margin-bottom: 60px;
     }
 </style>
