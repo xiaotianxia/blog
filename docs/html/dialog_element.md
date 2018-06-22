@@ -62,6 +62,95 @@ chrome：
 ### 再举个栗子
 <Dialog-Demo2/>
 
+### 部分代码
+
+```js
+methods: {
+    onShow () {
+        this.dialog.showModal();
+    }
+},
+
+mounted () {
+    this.dialog = this.$refs.dialog2;
+    let closeBtn = this.dialog.querySelector('.js-close');
+    let confirmBtn = this.dialog.querySelector('.js-confirm');
+    let cancelBtn = this.dialog.querySelector('.js-cancel');
+
+    //按esc关闭弹窗，同时会触发close事件
+    this.dialog.addEventListener('cancel', e => {
+        //不写这句也会关闭，这里主要是为了携带数据及演示监听cancel事件
+        this.dialog.close('按esc关闭');
+    });
+
+    //关闭
+    this.dialog.addEventListener('close', e => {
+        let returnValue = this.dialog.returnValue;
+        this.dialog.returnValue = '';
+        returnValue !== '' && this.$notify({
+            title: 'returnValue',
+            message: returnValue
+        });
+    });
+
+    //点击遮罩关闭，事件注册在dialog上
+    this.dialog.addEventListener('click', (event) => {
+        if (event.target === this.dialog) {
+            //关闭，并携带数据
+            this.dialog.close('点击了遮罩关闭');
+        }
+    });
+
+    //点×关闭
+    closeBtn.addEventListener('click', e => {
+        this.dialog.close('点击了关闭');
+    });
+
+    //点确定
+    confirmBtn.addEventListener('click', e => {
+        this.dialog.close('点击了确定');
+    });
+
+    //点取消
+    cancelBtn.addEventListener('click', e => {
+        this.dialog.close('点击了取消');
+    });
+}
+```
+
+```css
+/*改变dialog样式*/
+dialog {
+    position: fixed;
+    margin: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    max-width: 80%;
+    border: none;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+dialog[open] {
+    animation: slide-up 0.4s ease-out;
+}
+/*改变遮罩样式*/
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+  
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+```
+
 ### polyfill
 浏览器不支持？这里有一个[dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill)，
 通过少许的额外代码，依然可以实现实现上面的功能。有兴趣的同学可以试试，这里不再赘述~
