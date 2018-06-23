@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import dialogPolyfill from './dialog-polyfill.min.js';
+// import dialogPolyfill from './dialog-polyfill.min.js';
 
 export default {
     data () {
@@ -37,7 +37,7 @@ export default {
 
     mounted () {
         this.dialog = this.$refs.dialog3;
-        dialogPolyfill.registerDialog(this.dialog);
+        // dialogPolyfill.registerDialog(this.dialog);
         let closeBtn = this.dialog.querySelector('.js-close');
         let confirmBtn = this.dialog.querySelector('.js-confirm');
         let cancelBtn = this.dialog.querySelector('.js-cancel');
@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
     .dialog-wrapper3 {
-        border: 1px solid #ccc;
+        border:x 1px solid #ccc;
         padding: 10px 40px;
         margin: 40px;
     }

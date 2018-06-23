@@ -83,7 +83,6 @@ export default {
 
 <style scoped>
     .dialog-wrapper2 {
-        border: 1px solid #ccc;
         padding: 10px 40px;
         margin: 40px;
     }

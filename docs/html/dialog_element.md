@@ -162,7 +162,7 @@ dialogPolyfill.registerDialog(this.dialog);
 不支持的浏览器再试下这个Demo↓：
 
 ### 最后一个栗子
-<!-- <Dialog-Demo3/> -->
+<Dialog-Demo3/>
 
 ## 参考资料
 - [&lt;dialog&gt;: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
