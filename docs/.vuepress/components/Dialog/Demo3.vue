@@ -1,7 +1,7 @@
 <template>
-    <div class="dialog-wrapper2">
+    <div class="dialog-wrapper3">
         <button @click="onShow">弹一下</button>
-        <dialog ref="dialog2">
+        <dialog ref="dialog3">
             <div class="dialog-header">
                 <span class="title">提示</span>
                 <span class="close js-close">&times;</span>
@@ -36,7 +36,7 @@ export default {
     },
 
     mounted () {
-        this.dialog = this.$refs.dialog2;
+        this.dialog = this.$refs.dialog3;
         dialogPolyfill.registerDialog(this.dialog);
         let closeBtn = this.dialog.querySelector('.js-close');
         let confirmBtn = this.dialog.querySelector('.js-confirm');
@@ -85,7 +85,7 @@ export default {
 </script>
 
 <style scoped>
-    .dialog-wrapper2 {
+    .dialog-wrapper3 {
         border: 1px solid #ccc;
         padding: 10px 40px;
         margin: 40px;
