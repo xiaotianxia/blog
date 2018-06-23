@@ -165,7 +165,7 @@ dialogPolyfill.registerDialog(this.dialog);
 <Dialog-Demo3/>
 
 ## 参考资料
-- [&lt;dialog&gt;: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+- [dialog: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
 - [https://codepen.io/keithjgrant/pen/eyMMVL](https://codepen.io/keithjgrant/pen/eyMMVL)
 - [Native Popups and Modals With the HTML5 “dialog” Element](https://webdesign.tutsplus.com/tutorials/native-popups-and-modals-with-the-html5-dialog-element--cms-23876)
 - [初探HTML5.x新特性《dialog》标签](https://yq.aliyun.com/articles/374584)
