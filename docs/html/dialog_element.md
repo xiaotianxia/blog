@@ -153,8 +153,16 @@ dialog::backdrop {
 
 ### polyfill
 浏览器不支持？这里有一个[dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill)，
-通过少许的额外代码，依然可以实现实现上面的功能。有兴趣的同学可以试试，这里不再赘述~
+通过少许的额外代码，依然可以实现实现上面的功能。
+只要引入该js，在弹窗对象后面添加一句：
+```js
+dialogPolyfill.registerDialog(this.dialog);
+```
+即可。有兴趣的同学可以试试，这里不再赘述~
+不支持的浏览器再试下这个Demo↓：
 
+### 最后一个栗子
+<Dialog-Demo3/>
 
 ## 参考资料
 - [&lt;dialog&gt;: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
