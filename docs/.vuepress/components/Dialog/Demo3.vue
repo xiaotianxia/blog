@@ -19,7 +19,7 @@
 </template>
 
 <script>
-// import dialogPolyfill from './dialog-polyfill.min.js';
+import dialogPolyfill from './dialog-polyfill.js';
 
 export default {
     data () {
@@ -31,13 +31,17 @@ export default {
 
     methods: {
         onShow () {
-            this.dialog.showModal();
+            if(!this.dialog.showModal) {
+                alert('浏览器不支持dialog方法');
+            } else {
+                this.dialog.showModal();
+            }
         }
     },
 
     mounted () {
         this.dialog = this.$refs.dialog3;
-        // dialogPolyfill.registerDialog(this.dialog);
+        dialogPolyfill.registerDialog(this.dialog);
         let closeBtn = this.dialog.querySelector('.js-close');
         let confirmBtn = this.dialog.querySelector('.js-confirm');
         let cancelBtn = this.dialog.querySelector('.js-cancel');
@@ -142,5 +146,16 @@ export default {
             opacity: 1;
             transform: translate(-50%, -50%);
         }
+    }
+</style>
+
+<style>
+    dialog + .backdrop {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
     }
 </style>

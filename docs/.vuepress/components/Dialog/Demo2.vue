@@ -29,7 +29,11 @@ export default {
 
     methods: {
         onShow () {
-            this.dialog.showModal();
+            if(!this.dialog.showModal) {
+                alert('浏览器不支持dialog方法');
+            } else {
+                this.dialog.showModal();
+            }
         }
     },
 

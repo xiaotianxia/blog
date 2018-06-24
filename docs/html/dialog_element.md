@@ -158,6 +158,17 @@ dialog::backdrop {
 ```js
 dialogPolyfill.registerDialog(this.dialog);
 ```
+css添加
+```css
+dialog + .backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+```
 即可。有兴趣的同学可以试试，这里不再赘述~
 不支持的浏览器再试下这个Demo↓：
 
