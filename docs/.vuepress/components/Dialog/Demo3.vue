@@ -159,4 +159,7 @@ export default {
         left: 0;
         background-color: rgba(0, 0, 0, 0.4);
     }
+    dialog:not([open]) {
+        display: none;
+    }
 </style>

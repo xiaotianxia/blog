@@ -1,8 +1,7 @@
 # TODO
 
-## 主题开发
+## 主题
 ## 封面
-## update
 
 
 ## 文章
@@ -19,5 +18,4 @@
 #### AST相关
 #### editor：
 		selection对象 range对象
-		caret-color
 #### 拖拽

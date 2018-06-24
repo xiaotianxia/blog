@@ -170,6 +170,9 @@ dialog + .backdrop {
     left: 0;
     background-color: rgba(0, 0, 0, 0.4);
 }
+dialog:not([open]) {
+    display: none;
+}
 ```
 即可。有兴趣的同学可以试试，这里不再赘述~
 不支持的浏览器再试下这个Demo↓：
