@@ -21,5 +21,3 @@
 		selection对象 range对象
 		caret-color
 #### 拖拽
-#### WebVR API
-#### dialog

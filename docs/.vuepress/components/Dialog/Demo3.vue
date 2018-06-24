@@ -40,11 +40,8 @@ export default {
 
     mounted () {
         this.dialog = this.$refs.dialog3;
-        Promise.all([
-            import('./dialog-polyfill.js')
-        ]).then(res => {
-            console.log(res);
-            res[0].default.registerDialog(this.dialog);
+        import('./dialog-polyfill.js').then(res => {
+            res.default.registerDialog(this.dialog);
         });
         let closeBtn = this.dialog.querySelector('.js-close');
         let confirmBtn = this.dialog.querySelector('.js-confirm');

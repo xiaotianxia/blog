@@ -152,7 +152,9 @@ dialog::backdrop {
 ```
 
 ### polyfill
-浏览器不支持？这里有一个[dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill)，
+What？！浏览器不支持？
+
+木有关系。这里有一个[dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill)，
 通过少许的额外代码，依然可以实现实现上面的功能。
 只要引入该js，js中在弹窗对象后面添加一句：
 ```js
