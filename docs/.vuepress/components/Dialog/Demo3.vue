@@ -91,7 +91,6 @@ export default {
 
 <style scoped>
     .dialog-wrapper3 {
-        border:x 1px solid #ccc;
         padding: 10px 40px;
         margin: 40px;
     }
@@ -151,15 +150,5 @@ export default {
 </style>
 
 <style>
-    dialog + .backdrop {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    dialog:not([open]) {
-        display: none;
-    }
+    @import './dialog-polyfill.css';
 </style>

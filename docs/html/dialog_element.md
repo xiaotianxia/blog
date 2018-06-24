@@ -152,7 +152,7 @@ dialog::backdrop {
 ```
 
 ### polyfill
-What？！浏览器不支持？
+What？！浏览器不支持？手机端没反应？！！
 
 木有关系。这里有一个[dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill)，
 通过少许的额外代码，依然可以实现实现上面的功能。
@@ -160,21 +160,7 @@ What？！浏览器不支持？
 ```js
 dialogPolyfill.registerDialog(this.dialog);
 ```
-css中添加
-```css
-dialog + .backdrop {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-dialog:not([open]) {
-    display: none;
-}
-```
-即可。有兴趣的同学可以试试，这里不再赘述~
+再引入它的css(很简单)即可。有兴趣的同学可以试试，这里不再赘述~
 不支持的浏览器再试下这个Demo↓：
 
 ### 最后一个栗子

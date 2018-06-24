@@ -12,7 +12,11 @@ export default {
     methods: {
         onShow () {
             let dialog = document.querySelector('#dialog');
-            dialog.show();
+            if(!dialog.show) {
+                alert('浏览器不支持dialog方法');
+            } else {
+                dialog.show();
+            }
         }
     }
 }
