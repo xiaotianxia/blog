@@ -154,11 +154,11 @@ dialog::backdrop {
 ### polyfill
 浏览器不支持？这里有一个[dialog-polyfill](https://github.com/GoogleChrome/dialog-polyfill)，
 通过少许的额外代码，依然可以实现实现上面的功能。
-只要引入该js，在弹窗对象后面添加一句：
+只要引入该js，js中在弹窗对象后面添加一句：
 ```js
 dialogPolyfill.registerDialog(this.dialog);
 ```
-css添加
+css中添加
 ```css
 dialog + .backdrop {
     position: fixed;
@@ -173,7 +173,7 @@ dialog + .backdrop {
 不支持的浏览器再试下这个Demo↓：
 
 ### 最后一个栗子
-<!-- <Dialog-Demo3/> -->
+<Dialog-Demo3/>
 
 ## 参考资料
 - [&lt;dialog&gt;: The Dialog element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)

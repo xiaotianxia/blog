@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import dialogPolyfill from './dialog-polyfill.js';
 
 export default {
     data () {
@@ -41,7 +40,12 @@ export default {
 
     mounted () {
         this.dialog = this.$refs.dialog3;
-        dialogPolyfill.registerDialog(this.dialog);
+        Promise.all([
+            import('./dialog-polyfill.js')
+        ]).then(res => {
+            console.log(res);
+            res[0].default.registerDialog(this.dialog);
+        });
         let closeBtn = this.dialog.querySelector('.js-close');
         let confirmBtn = this.dialog.querySelector('.js-confirm');
         let cancelBtn = this.dialog.querySelector('.js-cancel');
