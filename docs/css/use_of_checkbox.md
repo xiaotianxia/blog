@@ -149,4 +149,4 @@ demo截图
 当然，如果用先js计算出auto的高度再添加动画也是不错的方案，见张鑫旭老师的[文章](http://www.zhangxinxu.com/study/201501/css3-any-height-transition.html)。
 :::
 
-<comment-tool></comment-tool>
+<!-- <comment-tool></comment-tool> -->

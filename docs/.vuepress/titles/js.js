@@ -1,6 +1,5 @@
 module.exports = [
 	'',
-	// 'rich_text_editor',
 	'editable_dom',
 	'useful_webapis_fullscreen',
 	'useful_webapis_notification',
