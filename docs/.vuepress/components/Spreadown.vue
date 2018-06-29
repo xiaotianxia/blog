@@ -19,10 +19,21 @@ export default {
 		}
 	},
 
+	props: {
+		defautShow: {
+			type: Boolean,
+			default: false
+		}
+	},
+
 	methods: {
 		onTrigger () {
 			this.show = !this.show;
 		}
+	},
+
+	mounted () {
+		this.show = this.defautShow;
 	}
 }
 </script>
