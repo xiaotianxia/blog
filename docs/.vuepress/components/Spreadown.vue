@@ -20,7 +20,7 @@ export default {
 	},
 
 	props: {
-		defautShow: {
+		defaultShow: {
 			type: Boolean,
 			default: false
 		}
@@ -33,7 +33,7 @@ export default {
 	},
 
 	mounted () {
-		this.show = this.defautShow;
+		this.show = this.defaultShow;
 	}
 }
 </script>
@@ -49,10 +49,6 @@ export default {
 		text-align: center;
 		cursor: pointer;
 		user-select: none;
-	}
-	.spreadown-trigger:hover {
-		background-color: #ccc;
-		color: #fff;
 	}
 	.spreadown-content {
 		width: 100%;
