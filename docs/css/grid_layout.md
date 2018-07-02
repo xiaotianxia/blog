@@ -2,6 +2,13 @@
 
 [原文链接](https://denzel.netlify.com/css/grid_layout.html?_=7654323456782357)
 
+minmax
+gird简写
+网格线命名
+
+
+
+
 ## 前言
 CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，这意味着它可以同时处理列和行，
 不像flexbox那样主要是一维系统。 你可以通过将CSS规则应用于父元素（网格容器）
@@ -79,31 +86,28 @@ CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，�
 ## 属性列表
 
 ### 网格容器
-```
-display
-grid
-grid-template
-grid-template-columns
-grid-template-rows
-grid-template-areas
-grid-gap(grid-column-gap/grid-row-gap)
-grid-auto-flow
-grid-auto-columns
-grid-auto-rows
-justify-items
-align-items
-justify-content
-align-content
-```
+- display
+- grid
+- grid-template
+- grid-template-columns
+- grid-template-rows
+- grid-template-areas
+- grid-gap(grid-column-gap/grid-row-gap)
+- grid-auto-flow
+- grid-auto-columns
+- grid-auto-rows
+- justify-items
+- align-items
+- justify-content
+- align-content
 
 ### 网格项目
-```
-grid-column(grid-column-start/grid-column-end)
-grid-row(grid-row-start/grid-row-end)
-grid-area
-justify-self
-align-self
-```
+- grid-column(grid-column-start/grid-column-end)
+- grid-row(grid-row-start/grid-row-end)
+- grid-area
+- justify-self
+- align-self
+
 下面我们一起详细地学习这些属性——
 
 ## display
@@ -202,20 +206,24 @@ grid-column: 2 / 4;
 grid-row: 3 / 5;
 ```
 相当于
-
 ```css
 grid-column-start: 2;
 grid-column-end: 4;
 grid-row-start: 3;
 grid-row-end: 5;
 ```
+也相当于
+```css
+grid-column: 2 / 4;
+grid-row: 3 / 5;
+```
+而
 
 ```css
 grid-column: 2;
 grid-row: 3;
 ```
 相当于
-
 ```css
 grid-column-start: 2;
 grid-column-end: auto;
@@ -275,8 +283,10 @@ grid-auto-rows和grid-auto-flow控制。
   	grid-auto-flow: row | column | row dense | column dense
 }
 ```
-可以给grid-auto-flow属性添加另外一个关键词dense(密集的)，这个属性值相当有用：系统会利用自动排列算法尽可能的填补空缺，
+::: tip tip
+可以给grid-auto-flow属性添加另外一个关键词dense(密集的)，这个属性值**相当有用**：系统会利用自动排列算法尽可能的填补空缺，
 使布局变得密集。但这可能打乱元素原来的顺序，这也意味着它不能友好地反映文档流顺序，这一点对于一些用户而言并不总是有用的。
+:::
 
 看下前后对比图：
 
@@ -301,9 +311,16 @@ justify-content指定**网格轨道**沿着**列**轴对齐方式。
 他们所对应的值及具体表现形式，可参考[这里](https://drafts.csswg.org/css-align/)，不再赘述了。 
 
 ## 浏览器debug
-firefox里，可以通过设置显示网格的名称、行号等信息，点[这里](http://www.w3cplus.com/css/grid-inspector.html)，非常方便，
+firefox里，可以通过设置显示网格的名称、行号等信息，点[这里](http://www.w3cplus.com/css/grid-inspector.html)看详情，非常方便，
 如下图：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/grid017.png)
+
+::: tip tip
+从图中可以看出，grid-column/row-start/end是可以为负数的，正负值差别是，位置将从相反的方向开始。
+
+这样看来*-end也是可以小于*-start的。
+:::
+
 chrome的高一点版本(我的是67)，可以显示对应网格线，不知道能不能进一步设置？。。。
 如下图：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/grid018.png)
@@ -312,7 +329,7 @@ chrome的高一点版本(我的是67)，可以显示对应网格线，不知道�
 关于Grid布局，本文讲解的东西还只是杯水车薪，其中的好多细节都没有涉及到。
 若发现有错误的地方，欢迎不吝指教！:pray:
 
-想要了解更多，推荐进[这里](http://www.w3cplus.com/blog/tags/355.html)进一步学习。
+想要了解更多，推荐进[这里](http://www.w3cplus.com/blog/tags/355.html)或者[这里](https://codepen.io/search/pens?q=CSS%20Grid%20Layout&page=1&order=popularity&depth=everything&show_forks=false)的一些demo进一步学习。
 
 ## 参考资料
 - [Playing with css grid layout](https://medium.com/@purplecones/playing-with-css-grid-layout-a75836098370)
