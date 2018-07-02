@@ -298,8 +298,7 @@ align-items、align-self指定**网格项目**沿着**列**轴对齐方式。
 align-content指定**网格轨道**沿着**行**轴对齐方式；
 justify-content指定**网格轨道**沿着**列**轴对齐方式。
 
-他们所对应的值及具体表现形式，可参考[这里](https://drafts.csswg.org/css-align/)，不再赘述了。
-
+他们所对应的值及具体表现形式，可参考[这里](https://drafts.csswg.org/css-align/)，不再赘述了。 
 
 ## 浏览器debug
 firefox里，可以通过设置显示网格的名称、行号等信息，点[这里](http://www.w3cplus.com/css/grid-inspector.html)，非常方便，
@@ -309,10 +308,14 @@ chrome的高一点版本(我的是67)，可以显示对应网格线，不知道�
 如下图：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/grid018.png)
 
+## 总结
+关于Grid布局，本文讲解的东西还只是杯水车薪，其中的好多细节都没有涉及到。
+若发现有错误的地方，欢迎不吝指教！:pray:
 
+想要了解更多，推荐进[这里](http://www.w3cplus.com/blog/tags/355.html)进一步学习。
 
 ## 参考资料
 - [Playing with css grid layout](https://medium.com/@purplecones/playing-with-css-grid-layout-a75836098370)
 - [learn css grid](https://learncssgrid.com/)
-- [grid入门](http://www.w3cplus.com/blog/tags/355.html?page=5)
+- [grid入门](http://www.w3cplus.com/blog/tags/355.html)
 - [CSS 网格布局学习指南](http://blog.jirengu.com/?p=990)
