@@ -2,14 +2,6 @@
 
 [原文链接](https://denzel.netlify.com/css/grid_layout.html?_=7654323456782357)
 
-minmax
-gird简写
-网格线命名
-align
-
-
-
-
 ## 前言
 CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，这意味着它可以同时处理列和行，
 不像flexbox那样主要是一维系统。 你可以通过将CSS规则应用于父元素（网格容器）
@@ -22,6 +14,14 @@ CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，�
 先看一个例子：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/bloggrid002.png)
 这种布局已经司空见惯了。我们看用grid的话，可以有哪些骚操作：
+```html
+<div class="grid">
+    <div class="item header">header</div>
+    <div class="item content">content</div>
+    <div class="item sidebar">sidebar</div>
+    <div class="item footer">footer</div>
+</div>
+```
 ```css
 .grid {
     display: grid;
@@ -163,16 +163,31 @@ fr单位可以创建一个弹性的网格轨道。这个例子中，网格容器
 ```css
 grid-template-columns: repeat(2, 100px 1fr);
 ```
-参数1是重复的次数，参数2是重复的内容。
+参数1是可以是重复的次数，参数2是重复的内容。
 
 <spreadown>
 	<iframe height='300' scrolling='no' title='3' src='//codepen.io/_tianxia/embed/GGzLbj/?height=300&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/GGzLbj/'>3</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
 	<show-in-codepen href="https://codepen.io/_tianxia/pen/GGzLbj"></show-in-codepen>
 </spreadown>
 
+参数1也可以是auto-fill和auto-fit。
+
+auto-fill创建了许多与网格容器相匹配的轨道，而不会导致网格溢出。
+
+auto-fit与auto-fill类似，只是在网格项放置之后，它只会在需要时创建尽可能多的轨道，而重复的空轨道会堆叠在一起（合并）。
+
+对于同样的四个项目的结构，二者的区别见下图：
+
+grid-template-columns: repeat(auto-fill, 100px);效果着这样婶儿的：
+![demo](http://p8rbt50i2.bkt.clouddn.com/grid019.gif)
+
+grid-template-columns: repeat(auto-fill, 100px);效果是这样婶儿的：
+![demo](http://p8rbt50i2.bkt.clouddn.com/grid020.gif)
+
+具体有什么用？:cold_sweat: 额。。。我也不太清楚，这里先不深究了。
 
 ### minmax
-[minmax()函数如何工作](https://www.w3cplus.com/css3/how-the-minmax-function-works.html)
+grid-template-columns/rows的参数还可以使用minmax函数，具体怎么使用可以看这里[minmax()函数如何工作](https://www.w3cplus.com/css3/how-the-minmax-function-works.html)
 
 ## grid-gap
 ```css
@@ -311,7 +326,7 @@ justify-content指定**网格轨道**沿着**列**轴对齐方式。
 
 他们所对应的值及具体表现形式，可参考[这里](https://drafts.csswg.org/css-align/)，不再赘述了。 
 
-## 浏览器debug
+## 浏览器调试
 firefox里，可以通过设置显示网格的名称、行号等信息，点[这里](http://www.w3cplus.com/css/grid-inspector.html)看详情，非常方便，
 如下图：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/grid017.png)
@@ -325,9 +340,10 @@ firefox里，可以通过设置显示网格的名称、行号等信息，点[这
 chrome的高一点版本(我的是67)，可以显示对应网格线，不知道能不能进一步设置？。。。
 如下图：
 ![demo](http://p8rbt50i2.bkt.clouddn.com/grid018.png)
+但是chrome有一个[网格布局高亮插件](https://github.com/ademilter/chrome-css-grid-highlighter)可以帮助到我们。
 
 ## 总结
-关于Grid布局，本文讲解的东西还只是杯水车薪，其中的好多细节都没有涉及到。
+关于Grid布局，本文讲解的东西对于全民啊理解网格布局还只是杯水车薪，其中的好多细节都没有涉及到。
 若发现有错误的地方，欢迎不吝指教！:pray:
 
 想要了解更多，推荐进[这里](http://www.w3cplus.com/blog/tags/355.html)或者[这里](https://codepen.io/search/pens?q=CSS%20Grid%20Layout&page=1&order=popularity&depth=everything&show_forks=false)的一些demo进一步学习。
