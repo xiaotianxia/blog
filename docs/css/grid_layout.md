@@ -1,4 +1,4 @@
-# Grid —— CSS网格布局
+# Grid —— CSS网格布局初探
 
 [原文链接](https://denzel.netlify.com/css/grid_layout.html?_=7654323456782357)
 
