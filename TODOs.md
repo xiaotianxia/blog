@@ -10,8 +10,6 @@
 #### mask-image	
 #### Columns
 #### flex 
-#### grid
-
 
 
 ### js
@@ -20,3 +18,4 @@
 #### editor：
 		selection对象 range对象
 #### 拖拽
+	仿小米桌面 拖动换位置  删除
