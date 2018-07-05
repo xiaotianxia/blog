@@ -35,7 +35,7 @@ column-rule-color /*分割线颜色*/
 如果想让某元素在多栏容器中占据整行(横穿所有栏)，需要用到column-span。该属性只有两个值：'all'、'none'。
 详见下例。
 
-但是这个属性目前Firefox还没支持。
+但是这个属性目前pc端的Firefox还没支持，奇怪的是移动端的Firefox竟然支持:smile: 。
 
 
 下面是浏览器计算column-count、column-width和容器可用宽度的伪代码：
