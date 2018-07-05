@@ -11,6 +11,7 @@
 #### mask-image	
 #### flex 
 #### clip-path
+        svg
 
 
 ### js
