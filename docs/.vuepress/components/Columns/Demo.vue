@@ -128,8 +128,7 @@ export default {
 	  	hyphens: auto;
 	}
 	.col-content img {
-		column-span: all;
-		/*width: 100%;*/
+		width: 100%;
 	}
 	pre.language-css {
 		color: #fff;
