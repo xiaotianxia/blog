@@ -11,30 +11,52 @@
 
 ## 正文
 
-伪代码：
+### columns声明多栏布局
+```css
+columns: column-width | column-count;
+```
+### column-gap、column-rule样式控制
+```css
+column-gap /*栏之间的间隔*/
+column-rule /*分割线 与border的写法几乎一毛一样*/
+/*column-rule分开写是这样的：*/
+column-rule-width /*分割线宽*/
+column-rule-style /*分割线样式*/
+column-rule-color /*分割线颜色*/
+```
+一个相对完整的多栏布局结构是这样的：
+![demo](http://p8rbt50i2.bkt.clouddn.com/columns.svg)
+::: tip TIP
+多栏容器中的其他元素，样式中的百分比是相对其所在的某一栏的。
+见下例中的图片，宽度是100%。
+:::
+
+### column-span
+如果想让某元素在多栏容器中占据整行(横穿所有栏)，需要用到column-span。该属性只有两个值：'all'、'none'。
+详见下例。
+
+
+下面是浏览器计算column-count、column-width和容器可用宽度的伪代码：
 ```js
 let N, //column-count
     W, //column-width 
     W; //容器的可用宽度
 if ((column-width == auto) && (column-count == auto)) {
-    return; /* not a multicol container */
+    return; /* 不是多栏容器 */
 }
-if (column-width = auto) {
+if (column-width == auto) {
     N = column-count;
 } else if (column-count == auto) {
-    N = max(1, floor((U + column-gap)/(column-width + column-gap)));
+    N = max(1, floor((U + column-gap) / (column-width + column-gap)));
 } else {
-    N = min(column-count, max(1, floor((U + column-gap)/(column-width + column-gap))));
+    N = min(column-count, max(1, floor((U + column-gap) / (column-width + column-gap))));
 }
 
-W = max(0, ((U + column-gap)/N - column-gap));
+W = max(0, ((U + column-gap) / N - column-gap));
 ```
 
-Demo:
+## Demo:
 <Columns-Demo/>
-
-
-## 总结
 
 
 ## 参考资料

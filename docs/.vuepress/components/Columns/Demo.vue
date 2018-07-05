@@ -122,13 +122,14 @@ export default {
 	}
 	.col-content {
 		margin-top: 20px;
-	  	columns: 200px;
-	  	column-gap: 2em;
-	  	column-fill: balance;
 	  
 	 	word-wrap: break-word;
 	  	overflow-wrap: break-word;
 	  	hyphens: auto;
+	}
+	.col-content img {
+		column-span: all;
+		/*width: 100%;*/
 	}
 	pre.language-css {
 		color: #fff;
