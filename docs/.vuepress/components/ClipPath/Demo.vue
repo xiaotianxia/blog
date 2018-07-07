@@ -50,7 +50,7 @@
 				</li>
 				<li>
 					<input id="r11" value="r11" type="radio" v-model="choose">
-					<label @click="onChoose" for="r11" style="background-color: #ffb142;clip-path: polygon(47% 6%, 8% 33%, 18% 79%, 61% 49%, 85% 22%, 84% 66%);"></label>
+					<label @click="onChoose" for="r11" style="background-color: #ffb142;clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);"></label>
 				</li>
 				<li>
 					<input id="r10" value="r10" type="radio" v-model="choose">
@@ -61,6 +61,11 @@
 					<label @click="onChoose" for="r11" style="background-color: #ffb142;clip-path: polygon(47% 6%, 8% 33%, 18% 79%, 61% 49%, 85% 22%, 84% 66%);"></label>
 				</li>
 			</ul>
+		</div>
+		<div class="code-wrapper">
+			<pre class="language-css">
+				clip-path: {{clipPath}}
+			</pre>
 		</div>
 	</div>
 </template>
@@ -85,7 +90,7 @@ export default {
 <style scoped>
 	.clipPath-wrapper {
 		position: relative;
-		height: 500px;
+		height: 520px;
 		margin: 20px 0;
 		padding: 10px;
 		border: 1px solid #ccc;
@@ -97,22 +102,25 @@ export default {
 		top: 30px;
 		left: 50%;
 		transform: translate(-50%, 0);
-		padding-top: 50%;
-		width: 50%;
+		padding-top: 40%;
+		width: 40%;
 		background-image: url('http://p8rbt50i2.bkt.clouddn.com/blog/sample.jpg');
 		background-size: 100% 100%;
 	}
 
 	.reference {
 		border: 1px solid #ccc;
-		opacity: 0.3;
+		opacity: 0.1;
 	}
 
-	.operate-wrapper {
+	.operate-wrapper,
+	.code-wrapper {
 		position: absolute;
-		bottom: 10px;
 		left: 50%;
 		transform: translate(-50%, 0);
+	}
+	.operate-wrapper {
+		bottom: 110px;
 	}
 	.operate-wrapper li {
 		display: inline-block;
@@ -136,5 +144,16 @@ export default {
 	.operate-wrapper li:hover label,
 	.operate-wrapper li input:checked + label {
 		box-shadow: inset 0px 0px 25px 4px #000;
+	}
+
+	.code-wrapper {
+		bottom: 10px;
+	}
+	.code-wrapper pre {
+		display: block;
+		color: #fff;
+		font-size: 12px;
+		padding-top: 25px;
+		tab-size: 0;
 	}
 </style>
