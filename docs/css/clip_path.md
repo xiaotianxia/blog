@@ -127,30 +127,30 @@ polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )
 ```
 
 fill-rule可选，表示填充规则，用来确定该多边形的内部。可能的值有nonzero和evenodd，默认值是nonzero。
-有点拓扑学的意思，详见[这里](https://blog.csdn.net/cuixiping/article/details/7848369)。
-(这个属性现在的浏览器还为支持)
+有点拓扑学的意思，详见[这里](https://www.w3.org/TR/css-masking/#the-clip-rule)。
+(这个属性现在的浏览器还没支持)
 
 后面的每对参数表示多边形的顶点坐标（X,Y），也就是连接点
 
 ![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip008.png)
 <spreadown>
-    <iframe height='300' scrolling='no' title='inset' src='//codepen.io/_tianxia/embed/dKxNgM/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/dKxNgM/'>inset</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
-    <show-in-codepen href="https://codepen.io/_tianxia/pen/dKxNgM/"></show-in-codepen>
+    <iframe height='300' scrolling='no' title='polygon' src='//codepen.io/_tianxia/embed/rKXyzV/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/rKXyzV/'>polygon</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
+    <show-in-codepen href="https://codepen.io/_tianxia/pen/rKXyzV/"></show-in-codepen>
 </spreadown>
 
 
 ### geometry-box
 
-可选参数。此参数和basic-shape函数一起使用时，可以为basic-shape的裁剪工作提供参考盒子。如果geometry-box由自身指定，那么它会使用指定盒子形状作为裁剪的路径，包括任何(由border-radius提供的)的角的形状。
+可选参数。此参数和basic-shape函数一起使用时，可以为basic-shape的裁剪工作提供参考盒子，其值可以使shape-box、fill、stroke或者view-box。
 
-难以理解是不是？！好吧。。。浏览器也暂未支持
+其中shape-box应用于HTML元素，它具有四种值：margin-box、border-box、padding-box和content-box；fill、stroke或者view-box应用于SVG。
+
+好吧。。。浏览器暂未支持:joy:。
 
 
 ## Demo
-
+照着老虎画了个猫:smirk_cat:——
 <ClipPath-Demo/>
-
-
 
 ## 参考资料
 - [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
