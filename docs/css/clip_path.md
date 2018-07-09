@@ -5,7 +5,9 @@
 ## 前言
 Photoshop中用钢笔工具勾出轮廓，转为选取，然后反选，删去多余部分，最后只留下要选择的区域，
 这一波操作想必是懂PS都非常熟悉的了，就像这样：
-![不重要的图](http://p8rbt50i2.bkt.clouddn.com/clip004.png)
+
+![不重要的图 small](http://p8rbt50i2.bkt.clouddn.com/clip004.png)
+
 在CSS3中也有思思功能的属性：clip-path。顾名思义：裁剪路径，
 该属性可以将方方正正的元素裁剪成几乎任何你想要的形状。
 
@@ -45,12 +47,14 @@ where:
 clip-path: url(resources.svg#c1);
 ```
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip009.png)
+![small demo](http://p8rbt50i2.bkt.clouddn.com/clip010.png)
 
 <spreadown>
     <iframe height='300' scrolling='no' title='svg' src='//codepen.io/_tianxia/embed/JZgWBN/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/JZgWBN/'>svg</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/JZgWBN/"></show-in-codepen>
 </spreadown>
+
+SVG不太了解以后再好好学吧，熟悉SVG同学可以多试试其他的路径。
 
 ### basic-shape
 
@@ -65,7 +69,7 @@ inset( <length-percentage>{1,4} [ round <border-radius> ]? )
 ```
 inset()可以传入5个参数，分别对应top，right，bottom，left的裁剪位置，round radius（可选，圆角），参数之间用空格隔开。
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip005.png)
+![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip005.png)
 <spreadown>
     <iframe height='310' scrolling='no' title='1' src='//codepen.io/_tianxia/embed/dKxNgM/?height=310&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/dKxNgM/'>1</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/dKxNgM/"></show-in-codepen>
@@ -86,7 +90,7 @@ circle()可以传人2个可选参数；
 
 半径公式：如果半径使用百分比：圆的半径 = (sqrt(width^2 + height^2) / sqrt(2)) * 百分比 
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip006.png)
+![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip006.png)
 <spreadown>
     <iframe height='300' scrolling='no' title='2' src='//codepen.io/_tianxia/embed/ZRgeKE/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/ZRgeKE/'>2</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/ZRgeKE/"></show-in-codepen>
@@ -108,7 +112,7 @@ ellipse()可以传人3个可选参数；
 
 3. 椭圆中心位置，默认是元素的中心点
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip007.png)
+![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip007.png)
 <spreadown>
     <iframe height='300' scrolling='no' title='3' src='//codepen.io/_tianxia/embed/oyKZwW/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/oyKZwW/'>3</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/oyKZwW/"></show-in-codepen>
@@ -116,17 +120,19 @@ ellipse()可以传人3个可选参数；
 
 
 #### polygon()
-定义多变形
+定义多边形
 
 ```css
 polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )
 ```
 
-fill-rule可选，表示填充规则，用来确定该多边形的内部。可能的值有nonzero和evenodd,默认值是nonzero。
+fill-rule可选，表示填充规则，用来确定该多边形的内部。可能的值有nonzero和evenodd，默认值是nonzero。
+有点拓扑学的意思，详见[这里](https://blog.csdn.net/cuixiping/article/details/7848369)。
+(这个属性现在的浏览器还为支持)
 
 后面的每对参数表示多边形的顶点坐标（X,Y），也就是连接点
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip008.png)
+![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip008.png)
 <spreadown>
     <iframe height='300' scrolling='no' title='inset' src='//codepen.io/_tianxia/embed/dKxNgM/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/dKxNgM/'>inset</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/dKxNgM/"></show-in-codepen>
@@ -134,6 +140,10 @@ fill-rule可选，表示填充规则，用来确定该多边形的内部。可�
 
 
 ### geometry-box
+
+可选参数。此参数和basic-shape函数一起使用时，可以为basic-shape的裁剪工作提供参考盒子。如果geometry-box由自身指定，那么它会使用指定盒子形状作为裁剪的路径，包括任何(由border-radius提供的)的角的形状。
+
+难以理解是不是？！好吧。。。浏览器也暂未支持
 
 
 ## Demo
