@@ -14,18 +14,36 @@ Photoshop中用钢笔工具勾出轮廓，转为选取，然后反选，删去�
 有一个在线[神器](http://bennettfeely.com/clippy)，学习之前先体验一下这个特性吧。
 
 ## 基本语法
-```css
+```js
 clip-path: <clip-source> | [ <basic-shape> || <geometry-box> ] | none
 
-/*属性说明*/
+where:
 <clip-source> = <url>
 <basic-shape> = <inset()> | <circle()> | <ellipse()> | <polygon()>
 <geometry-box> = <shape-box> | fill-box | stroke-box | view-box
+
+where:
+<url> = svg引用
+<inset()> = inset( <length-percentage>{1,4} [ round <border-radius> ]? )
+<circle()> = circle( [ <shape-radius> ]? [ at <position> ]? )
+<ellipse()> = ellipse( [ <shape-radius>{2} ]? [ at <position> ]? )
+<polygon()> = polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )
+<shape-box> = <box> | margin-box
+
+where:
+<length-percentage> = <length> | <percentage>
+<shape-radius> = <length-percentage> | closest-side | farthest-side
+<position> = [ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]
+<fill-rule> = nonzero | evenodd
+<box> = border-box | padding-box | content-box
 ```
-下面会展开一块学一下~
+矮马，看着是不是眼花缭乱的....下面就试着展开学一下~
 
 ### clip-source
-svg
+貌似只能是SVG，即定义了clipPath的SVG元素
+```css
+clip-path: url(resources.svg#c1);
+```
 
 ![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip009.png)
 
@@ -45,7 +63,7 @@ inset() : 定义一个矩形 。注意，定义矩形不是rect，而是 inset�
 ```css
 inset( <length-percentage>{1,4} [ round <border-radius> ]? )
 ```
-inset()可以传入5个参数，分别对应top，right，bottom，left的裁剪位置，round radius（可选，圆角）
+inset()可以传入5个参数，分别对应top，right，bottom，left的裁剪位置，round radius（可选，圆角），参数之间用空格隔开。
 
 ![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip005.png)
 <spreadown>
@@ -62,7 +80,7 @@ circle( [ <shape-radius> ]? [ at <position> ]? )
 ```
 circle()可以传人2个可选参数；
 
-1. 圆的半径，默认元素宽高中短的那个为直径，支持百分比
+1. 圆的半径，默认值min(元素宽,元素高)/ 2，支持百分比
 
 2. 圆心位置，默认为元素中心点
 
@@ -104,7 +122,8 @@ ellipse()可以传人3个可选参数；
 polygon( <fill-rule>? , [ <length-percentage> <length-percentage> ]# )
 ```
 
-fill-rule可选，表示填充规则用来确定该多边形的内部。可能的值有nonzero和evenodd,默认值是nonzero
+fill-rule可选，表示填充规则，用来确定该多边形的内部。可能的值有nonzero和evenodd,默认值是nonzero。
+
 后面的每对参数表示多边形的顶点坐标（X,Y），也就是连接点
 
 ![demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip008.png)

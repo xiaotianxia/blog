@@ -64,7 +64,7 @@
 		</div>
 		<div class="code-wrapper">
 			<pre class="language-css">
-				clip-path: {{clipPath}}
+				clip-path: {{clipPath}};
 			</pre>
 		</div>
 	</div>

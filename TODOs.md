@@ -1,7 +1,7 @@
 # TODO
 
 ## 主题
-## 封面
+## 图片查看
 
 
 ## 文章
@@ -9,6 +9,8 @@
 ### css 
 
 #### mask-image	
+	蒙版
+	https://www.w3.org/TR/css-masking-1/
 #### flex 
 #### clip-path
         svg
