@@ -39,7 +39,7 @@ where:
 <fill-rule> = nonzero | evenodd
 <box> = border-box | padding-box | content-box
 ```
-矮马，看着是不是眼花缭乱的....下面就试着展开学一下~
+矮马，看着是不是眼花缭乱的....下面就试着通过demo展开学一下~
 
 ::: warning 提示
 Demo说明：图片中的半透明是额外的元素，用来做参考的，实际的剪切效果中不会出现。
