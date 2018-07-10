@@ -1,6 +1,6 @@
-# clip-path —— CSS中的图片处理
+# CSS中的图像处理 —— clip-path
 
-[原文链接](https://denzel.netlify.com/css/clip_path.html?_=7654323456782357)
+[原文链接](https://denzel.netlify.com/css/clip_path.html?_=3566625361256782357)
 
 ## 前言
 Photoshop中用钢笔工具勾出轮廓，转为选取，然后反选，删去多余部分，最后只留下要选择的区域，
