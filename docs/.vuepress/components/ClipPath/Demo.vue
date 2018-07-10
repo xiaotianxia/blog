@@ -148,6 +148,7 @@ export default {
 
 	.code-wrapper {
 		bottom: 10px;
+		width: 80%;
 	}
 	.code-wrapper pre {
 		display: block;
