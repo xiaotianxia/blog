@@ -156,6 +156,7 @@ fill-rule可选，表示填充规则，用来确定该多边形的内部。可�
 可选参数。此参数和basic-shape函数一起使用时，可以为basic-shape的裁剪工作提供参考盒子，其值可以使shape-box、fill、stroke或者view-box。
 
 其中shape-box应用于HTML元素，它具有四种值：margin-box、border-box、padding-box和content-box；fill、stroke或者view-box应用于SVG。
+详见[这里](https://www.w3.org/TR/css-masking/#typedef-geometry-box)
 
 好吧。。。浏览器暂未支持:joy:。
 
@@ -170,6 +171,7 @@ fill-rule可选，表示填充规则，用来确定该多边形的内部。可�
 :::
 
 ## 参考资料
+- [CSS Masking Module Level 1](https://www.w3.org/TR/css-masking/#the-clip-path)
 - [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
 - [不可思议的CSS之clip-path](https://segmentfault.com/a/1190000010936207)
 - [CSS clip-path maker](http://bennettfeely.com/clippy/)
