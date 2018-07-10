@@ -12,8 +12,6 @@
 	蒙版
 	https://www.w3.org/TR/css-masking-1/
 #### flex 
-#### clip-path
-        svg
 
 
 ### js
