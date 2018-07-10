@@ -147,7 +147,7 @@ export default {
 	}
 
 	.code-wrapper {
-		bottom: 0px;
+		bottom: 0;
 		width: 80%;
 	}
 	.code-wrapper pre {
