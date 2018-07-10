@@ -1,4 +1,4 @@
-# clip-path
+# clip-path —— CSS中的图片处理
 
 [原文链接](https://denzel.netlify.com/css/clip_path.html?_=7654323456782357)
 
@@ -41,20 +41,32 @@ where:
 ```
 矮马，看着是不是眼花缭乱的....下面就试着展开学一下~
 
+::: warning 提示
+Demo说明：图片中的半透明是额外的元素，用来做参考的，实际的剪切效果中不会出现。
+:::
+
 ### clip-source
-貌似只能是SVG，即定义了clipPath的SVG元素
+适应于SVG，即定义了clipPath的SVG元素
 ```css
-clip-path: url(resources.svg#c1);
+clip-path: url(#c1); /*可以使本页的内联SVG*/
+clip-path: url(resources.svg#c1); /*还可以是远程的SVG*/
 ```
+SVG形状灵活，可以是各种不规则图形，甚至可以是文字，像这样：
 
 ![small demo](http://p8rbt50i2.bkt.clouddn.com/clip010.png)
+
+甚至这样：
+
+![small demo](http://p8rbt50i2.bkt.clouddn.com/clip011.png)
+
+可跳到demo页查看。
 
 <spreadown>
     <iframe height='300' scrolling='no' title='svg' src='//codepen.io/_tianxia/embed/JZgWBN/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/JZgWBN/'>svg</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/JZgWBN/"></show-in-codepen>
 </spreadown>
 
-SVG不太了解以后再好好学吧，熟悉SVG同学可以多试试其他的路径。
+SVG不太了解以后再好好学吧，熟悉SVG同学可以多试试其他的形状。
 
 ### basic-shape
 
@@ -147,10 +159,15 @@ fill-rule可选，表示填充规则，用来确定该多边形的内部。可�
 
 好吧。。。浏览器暂未支持:joy:。
 
-
 ## Demo
 照着老虎画了个猫:smirk_cat:——
 <ClipPath-Demo/>
+
+::: warning 注意
+根据Masking规范，鼠标事件在图形的clipped-out区域外是无效的。
+
+因此demo中未剪切到的部分是不响应点击的。
+:::
 
 ## 参考资料
 - [clip-path](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
