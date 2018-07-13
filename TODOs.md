@@ -10,7 +10,7 @@
 
 #### mask-image	
 	蒙版
-	https://www.w3.org/TR/css-masking-1/
+https://www.w3.org/TR/css-masking-1/
 #### flex 
 
 
@@ -24,7 +24,10 @@
 
 ## canvas
 
+## web组件
+
 ## SVG
+http://www.w3cplus.com/svg-tutorial
 
 ## 其他：
 	webpack
