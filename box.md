@@ -6,7 +6,8 @@ http://www.w3cplus.com/svg/svg-animation.html
 http://www.w3cplus.com/svg/building-progress-ring-quickly.html
 	stroke-dasharray
 	stroke-dashoffset
-	圆形进度条  http://www.w3cplus.com/svg/create-progress-bar-with-svg.html http://www.w3cplus.com/svg/create-progress-bar-with-svg-and-css.html
+	圆形进度条  http://www.w3cplus.com/svg/create-progress-bar-with-svg.html 
+	http://www.w3cplus.com/svg/create-progress-bar-with-svg-and-css.html
 	web组件
 
 

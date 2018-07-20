@@ -21,6 +21,8 @@ https://www.w3.org/TR/css-masking-1/
 #### 拖拽
 	仿小米桌面 拖动换位置  删除
 
+#### audio https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API
+
 
 ## canvas
 

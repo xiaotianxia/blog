@@ -53,7 +53,7 @@ export default {
 	.spreadown-content {
 		width: 100%;
 		max-height: 0;
-		overflow: auto;
+		overflow: hidden;
 		transition: max-height .1s ease;
 	}
 	.spreadown-content.show {

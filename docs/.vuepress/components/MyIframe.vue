@@ -1,5 +1,5 @@
 <template>
-	<div class="iframe-wrapper">
+	<div class="iframe-wrapper" :style="{height: height}">
 		<iframe :src="fullSrc" frameborder="0"></iframe>
 	</div>
 </template>
@@ -13,14 +13,15 @@ export default {
 	},
 
 	props: [
-		'src'
+		'src',
+		'height'
 	]
 }
 </script>
 
 <style>
 	.iframe-wrapper {
-		height: 400px;
+		min-height: 400px;
 		border: 1px solid rgba(0, 0, 0, .3);
 	}
 	.iframe-wrapper iframe {
