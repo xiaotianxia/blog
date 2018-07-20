@@ -77,7 +77,7 @@ path有以下这些指令：
 <spreadown>
     <my-iframe src="http://myst729.github.io/bezier-curve/" height="720px"></my-iframe>
 </spreadown>
-或点击[这里](http://myst729.github.io/bezier-curve/)
+挂了？！那就点击[这里](http://myst729.github.io/bezier-curve/)自行前往。
 
 我们可以用一个二阶贝塞尔曲线来模拟抛物线的轨迹：我们暂定三个点分别在**左下角**、**上中间**和**左中间**。
 
@@ -103,7 +103,7 @@ path有以下这些指令：
 
 
 ## 总结
-移动端暂不支持offset-path属性
+移动端暂不支持offset-path属性:cold_sweat:。
 
 ## 参考资料
 - [SVG 路径动画简易指南](http://www.w3cplus.com/svg/svg-animation-guide.html)
