@@ -3,13 +3,13 @@
 ## 前言
 
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/blogpath.gif)
-![small demo](http://p8rbt50i2.bkt.clouddn.com/path003.gif)
 
 
 ## 正文
 
-<spreadown defaultShow>
+![](http://p8rbt50i2.bkt.clouddn.com/path003.gif)
+
+<spreadown>
 	<my-iframe src="http://myst729.github.io/bezier-curve/" height="720px"></my-iframe>
 </spreadown>
 
@@ -32,6 +32,9 @@
 </spreadown>
  
 ### demo 4
+
+![small demo](http://p8rbt50i2.bkt.clouddn.com/blogpath.gif)
+
 <spreadown defaultShow>
     <iframe height='564' scrolling='no' title='SVG-路径动画' src='//codepen.io/_tianxia/embed/djOwyY/?height=564&theme-id=33504&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/djOwyY/'>SVG-路径动画</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/djOwyY/"></show-in-codepen>
