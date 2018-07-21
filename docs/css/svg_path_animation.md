@@ -75,9 +75,9 @@ path有以下这些指令：
 
 同学们可以自行感受下，
 <spreadown>
-    <my-iframe src="http://myst729.github.io/bezier-curve/" height="720px"></my-iframe>
+    <my-iframe src="https://myst729.github.io/bezier-curve/" height="720px"></my-iframe>
 </spreadown>
-挂了？！那就点击[这里](http://myst729.github.io/bezier-curve/)自行前往。
+挂了？！那就点击[这里](https://myst729.github.io/bezier-curve/)自行前往。
 
 我们可以用一个二阶贝塞尔曲线来模拟抛物线的轨迹：我们暂定三个点分别在**左下角**、**上中间**和**左中间**。
 
@@ -107,5 +107,5 @@ path有以下这些指令：
 
 ## 参考资料
 - [SVG 路径动画简易指南](http://www.w3cplus.com/svg/svg-animation-guide.html)
-- [Bézier Curve](http://myst729.github.io/bezier-curve/)
+- [Bézier Curve](https://myst729.github.io/bezier-curve/)
 - [http://cubic-bezier.com](http://cubic-bezier.com/#.17,.67,.83,.67)
