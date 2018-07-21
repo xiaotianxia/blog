@@ -6,7 +6,7 @@
 很多电商网站里，在加入购物车时都会有一个形象的动画，让宝贝以类似抛物线的轨迹飞进购物车，就像不要钱一样:joy: 。
 像这样：
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/path004.gif)
+![](http://p8rbt50i2.bkt.clouddn.com/path006.gif)
 
 实现这种效果可能有很多方法，但是用SVG可以快速简单的实现。今天我们一块学习一下这个方法。
 
