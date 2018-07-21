@@ -56,7 +56,7 @@ path有以下这些指令：
 </spreadown>
 
 
-如果是心形的呢，再来一个栗子：
+如果是心形的呢，我们让它40s之内转10圈，再来一个栗子：
 
 ### demo 🌰🌰
 <spreadown defaultShow>
@@ -66,7 +66,8 @@ path有以下这些指令：
 
 
 ## 贝塞尔曲线
-那怎么模拟出抛物线的形状呢？这里想到了贝塞尔曲线。对于贝塞尔曲线其实我不是太了解，只觉得这种曲线很性感，而且貌似阶数越高越是性感:blush:。
+那怎么模拟出抛物线的形状呢？这里想到了贝塞尔曲线，因为path可以很轻松的绘制贝塞尔曲线。
+对于贝塞尔曲线其实我不是太了解，只是看着这种曲线就觉得很“性感”，而且貌似阶数越高越是**性感**:blush:。
 
 如下面俩图：
 
@@ -79,11 +80,13 @@ path有以下这些指令：
 </spreadown>
 挂了？！那就点击[这里](https://myst729.github.io/bezier-curve/)自行前往。
 
-我们可以用一个二阶贝塞尔曲线来模拟抛物线的轨迹：我们暂定三个点分别在**左下角**、**上中间**和**左中间**。
+于是我们可以用一个二阶贝塞尔曲线来模拟抛物线的轨迹：我们暂定三个点分别在**左下角**、**上中间**和**左中间**。
 
 这样：
 
 ![](http://p8rbt50i2.bkt.clouddn.com/blogpath.gif)
+
+只要在页面上获取到这三个点，就可以了。
 
 又一个栗子：
 ### demo 🌰🌰🌰
@@ -103,9 +106,13 @@ path有以下这些指令：
 
 
 ## 总结
-移动端暂不支持offset-path属性:cold_sweat:。
+遗憾的是，目前[只有Chrome和部分移动端浏览器（如安卓版UC和三星）](https://caniuse.com/#search=offset-path)支持offset-path属性:cold_sweat:。
+
+除此之外，还有三个相关属性：[offset-ancor](https://www.w3.org/TR/motion-1/#offset-anchor-property)、[offset-rotate](https://www.w3.org/TR/motion-1/#offset-rotate-property)和[offset-position](https://www.w3.org/TR/motion-1/#offset-position-property)
+分别表示锚定的中心点、运动的角度和路径的初始位置，感兴趣的同学可自行前往学习。
 
 ## 参考资料
+- [Motion Path Module Level 1](https://www.w3.org/TR/motion-1/)
 - [SVG 路径动画简易指南](http://www.w3cplus.com/svg/svg-animation-guide.html)
 - [Bézier Curve](https://myst729.github.io/bezier-curve/)
 - [http://cubic-bezier.com](http://cubic-bezier.com/#.17,.67,.83,.67)
