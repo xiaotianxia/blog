@@ -13,12 +13,6 @@ http://www.w3cplus.com/svg/building-progress-ring-quickly.html
 
 获取路径长度  document.querySelector('.path').getTotalLength()
 
-http://www.w3cplus.com/svg/svg-animation-guide.html
-沿 SVG 路径的动画对象
-offset-path：offset-path 是一个 CSS 属性，它表示元素的运动路径；
-offset-distance：同样是一个 CSS 属性，定义了元素在路径上运动的距离，单位是数值或百分比
-
-
 
 http://www.w3cplus.com/svg/svg-fill-features.html
 	svg填充
