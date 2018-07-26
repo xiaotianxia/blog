@@ -8,13 +8,11 @@
 
 ### css 
 
-#### mask-image	
-	蒙版
-https://www.w3.org/TR/css-masking-1/
 #### flex 
 
 
 ### js
+
 #### babel
 #### AST相关
 #### Mutation Observer API
@@ -30,8 +28,6 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 
 ## web组件
 
-## SVG
-http://www.w3cplus.com/svg-tutorial
 
 ## 其他：
 	webpack
