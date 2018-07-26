@@ -17,6 +17,8 @@ https://www.w3.org/TR/css-masking-1/
 ### js
 #### babel
 #### AST相关
+#### Mutation Observer API
+http://javascript.ruanyifeng.com/dom/mutationobserver.html
 
 #### 拖拽
 	仿小米桌面 拖动换位置  删除
