@@ -29,7 +29,21 @@ export default {
 		pick (e, ctx) {
 			let x = e.layerX,
 				y = e.layerY,
-				pixel = ctx.getImageData(x - 50, y - 50, 100, 100);
+				x1 = x - 50,
+				y1 = y - 50;
+			if(x < 50) {
+				x1 = x;
+			}
+			if(x > 250) {
+				x1 = 200;
+			}
+			if(y < 50) {
+				y1 = y;
+			}
+			if(y > 250) {
+				y1 = 200;
+			}
+			let pixel = ctx.getImageData(x1, y1, 100, 100);
 			this.showMagnifier(pixel);
 		},
 
