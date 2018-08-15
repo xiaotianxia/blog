@@ -2,7 +2,7 @@
 	<div class="menu-wrapper">
 		<ul v-if="menuList.length">
 			<li v-for="item in menuList">
-				<a :href="item.path">{{item.title}}</a>
+				<a :href="item.path" target="_blank">{{item.title}}</a>
 			</li>
 		</ul>
 		<p v-else>暂无</p>
