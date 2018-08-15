@@ -6,8 +6,10 @@
 			<el-button slot="append" @click="onConfirmUrl">确定</el-button>
 		</el-input>
 		
-		<canvas ref="canvas" id="canvas" width="300" height="300"></canvas>
-		<canvas ref="magnifier" id="magnifier" width="100" height="100"></canvas>
+		<div class="canvasWrapper">
+			<canvas ref="canvas" id="canvas" width="300" height="300"></canvas>
+			<canvas ref="magnifier" id="magnifier" width="100" height="100"></canvas>
+		</div>
 	</div>
 </template>
 
@@ -88,6 +90,9 @@ export default {
 		padding: 10px;
 		text-align: center;
 		border: 1px solid #74b9ff;
+	}
+	.canvasWrapper {
+		text-align: left;
 	}
 	input,
 	.el-input {
