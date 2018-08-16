@@ -26,9 +26,16 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 
 
 ## canvas
-	像素取点
-	放大镜
-	视频抠图？
+	取色器 像素取点
+	放大镜 像素取块
+	
+	替换颜色
+	反转。。。
+	 	操作像素
+	视频抠图 操作像素
+
+	画图
+	
 
 ## web组件
 

@@ -1,6 +1,6 @@
 module.exports = [
 	'',
+	'canvas_video_green_screen_cutout',
 	'canvas_pixel_pick',
-	'canvas_magnifier',
     'dialog_element'
 ]
