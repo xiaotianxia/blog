@@ -73,8 +73,6 @@ export default {
 
 		onConfirmUrl () {
 			let img = new Image();
-			//解决跨域问题
-			img.crossOrigin = 'anonymous';
 			img.src = this.exterbalUrl;
 			img.onload = () => {
 				this.img = img;
