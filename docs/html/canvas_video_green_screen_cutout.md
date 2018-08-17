@@ -2,7 +2,7 @@
 
 [原文地址](https://denzel.netlify.com/html/canvas_video_green_screen_cutout.html)
 
-## 主要内容
+<Canvas-VideoCutout/>
 
 
 ## 参考资料
