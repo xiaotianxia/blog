@@ -7,7 +7,7 @@
 		</el-input>
 		
 		<p ref="color" id="color"></p>
-		<canvas ref="canvas" id="canvas" width="500" height="500"></canvas>
+		<canvas ref="canvas" id="canvas" width="500" height="400"></canvas>
 	</div>
 </template>
 
