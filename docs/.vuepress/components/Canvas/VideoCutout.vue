@@ -6,9 +6,7 @@
 </template>
 
 <script>
-// import videoUrl from './component/video.ogv';
-// import videoUrl from './component/sample.mp4';
-import videoUrl from './component/sample1.mp4';
+import videoUrl from './component/video.ogv';
 import imgUrl from './component/sample.jpg';
 
 const TOLERANCE = 5;
@@ -72,8 +70,5 @@ export default {
 		padding: 10px;
 		text-align: center;
 		border: 1px solid #74b9ff;
-	}
-	#canvas {
-		
 	}
 </style>
