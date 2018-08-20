@@ -17,7 +17,25 @@ export default {
 	},
 
 	methods: {
-		
+		draw () {
+			this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
+			this.ctx.putImageData(this.compute(), 0, 0);
+		},
+
+		compute () {
+			let frameData = this.ctx.getImageData(0, 0, this.width, this.height),
+				len = frameData.data.length / 4;
+
+	        for (let i = 0; i < len; i++) {
+	          	let r = frameData.data[i * 4 + 0],
+	          		g = frameData.data[i * 4 + 1],
+	          		b = frameData.data[i * 4 + 2];
+	          	if (g > 100 && r > 100 && b < 43) {
+		            frameData.data[i * 4 + 3] = 0;
+	          	}
+	        }
+	        return frameData;
+		}
 	},
 
 	mounted () {
@@ -28,7 +46,7 @@ export default {
         this.video.addEventListener('play', () => {
             this.width = this.video.videoWidth;
             this.height = this.video.videoHeight;
-            this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
+            this.draw();
         }, false);
 	}
 }
