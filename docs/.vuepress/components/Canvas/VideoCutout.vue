@@ -43,7 +43,8 @@ export default {
         this.canvas = this.$refs['canvas'];
         this.ctx = this.canvas.getContext('2d');
 
-        this.video.addEventListener('play', () => {
+        this.video.addEventListener('playing', () => {
+        	console.log('playing')
             this.width = this.video.videoWidth;
             this.height = this.video.videoHeight;
             this.draw();
