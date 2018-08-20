@@ -102,9 +102,80 @@ export default {
 }
 ```
 
+上周跟同学去了一趟溧阳天目湖的南山竹海，在景区被忽悠拍了一张照片，就是这张 ——
+
+![small demp](http://p8rbt50i2.bkt.clouddn.com/WechatIMG2.jpeg)
+
+然后被朋友圈吐槽抠图。其实当时就是站在一块绿幕前拍的:smile: 。
+
+PS中魔法棒工具可以把图片中一定容差下的相近像素都选中、清空，轻松做到一键“抠图”，前提是主体一定要与背景有大的差异，即像素值差值越大，抠图效果越好。
+
+Canvas同样可以做到，并且可以处理视频帧，其中的原理是一样的，像这样 ——
+
 ### demo
 
 <Canvas-VideoCutout/>
+
+部分代码
+
+```js
+import videoUrl from './component/video.ogv';
+import imgUrl from './component/sample.jpg';
+
+const TOLERANCE = 5;
+export default {
+	data () {
+		return {
+			videoUrl: videoUrl,
+			imgUrl: imgUrl
+		}
+	},
+
+	methods: {
+		draw () {
+			if (this.video.paused || this.video.ended) {
+	          	return;
+	        }
+			this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
+			this.ctx.putImageData(this.cutOut(), 0, 0);
+		},
+
+		cutOut () {
+			let frameData = this.ctx.getImageData(0, 0, this.width, this.height),
+				len = frameData.data.length / 4;
+
+	        for (let i = 0; i < len; i++) {
+	          	let r = frameData.data[i * 4 + 0],
+	          		g = frameData.data[i * 4 + 1],
+	          		b = frameData.data[i * 4 + 2];
+	          	if (r - 100 >= TOLERANCE 
+	          	 && g - 100 >= TOLERANCE 
+	          	 && b - 43 <= TOLERANCE) {
+		            frameData.data[i * 4 + 3] = 0;
+	          	}
+	        }
+	        return frameData;
+		}
+	},
+
+	mounted () {
+		this.video = this.$refs['video'];
+        this.canvas = this.$refs['canvas'];
+        this.ctx = this.canvas.getContext('2d');
+        this.timer = null;
+
+        this.video.addEventListener('play', () => {
+            this.width = this.video.videoWidth;
+            this.height = this.video.videoHeight;
+
+            this.timer && clearInterval(this.timer);
+            this.timer = setInterval(() => {
+            	this.draw();
+            }, 50);
+        }, false);
+	}
+}
+```
 
 
 ## 参考资料
