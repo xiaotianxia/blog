@@ -9,7 +9,7 @@
 import videoUrl from './component/video.ogv';
 import imgUrl from './component/sample.jpg';
 
-const TOLERANCE = 10;
+const TOLERANCE = 5;
 export default {
 	data () {
 		return {
@@ -35,7 +35,9 @@ export default {
 	          	let r = frameData.data[i * 4 + 0],
 	          		g = frameData.data[i * 4 + 1],
 	          		b = frameData.data[i * 4 + 2];
-	          	if (Math.abs(r - 100) <=10 && Math.abs(g - 100) <=10 && Math.abs(b - 43) <=10) {
+	          	if (r - 100 >= TOLERANCE 
+	          	 && g - 100 >= TOLERANCE 
+	          	 && b - 43 <= TOLERANCE) {
 		            frameData.data[i * 4 + 3] = 0;
 	          	}
 	        }
