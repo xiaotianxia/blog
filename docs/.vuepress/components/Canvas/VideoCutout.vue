@@ -18,6 +18,9 @@ export default {
 
 	methods: {
 		draw () {
+			if (this.video.paused || this.video.ended) {
+	          	return;
+	        }
 			this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
 			this.ctx.putImageData(this.compute(), 0, 0);
 		},
@@ -42,12 +45,16 @@ export default {
 		this.video = this.$refs['video'];
         this.canvas = this.$refs['canvas'];
         this.ctx = this.canvas.getContext('2d');
+        this.timer = null;
 
-        this.video.addEventListener('playing', () => {
-        	console.log('playing')
+        this.video.addEventListener('play', () => {
             this.width = this.video.videoWidth;
             this.height = this.video.videoHeight;
-            this.draw();
+            this.timer = window.requestAnimationFrame(this.draw);
+        }, false);
+
+        this.video.addEventListener('end', () => {
+            window.cancelAnimationFrame(this.timer);
         }, false);
 	}
 }
