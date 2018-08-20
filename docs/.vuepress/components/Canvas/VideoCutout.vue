@@ -24,10 +24,10 @@ export default {
 	          	return;
 	        }
 			this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
-			this.ctx.putImageData(this.compute(), 0, 0);
+			this.ctx.putImageData(this.cutOut(), 0, 0);
 		},
 
-		compute () {
+		cutOut () {
 			let frameData = this.ctx.getImageData(0, 0, this.width, this.height),
 				len = frameData.data.length / 4;
 

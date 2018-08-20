@@ -1,4 +1,4 @@
-# canvas像素点操作 —— 拾色器、放大器
+# canvas像素点获取 —— 拾色器、放大器
 
 [原文地址](https://denzel.netlify.com/html/canvas_pixel_pick.html)
 
