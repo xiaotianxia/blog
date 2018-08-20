@@ -25,11 +25,82 @@ context.putImageData(imgData, x, y, dX, dY, dWidth, dHeight);
 | dWidth    | 可选。在画布上绘制图像所使用的宽度。|
 | dHeight   | 可选。在画布上绘制图像所使用的高度。|
 
+下面的栗子简单实现了几个简单的滤镜效果，具体算法参考的[这里](https://www.jianshu.com/p/90f6aedb33db)，学过《数字图像处理》的同学应该对此理解更深刻。
+
 ### demo
 
-<Canvas-PixelReverse/>
+<Canvas-PixelOperate/>
 
+::: tip tip
 该栗子纯属为了演示功能而做，如果只强调效果而不在乎数据的话，用CSS3的filter属性便能高效又轻松地搞定。
+:::
+
+部分代码
+
+```js
+import imgUrl from './component/sample.jpg';
+
+export default {
+	data () {
+		return {
+			imgUrl: imgUrl
+		}
+	},
+
+	methods: {
+		onOperate1 () {
+			this.ctx.putImageData(this.onCompute1(), 0, 0);
+		},
+
+		onOperate2 () {
+			this.ctx.putImageData(this.onCompute2(), 0, 0);
+		},
+
+		...
+
+		onCancel () {
+			this.reload();
+		},
+
+		onCompute1 () {
+			let data = this.frameData.data;
+
+	        for (let i = 0; i < this.imgDataLength; i += 4) {
+	          	let r = data[i + 0],
+	          		g = data[i + 1],
+	          		b = data[i + 2];
+	          	
+          		data[i + 0] = 255 - r;
+          		data[i + 1] = 255 - g;
+          		data[i + 2] = 255 - b;
+	        }
+
+	        return this.frameData;
+		},
+
+		onCompute2 () {
+			let data = this.frameData.data;
+
+	        for (let i = 0; i < this.imgDataLength; i += 4) {
+	          	data[i] = Math.abs(data[i + 1] - data[i + 2] + data[i + 1] + data[i]) * data[i] / 256;  
+            	data[i + 1] = Math.abs(data[i + 2] - data[i + 1] + data[i + 2] + data[i]) * data[i] / 256;  
+            	data[i + 2] = Math.abs(data[i + 2] - data[i + 1] + data[i + 2] + data[i]) * data[i + 1] / 256;
+	        }
+
+	        return this.frameData;
+		},
+
+		...
+	},
+
+	mounted () {
+        this.canvas = this.$refs['canvas'];
+        this.ctx = this.canvas.getContext('2d');
+
+        this.reload();
+	}
+}
+```
 
 ### demo
 
