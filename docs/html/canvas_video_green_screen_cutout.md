@@ -2,6 +2,9 @@
 
 [原文地址](https://denzel.netlify.com/html/canvas_video_green_screen_cutout.html)
 
+## 只要内容
+上线文章学习了canvas像素点的获取[传送门](https://denzel.netlify.com/html/canvas_pixel_pick.html)，
+今天学一下canvas像素点操作。
 
 
 ## 一个方法：putImageData
@@ -22,12 +25,13 @@ context.putImageData(imgData, x, y, dX, dY, dWidth, dHeight);
 | dWidth    | 可选。在画布上绘制图像所使用的宽度。|
 | dHeight   | 可选。在画布上绘制图像所使用的高度。|
 
-demo
+### demo
 
 <Canvas-PixelReverse/>
 
+该栗子纯属为了演示功能而做，如果只强调效果而不在乎数据的话，用CSS3的filter属性便能高效又轻松地搞定。
 
-demo
+### demo
 
 <Canvas-VideoCutout/>
 

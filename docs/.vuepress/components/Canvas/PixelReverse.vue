@@ -5,7 +5,7 @@
 			<el-button type="primary" @click="onOperate2" size="small">漫画效果</el-button>
 			<el-button type="primary" @click="onOperate3" size="small">溶铸效果</el-button>
 			<el-button type="primary" @click="onOperate4" size="small">黑白效果</el-button>
-			<el-button type="primary" @click="onCancel" size="small">原图</el-button>
+			<el-button type="primary" @click="onCancel" size="small" icon="el-icon-refresh"></el-button>
 		</div>
 		<canvas ref="canvas" width="200" height="150"></canvas>
 	</div>
