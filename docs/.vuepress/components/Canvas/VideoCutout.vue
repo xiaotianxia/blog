@@ -21,6 +21,7 @@ export default {
 			if (this.video.paused || this.video.ended) {
 	          	return;
 	        }
+	        console.log(111)
 			this.ctx.drawImage(this.video, 0, 0, this.width, this.height);
 			this.ctx.putImageData(this.compute(), 0, 0);
 		},
