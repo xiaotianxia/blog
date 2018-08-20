@@ -51,11 +51,11 @@ export default {
         this.video.addEventListener('play', () => {
             this.width = this.video.videoWidth;
             this.height = this.video.videoHeight;
-            this.timer = window.requestAnimationFrame(this.draw);
-        }, false);
-
-        this.video.addEventListener('end', () => {
-            window.cancelAnimationFrame(this.timer);
+            
+            this.timer && clearInterval(this.timer);
+            this.timer = setInterval(() => {
+            	this.draw();
+            }, 500);
         }, false);
 	}
 }
