@@ -1,6 +1,6 @@
 <template>
 	<div class="videoCutout-wrapper">
-		<video ref="video" id="video" :src="videoUrl" controls="true"></video>
+		<video ref="video" id="video" :src="videoUrl" controls="true" muted></video>
 		<canvas ref="canvas" id="canvas" width="320" height="192" :style="{backgroundImage: 'url(' + imgUrl + ')', backgroundSize: '100%'}"></canvas>
 	</div>
 </template>
@@ -51,11 +51,11 @@ export default {
         this.video.addEventListener('play', () => {
             this.width = this.video.videoWidth;
             this.height = this.video.videoHeight;
-            
+
             this.timer && clearInterval(this.timer);
             this.timer = setInterval(() => {
             	this.draw();
-            }, 500);
+            }, 50);
         }, false);
 	}
 }
