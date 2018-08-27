@@ -21,6 +21,9 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 #### audio https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API
 	webkitAudioContext
 
+	按键音
+	音频分析
+
 
 ## canvas
 	
