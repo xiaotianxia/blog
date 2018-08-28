@@ -59,7 +59,7 @@ export default {
     }
     .piano {
         padding-bottom: 20px;
-        background-color: #222;
+        background-color: #2f3640;
         text-align: center;
         user-select: none;
         overflow: hidden;
@@ -67,7 +67,6 @@ export default {
     .key {
         position: relative;
         display: inline-block;
-        margin-right: 5px;
         vertical-align: top;
         cursor: -webkit-grab;
         cursor: grab;

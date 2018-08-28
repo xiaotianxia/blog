@@ -71,29 +71,29 @@ function makeDistortionCurve(amount) {
 
 // grab audio track via XHR for convolver node
 
-var soundSource;
+// var soundSource;
 
-ajaxRequest = new XMLHttpRequest();
+// ajaxRequest = new XMLHttpRequest();
 
-ajaxRequest.open('GET', 'https://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg', true);
+// ajaxRequest.open('GET', 'https://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg', true);
 
-ajaxRequest.responseType = 'arraybuffer';
+// ajaxRequest.responseType = 'arraybuffer';
 
 
-ajaxRequest.onload = function() {
-  var audioData = ajaxRequest.response;
+// ajaxRequest.onload = function() {
+//   var audioData = ajaxRequest.response;
 
-  audioCtx.decodeAudioData(audioData, function(buffer) {
-      soundSource = audioCtx.createBufferSource();
-      convolver.buffer = buffer;
-    }, function(e){ console.log("Error with decoding audio data" + e.err);});
+//   audioCtx.decodeAudioData(audioData, function(buffer) {
+//       soundSource = audioCtx.createBufferSource();
+//       convolver.buffer = buffer;
+//     }, function(e){ console.log("Error with decoding audio data" + e.err);});
 
-  //soundSource.connect(audioCtx.destination);
-  //soundSource.loop = true;
-  //soundSource.start();
-};
+//   //soundSource.connect(audioCtx.destination);
+//   //soundSource.loop = true;
+//   //soundSource.start();
+// };
 
-ajaxRequest.send();
+// ajaxRequest.send();
 
 // set up canvas context for visualizer
 
@@ -111,9 +111,7 @@ var drawVisual;
 //main block for doing the audio recording
 
 if (navigator.mediaDevices.getUserMedia) {
-   console.log('getUserMedia supported.');
-   var constraints = {audio: true}
-   navigator.mediaDevices.getUserMedia (constraints)
+   navigator.mediaDevices.getUserMedia ({audio: true})
       .then(
         function(stream) {
            source = audioCtx.createMediaStreamSource(stream);
@@ -138,12 +136,10 @@ function visualize() {
 
 
   var visualSetting = visualSelect.value;
-  console.log(visualSetting);
 
   if(visualSetting === "sinewave") {
     analyser.fftSize = 2048;
     var bufferLength = analyser.fftSize;
-    console.log(bufferLength);
     var dataArray = new Uint8Array(bufferLength);
 
     canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -188,7 +184,6 @@ function visualize() {
   } else if(visualSetting == "frequencybars") {
     analyser.fftSize = 256;
     var bufferLengthAlt = analyser.frequencyBinCount;
-    console.log(bufferLengthAlt);
     var dataArrayAlt = new Uint8Array(bufferLengthAlt);
 
     canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -216,13 +211,7 @@ function visualize() {
     };
 
     drawAlt();
-
-  } else if(visualSetting == "off") {
-    canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
-    canvasCtx.fillStyle = "red";
-    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
   }
-
 }
 
 function voiceChange() {
@@ -231,7 +220,6 @@ function voiceChange() {
   biquadFilter.gain.setTargetAtTime(0, audioCtx.currentTime, 0)
 
   var voiceSetting = voiceSelect.value;
-  console.log(voiceSetting);
 
   //when convolver is selected it is connected back into the audio path
   if(voiceSetting == "convolver") {
@@ -247,8 +235,6 @@ function voiceChange() {
       biquadFilter.type = "lowshelf";
       biquadFilter.frequency.setTargetAtTime(1000, audioCtx.currentTime, 0)
       biquadFilter.gain.setTargetAtTime(25, audioCtx.currentTime, 0)
-    } else if(voiceSetting == "off") {
-      console.log("Voice settings turned off");
     }
   }
 }
