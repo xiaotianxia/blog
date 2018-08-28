@@ -22,13 +22,11 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 	webkitAudioContext
 
 	按键音
+	file:///Users/denzel/Desktop/test/blog/box/audioContext.html
+
 	音频分析
 
-
-## canvas
-	
-
-	画图
+	file:///Users/denzel/Desktop/test/blog/box/audio/audio.html
 	
 
 ## web组件
