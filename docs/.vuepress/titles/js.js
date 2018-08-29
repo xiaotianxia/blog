@@ -1,6 +1,7 @@
 module.exports = [
 	'',
 	'editable_dom',
+	'useful_webapis_mediarecorder',
 	'useful_webapis_audiocontext',
 	'useful_webapis_fullscreen',
 	'useful_webapis_notification',

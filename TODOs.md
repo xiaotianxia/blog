@@ -27,6 +27,9 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 	音频分析
 
 	file:///Users/denzel/Desktop/test/blog/box/audio/audio.html
+
+	录音
+	MediaRecorder
 	
 
 ## web组件

@@ -95,7 +95,7 @@
   // Save the recording
   const saveRecording = () => {
     recording = URL.createObjectURL(new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' }));
-    chunks: [];
+    // chunks: [];
     
     audioPlayer.setAttribute('src', recording);
     playButton.classList.remove('button--disabled');
