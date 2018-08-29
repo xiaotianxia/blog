@@ -45,6 +45,10 @@ export default {
     },
 
     mounted () {
+        if (!AudioContext && !webkitAudioContext) {
+            alert('您的浏览器不支持audioContext!');
+            return;
+        }
         this.audioCtx = new (AudioContext || webkitAudioContext)();
         this.init();
     }
