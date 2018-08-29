@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Voice-change-O-matic</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./app.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="js-message message"></div>
+        <div class="recorder">
+          <div class="waveform">
+            <canvas class="js-canvas waveform__canvas"></canvas>
+          </div>
+          <div class="toolbar">
+            <button class="js-record button button--record"><i class="fa fa-microphone" aria-hidden="true"></i></button>
+            <button class="js-play button button--play button--disabled"><i class="fa fa-play" aria-hidden="true"></i></button>
+            <audio class="js-audio audio audio--hidden" controls/>
+          </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
