@@ -1,7 +1,7 @@
 <template>
     <div class="audio-wrapper">
         <div class="analyser">
-            <canvas></canvas>
+            <canvas ref="canvas"></canvas>
         </div>
         <el-tabs v-model="activeName" type="border-card" @tab-click="onTab">
             <el-tab-pane label="从页面audio元素获取" name="element">
@@ -35,7 +35,7 @@ export default {
         },
 
         renderElementPart () {
-            this.audioSource = this.audioCtx.createMediaElementSource(this.audioElement);
+            // this.audioSource = this.audioCtx.createMediaElementSource(this.audioElement);
             // this.draw();
             // for(var i = 0; i < this.bufferLength; i++) {
                 
@@ -50,11 +50,11 @@ export default {
 
         },
 
-        draw () {
-            requestAnimationFrame(this.draw);
-            this.analyser.getByteFrequencyData(this.dataArray);
-            console.log(this.dataArray)
-        }
+        // draw () {
+        //     requestAnimationFrame(this.draw);
+        //     this.analyser.getByteFrequencyData(this.dataArray);
+        //     console.log(this.dataArray)
+        // }
     },
 
     mounted () {
@@ -63,7 +63,12 @@ export default {
             return;
         }
         this.audioCtx = new (AudioContext || webkitAudioContext)();
+
+        this.canvas = this.$refs['canvas'];
+        this.canvasCtx = this.canvas.getContext('2d');
+        
         this.analyser = this.audioCtx.createAnalyser();
+        var scriptProcessor = this.audioCtx.createScriptProcessor(2048, 1, 1);
 
         this.analyser.fftSize = 256;
         this.bufferLength = this.analyser.frequencyBinCount;
@@ -78,7 +83,30 @@ export default {
         this.audioSource.connect(gainNode);
         gainNode.connect(this.audioCtx.destination);
 
-        this.draw()
+        this.audioSource.connect(this.analyser);
+        this.analyser.connect(scriptProcessor);
+        scriptProcessor.connect(this.audioCtx.destination);
+
+        var WIDTH = this.canvas.width,
+            HEIGHT = this.canvas.height;
+        this.canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+        var barWidth = (WIDTH / this.bufferLength) * 2.5;
+        var barHeight;
+        var x = 0;
+        scriptProcessor.onaudioprocess = () => {
+            this.analyser.getByteFrequencyData(this.dataArray);
+            console.log(this.dataArray)
+            
+            for(var i = 0; i < this.bufferLength; i++) {
+                barHeight = this.dataArray[i];
+            console.log(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2)
+                this.canvasCtx.fillStyle = 'rgb(255,255,255)';
+                this.canvasCtx.fillRect(0, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+                x += barWidth + 1;
+            }
+        }
+
+        // this.draw()
 
 
         // this.onTab();
@@ -91,9 +119,6 @@ export default {
         margin-top: 10px;
         padding: 20px;
         border: 1px solid #00b894;
-    }
-    .analyser {
-
     }
     canvas {
         width: 100%;
