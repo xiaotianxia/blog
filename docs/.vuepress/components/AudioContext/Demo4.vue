@@ -3,10 +3,8 @@
         <div ref="analyser" class="analyser">
             <canvas ref="canvas" width="100%" height="100"></canvas>
         </div>
-        <h3 class="title">点击播放：</h3>
-        <div>
-            <audio ref="audio" controls :src="audioSrc"></audio>
-        </div>
+
+        <h3 class="title">说话吧！<i class="el-icon-phone-outline"></i></h3>
     </div>
 </template>
 
@@ -14,21 +12,19 @@
 
 export default {
     data () {
-        return {
-            activeName: 'element',
-            audioSrc: 'https://reneroth.org/projects/codepen/dornendiamant.ogg'
-        }
+        return {}
     },
 
     methods: {
         initAudioSource () {
-            this.audioElement = this.$refs['audio'];
-            this.audioElement.crossOrigin="anonymous";
-            this.audioSource = this.audioCtx.createMediaElementSource(this.audioElement);
-            this.audioSource.connect(this.analyser);
-            this.audioSource.connect(this.gainNode);
-
-            this.bindDrawEvent();
+            navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
+                this.audioSource = this.audioCtx.createMediaStreamSource(stream);
+                this.audioSource.connect(this.analyser);
+                this.audioSource.connect(this.gainNode);
+                this.bindDrawEvent();
+            }, error => {
+                alert('出错，请确保已允许浏览器获取音频权限');
+            });
         },
 
         bindDrawEvent () {
