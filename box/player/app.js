@@ -46,7 +46,6 @@ var offsets = [];
 
 function doRender() {
 	requestAnimationFrame(doRender);
-	console.log(offsets)
 	$d.each(function(i) {
 		if (offsetBalls) {
 			if (i % 2 != 0) {

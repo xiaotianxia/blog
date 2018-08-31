@@ -36,7 +36,7 @@ export default {
             this.canvasCtx = this.canvas.getContext('2d');
             let analyserWidth = this.$refs['analyser'].offsetWidth;
             this.canvas.width = analyserWidth;
-            this.canvasCtx.fillStyle = 'rgb(225, 112, 85)';
+            this.canvasCtx.fillStyle = 'rgb(230, 126, 34)';
         },
 
         initAudioContext () {
