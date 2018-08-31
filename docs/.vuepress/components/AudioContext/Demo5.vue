@@ -70,6 +70,7 @@ export default {
         play (url, index) {
             if(this.index == index) return;
             this.index = index;
+            
             this.requestSong(url);
         },
 
