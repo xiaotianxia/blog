@@ -4,7 +4,9 @@
             <canvas ref="canvas" width="100%" height="100"></canvas>
         </div>
 
-        <h3 class="title">说话吧！<i class="el-icon-phone-outline"></i></h3>
+        <span class="title">说话吧 </span>
+        <el-button v-if="isMuted" @click="onRestore" size="small" icon="el-icon-phone-outline"></el-button>
+        <el-button v-else @click="onMute" size="small">静音</el-button>
     </div>
 </template>
 
@@ -12,7 +14,9 @@
 
 export default {
     data () {
-        return {}
+        return {
+            isMuted: false
+        }
     },
 
     methods: {
@@ -29,6 +33,16 @@ export default {
 
         bindDrawEvent () {
             this.scriptProcessor.onaudioprocess = this.draw;
+        },
+
+        onMute () {
+            this.gainNode.gain.value = 0;
+            this.isMuted = true;
+        },
+
+        onRestore () {
+            this.gainNode.gain.value = 1;
+            this.isMuted = false;
         },
 
         renderCanvas () {
