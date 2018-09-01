@@ -4,7 +4,7 @@
             <canvas ref="canvas" width="100%" height="100"></canvas>
         </div>
 
-        <span class="title">说话吧 </span>
+        <span class="title">点击说话 </span>
         <el-button v-if="isMuted" @click="onRestore" size="small" icon="el-icon-phone-outline"></el-button>
         <el-button v-else @click="onMute" size="small">静音</el-button>
     </div>
@@ -15,7 +15,7 @@
 export default {
     data () {
         return {
-            isMuted: false
+            isMuted: true
         }
     },
 
@@ -63,7 +63,7 @@ export default {
 
         initGain () {
             this.gainNode = this.audioCtx.createGain();
-            this.gainNode.gain.value = 1;
+            this.gainNode.gain.value = 0;
             
             this.gainNode.connect(this.audioCtx.destination);
         },
@@ -84,7 +84,7 @@ export default {
         draw () {
             let cWidth = this.canvas.width,
                 cHeight = this.canvas.height,
-                barWidth = parseInt((cWidth / this.bufferLength) * 2),
+                barWidth = parseInt(.5 * cWidth / this.bufferLength),
                 barHeight,
                 x = 0;
             this.canvasCtx.clearRect(0, 0, cWidth, cHeight);

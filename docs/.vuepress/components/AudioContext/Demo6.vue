@@ -5,7 +5,8 @@
         </div>
         
         <div class="file">
-            <input type="file" accept="audio/*" @change="onProcessFile">
+            <input type="file" ref="fileInput" accept="audio/*" @change="onProcessFile">
+            <el-button v-if="showCancel" @click="onCancel" size="small">取消</el-button>
         </div>
     </div>
 </template>
@@ -14,20 +15,34 @@
 
 export default {
     data () {
-        return {}
+        return {
+            showCancel: false
+        }
     },
 
     methods: {
         onProcessFile (e) {
-            let file = e.target.files[0],
-                stream = URL.createObjectURL(file),
+            this.file = e.target.files[0];
+            let stream = URL.createObjectURL(this.file),
                 audio = new Audio();
             audio.src = stream;
 
+            this.init();
+
             audio.oncanplay = this.initAudioSource(audio);
+            this.showCancel = true;
+        },
+
+        onCancel () {
+            this.audioCtx.state != 'closed' && this.audioCtx.close();
+            URL.revokeObjectURL(this.file);
+
+            this.fileInput.value = ''; 
+            this.showCancel = false;
         },
 
         initAudioSource (audio) {
+            this.fileInput = this.$refs['fileInput'];
             this.audioSource = this.audioCtx.createMediaElementSource(audio);
             this.audioSource.connect(this.analyser);
             this.audioSource.connect(this.gainNode);
@@ -79,7 +94,7 @@ export default {
         draw () {
             let cWidth = this.canvas.width,
                 cHeight = this.canvas.height,
-                barWidth = parseInt((cWidth / this.bufferLength) * 2),
+                barWidth = parseInt(.5 * cWidth / this.bufferLength),
                 barHeight,
                 x = 0;
             this.canvasCtx.clearRect(0, 0, cWidth, cHeight);
@@ -103,7 +118,7 @@ export default {
     mounted () {
         this.renderCanvas();
         
-        this.init();
+        // this.init();
 
         window.onresize = () => {
             this.renderCanvas();

@@ -74,7 +74,7 @@ export default {
         draw () {
             let cWidth = this.canvas.width,
                 cHeight = this.canvas.height,
-                barWidth = parseInt((cWidth / this.bufferLength) * 2),
+                barWidth = parseInt(.5 * cWidth / this.bufferLength),
                 barHeight,
                 x = 0;
             this.canvasCtx.clearRect(0, 0, cWidth, cHeight);
