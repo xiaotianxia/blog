@@ -23,13 +23,17 @@
 </template>
 
 <script>
+import Mixin from './Mixin';
 
 export default {
+    mixins: [Mixin],
+
     data () {
         return {
             index: -1,
             loading: false,
             playing: false,
+            canvasFillStyle: 'rgb(241, 196, 15)',
             songlist: [
                 {name: 'dornendiamant', url: 'https://reneroth.org/projects/codepen/dornendiamant.ogg'},
                 {name: '电台情歌', url: 'https://m10.music.126.net/20180831220555/797bd6a75d20e2372969161d6c79f844/ymusic/9bdc/dad4/9b29/d619d2670a3d21753caedba14440d1a6.mp3'},
@@ -99,82 +103,12 @@ export default {
             this.audioSource.loop = true;
             this.audioSource.start(0);
             this.playStart = new Date().getTime();
-        },
-
-        bindDrawEvent () {
-            this.scriptProcessor.onaudioprocess = this.draw;
-        },
-
-        renderCanvas () {
-            this.canvas = this.$refs['canvas'];
-            this.canvasCtx = this.canvas.getContext('2d');
-            let analyserWidth = this.$refs['analyser'].offsetWidth;
-            this.canvas.width = analyserWidth;
-            this.canvasCtx.fillStyle = 'rgb(39, 174, 96)';
-        },
-
-        initAudioContext () {
-            if (!AudioContext && !webkitAudioContext) {
-                alert('您的浏览器不支持audioContext!');
-                return;
-            }
-            this.audioCtx = new (AudioContext || webkitAudioContext)();
-        },
-
-        initGain () {
-            this.gainNode = this.audioCtx.createGain();
-            this.gainNode.gain.value = 1;
-            
-            this.gainNode.connect(this.audioCtx.destination);
-        },
-
-        initAnalyser () {
-            this.analyser = this.audioCtx.createAnalyser();
-            this.analyser.fftSize = 256;
-            this.bufferLength = this.analyser.frequencyBinCount;
-            this.dataArray = new Uint8Array(this.bufferLength);
-        },
-
-        initScriptProcessor () {
-            this.scriptProcessor = this.audioCtx.createScriptProcessor(2048, 1, 1);
-            this.analyser.connect(this.scriptProcessor);
-            this.scriptProcessor.connect(this.audioCtx.destination);
-        },
-
-        draw () {
-            let cWidth = this.canvas.width,
-                cHeight = this.canvas.height,
-                barWidth = parseInt(.5 * cWidth / this.bufferLength),
-                barHeight,
-                x = 0;
-            this.canvasCtx.clearRect(0, 0, cWidth, cHeight);
-            this.analyser.getByteFrequencyData(this.dataArray);
-
-            for (var i = 0; i < this.bufferLength; i++) {
-                barHeight = parseInt(0.4 * this.dataArray[i]);
-                this.canvasCtx.fillRect(x, cHeight - barHeight, barWidth, barHeight);
-                x += barWidth + 3;
-            }
-        },
-
-        init () {
-            this.initAudioContext();
-            this.initAnalyser();
-            this.initGain();
-            this.initScriptProcessor();
-
-            this.initSource();
         }
     },
 
     mounted () {
-        this.renderCanvas();
-        
         this.init();
-
-        window.onresize = () => {
-            this.renderCanvas();
-        }
+        this.initSource();
     }
 }
 </script>
