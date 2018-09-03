@@ -35,9 +35,7 @@ export default {
             playing: false,
             canvasFillStyle: 'rgb(241, 196, 15)',
             songlist: [
-                {name: 'dornendiamant', url: 'https://reneroth.org/projects/codepen/dornendiamant.ogg'},
-                {name: '电台情歌', url: 'https://m10.music.126.net/20180831220555/797bd6a75d20e2372969161d6c79f844/ymusic/9bdc/dad4/9b29/d619d2670a3d21753caedba14440d1a6.mp3'},
-                {name: '当你老了', url: 'https://m10.music.126.net/20180831221058/c608c5b5f5531265d0f6f40b66991acf/ymusic/0b8c/4ea6/c957/ddf46174d597d368111db3ff9fbdaa7a.mp3'},
+                {name: '远程音乐', url: 'https://reneroth.org/projects/codepen/dornendiamant.ogg'},
             ]
         }
     },

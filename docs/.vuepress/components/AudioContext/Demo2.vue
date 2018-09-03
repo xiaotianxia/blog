@@ -32,8 +32,8 @@ export default {
             this.oscillator.type = this.queryParams.waveform;
             this.gainNode.gain.value = this.queryParams.gain;
 
-            this.oscillator.connect(this.audioCtx.destination);
             this.oscillator.connect(this.gainNode);
+            this.gainNode.connect(this.audioCtx.destination);
         },
 
         onPlay (item) {

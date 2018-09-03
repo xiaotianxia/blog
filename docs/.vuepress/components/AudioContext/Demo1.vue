@@ -60,8 +60,8 @@ export default {
             this.gainNode.gain.value = this.queryParams.gain;
             this.oscillator.frequency.value = this.queryParams.frequency;
             
-            this.oscillator.connect(this.audioCtx.destination);
             this.oscillator.connect(this.gainNode);
+            this.gainNode.connect(this.audioCtx.destination);
         },
 
         onStart () {
