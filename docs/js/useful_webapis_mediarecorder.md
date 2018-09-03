@@ -8,4 +8,6 @@
 
 
 ## 参考资料
-- [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+- [MediaStream Recording API](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API)
+- [MediaRecorder](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder)
+- [HTML5’s Media Recorder API in Action on Chrome and Firefox](https://addpipe.com/blog/mediarecorder-api/)
