@@ -3,29 +3,43 @@
         <div class="phone">
             <div class="phone-body">
                 <div class="phone-head">
-                    <span>< 微信(66)</span>
+                    <span>&lt; 微信(66)</span>
                     <span>哈哈哈</span>
                     <span>···</span>
                 </div>
                 <div class="phone-content">
-                    
+                    <ul class="msg-list">
+                        <li class="msg" @click="onPlay(index)">
+                            <div class="avatar"></div>
+                            <div class="audio eg">说话</div>
+                        </li>
+
+                        <li v-for="(item, index) in chunkList" class="msg" @click="onPlay(index)">
+                            <div class="avatar"></div>
+                            <div class="audio" :style="{width: 10 * item.duration + 'px'}">
+                                <span>(</span><span>(</span><span>(</span>
+                            </div>
+                            <div class="duration">{{item.duration}}"</div>
+                        </li>
+
+                        <li ref="toView"></li>
+                    </ul>
                 </div>
-                <div class="phone-operate" @mousedown="onMousedown" @mouseup="onMouseup">按住说话</div>
+                <div class="phone-operate" @mousedown="onMousedown" @mouseup="onMouseup">{{btnText}}</div>
             </div>
         </div>
-        <el-button @click="onStart">开始</el-button>
-        <el-button @click="onStop">结束</el-button>
         <audio ref="audio"></audio>
     </div>
 </template>
 
 <script>
-const FADING_TIME = 0.5;
-
+//TODO: 播放动画，滚动
 export default {
     data () {
         return {
-            chunks: []
+            chunks: [],
+            chunkList: [],
+            btnText: '按住说话'
         }
     },
 
@@ -40,11 +54,13 @@ export default {
         },
 
         onMousedown (e) {
-            this.onStart()
+            this.onStart();
+            this.btnText = '松开结束';
         },
 
         onMouseup (e) {
             this.onStop();
+            this.btnText = '按住说话';
         },
 
         onStart () {
@@ -53,7 +69,12 @@ export default {
 
         onStop () {
             this.recorder.stop();
-            console.log(this.audio.duration);
+        },
+
+        onPlay (index) {
+            let item = this.chunkList[index];
+            this.audio.setAttribute('src', item.stream);
+            this.audio.play();
         },
 
         bindEvents () {
@@ -66,9 +87,10 @@ export default {
         },
 
         saveRecordingData  () {
-            let audioStream = URL.createObjectURL(new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' }));
-            this.audio.setAttribute('src', audioStream);
-            this.audio.play();
+            let audioStream = URL.createObjectURL(new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' })),
+                duration = parseInt(7 * Math.random() + 3);
+            this.chunkList.push({duration: duration, stream: audioStream});
+            // this.toView.scrollIntoView();
             this.chunks = [];
         }
     },
@@ -79,6 +101,7 @@ export default {
             return;
         }
         this.audio = this.$refs.audio;
+        this.toView = this.$refs.toView;
         this.requestAudioAccess();
     }
 }
@@ -119,11 +142,12 @@ export default {
         text-align: center;
     }
     .phone-head span:nth-child(3) {
-        text-align: right;
+        float: right;
+        margin-right: 10px;
     }
     .phone-content {
         height: 282px;
-        background-color: #ccc;
+        background-color: #f1eded;
     }
     .phone-operate {
         line-height: 28px;
@@ -132,5 +156,85 @@ export default {
     }
     .phone-operate:active {
         background-color: #ddd;
+    }
+    .msg-list {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-y: auto;
+    }
+    .msg-list .msg {
+        list-style: none;
+        padding: 0 8px;
+        margin: 10px 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .msg-list .msg .avatar,
+    .msg-list .msg .audio,
+    .msg-list .msg .duration {
+        float: right;
+    }
+    .msg-list .msg .avatar {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        background-color: #000;
+        background: url('https://denzel.netlify.com/hero.png') 0 0;
+        background-size: 100%;
+    }
+    .msg-list .msg .audio {
+        position: relative;
+        margin-right: 10px;
+        max-width: 150px;
+        min-width: 50px;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 4px 0 10px;
+        border-radius: 2px;
+        color: #000;
+        text-align: right;
+        background-color: rgba(107, 197, 107, 0.85);
+    }
+    .msg-list .msg .audio.eg {
+        text-align: left;
+    }
+    .msg-list .msg .audio:before {
+        position: absolute;
+        right: -11px;
+        top: 5px;
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px;
+        border-color: transparent transparent transparent rgba(107, 197, 107, 0.85);
+    }
+    .msg-list .msg .audio span {
+        color: rgba(255, 255, 255, .5);
+        display: inline-block;
+        transform-origin: center;
+    }
+    .msg-list .msg .audio span:nth-child(1) {
+        font-weight: 400;
+    }
+    .msg-list .msg .audio span:nth-child(2) {
+        transform: scale(0.8);
+        font-weight: 500;
+    }
+    .msg-list .msg .audio span:nth-child(3) {
+        transform: scale(0.5);
+        font-weight: 700
+    }
+    .msg-list .msg .duration {
+        margin: 3px 2px;
+    }
+    .toView {
+        position: relative;
+        top: 10px;
+        height: 5px;
+        margin-top: 5px;
     }
 </style>
