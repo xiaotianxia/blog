@@ -8,22 +8,20 @@
                     <span>···</span>
                 </div>
                 <div class="phone-content">
-                    <ul class="msg-list">
-                        <li class="msg" @click="onPlay(index)">
+                    <transition-group tag="ul" class="msg-list" name="fade">
+                        <li class="msg eg" :key="-1">
                             <div class="avatar"></div>
-                            <div class="audio eg">说话</div>
+                            <div class="audio">说话</div>
                         </li>
 
-                        <li v-for="(item, index) in chunkList" class="msg" @click="onPlay(index)">
+                        <li v-for="(item, index) in chunkList" :key="index" class="msg" @click="onPlay(index)">
                             <div class="avatar"></div>
-                            <div class="audio" :style="{width: 10 * item.duration + 'px'}">
+                            <div class="audio" :style="{width: 10 * item.duration + 'px'}" :class="{wink: item.wink}">
                                 <span>(</span><span>(</span><span>(</span>
                             </div>
                             <div class="duration">{{item.duration}}"</div>
                         </li>
-
-                        <li ref="toView"></li>
-                    </ul>
+                    </transition-group>
                 </div>
                 <div class="phone-operate" @mousedown="onMousedown" @mouseup="onMouseup">{{btnText}}</div>
             </div>
@@ -33,7 +31,6 @@
 </template>
 
 <script>
-//TODO: 播放动画，滚动
 export default {
     data () {
         return {
@@ -75,6 +72,20 @@ export default {
             let item = this.chunkList[index];
             this.audio.setAttribute('src', item.stream);
             this.audio.play();
+
+            this.bindAudioEvent(index);
+        },
+
+        bindAudioEvent (index) {
+            let item = this.chunkList[index];
+
+            this.audio.onplaying = () => {
+                this.$set(item, 'wink', true);
+            }
+
+            this.audio.onended = () => {
+                this.$set(item, 'wink', false);
+            }
         },
 
         bindEvents () {
@@ -90,7 +101,6 @@ export default {
             let audioStream = URL.createObjectURL(new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' })),
                 duration = parseInt(7 * Math.random() + 3);
             this.chunkList.push({duration: duration, stream: audioStream});
-            // this.toView.scrollIntoView();
             this.chunks = [];
         }
     },
@@ -153,15 +163,19 @@ export default {
         line-height: 28px;
         text-align: center;
         cursor: pointer;
+        box-shadow: 0 -1px 1px rgba(0, 0, 0, .1);
     }
     .phone-operate:active {
-        background-color: #ddd;
+        background-color: #95a5a6;
     }
     .msg-list {
         margin: 0;
         padding: 0;
         height: 100%;
         overflow-y: auto;
+    }
+    .msg-list::-webkit-scrollbar {
+        display: none;
     }
     .msg-list .msg {
         list-style: none;
@@ -186,7 +200,7 @@ export default {
     }
     .msg-list .msg .audio {
         position: relative;
-        margin-right: 10px;
+        margin-right: 6px;
         max-width: 150px;
         min-width: 50px;
         height: 24px;
@@ -197,23 +211,26 @@ export default {
         text-align: right;
         background-color: rgba(107, 197, 107, 0.85);
     }
-    .msg-list .msg .audio.eg {
+    .msg-list .msg.eg {
+        cursor: default;
+    }
+    .msg-list .msg.eg .audio {
         text-align: left;
     }
     .msg-list .msg .audio:before {
         position: absolute;
-        right: -11px;
-        top: 5px;
+        right: -8px;
+        top: 8px;
         content: '';
         display: inline-block;
         width: 0;
         height: 0;
         border-style: solid;
-        border-width: 6px;
+        border-width: 4px;
         border-color: transparent transparent transparent rgba(107, 197, 107, 0.85);
     }
     .msg-list .msg .audio span {
-        color: rgba(255, 255, 255, .5);
+        color: rgba(255, 255, 255, .8);
         display: inline-block;
         transform-origin: center;
     }
@@ -228,6 +245,9 @@ export default {
         transform: scale(0.5);
         font-weight: 700
     }
+    .msg-list .msg .audio.wink span {
+        animation: wink 1s ease infinite;
+    }
     .msg-list .msg .duration {
         margin: 3px 2px;
     }
@@ -236,5 +256,19 @@ export default {
         top: 10px;
         height: 5px;
         margin-top: 5px;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+    @keyframes wink {
+        from {
+            color: rgba(255, 255, 255, .8);
+        }
+        to {
+            color: rgba(255, 255, 255, .1);
+        }
     }
 </style>
