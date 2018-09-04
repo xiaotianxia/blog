@@ -102,7 +102,10 @@ export default {
                 audioStream = URL.createObjectURL(blob),
                 //估算时长
                 duration = parseInt(blob.size / 6600);
-
+            if(duration <= 0) {
+                alert('说话时间太短');
+                return;
+            }
             this.chunkList.push({duration: duration, stream: audioStream});
             this.chunks = [];
         }
@@ -145,6 +148,7 @@ export default {
         height: 30px;
         line-height: 30px;
         color: #fff;
+        font-weight: bold;
         background-color: #000;
     }
     .phone-head span {
@@ -166,6 +170,7 @@ export default {
         line-height: 28px;
         text-align: center;
         cursor: pointer;
+        font-weight: bold;
         box-shadow: 0 -1px 1px rgba(0, 0, 0, .1);
     }
     .phone-operate:active {
@@ -205,7 +210,7 @@ export default {
         position: relative;
         margin-right: 6px;
         max-width: 150px;
-        min-width: 50px;
+        min-width: 30px;
         height: 24px;
         line-height: 24px;
         padding: 0 4px 0 10px;
@@ -253,12 +258,6 @@ export default {
     }
     .msg-list .msg .duration {
         margin: 3px 2px;
-    }
-    .toView {
-        position: relative;
-        top: 10px;
-        height: 5px;
-        margin-top: 5px;
     }
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s;
