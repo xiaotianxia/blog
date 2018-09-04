@@ -69,6 +69,10 @@ export default {
         },
 
         onPlay (index) {
+            this.chunkList.forEach(item => {
+                this.$set(item, 'wink', false);
+            });
+
             let item = this.chunkList[index];
             this.audio.setAttribute('src', item.stream);
             this.audio.play();
@@ -181,6 +185,7 @@ export default {
         padding: 0;
         height: 100%;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .msg-list::-webkit-scrollbar {
         display: none;
@@ -209,7 +214,7 @@ export default {
     .msg-list .msg .audio {
         position: relative;
         margin-right: 6px;
-        max-width: 150px;
+        max-width: 116px;
         min-width: 30px;
         height: 24px;
         line-height: 24px;
