@@ -16,7 +16,7 @@
 
                         <li v-for="(item, index) in chunkList" :key="index" class="msg" @click="onPlay(index)">
                             <div class="avatar"></div>
-                            <div class="audio" :style="{width: 10 * item.duration + 'px'}" :class="{wink: item.wink}">
+                            <div class="audio" :style="{width: 20 * item.duration + 'px'}" :class="{wink: item.wink}">
                                 <span>(</span><span>(</span><span>(</span>
                             </div>
                             <div class="duration">{{item.duration}}"</div>
@@ -98,8 +98,11 @@ export default {
         },
 
         saveRecordingData  () {
-            let audioStream = URL.createObjectURL(new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' })),
-                duration = parseInt(7 * Math.random() + 3);
+            let blob = new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' }),
+                audioStream = URL.createObjectURL(blob),
+                //估算时长
+                duration = parseInt(blob.size / 6600);
+
             this.chunkList.push({duration: duration, stream: audioStream});
             this.chunks = [];
         }
