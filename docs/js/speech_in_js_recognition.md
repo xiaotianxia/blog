@@ -80,7 +80,3 @@ recognition.onerror = function(event) {
 ## 参考资料
 - [HTML5语音合成Speech Synthesis API简介](http://www.zhangxinxu.com/wordpress/2017/01/html5-speech-recognition-synthesis-api/)
 - [SpeechRecognition](https://developer.mozilla.org/zh-CN/docs/Web/API/SpeechRecognition)
-
-[![](https://badge.juejin.im/entry/5afe4ad3518825426539b0ca/likes.svg?style=flat-square)](https://juejin.im/entry/5afe4ad3518825426539b0ca/detail)
-
-<!-- <comment-tool></comment-tool> -->

@@ -153,13 +153,18 @@ methods: {
 主要看了mac下的chrome、chromium和Firefox。windows下的还请读者自行测试...
 
 chromium应该算是支持的最好的了
-![chromium](http://p8rbt50i2.bkt.clouddn.com/blog/notification_chromium.png)
+
+![small-demo chromium](http://p8rbt50i2.bkt.clouddn.com/blog/notification_chromium.png)
+
 chrome67和Firefox样式基本一样
 
 chrome67
-![chrome](http://p8rbt50i2.bkt.clouddn.com/blog/notification%E2%80%94%E2%80%94chrome67.png)
+
+![small-demo chrome](http://p8rbt50i2.bkt.clouddn.com/blog/notification%E2%80%94%E2%80%94chrome67.png)
+
 Firefox
-![Firefox](http://p8rbt50i2.bkt.clouddn.com/blog/natification_firefox.png)
+
+![small-demo Firefox](http://p8rbt50i2.bkt.clouddn.com/blog/natification_firefox.png)
 
 ## 兼容性
 PC端的表现见上图，手机端嘛...chrome、Firefox等全跪:joy: ，反而UC浏览器貌似支持这个属性，但是我的UC显示是denied，

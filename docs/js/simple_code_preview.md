@@ -110,5 +110,3 @@
 </body>
 </html>
 ```
-
-<!-- <comment-tool></comment-tool> -->

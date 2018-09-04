@@ -105,5 +105,3 @@
 可以看出FileReader和URL.createObjectURL都能完美的实现图片的预览，但对于视频的上传，FileReader就不行了，浏览器立马崩溃了。。。，然而URL.createObjectURL方法却完美实现。
 
 关于二者的具体区别在网上一时没查清楚，但总体感觉URL.createObjectURL比FileReader性能更好一些。有什么说错的地方还望指正。
-
-<!-- <comment-tool></comment-tool> -->

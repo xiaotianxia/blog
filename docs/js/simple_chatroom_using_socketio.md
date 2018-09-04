@@ -167,5 +167,3 @@ socket.on('editRoomName', data => {
 	this.onUpdateChatList(data);
 });
 ```
-
-<!-- <comment-tool></comment-tool> -->

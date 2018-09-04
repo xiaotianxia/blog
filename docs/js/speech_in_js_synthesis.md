@@ -108,7 +108,3 @@ mounted () {
 ## 参考资料
 - [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 - [HTML5语音合成Speech Synthesis API简介](http://www.zhangxinxu.com/wordpress/2017/01/html5-speech-recognition-synthesis-api/)
-
-[![](https://badge.juejin.im/entry/5afbeec76fb9a07aa767d904/likes.svg?style=flat-square)](https://juejin.im/entry/5afbeec76fb9a07aa767d904/detail)
-
-<!-- <comment-tool></comment-tool> -->
