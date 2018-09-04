@@ -14,7 +14,7 @@
                             <div class="audio">说话</div>
                         </li>
 
-                        <li v-for="(item, index) in chunkList" :key="index" class="msg" @click="onPlay(index)">
+                        <li v-for="(item, index) in chunkList" :key="index" class="msg" @click="onPlay(index)" @touchend.prevent="onPlay(index)">
                             <div class="avatar"></div>
                             <div class="audio" :style="{width: 20 * item.duration + 'px'}" :class="{wink: item.wink}">
                                 <span>(</span><span>(</span><span>(</span>
@@ -23,7 +23,7 @@
                         </li>
                     </transition-group>
                 </div>
-                <div class="phone-operate" @mousedown="onMousedown" @mouseup="onMouseup">{{btnText}}</div>
+                <div class="phone-operate" @mousedown="onMousedown" @touchstart.prevent="onMousedown" @mouseup="onMouseup" @touchend.prevent="onMouseup">{{btnText}}</div>
             </div>
         </div>
         <audio ref="audio"></audio>
@@ -50,12 +50,12 @@ export default {
             });
         },
 
-        onMousedown (e) {
+        onMousedown () {
             this.onStart();
             this.btnText = '松开结束';
         },
 
-        onMouseup (e) {
+        onMouseup () {
             this.onStop();
             this.btnText = '按住说话';
         },

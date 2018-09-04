@@ -4,7 +4,7 @@
 
 ## 简介
 
-<Recorder-Demo1/>
+<Recorder-Demo/>
 
 
 ## 参考资料
