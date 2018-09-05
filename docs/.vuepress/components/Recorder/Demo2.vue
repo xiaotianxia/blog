@@ -66,6 +66,7 @@ export default {
 
         onPreview () {
             this.video.srcObject = this.stream;
+            this.video.muted = true;
             this.video.play();
         },
 
@@ -88,21 +89,16 @@ export default {
         onPlay (index) {
             this.showVideo(true);
             let item = this.chunkList[index];
-            this.video.setAttribute('src', item.stream);
+            this.video.src = item.stream;
+            this.video.muted = false;
             this.video.play();
 
-            this.bindAudioEvent(index);
+            this.bindAudioEvent();
         },
 
-        bindAudioEvent (index) {
-            let item = this.chunkList[index];
-
-            this.video.onplaying = () => {
-                
-            }
-
+        bindAudioEvent () {
             this.video.onended = () => {
-                
+                this.showVideo(false);
             }
         },
 
@@ -204,7 +200,7 @@ export default {
         width: 0%;
         height: 2px;
         background-color: #7bed9f;
-        animation: wink 1s ease-in-out infinite backwards;
+        animation: loading 1s ease-in-out infinite backwards;
     }
     .msg-list {
         margin: 0;
@@ -295,7 +291,7 @@ export default {
         opacity: 0;
     }
 
-    @keyframes wink {
+    @keyframes loading {
         from {
             width: 0%;
         }

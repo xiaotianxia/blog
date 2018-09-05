@@ -74,7 +74,7 @@ export default {
             });
 
             let item = this.chunkList[index];
-            this.audio.setAttribute('src', item.stream);
+            this.audio.src = item.stream;
             this.audio.play();
 
             this.bindAudioEvent(index);
@@ -178,6 +178,7 @@ export default {
         background-color: #f1eded;
     }
     .phone-operate {
+        position: relative;
         line-height: 28px;
         text-align: center;
         cursor: pointer;
@@ -186,6 +187,17 @@ export default {
     }
     .phone-operate:active {
         background-color: #95a5a6;
+    }
+    .phone-operate:active:before {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        top: -2px;
+        content: '';
+        width: 0%;
+        height: 2px;
+        background-color: #7bed9f;
+        animation: loading 1s ease-in-out infinite backwards;
     }
     .msg-list {
         margin: 0;
@@ -283,6 +295,14 @@ export default {
         }
         to {
             color: rgba(255, 255, 255, .1);
+        }
+    }
+    @keyframes loading {
+        from {
+            width: 0%;
+        }
+        to {
+            width: 100%;
         }
     }
 </style>
