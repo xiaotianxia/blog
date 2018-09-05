@@ -68,7 +68,7 @@ navigator.mediaDevices.getUserMedia({
             canvas.toBlob((blob) => {
                 let url = URL.createObjectURL(blob);
                     saveBtn.href = url;
-            })
+            });
         } else {
             cxt.clearRect(0, 0, canvas.width, canvas.height);
             snapBtn.innerText = '截图';

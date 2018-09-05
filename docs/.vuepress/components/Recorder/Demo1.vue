@@ -128,7 +128,6 @@ export default {
             return;
         }
         this.audio = this.$refs.audio;
-        this.toView = this.$refs.toView;
         this.requestAudioAccess();
     }
 }

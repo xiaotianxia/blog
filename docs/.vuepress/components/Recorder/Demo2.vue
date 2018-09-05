@@ -17,6 +17,7 @@
                         <li v-for="(item, index) in chunkList" :key="index" class="msg">
                             <div class="avatar"></div>
                             <div class="video" @click="onPlay(index)" @touchend.prevent="onPlay(index)">
+                                <img alt="截图" :src="item.poster">
                                 <i class="el-icon-caret-right"></i>
                             </div>
                         </li>
@@ -26,6 +27,7 @@
                 <video ref="video" width="200" @click="showVideo(false)" @touchend.prevent="showVideo(false)"></video>
             </div>
         </div>
+        <canvas ref="canvas"></canvas>
     </div>
 </template>
 
@@ -36,6 +38,7 @@ export default {
             chunks: [],
             chunkList: [],
             btnText: '按住拍视频',
+            index: 0
         }
     },
 
@@ -54,14 +57,12 @@ export default {
             this.showVideo(true);
             this.onPreview();
             this.btnText = '松开结束';
-            this.onStart();
+            this.onStart(); 
         },
 
         onMouseup () {
-            this.showVideo(false);
-            this.video.srcObject = null;
-            this.btnText = '按住拍视频';
             this.onStop();
+            this.btnText = '按住拍视频';
         },
 
         onPreview () {
@@ -114,10 +115,29 @@ export default {
         saveRecordingData  () {
             let blob = new Blob(this.chunks, { 'type' : 'video/webm' }),
                 videoStream = URL.createObjectURL(blob);
-                
             this.chunkList.push({stream: videoStream});
+
+            this.onCapture(this.index);        
+
             this.chunks = [];
+        },
+
+        //获取视频截图
+        onCapture (index) {
+            let item = this.chunkList[index];
+            this.ctx.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
+            this.canvas.toBlob((blob) => {
+                let src = URL.createObjectURL(blob);
+                this.$set(item, 'poster', src);
+            });
+            //索引后移
+            this.index ++;
+
+            //隐藏video
+            this.showVideo(false);
+            this.video.srcObject = null;
         }
+
     },
 
     mounted () {
@@ -130,7 +150,8 @@ export default {
             return;
         }
         this.video = this.$refs.video;
-        this.toView = this.$refs.toView;
+        this.canvas = this.$refs.canvas;
+        this.ctx = this.canvas.getContext('2d');
         this.requestAudioAccess();
     }
 }
@@ -233,22 +254,32 @@ export default {
         background-size: 100%;
     }
     .msg-list .msg .video {
-        width: 50px;
-        height: 80px;
+        position: relative;
+        width: 100px;
+        height: 75px;
         line-height: 80px;
         margin-right: 6px;
-        border-radius: 10px;
+        border-radius: 8px;
         overflow: hidden;
         cursor: pointer;
-        background-color: #636e72;
-        color: #000;
+        color: rgba(255, 255, 255, .8);
         text-align: center;
-        font-size: 30px;
+        font-size: 0;
     }
     .msg-list .msg .video img {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        background-color: #000;
+        background-color: #636e72;
+    }
+    .msg-list .msg .video i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
     }
     .msg-list .msg.eg {
         cursor: default;
@@ -282,6 +313,9 @@ export default {
         top: 0;
         left: 0;
         right: 0;
+        display: none;
+    }
+    canvas {
         display: none;
     }
     .fade-enter-active, .fade-leave-active {
