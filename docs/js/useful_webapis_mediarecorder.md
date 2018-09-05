@@ -4,7 +4,12 @@
 
 ## 简介
 
-<Recorder-Demo/>
+<Recorder-Demo1/>
+
+![small demo](http://p8rbt50i2.bkt.clouddn.com/recorder001.gif)
+
+<Recorder-Demo2/>
+
 
 
 ## 参考资料

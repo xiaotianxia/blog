@@ -110,6 +110,9 @@ export default {
                 alert('说话时间太短');
                 return;
             }
+            if(duration > 60) {
+                duration = 60;
+            }
             this.chunkList.push({duration: duration, stream: audioStream});
             this.chunks = [];
         }
@@ -118,6 +121,10 @@ export default {
     mounted () {
         if (!navigator.mediaDevices) {
             alert('您的浏览器不支持获取用户设备');
+            return;
+        }
+        if (!window.MediaRecorder) {
+            alert('您的浏览器不支持录音');
             return;
         }
         this.audio = this.$refs.audio;
