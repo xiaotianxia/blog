@@ -43,7 +43,7 @@ export default {
     },
 
     methods: {
-        requestAudioAccess () {
+        requestMediaAccess () {
             navigator.mediaDevices.getUserMedia({audio: true, video: true}).then(stream => {
                 this.recorder = new window.MediaRecorder(stream);
                 this.stream = stream;
@@ -152,7 +152,7 @@ export default {
         this.video = this.$refs.video;
         this.canvas = this.$refs.canvas;
         this.ctx = this.canvas.getContext('2d');
-        this.requestAudioAccess();
+        this.requestMediaAccess();
     }
 }
 </script>
@@ -259,12 +259,12 @@ export default {
         height: 75px;
         line-height: 80px;
         margin-right: 6px;
-        border-radius: 8px;
+        border-radius: 4px;
         overflow: hidden;
-        cursor: pointer;
         color: rgba(255, 255, 255, .8);
         text-align: center;
         font-size: 0;
+        cursor: pointer;
     }
     .msg-list .msg .video img {
         position: absolute;

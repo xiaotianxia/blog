@@ -41,7 +41,7 @@ export default {
     },
 
     methods: {
-        requestAudioAccess () {
+        requestMediaAccess () {
             navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
                 this.recorder = new window.MediaRecorder(stream);
                 this.bindEvents();
@@ -128,7 +128,7 @@ export default {
             return;
         }
         this.audio = this.$refs.audio;
-        this.requestAudioAccess();
+        this.requestMediaAccess();
     }
 }
 </script>
