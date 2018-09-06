@@ -17,7 +17,7 @@
 
 <show-in-codepen href="https://codepen.io/_tianxia/pen/gdxqao"></show-in-codepen>
 
-看完demo，再一块来看看怎么实现吧 ——
+看完demo，再来看看怎么实现吧 ——
 
 ## 简介
 API可以说是相当简单粗暴了
@@ -26,7 +26,7 @@ API可以说是相当简单粗暴了
 创建一个新的MediaRecorder对象，用来进行录制操作。
 
 
-上面的demo只用到了两个方法和两个事件
+上面的demo只用到了两个方法和两个事件 ——
 
 ### 两个方法start、stop
 
@@ -60,7 +60,7 @@ demo中用到的部分代码：
 获取用户媒体权限，创建媒体录制对象：
 ```js
 requestMediaAccess () {
-	//获取用户媒体权限
+	//获取用户媒体权限，视频的话参数{audio: true, video: true}
     navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
     	//创建媒体录制对象
         this.recorder = new window.MediaRecorder(stream);
@@ -100,7 +100,7 @@ saveRecordingData  () {
     this.chunks = [];
 },
 
-//保存视频数据
+//视频的话：保存视频数据
 saveRecordingData  () {
     let blob = new Blob(this.chunks, { 'type' : 'video/webm' }),
         videoStream = URL.createObjectURL(blob);
@@ -111,7 +111,7 @@ saveRecordingData  () {
     this.chunks = [];
 },
 
-//获取视频截图
+//视频：获取视频截图
 onCapture (index) {
     let item = this.chunkList[index];
     this.ctx.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
@@ -133,6 +133,7 @@ onCapture (index) {
 但我试过几个办法还是无济于事...还望有经验的大佬略指点一二 🙏。
 :::
 
+具体代码可以看codepen，[demo1](https://codepen.io/_tianxia/pen/JayxoG)、 [demo2](https://codepen.io/_tianxia/pen/gdxqao)
 
 ### 其他
 除此之外，还有一些属性、其他的方法和事件
