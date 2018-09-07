@@ -76,6 +76,7 @@ export default {
                 this.video.style.display = 'block';
             } else {
                 this.video.style.display = 'none';
+                this.video.pause();
             }
         },
 
@@ -162,6 +163,7 @@ export default {
         margin-top: 10px;
         padding: 20px;
         border: 1px solid #00b894;
+        user-select:none;
     }
     .phone {
         margin: 0 auto;
@@ -172,7 +174,6 @@ export default {
         border-radius: 35px;
         background-image: url('http://p8rbt50i2.bkt.clouddn.com/iphone-bg1.png');
         box-sizing: border-box;
-        user-select: none;
     }
     .phone-body {
         position: relative;

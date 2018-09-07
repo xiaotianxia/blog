@@ -3,7 +3,7 @@
 [原文链接](https://denzel.netlify.com/js/useful_webapis_mediarecorder.html?_=4535626519096512)
 
 浏览器有个强大而且简单的API —— MediaRecorder，顾名思义，可以用来录制音频和视频。
-闲话不说，上俩demo先睹为快 ——
+闲话不说，先上demo ——
 
 ## demo1: 录制语音
 
