@@ -1,5 +1,5 @@
 <template>
-	<div class="iframe-wrapper" :style="{height: height}">
+	<div class="iframe-wrapper" :style="{height: height || '500px'}">
 		<iframe :src="fullSrc" frameborder="0"></iframe>
 	</div>
 </template>
