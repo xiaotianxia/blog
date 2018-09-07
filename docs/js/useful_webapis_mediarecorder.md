@@ -11,7 +11,7 @@
 
 <show-in-codepen href="https://codepen.io/_tianxia/pen/JayxoG"></show-in-codepen>
 
-## demo1: 录制视频
+## demo2: 录制视频
 
 <Recorder-Demo2/>
 
