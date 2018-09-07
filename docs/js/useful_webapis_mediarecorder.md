@@ -204,9 +204,6 @@ onCapture (index) {
 音视频的录制可能简单，但是应用在聊天中还涉及到很多问题，如数据的传输、加密啥的，想做成像微信这样的工具，还是有很多路要走。
 
 
-
-
-
 ## 参考资料
 - [MediaStream Recording API](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API)
 - [MediaRecorder](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder)
