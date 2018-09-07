@@ -1,4 +1,4 @@
-# 几个有用的Web API —— MediaRecorder API
+# 用浏览器轻松录制音频、视频—— MediaRecorder API
 
 [原文链接](https://denzel.netlify.com/js/useful_webapis_mediarecorder.html?_=4535626519096512)
 
