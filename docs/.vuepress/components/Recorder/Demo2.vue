@@ -8,7 +8,7 @@
                     <span>···</span>
                 </div>
                 <div class="phone-content">
-                    <transition-group tag="ul" class="msg-list" name="fade">
+                    <transition-group tag="ul" class="js-msg-list msg-list" name="fade">
                         <li class="msg eg" :key="-1">
                             <div class="avatar"></div>
                             <div class="video">拍段视频吧</div>
@@ -118,7 +118,9 @@ export default {
                 videoStream = URL.createObjectURL(blob);
             this.chunkList.push({stream: videoStream});
 
-            this.onCapture(this.index);        
+            this.onCapture(this.index); 
+
+            this.msgList.scrollBy && this.msgList.scrollBy({ top: 500, left: 0, behavior: 'smooth' });       
 
             this.chunks = [];
         },
@@ -153,6 +155,7 @@ export default {
         this.video = this.$refs.video;
         this.canvas = this.$refs.canvas;
         this.ctx = this.canvas.getContext('2d');
+        this.msgList = document.querySelector('.js-msg-list');
         this.requestMediaAccess();
     }
 }

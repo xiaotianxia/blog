@@ -8,7 +8,7 @@
                     <span>···</span>
                 </div>
                 <div class="phone-content">
-                    <transition-group tag="ul" class="msg-list" name="fade">
+                    <transition-group tag="ul" class="js-msg-list msg-list" name="fade">
                         <li class="msg eg" :key="-1">
                             <div class="avatar"></div>
                             <div class="audio">说话</div>
@@ -114,6 +114,9 @@ export default {
                 duration = 60;
             }
             this.chunkList.push({duration: duration, stream: audioStream});
+
+            this.msgList.scrollBy && this.msgList.scrollBy({ top: 200, left: 0, behavior: 'smooth' });
+
             this.chunks = [];
         }
     },
@@ -128,6 +131,7 @@ export default {
             return;
         }
         this.audio = this.$refs.audio;
+        this.msgList = document.querySelector('.js-msg-list');
         this.requestMediaAccess();
     }
 }
