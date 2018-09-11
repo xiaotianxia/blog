@@ -17,8 +17,9 @@
       </div>
     </div> -->
     <Content custom/>
-    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzI1Ni8xMzc5MA=="></div>
-    <RemoteScript :src="'https://cdn-city.livere.com/js/embed.dist.js'"/>
+    <!-- 评论 -->
+    <!-- <div id="lv-container" data-id="city" data-uid="MTAyMC8zNzI1Ni8xMzc5MA=="></div> -->
+    <!-- <RemoteScript :src="'https://cdn-city.livere.com/js/embed.dist.js'"/> -->
     <div class="footer" v-if="data.footer">
       {{ data.footer }}
     </div>

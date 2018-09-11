@@ -2,7 +2,7 @@
 	<div class="notification-wrapper">
 		<el-form v-model="queryParams" label-width="90px" label-position="left">
             <el-form-item label="title:">
-                <el-input v-model="queryParams.title" placeholder="题目..."></el-input>
+                <el-input v-model="queryParams.title" placeholder="题目..." clearable size="small"></el-input>
             </el-form-item>
 
             <el-form-item label="body:">
@@ -11,7 +11,7 @@
             </el-form-item>
 
             <el-form-item label="icon:">
-                <el-input v-model="queryParams.icon" placeholder="图标"></el-input>
+                <el-input v-model="queryParams.icon" placeholder="图标" clearable size="small"></el-input>
             </el-form-item>
 
             <el-form-item label="icon预览:">
@@ -19,7 +19,7 @@
             </el-form-item>
 
             <el-form-item label="image:">
-                <el-input v-model="queryParams.image" placeholder="图标"></el-input>
+                <el-input v-model="queryParams.image" placeholder="图片" clearable size="small"></el-input>
             </el-form-item>
 
             <el-form-item label="image预览:">
@@ -27,7 +27,7 @@
             </el-form-item>
 
             <el-form-item label="sound:">
-                <el-input v-model="queryParams.sound" placeholder="图标"></el-input>
+                <el-input v-model="queryParams.sound" placeholder="音频" clearable size="small"></el-input>
             </el-form-item>
 
             <el-form-item label="sound预览:">
