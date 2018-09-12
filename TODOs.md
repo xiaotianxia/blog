@@ -27,20 +27,20 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 #### vue-cli3
 https://mp.weixin.qq.com/s/HMtAnZl2IYTxcqIamA4yoQ
 
-	
+
 ## web组件
+shadowDom
 
 ## webGL
 https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 
 
 ## 其他：
-	flutter https://flutter.io/widgets-intro/
+	flutter 
+https://flutter.io/widgets-intro/
+
 	webpack
 		dll
 
 	worker
-
-
-http://tobiasahlin.com/blog/curved-path-animations-in-css/
 
