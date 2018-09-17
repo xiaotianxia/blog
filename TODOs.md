@@ -38,8 +38,11 @@ https://www.zhangxinxu.com/wordpress/2018/03/htmlunknownelement-html5-custom-ele
 https://www.html5rocks.com/zh/tutorials/webcomponents/imports/
 https://www.webcomponents.org/community/articles/introduction-to-html-imports
 https://w3c.github.io/webcomponents/spec/custom/#html-content-model
+https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements
 
 
+### template
+https://www.html5rocks.com/zh/tutorials/webcomponents/template/
 
 ## webGL
 https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
