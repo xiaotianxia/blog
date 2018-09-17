@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <Content :custom="false"/>
+    <Wxqr v-if="showBeg"/>
     <Beg v-if="showBeg"/>
     <!-- <div id="lv-container" class="content" data-id="city" data-uid="MTAyMC8zNzI1Ni8xMzc5MA=="></div> -->
     <div class="content edit-link" v-if="editLink">
@@ -27,11 +28,16 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
+import Wxqr from './Wxqr.vue'
 import Beg from './Beg.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
-  components: { OutboundLink, Beg },
+  components: {
+    OutboundLink, 
+    Beg,
+    Wxqr
+  },
   props: ['sidebarItems'],
   computed: {
     showBeg () {
