@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        audio {
+            height: 30px;
+            overflow: hidden;
+        }
+        audio::-webkit-media-controls,
+        audio::-webkit-media-controls-enclosure {
+            height: 30px;
+            min-height: 30px;
+        }
+        audio::-webkit-media-controls-enclosure {
+            background-color: rgba(44, 62, 80, .8);
+        }
+        audio::-webkit-media-controls-enclosure {
+            border-radius: 0;
+        }
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #fff;
+        }
+        audio::-webkit-media-controls-timeline {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        audio::-internal-media-controls-overflow-button {
+            display: none!important;
+        }
+    </style>
+</head>
+<body>
+    <audio src="http://www.w3school.com.cn/i/horse.ogg" controls></audio>
+
+    <video src="http://www.w3school.com.cn/i/movie.ogg" controls="controls"></video>
+</body>
+</html>
