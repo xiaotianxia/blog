@@ -5,14 +5,16 @@
     <title>rate</title>
 </head>
 <body>
-    <d-rate texts="['极差', '一般', '较好', '好', '极好']" show-text="true" onchange="onChange"></d-rate>
+    <!-- <d-rate texts="['极差', '一般', '较好', '好', '极好']" show-text="true" onchange="onChange"></d-rate> -->
+    
+    <d-rate texts="['极差', '一般', '较好', '好', '极好']" value="2" show-text="true" onchange="onChange"></d-rate>
     
     <p>返回参数：<span class="js-callback"></span></p>
     
     <span>只读：</span>
-    <d-rate disabled="true" value="3" show-text="false"></d-rate>
+    <!-- <d-rate disabled="true" value="3" show-text="false"></d-rate> -->
     
-    <d-rate disabled="true" value="2" show-text="true" textStr="一般" color="#e74c3c"></d-rate>
+    <!-- <d-rate disabled="true" value="2" show-text="true" textStr="一般" color="#e74c3c"></d-rate> -->
     
 <script src="./index.js"></script>
 <script>

@@ -10,9 +10,10 @@
             wrapper.innerHTML = `
                 <style>
                     .d-rate {
-                        cursor: pointer;
+                        display: inline-block;
                         margin: 10px;
                         font-size: 32px;
+                        cursor: pointer;
                         user-select: none;
                     }
                     .d-rate-icon {
@@ -76,7 +77,7 @@
         }
 
         get textStr () {
-            return this.getAttribute('textStr');
+            return this.getAttribute('textStr') || '';
         }
 
         get value () {
@@ -122,13 +123,17 @@
                         `).join('')
                     }
                     ${
-                        this.showText ? `<span class="d-rate-text js-text"></span>` : ''
+                        this.showText ? `<span class="d-rate-text js-text">${this.textStr}</span>` : ''
                     }
-                `
+                `;
             }
         }
 
-        connectedCallback () {
+        connectedCallback () { 
+            if(this.value !== null) {
+                this.before = this.value;
+                this._renderStars(this.value);
+            }
             this._bindEvent();
         }
 
@@ -189,7 +194,7 @@
 
         _renderText (index) {
             if(this.text) {
-                this.text.textContent = this.texts[index] || ''
+                this.text.textContent = this.texts[index] || '';
             }
         }
     }
