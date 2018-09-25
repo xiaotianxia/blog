@@ -10,34 +10,81 @@
             wrapper.innerHTML = `
                 <style>
                     .d-rate {
+                        cursor: pointer;
                         margin: 10px;
+                        font-size: 32px;
+                        user-select: none;
                     }
                     .d-rate-icon {
-
+                        display: inline-block;
+                        font-style: normal;
+                        color: #ccc;
+                        transition: all ease .1s;
                     }
-                    .d-rate-icon i {
-                        cursor: pointer;
+                    .d-rate-icon.active,
+                    .d-rate-icon:hover {
+                        color: ${this.color};
+                    }
+                    .d-rate-icon:hover,
+                    .d-rate-icon:active {
+                        transform: scale(1.2);
+                    }
+                    .d-rate-icon.disabled {
+                        pointer-events: none;
+                    }
+                    .d-rate-text {
+                        font-size: .75em;
                     }
                 </style>
-                <div class="d-rate">
-                    ${
-                        this.rateDate.map(item => `
-                            <span class="d-rate-icon js-rate-icon"><i>❤️</i></span>
-                        `).join('')
-                    }
+                <div class="d-rate js-rate">
+                    ${this.getTemplate}
                 </div>
             `;
 
             const shadow = this.attachShadow({mode: 'open'});
             shadow.appendChild(wrapper);
+
+            this.wrapper = this.shadowRoot.querySelector('.js-rate');
+            this.text = this.shadowRoot.querySelector('.js-text');
+            this.stars = [...this.wrapper.querySelectorAll('.js-rate-icon')];
+            this.index = -1;
+            this.before = -1;
         }
 
         get max () {
             return this.getAttribute('max') || 5;
         }
 
+        get disabled () {
+            return !!this.getAttribute('disabled');
+        }
+
         get texts () {
-            return this.getAttribute('texts') || [];
+            let texts = this.getAttribute('texts') || '';
+            if(!texts) {
+                return [];
+            }
+            if(!(texts.startsWith('[') && texts.endsWith(']'))) {
+                console.error('texts必须是数组');
+                return [];
+            }
+            return eval(texts.replace(/，/ig,','));
+        }
+
+        get showText () {
+            return this.getAttribute('show-text') == 'false' ? false: true;
+        }
+
+        get textStr () {
+            return this.getAttribute('textStr');
+        }
+
+        get value () {
+            return this.getAttribute('value');
+        }
+
+        get color () {
+            return this.getAttribute('color') || '#f7ba2a';
         }
 
         get rateDate () {
@@ -51,19 +98,99 @@
             return result;
         }
 
+        get onchange () {
+            return this.getAttribute('onchange');
+        }
+
+        get getTemplate () {
+            if(this.disabled) {
+                return `
+                    ${
+                        this.rateDate.map((item, index) => `
+                            <span class="d-rate-icon disabled ${index <= this.value ? 'active': ''}">★</span>
+                        `).join('')
+                    }
+                    ${
+                        this.showText ? `<span class="d-rate-text">${this.textStr}</span>` : ''
+                    }
+                `;
+            } else {
+                return `
+                    ${
+                        this.rateDate.map(item => `
+                            <span class="d-rate-icon js-rate-icon">★</span>
+                        `).join('')
+                    }
+                    ${
+                        this.showText ? `<span class="d-rate-text js-text"></span>` : ''
+                    }
+                `
+            }
+        }
+
         connectedCallback () {
-            this.bindEvents();
+            this._bindEvent();
         }
 
-        bindEvents () {
-            let icons = [...this.shadowRoot.querySelectorAll('.js-rate-icon')];
-            icons.forEach((item, index) => {
-                item.addEventListener('click', this.onClickIcon(index), false);
-            });
+        _bindEvent () {
+            this.wrapper.addEventListener('mouseover', e => {
+                this._onMouseOverWrapper(e);
+            }, false);
+
+            this.wrapper.addEventListener('click', () => {
+                this._onClickWrapper();
+            }, false);
+
+            this.wrapper.addEventListener('mouseout', () => {
+                this._onMouseOutWrapper();
+            }, false);
         }
 
-        onClickIcon (index) {
-            console.log(index);
+        _onClickWrapper () {
+            this.before = this.index;
+            this._renderStars(this.before);
+
+            //回调参数
+            if(!!this.onchange) {
+                let callbackVal = {
+                    index: this.index,
+                    text: this.texts[this.index] || ''
+                };
+                eval(this.onchange + '(callbackVal)');
+            }
+        }
+
+        _onMouseOverWrapper (e) {
+            let target = e.target;
+            if(target.tagName.toUpperCase() !== 'SPAN') { return; }
+
+            this.index = this.stars.indexOf(target);
+
+            this._renderStars(this.index);
+        }
+
+        _onMouseOutWrapper () {
+            this.index = this.before;
+            this._renderStars(this.index);
+        }
+
+        _renderStars (index) {
+            let len = this.stars.length;
+            for(var i = 0; i <= index; i ++) {
+                this.stars[i].classList.add('active');
+            }
+
+            for(var j = index + 1; j <= len - 1; j ++) {
+                this.stars[j].classList.remove('active');
+            }
+
+            this._renderText(index);
+        }
+
+        _renderText (index) {
+            if(this.text) {
+                this.text.textContent = this.texts[index] || ''
+            }
         }
     }
 
