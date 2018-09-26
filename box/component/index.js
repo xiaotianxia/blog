@@ -26,9 +26,11 @@
                     .d-rate-icon:hover {
                         color: ${this.color};
                     }
-                    .d-rate-icon:hover,
-                    .d-rate-icon:active {
+                    .d-rate-icon:hover{
                         transform: scale(1.2);
+                    }
+                    .d-rate-icon:active {
+                        transform: scale(1.3);
                     }
                     .d-rate-icon.disabled {
                         pointer-events: none;
@@ -108,7 +110,7 @@
                 return `
                     ${
                         this.rateDate.map((item, index) => `
-                            <span class="d-rate-icon disabled ${index <= this.value ? 'active': ''}">★</span>
+                            <span class="d-rate-icon js-rate-icon disabled ${index <= this.value ? 'active': ''}">★</span>
                         `).join('')
                     }
                     ${
@@ -134,7 +136,7 @@
                 this.before = this.value;
                 this._renderStars(this.value);
             }
-            this._bindEvent();
+            !this.disabled && this._bindEvent();
         }
 
         _bindEvent () {
@@ -167,7 +169,7 @@
 
         _onMouseOverWrapper (e) {
             let target = e.target;
-            if(target.tagName.toUpperCase() !== 'SPAN') { return; }
+            if([...target.classList].indexOf('js-rate-icon') == -1) { return; }
 
             this.index = this.stars.indexOf(target);
 
