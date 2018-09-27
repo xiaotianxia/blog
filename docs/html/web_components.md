@@ -1,4 +1,4 @@
-# Web Components初探 
+# 浅尝 Web Components 
 
 [原文地址](https://denzel.netlify.com/html/web_components.html)
 
@@ -139,6 +139,105 @@ audio::-webkit-media-controls {
 
 
 ## Custom Elements
+- [**自主自定义元素**](#自主自定义元素-autonomous-custom-elements)
+- [**自定义内置元素**](#自定义内置元素-customized-built-in-elements)
+
+### 自主自定义元素(Autonomous custom elements)
+```html
+<flag-icon country="nl"></flag-icon>
+```
+
+```js
+class FlagIcon extends HTMLElement {
+  	constructor() {
+    	super();
+    	this._countryCode = null;
+  	}
+
+  	static get observedAttributes() { return ["country"]; }
+
+  	attributeChangedCallback(name, oldValue, newValue) {
+	    // name will always be "country" due to observedAttributes
+	    this._countryCode = newValue;
+	    this._updateRendering();
+  	}
+
+  	connectedCallback() {
+    	this._updateRendering();
+  	}
+
+  	get country() {
+    	return this._countryCode;
+  	}
+
+  	set country(v) {
+    	this.setAttribute("country", v);
+  	}
+
+  	_updateRendering() {
+	    //...
+  	}
+}
+
+customElements.define("flag-icon", FlagIcon);
+```
+通过js定义元素
+```js
+const flagIcon = document.createElement("flag-icon");
+flagIcon.country = "jp";
+document.body.appendChild(flagIcon);
+```
+
+### 自定义内置元素(Customized built-in elements)
+
+自定义一个按钮，集成普通按钮所有的特性，但是当点击的时候会有一个动效
+```js
+class PlasticButton extends HTMLButtonElement {
+  	constructor() {
+    	super();
+
+    	this.addEventListener("click", () => {
+      		// 动效逻辑
+    	});
+  	}
+}
+```
+不同的是
+```js
+customElements.define("plastic-button", PlasticButton, { extends: "button" });
+```
+
+```html
+<button is="plastic-button">点我!</button>
+```
+
+这时候，通过js定义元素
+```js
+const plasticButton = document.createElement("button", { is: "plastic-button" });
+plasticButton.textContent = "点我!";
+document.body.appendChild(flagIcon);
+```
+
+```js
+const plasticButton = new PlasticButton();
+console.log(plasticButton.localName);           // 输出 'button'
+console.log(plasticButton.getAttribute("is"));  // 输出 'plastic-button'
+```
+
+### 生命周期
+
+#### connectedCallback 
+元素首次被插入文档DOM时触发
+
+#### disconnectedCallback 
+元素从文档DOM中删除时触发
+
+#### adoptedCallback 
+元素被移动到新的文档时触发
+
+#### attributeChangedCallback 
+元素增加、删除、修改自身属性时触发
+
 
 ### 推荐资料
 - [Using custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)

@@ -59,7 +59,7 @@
         }
 
         get disabled () {
-            return !!this.getAttribute('disabled');
+            return this.hasAttribute('disabled');
         }
 
         get texts () {
