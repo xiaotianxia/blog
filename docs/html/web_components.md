@@ -144,7 +144,7 @@ audio::-webkit-media-controls {
 然而并不是所有样式都可以这样覆盖改造，像pseudo="-internal-media-controls-loading-panel"这样以"-internal-"开头的是不可以的。
 所以这个做法还是有很大局限性的。
 
-这是我试出来的，并没发现相关标准或依据...
+这是我试出来的，并没发现相关标准或依据...😓
 :::
 
 <show-in-codepen href="https://codepen.io/_tianxia/pen/gdEmbj"></show-in-codepen>
