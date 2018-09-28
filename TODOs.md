@@ -31,13 +31,9 @@ http://javascript.ruanyifeng.com/dom/mutationobserver.html
 https://mp.weixin.qq.com/s/HMtAnZl2IYTxcqIamA4yoQ
 
 
-## Web Components
-https://developer.mozilla.org/zh-CN/docs/Web/Web_Components
-
 ## webGL
 https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 
-## video 画中画
 
 ## Event
 
