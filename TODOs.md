@@ -36,6 +36,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 
 
 ## Event
+自定义事件（CustomEvent）
+https://www.jianshu.com/p/71bb3cf19095
+https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent
+https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events
 
 
 ## 其他：
