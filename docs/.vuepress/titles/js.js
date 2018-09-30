@@ -1,5 +1,6 @@
 module.exports = [
 	'',
+	'four_kinds_of_observers',
 	'editable_dom',
 	'useful_webapis_mediarecorder',
 	'useful_webapis_audiocontext',

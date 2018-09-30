@@ -17,7 +17,6 @@ https://github.com/DylanPiercey/scroll-behaviour
 
 #### flex 
 
-
 ### js
 
 #### babel
@@ -62,8 +61,6 @@ https://github.com/que-etc/resize-observer-polyfills
 https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver
 
 https://developers.google.com/web/updates/2016/06/performance-observer
-
-
 
 
 #### vue-cli3
