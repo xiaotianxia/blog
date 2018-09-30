@@ -4,61 +4,7 @@
 			<div class="sectionInfo"></div>
 			<div class="sectionContent js-content">
 				<ul class="list">
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item js-item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<li class="item">
-						<div class="cover js-cover">
-							<img src="https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
-						</div>
-					</li>
-					<!-- <li v-for="item in list" class="item">
+					<li v-for="item in list" class="item js-item">
 						<div class="cover js-cover">
 							<img :src="item.cover" alt="封面">
 							<i class="btn-start el-icon-caret-right"></i>
@@ -66,7 +12,7 @@
 						<div class="video js-video" style="display: none;">
 							<video :src="item.url"></video>
 						</div>
-					</li> -->
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -99,8 +45,10 @@ export default {
 			//停止其他视频
 		},
 
-		addObserver () {
-
+		addObserver ($targets) {
+			for(let i = 0, len = $targets.length; i < len; i ++) {
+				this.observer.observe($targets[i]);
+			}
 		}
 	},
 
@@ -111,7 +59,7 @@ export default {
 		}
 
 		let $referenceBox = document.querySelector('.js-content');
-		let $target = document.querySelector('.js-item');
+		let $targets = document.querySelectorAll('.js-item');
 
 		this.observer = new IntersectionObserver(this.callback, {
 			root: $referenceBox,
@@ -119,7 +67,7 @@ export default {
 			threshold: [1]
 		});
 
-		this.observer.observe($target);
+		this.addObserver($targets);
 	}
 }
 </script>
