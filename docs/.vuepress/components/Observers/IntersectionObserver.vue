@@ -1,7 +1,7 @@
 <template>
 	<div class="intersection-wrapper">
 		<div class="wrapper">
-			<div class="sectionInfo"></div>
+			<div class="sectionInfo js-info">{{info}}</div>
 			<div class="sectionContent js-content">
 				<ul class="list">
 					<li v-for="item in list" class="item js-item">
@@ -9,7 +9,7 @@
 							<img :src="item.cover" alt="封面">
 							<i class="btn-start el-icon-caret-right"></i>
 						</div>
-						<div class="video js-video" style="display: none;">
+						<div class="video js-video hide">
 							<video :src="item.url"></video>
 						</div>
 					</li>
@@ -24,25 +24,51 @@ export default {
 	data () {
 		return {
 			list: [
-				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'https://f.us.sinaimg.cn/003aDc9ulx07o20xPZRe010402003Jk20k010.mp4?label=mp4_ld&template=436x360.28&Expires=1538293601&ssig=tSf37J1HJQ&KID=unistore,video'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'https://f.us.sinaimg.cn/000ud0ktlx07o20A395K010402000IUs0k010.mp4?label=mp4_ld&template=360x360.28&Expires=1538293708&ssig=2mmJL%2BtKSm&KID=unistore,video'},
-				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'https://f.us.sinaimg.cn/003aDc9ulx07o20xPZRe010402003Jk20k010.mp4?label=mp4_ld&template=436x360.28&Expires=1538293601&ssig=tSf37J1HJQ&KID=unistore,video'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'https://f.us.sinaimg.cn/000ud0ktlx07o20A395K010402000IUs0k010.mp4?label=mp4_ld&template=360x360.28&Expires=1538293708&ssig=2mmJL%2BtKSm&KID=unistore,video'},
-			]
+				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+			],
+
+			info: ''
 		}
 	},
 
 	methods: {
-		callback (entries) {
-			let ratio = entries[0].intersectionRatio;
+		reserveCallback (entries) {
+			let ratio = entries[0].intersectionRatio,
+				$target = entries[0].target;
+			this.info = ratio;
 			if(1 - ratio <= 0.01) {
-				this.onPlay();
+				this.onPlay($target);
 			}
 		},
 
-		onPlay () {
-			console.log('play')
-			//停止其他视频
+		onPlay ($target) {
+			this.onEndAllVideos();
+			let $videoWrapper = $target.querySelector('.js-video'),
+				$coverWrapper = $target.querySelector('.js-cover');
+			$coverWrapper.classList.add('hide');
+			$videoWrapper.classList.remove('hide');
+			$videoWrapper.querySelector('video').play();
+		},
+
+		onEndAllVideos () {
+			let $videoWrappers = document.querySelectorAll('.js-video'),
+				$coverWrappers = document.querySelectorAll('.js-cover');
+
+			$coverWrappers.forEach(($item, index) => {
+				$item.classList.remove('hide');
+			});
+
+			$videoWrappers.forEach(($item, index) => {
+				$item.querySelector('video').pause();
+				$item.classList.add('hide');
+			});
+
 		},
 
 		addObserver ($targets) {
@@ -58,10 +84,10 @@ export default {
   			return;
 		}
 
-		let $referenceBox = document.querySelector('.js-content');
-		let $targets = document.querySelectorAll('.js-item');
-
-		this.observer = new IntersectionObserver(this.callback, {
+		let $referenceBox = document.querySelector('.js-content'),
+			$targets = document.querySelectorAll('.js-item');
+			
+		this.observer = new IntersectionObserver(this.reserveCallback, {
 			root: $referenceBox,
 			rootMargin: '0px',
 			threshold: [1]
@@ -92,12 +118,13 @@ export default {
 		box-sizing: border-box;
 	}
 	.wrapper .sectionInfo {
-		height: 100px;
+		height: 48px;
+		line-height: 48px;
 		background-color: #2c3e50;
 	}
 	.wrapper .sectionContent {
 		position: relative;
-		height: 736px;
+		height: 500px;
 		border: 1px solid #ccc;
 	}
 	.wrapper .list {
@@ -125,6 +152,10 @@ export default {
     	height: 100%;
     	overflow: hidden;
     }
+    .wrapper .item .cover.hide,
+    .wrapper .item .video.hide {
+		display: none;
+    }
     .wrapper .item .cover img,
     .wrapper .item .video video,
     .wrapper .item .cover .btn-start {
@@ -143,9 +174,6 @@ export default {
 		z-index: 2;
 		font-size: 4em;
 		color: #fff;
-    }
-    .wrapper .item .video {
-
     }
     .wrapper .item .video video {
 

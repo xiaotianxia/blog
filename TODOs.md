@@ -25,6 +25,7 @@ https://github.com/DylanPiercey/scroll-behaviour
 
 
 #### Intersection Observer
+拖拽？
 图片懒加载
 视频自动播放
 polyfill
