@@ -7,10 +7,10 @@
 					<li v-for="item in list" class="item js-item">
 						<div class="cover js-cover">
 							<img :src="item.cover" alt="封面">
-							<i class="btn-start el-icon-caret-right"></i>
+							<i class="btn-start el-icon-caret-right" @click="onClickCover"></i>
 						</div>
 						<div class="video js-video hide">
-							<video :src="item.url"></video>
+							<video :src="item.url" muted @click="onClickVideo"></video>
 						</div>
 					</li>
 				</ul>
@@ -27,9 +27,6 @@ export default {
 				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
 			],
 
@@ -57,18 +54,29 @@ export default {
 		},
 
 		onEndAllVideos () {
-			let $videoWrappers = document.querySelectorAll('.js-video'),
-				$coverWrappers = document.querySelectorAll('.js-cover');
-
-			$coverWrappers.forEach(($item, index) => {
-				$item.classList.remove('hide');
-			});
+			let $videoWrappers = document.querySelectorAll('.js-video');
 
 			$videoWrappers.forEach(($item, index) => {
 				$item.querySelector('video').pause();
-				$item.classList.add('hide');
 			});
+		},
 
+		onClickCover (e) {
+			let $cover = e.target,
+				$coverWrapper = $cover.parentNode,
+				$videoWrapper = $coverWrapper.nextSibling;
+			$coverWrapper.classList.add('hide');
+			$videoWrapper.classList.remove('hide');
+			$videoWrapper.querySelector('video').play();
+		},
+
+		onClickVideo (e) {
+			let $video = e.target;
+			if($video.paused) {
+				$video.play();
+			} else {
+				$video.pause();
+			}
 		},
 
 		addObserver ($targets) {
@@ -80,7 +88,7 @@ export default {
 
 	mounted () {
 		if(!('IntersectionObserver' in window)) {
-  			alert('您的浏览器不支持该API');
+  			alert('您的浏览器不支持 IntersectionObserver API');
   			return;
 		}
 
@@ -90,7 +98,7 @@ export default {
 		this.observer = new IntersectionObserver(this.reserveCallback, {
 			root: $referenceBox,
 			rootMargin: '0px',
-			threshold: [1]
+			threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 		});
 
 		this.addObserver($targets);
@@ -120,7 +128,9 @@ export default {
 	.wrapper .sectionInfo {
 		height: 48px;
 		line-height: 48px;
+		text-align: center;
 		background-color: #2c3e50;
+		color: #fff;
 	}
 	.wrapper .sectionContent {
 		position: relative;
@@ -134,10 +144,11 @@ export default {
 	.wrapper .list::-webkit-scrollbar {
         display: none;
     }
-    .wrapper .list .item {
-		height: 200px;
+    .wrapper .list .item:not(:last-child) {
+		height: 280px;
 		padding: 20px 0;
 		overflow: hidden;
+		border-bottom: 10px solid #576574;
     }
     .wrapper .list .item:first-child {
     	padding-top: 0;
@@ -174,8 +185,5 @@ export default {
 		z-index: 2;
 		font-size: 4em;
 		color: #fff;
-    }
-    .wrapper .item .video video {
-
     }
 </style>

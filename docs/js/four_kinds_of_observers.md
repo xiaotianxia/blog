@@ -8,15 +8,18 @@
 <Observers-IntersectionObserver/>
 
 ### 推荐阅读
-- [IntersectionObserver](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
+- [IntersectionObserver polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
 - [IntersectionObserver’s Coming into View](https://developers.google.com/web/updates/2016/04/intersectionobserver)
 - [Observing Intersection Observers](https://davidwalsh.name/intersection-observers)
 - [IntersectionObserver.IntersectionObserver()](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
+- [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
 
 ## Mutation Observer
 
+<Observers-MutationObserver/>
+
+
 ### 推荐阅读
-- [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
 - [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 - [Detect DOM changes with Mutation Observers](https://developers.google.com/web/updates/2012/02/Detect-DOM-changes-with-Mutation-Observers)
 - [Mutation Observer API](http://javascript.ruanyifeng.com/dom/mutationobserver.html)
