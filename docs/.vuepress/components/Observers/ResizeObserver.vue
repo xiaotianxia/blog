@@ -3,9 +3,12 @@
 		<p v-if="errorMsg != ''" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
 		<div v-else class="wrapper">
 			<div class="btns">
-				<button @click="onChangeSize">change</button>
+				<button @click="onChangeSize">随机宽高</button>
 			</div>	
-			<div class="box js-box"></div>
+			<span>width:{{log.width}}px <br> height:{{log.height}}px</span>
+			<div :style="{width: width, height: height}" class="box js-box">
+				<div class="child js-child"></div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -14,13 +17,30 @@
 export default {
 	data () {
 		return {
-			errorMsg: ''
+			errorMsg: '',
+			width: '80%',
+			height: '100px',
+			log: {
+				width: '',
+				height: ''
+			}
 		}
 	},
 
 	methods: {
 		onChangeSize () {
+			let width = parseInt(Math.random() * 80 + 1, 10) + '%',
+				height = parseInt(Math.random() * 151 + 50, 10) + 'px';
+			this.width = width;
+			this.height = height;
+		},
 
+		observerCallback (entries) {
+			entries.forEach((entry) => {
+				console.log(entry);
+				this.log = entry.contentRect;
+				this.$child.style.animationDuration = this.log.width / 100 + 's';
+			});
 		}
 	},
 
@@ -31,6 +51,10 @@ export default {
 		}
 
 		this.$box = document.querySelector('.js-box');
+		this.$child = this.$box.querySelector('.js-child');
+
+		let observer = new ResizeObserver(this.observerCallback);
+		observer.observe(this.$box);
 	}
 }
 </script>
@@ -47,7 +71,33 @@ export default {
 		margin: 20px;
 		padding: 20px;
 	}
-	.resize-wrapper .waraper {
-		
+	.resize-wrapper .wrapper button {
+		padding: 4px 20px;
+		cursor: pointer;
+	}
+	.resize-wrapper .wrapper .box {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 80%;
+		height: 100px;
+		margin: 10px auto;
+		padding: 20px;
+		border: 8px solid #38ada9;
+	}
+	.resize-wrapper .wrapper .box .child {
+		width: 50px;
+		height: 50px;
+		background-color: #3c6382;
+		animation-name: roll;
+		animation-iteration-count: infinite;
+	}
+	@keyframes roll {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 </style>

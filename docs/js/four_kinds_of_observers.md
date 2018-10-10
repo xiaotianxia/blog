@@ -48,6 +48,7 @@ window.resize
 
 ## Performance Observer
 
+<Observers-PerformanceObserver/>
 
 ### 推荐阅读
 - [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
