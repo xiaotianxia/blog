@@ -1,4 +1,4 @@
-# JS种的观察者们 —— 四种 Observers
+# JS中的观察者们 —— 四种 Observers
 
 ## 前言
 观察者(Observer)
@@ -28,6 +28,16 @@
 ## Resize Observer
 window.resize
 之前为了监听div的尺寸变化，都将侦听器附加到window中的resize事件
+
+触发：
+- 1.元素被插入或移除时触发
+- 2.元素display从显示变成 none 或相反过程时触发
+
+不触发
+- 1.对于不可替换内联元素不触发
+- 2.CSS transform 操作不触发
+
+<Observers-ResizeObserver/>
 
 ### 推荐阅读
 - [JavaScript中的ResizeObserver](https://www.w3cplus.com/javascript/ResizeObserver-api.html)

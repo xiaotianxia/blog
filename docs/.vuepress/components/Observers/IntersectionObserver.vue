@@ -1,6 +1,7 @@
 <template>
 	<div class="intersection-wrapper">
-		<div class="wrapper">
+		<p v-if="errorMsg != ''" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
+		<div v-else class="wrapper">
 			<div class="sectionInfo js-info">{{info}}</div>
 			<div class="sectionContent js-content">
 				<ul class="list">
@@ -29,6 +30,8 @@ export default {
 				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
 			],
+
+			errorMsg: '',
 
 			info: ''
 		}
@@ -88,7 +91,7 @@ export default {
 
 	mounted () {
 		if(!('IntersectionObserver' in window)) {
-  			alert('您的浏览器不支持 IntersectionObserver API');
+  			this.errorMsg = '您的浏览器不支持 IntersectionObserver API';
   			return;
 		}
 
