@@ -5,9 +5,9 @@
 			<div class="btns">
 				<button @click="onChangeSize">随机宽高</button>
 			</div>	
-			<span>width:{{log.width}}px <br> height:{{log.height}}px</span>
+			<p>width:{{log.width}}px <br> height:{{log.height}}px</p>
 			<div :style="{width: width, height: height}" class="box js-box">
-				<div class="child js-child"></div>
+				<div class="child js-child"><i class="el-icon-star-on"></i></div>
 			</div>
 		</div>
 	</div>
@@ -39,7 +39,7 @@ export default {
 			entries.forEach((entry) => {
 				console.log(entry);
 				this.log = entry.contentRect;
-				this.$child.style.animationDuration = this.log.width / 100 + 's';
+				this.$child.style.animationDuration = this.log.width / 10 + 's';
 			});
 		}
 	},
@@ -88,16 +88,20 @@ export default {
 	.resize-wrapper .wrapper .box .child {
 		width: 50px;
 		height: 50px;
-		background-color: #3c6382;
+		text-align: center;
+		line-height: 52px;
+		color: #e74c3c;
+		font-size: 50px;
 		animation-name: roll;
+		animation-timing-function: linear;
 		animation-iteration-count: infinite;
 	}
 	@keyframes roll {
 		from {
-			transform: rotate(0deg);
+			transform: rotate(0);
 		}
 		to {
-			transform: rotate(360deg);
+			transform: rotate(10turn);
 		}
 	}
 </style>

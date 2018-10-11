@@ -14,22 +14,24 @@
 							<a class="btn-del" href="javascript:;" @click="onDeleteItem(index);">&times;</a>
 						</li>
 					</ul>
-					<div class="operate">
-						<input type="text" @keyup="onAddItem" placeholder="输入文字回车添加">
-					</div>
+				</div>
+				<div class="operate">
+					<input type="text" @keyup="onAddItem" placeholder="输入文字回车添加">
 				</div>
 			</div>
 			<div class="logBox">
 				<button @click="onClearLogs">清空</button>
-				<ul class="list">
-					<li v-for="(item, index) in logs" class="item">
-						<div>变动类型：{{item.type}}</div>
-						<div v-if="item.target && item.addedNodes.length">增加节点：{{item.addedNodes[0].innerHTML}}</div>
-						<div v-if="item.target && item.removedNodes.length">删除节点：{{item.removedNodes[0].innerHTML}}</div>
-						<div v-if="item.target && item.target.data">变化内容 text：{{item.data}}</div>
-						<div v-if="item.attributeName">变化属性：{{item.attributeName}}</div>
-					</li>
-				</ul>
+				<div class="listWrapper">
+					<ul class="list">
+						<li v-for="(item, index) in logs" class="item">
+							<div>变动类型：{{item.type}}</div>
+							<div v-if="item.target && item.addedNodes.length">增加节点：{{item.addedNodes[0].innerHTML}}</div>
+							<div v-if="item.target && item.removedNodes.length">删除节点：{{item.removedNodes[0].innerHTML}}</div>
+							<div v-if="item.target && item.target.data">变化内容 text：{{item.data}}</div>
+							<div v-if="item.attributeName">变化属性：{{item.attributeName}}</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -133,15 +135,11 @@ export default {
 	}
 	.mutation-wrapper .editBox,
 	.mutation-wrapper .logBox {
+		position: relative;
 		width: 48%;
 		float: left;
 		border: 1px solid #b2bec3;
-		min-height: 200px;
-		max-height: 500px;
 		box-sizing: border-box;
-	}
-	.mutation-wrapper .editBox {
-	 	position: relative;
 	}
 	.mutation-wrapper .editBox .list .item {
 		padding-left: 10px;
@@ -151,6 +149,8 @@ export default {
 		border-bottom: 1px solid rgba(0, 0, 0, .2);
 	}
 	.mutation-wrapper .editBox .operate {
+		position: absolute;
+		bottom: 0;
 		width: 100%;
 		margin-top: 20px;
 		overflow: hidden;
@@ -161,6 +161,14 @@ export default {
 		height: 30px;
 		line-height: 30px;
 		outline: none;
+	}
+	.mutation-wrapper .editBox .listWrapper,
+	.mutation-wrapper .logBox .listWrapper {
+		height: 250px;
+		overflow: auto;
+	}
+	.mutation-wrapper .logBox .listWrapper {
+		height: 285px;
 	}
 	.mutation-wrapper .editBox .list .item .text {
 		display: inline-block;
@@ -177,6 +185,7 @@ export default {
 	}
 	.mutation-wrapper .editBox .btns {
 		padding: 5px 10px;
+		border-bottom: 1px solid rgba(0, 0, 0, .2);
 	}
 	.mutation-wrapper .editBox .btns button {
 		padding: 2px 20px;
@@ -189,7 +198,6 @@ export default {
 		background-color: #34495e;
 		color: #ecf0f1;
 		font-size: 12px;
-		overflow: auto;
 		max-height: 300px;
 	}
 	.mutation-wrapper .logBox .item {
@@ -199,6 +207,8 @@ export default {
 		border-bottom: 1px solid rgba(255, 255, 255, .2);
 	}
 	.mutation-wrapper .logBox button {
+		position: absolute;
+		bottom: 0;
 		width: 100%;
 		display: block;
 		height: 30px;
