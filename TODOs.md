@@ -19,11 +19,6 @@ https://github.com/DylanPiercey/scroll-behaviour
 
 ### js
 
-#### babel
-
-#### AST相关
-
-
 #### Intersection Observer
 图片懒加载
 视频自动播放
@@ -62,13 +57,17 @@ https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver
 
 https://developers.google.com/web/updates/2016/06/performance-observer
 
+## npm 发布
 
-#### vue-cli3
-https://mp.weixin.qq.com/s/HMtAnZl2IYTxcqIamA4yoQ
-
+## vue ssr
+## nuxt.js
+https://zh.nuxtjs.org/guide/installation
 
 ## webGL
 https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
+
+## 爬虫
+puppeteer
 
 ## 其他：
 	flutter 
