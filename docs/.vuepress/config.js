@@ -2,6 +2,7 @@ const htmlTitles = require('./titles/html');
 const cssTitles = require('./titles/css');
 const jsTitles = require('./titles/js');
 const elseTitles = require('./titles/else');
+const interviewTitles = require('./titles/interview');
 
 module.exports = {
     dest: 'vuepress',
@@ -36,7 +37,8 @@ module.exports = {
             { text: 'JS', link: '/js/' },
             { text: 'CSS', link: '/css/' },
             { text: 'HTML', link: '/html/' },
-            { text: '其他', link: '/else/'}
+            { text: '其他', link: '/else/'},
+            { text: 'interview', link: '/interview/'},
         ],
 
         // search: false,
@@ -77,6 +79,14 @@ module.exports = {
                     title: '其他',
                     collapsable: false,
                     children: elseTitles
+                }
+            ],
+
+            '/interview/': [
+                {
+                    title: 'interview',
+                    collapsable: true,
+                    children: interviewTitles
                 }
             ]
         }
