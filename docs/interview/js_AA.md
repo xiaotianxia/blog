@@ -1,4 +1,4 @@
-# AA
+# js AA
 
 ## 内存泄漏的场景 <i class="el-icon-question"></i>
 1. 全局变量引起
