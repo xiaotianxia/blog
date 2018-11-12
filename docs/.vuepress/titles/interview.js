@@ -8,4 +8,6 @@ module.exports = [
     'css_AA',
     'css_AAA',
     'css_AAAA',
+    'else_A',
+    'vue'
 ]
