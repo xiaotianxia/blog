@@ -9,5 +9,7 @@ module.exports = [
     'css_AAA',
     'css_AAAA',
     'else_A',
-    'vue'
+    'vue',
+    'algorithm',
+    'webpack'
 ]
