@@ -11,8 +11,54 @@ https://juejin.im/post/5b94d8965188255c5a0cdc02
 
 
 
-## 盒子模型
+## 盒子模型<i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+### 标准盒子模型
+box-sizing: content-box;
+![](http://p8rbt50i2.bkt.clouddn.com/WechatIMG5.jpeg)
+### IE盒子模型
+box-sizing: border-box;
+![](http://p8rbt50i2.bkt.clouddn.com/WechatIMG6.jpeg)
 
-## 水平居中
+```css
+div {
+    width: 200px;
+    padding: 10px;
+    border: 15px solid #eee;
+}
+```
+box-sizing: content-box; -> width = 200 + 10 * 2 + 15 * 2 = 250px
 
-## 垂直居中
+box-sizing: border-box; -> width = 200px
+
+另： 
+
+1.对于行级元素，margin-top和margin-bottom对于上下元素无效，margin-left和margin-right有效
+
+2.对于相邻的块级元素margin-bottom和margin-top 取值方式
+ 
+参考 [1](https://blog.csdn.net/lxcao/article/details/52620453)
+
+## margin折叠<i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+1. 都是整数：取最大的
+
+2. 都是负数：取最小的
+
+3. 一正一负：相加
+
+## 水平、垂直居中<i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+参考 [1](https://juejin.im/post/582c04032f301e00594327d4) [2](https://juejin.im/post/58f818bbb123db006233ab2a)
+
+
+
+
+
+
+
+
+
+
+
+

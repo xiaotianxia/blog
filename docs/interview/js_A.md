@@ -51,12 +51,16 @@ xhr.onreadystatechange = function() {
 ```
 
 ## js原型 <i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
 
-## 继承
+## 继承<i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
 
 ## js 类型判断 <i class="el-icon-question"></i>
 
-## 跨域
+## 跨域<i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
 
-## get post
+## get post<i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
 ![](http://p8rbt50i2.bkt.clouddn.com/WechatIMG8.jpeg)
