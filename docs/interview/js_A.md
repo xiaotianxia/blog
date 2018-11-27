@@ -50,11 +50,29 @@ xhr.onreadystatechange = function() {
 }
 ```
 
+## DOM事件流 <i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+传递方向：先自顶向下(capture阶段), 再自下而上(bubble阶段)，即先执行捕获类型的事件，再执行冒泡类型的事件，最后执行浏览器默认行为。
+
+参考[1](https://juejin.im/post/5bf6330f6fb9a049b41c1934)
+
 ## js原型 <i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
 
-## 继承<i class="el-icon-question"></i>
+参考: 
+[1](https://www.jianshu.com/p/dee9f8b14771)
+[2](https://www.jianshu.com/p/652991a67186)
+[3](https://www.jianshu.com/p/a4e1e7b6f4f8)
+
+
+
+
+
+
+
+## 继承 <i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
+
 
 ## js 类型判断 <i class="el-icon-question"></i>
 

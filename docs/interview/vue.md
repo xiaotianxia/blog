@@ -1,5 +1,7 @@
 # vue
 
+## 虚拟DOM
+
 ## 生命周期
 参考 [1](https://juejin.im/post/5afd7eb16fb9a07ac5605bb3)
 

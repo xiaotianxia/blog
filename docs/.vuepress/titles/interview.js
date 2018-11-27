@@ -11,5 +11,6 @@ module.exports = [
     'else_A',
     'vue',
     'algorithm',
-    'webpack'
+    'webpack',
+    'es6'
 ]
