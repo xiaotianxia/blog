@@ -59,6 +59,26 @@ xhr.onreadystatechange = function() {
 ## js原型 <i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
 
+```js
+function Person () {}
+var person = new Person();
+```
+
+- JS 在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的构造函数的原型对象，person.\__proto__ == Person.prototype。
+- 每个对象都有__proto__属性，但只有函数对象才有 prototype 属性
+- 所有对象的__proto__都指向其构造器的 prototype，如[].\__proto__== Array.prototype。
+- person 是 Person 的一个实例，构造函数的原型 Person.prototype，也是 Person 的一个实例。
+实例的构造器就是 Person，=> 
+
+person.constructor == Person，
+
+Person.prototype.constructor == Person，
+
+person.\__proto__ == Person.prototype。
+
+- 所有函数对象__proto__都指向 Function.prototype，它是一个空函数。
+- Function.prototype 是唯一一个typeof XXX.prototype为“function”的prototype，其他的都是“object”。
+
 参考: 
 [1](https://www.jianshu.com/p/dee9f8b14771)
 [2](https://www.jianshu.com/p/652991a67186)
