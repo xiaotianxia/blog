@@ -5,9 +5,10 @@
 ## 生命周期
 参考 [1](https://juejin.im/post/5afd7eb16fb9a07ac5605bb3)
 
+props 要比 data 先完成初始化
+
 ## 常见问题
 
-props 要比 data 先完成初始化
 
 参考 [1](https://juejin.im/post/5be01d0ce51d450700084925)
 
