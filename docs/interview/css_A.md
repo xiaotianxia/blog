@@ -11,7 +11,7 @@ https://juejin.im/post/5b94d8965188255c5a0cdc02
 
 
 
-## 盒子模型<i class="el-icon-question"></i>
+## 盒子模型 <i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
 ### 标准盒子模型
 box-sizing: content-box;
@@ -49,8 +49,10 @@ box-sizing: border-box; -> width = 200px
 
 ## 水平、垂直居中<i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
-参考 [1](https://juejin.im/post/582c04032f301e00594327d4) [2](https://juejin.im/post/58f818bbb123db006233ab2a)
-
+参考 
+[1](https://juejin.im/post/582c04032f301e00594327d4) 
+[2](https://juejin.im/post/58f818bbb123db006233ab2a)
+[3](https://www.qianduan.net/css-to-achieve-the-vertical-center-of-the-five-kinds-of-methods/)
 
 
 
