@@ -1,16 +1,5 @@
 # CSS A
 
-## 
-
-
-https://huruji.github.io/FE-Interview/#/?id=%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AF%95%E9%9D%A2%E8%AF%95%E7%AE%80%E7%AD%94%E9%A2%98%E6%B1%87%E6%80%BB
-
-https://juejin.im/post/5b94d8965188255c5a0cdc02
-
-事件原理，闭包，调用栈，Promise，ES6， 工程化，webpack, 性能优化，跨域，安全问题， React、Redux 思想，Virtual DOM，Diff 算法， 移动端布局，浏览器渲染原理，Event Loop 
-
-
-
 ## 盒子模型 <i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
 ### 标准盒子模型
@@ -39,7 +28,31 @@ box-sizing: border-box; -> width = 200px
  
 参考 [1](https://blog.csdn.net/lxcao/article/details/52620453)
 
-## margin折叠<i class="el-icon-question"></i>
+## 文档流 <i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+-  CSS的定位机制有3种：普通流、浮动和定位。
+-  文档流：从上到下，从左到右，一个挨一个的简单或者叫正常布局。
+-  浮动：（float）脱离文档流，不占空间。
+-  定位：（position） 
+
+**static**：保持文档流。 
+
+**relative**：相对本身的原始位置发生位移且保持文档流，占空间。当对象定位在浏览器窗口以外，浏览器因此**显示滚动条**。
+
+**absolute**：脱离文档流，不占空间且相对于其**包含块**[2][3]来定位。当对象定位在浏览器窗口以外，浏览器因此**显示滚动条**。
+
+**fixed**：脱离文档流，当对象定位在浏览器窗口以外，浏览器**不会因此显示滚动条**，而当滚动条滚动时，对象始终固定在原来位置。
+
+参考 
+[1](https://www.jianshu.com/p/be2ec907c36f) 
+[2](https://www.jianshu.com/p/ac7771ea1e9e)
+[3](https://www.jianshu.com/p/74c7d9c6f721)
+
+## 包含块 <i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+![1](https://upload-images.jianshu.io/upload_images/7897087-caaac90e45744798.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/720/format/webp)
+
+## margin折叠 <i class="el-icon-question"></i>
 <i class="el-icon-success"></i>
 1. 都是整数：取最大的
 
@@ -54,6 +67,40 @@ box-sizing: border-box; -> width = 200px
 [2](https://juejin.im/post/58f818bbb123db006233ab2a)
 [3](https://www.qianduan.net/css-to-achieve-the-vertical-center-of-the-five-kinds-of-methods/)
 
+## 清除浮动 <i class="el-icon-question"></i>
+<i class="el-icon-success"></i>
+- 1. 添加空元素 clear: both;
+```css
+.clear {
+    clear: both; 
+    height: 0; 
+    height: 0; 
+}
+```
+- 2. 容器 overflow: hidden/auto; 创建BFC（zoom: 1;兼容IE6\7，触发hasLayout）
+```css
+.box {
+    overflow: auto; 
+    zoom: 1;
+}
+```
+- 3. 容器也浮动，创建BFC(破坏了父级元素的文档流，不推荐)
+```css
+.box {
+    float: left;
+}
+```
+- 4. 容器使用块级伪元素
+```css
+.box:before {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+```
 
 
 
