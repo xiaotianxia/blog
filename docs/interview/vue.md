@@ -51,7 +51,12 @@ watch: {
 参考 
 [1](https://juejin.im/post/5be01d0ce51d450700084925)
 [2](https://www.haorooms.com/post/vue_7secret)
+[3](https://juejin.im/post/5b174de8f265da6e410e0b4e)
 
+
+
+异步加载
+https://blog.csdn.net/zhbhun/article/details/46826129
 
 
 
