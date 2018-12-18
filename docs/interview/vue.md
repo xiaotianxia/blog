@@ -22,11 +22,37 @@ b.vue中检测不到对象属性的添加和删除
 
 箭头函数的this指向外层，即函数所在的所用域，普通函数的this指向函数的调用者
 
+- 4. watch的immediate属性
+```js
+created() {
+    this.fetchPostList()
+},
+
+watch: {
+    searchInputValue(){
+        this.fetchPostList()
+    }
+}
+```
+可直接写成这样：
+```js
+watch: {
+    searchInputValue:{
+        handler: 'fetchPostList',
+        immediate: true
+    }
+}
+```
 
 
 
 
 
-参考 [1](https://juejin.im/post/5be01d0ce51d450700084925)
+参考 
+[1](https://juejin.im/post/5be01d0ce51d450700084925)
+[2](https://www.haorooms.com/post/vue_7secret)
+
+
+
 
 https://juejin.im/user/5b0f4be36fb9a009f74bf263/posts
