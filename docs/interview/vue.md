@@ -29,7 +29,7 @@ created() {
 },
 
 watch: {
-    searchInputValue(){
+    searchInputValue() {
         this.fetchPostList()
     }
 }
@@ -37,7 +37,7 @@ watch: {
 可直接写成这样：
 ```js
 watch: {
-    searchInputValue:{
+    searchInputValue: {
         handler: 'fetchPostList',
         immediate: true
     }
