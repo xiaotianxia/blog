@@ -44,6 +44,24 @@ watch: {
 }
 ```
 
+- 5. 可以在同一个挂载点动态切换多个组件：
+```js
+var vm = new Vue({
+  el: '#example',
+  data: {
+    currentView: 'home'
+  },
+  components: {
+    home: { /* ... */ },
+    posts: { /* ... */ },
+    archive: { /* ... */ }
+  }
+})
+<component v-bind:is="currentView">
+  <!-- 组件在 vm.currentview 变化时改变！ -->
+</component>
+```
+
 
 
 
@@ -52,6 +70,7 @@ watch: {
 [1](https://juejin.im/post/5be01d0ce51d450700084925)
 [2](https://www.haorooms.com/post/vue_7secret)
 [3](https://juejin.im/post/5b174de8f265da6e410e0b4e)
+[4](https://www.haorooms.com/post/vue_project_cg)
 
 
 
