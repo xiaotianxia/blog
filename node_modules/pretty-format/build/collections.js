@@ -1,6 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.printIteratorEntries = printIteratorEntries;
@@ -8,28 +8,35 @@ exports.printIteratorValues = printIteratorValues;
 exports.printListItems = printListItems;
 exports.printObjectProperties = printObjectProperties;
 
-
-const getSymbols = Object.getOwnPropertySymbols || (obj => []); /**
-                                                                 * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-                                                                 *
-                                                                 * This source code is licensed under the MIT license found in the
-                                                                 * LICENSE file in the root directory of this source tree.
-                                                                 *
-                                                                 * 
-                                                                 */
+const getSymbols = Object.getOwnPropertySymbols || (obj => []);
+/**
+ * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ *
+ */
 
 const isSymbol = key =>
-// $FlowFixMe string literal `symbol`. This value is not a valid `typeof` return value
-typeof key === 'symbol' || toString.call(key) === '[object Symbol]';
+  // $FlowFixMe string literal `symbol`. This value is not a valid `typeof` return value
+  typeof key === 'symbol' || toString.call(key) === '[object Symbol]';
 
 // Return entries (for example, of a map)
 // with spacing, indentation, and comma
 // without surrounding punctuation (for example, braces)
 function printIteratorEntries(
-// Flow 0.51.0: property `@@iterator` of $Iterator not found in Object
-// To allow simplistic getRecordIterator in immutable.js
-iterator, config, indentation, depth, refs, printer) {
-  let separator = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : ': ';
+  // Flow 0.51.0: property `@@iterator` of $Iterator not found in Object
+  // To allow simplistic getRecordIterator in immutable.js
+  iterator,
+  config,
+  indentation,
+  depth,
+  refs,
+  printer
+) {
+  let separator =
+    arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : ': ';
 
   let result = '';
   let current = iterator.next();
@@ -40,8 +47,20 @@ iterator, config, indentation, depth, refs, printer) {
     const indentationNext = indentation + config.indent;
 
     while (!current.done) {
-      const name = printer(current.value[0], config, indentationNext, depth, refs);
-      const value = printer(current.value[1], config, indentationNext, depth, refs);
+      const name = printer(
+        current.value[0],
+        config,
+        indentationNext,
+        depth,
+        refs
+      );
+      const value = printer(
+        current.value[1],
+        config,
+        indentationNext,
+        depth,
+        refs
+      );
 
       result += indentationNext + name + separator + value;
 
@@ -63,7 +82,14 @@ iterator, config, indentation, depth, refs, printer) {
 // Return values (for example, of a set)
 // with spacing, indentation, and comma
 // without surrounding punctuation (braces or brackets)
-function printIteratorValues(iterator, config, indentation, depth, refs, printer) {
+function printIteratorValues(
+  iterator,
+  config,
+  indentation,
+  depth,
+  refs,
+  printer
+) {
   let result = '';
   let current = iterator.next();
 
@@ -73,7 +99,9 @@ function printIteratorValues(iterator, config, indentation, depth, refs, printer
     const indentationNext = indentation + config.indent;
 
     while (!current.done) {
-      result += indentationNext + printer(current.value, config, indentationNext, depth, refs);
+      result +=
+        indentationNext +
+        printer(current.value, config, indentationNext, depth, refs);
 
       current = iterator.next();
 
@@ -102,7 +130,9 @@ function printListItems(list, config, indentation, depth, refs, printer) {
     const indentationNext = indentation + config.indent;
 
     for (let i = 0; i < list.length; i++) {
-      result += indentationNext + printer(list[i], config, indentationNext, depth, refs);
+      result +=
+        indentationNext +
+        printer(list[i], config, indentationNext, depth, refs);
 
       if (i < list.length - 1) {
         result += ',' + config.spacingInner;
