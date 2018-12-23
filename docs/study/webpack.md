@@ -95,6 +95,19 @@ module.exports = {
 [1](https://www.jianshu.com/p/ce345815cccc)
 [2](https://www.jianshu.com/p/d22f678af5b7)
  
+## 运行原理
+
+解析webpack配置参数，合并从shell传入和webpack.config.js文件里配置的参数，生产最后的配置结果。
+
+注册所有配置的插件，好让插件监听webpack构建生命周期的事件节点，以做出对应的反应。
+
+从配置的entry入口文件开始解析文件构建AST语法树，找出每个文件所依赖的文件，递归下去。
+
+在解析文件递归的过程中根据文件类型和loader配置找出合适的loader用来对文件进行转换。
+
+递归完后得到每个文件的最终结果，根据entry配置生成代码块chunk。
+
+输出所有chunk到文件系统。
 
 ## 编写loader ?
 
@@ -122,5 +135,3 @@ module.exports = function(source) {
 https://segmentfault.com/a/1190000016816813
 ## 编写plugin ?
 
-
-脚手架

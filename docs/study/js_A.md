@@ -106,7 +106,7 @@ person.\__proto__ == Person.prototype。
 - GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。
 - GET参数通过URL传递，POST放在Request body中。
 
-<span class="txt-red">实际上</span>————
+实际上————
 
 GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。
 

@@ -15,5 +15,6 @@ module.exports = [
     'webpack',
     'es6',
     'egs_A',
-    'interview_1'
+    'interview_1',
+    'mobile'
 ]
