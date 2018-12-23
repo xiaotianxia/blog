@@ -1,5 +1,6 @@
 module.exports = [
 	'',
+    'DOM',
     'js_A',
     'js_AA',
     'js_AAA',
@@ -13,5 +14,6 @@ module.exports = [
     'algorithm',
     'webpack',
     'es6',
-    'egs_A'
+    'egs_A',
+    'interview_1'
 ]
