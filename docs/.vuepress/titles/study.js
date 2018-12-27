@@ -16,5 +16,6 @@ module.exports = [
     'es6',
     'egs_A',
     'interview_1',
-    'mobile'
+    'mobile',
+    'http'
 ]
