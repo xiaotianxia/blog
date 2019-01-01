@@ -17,5 +17,6 @@ module.exports = [
     'egs_A',
     'interview_1',
     'mobile',
-    'http'
+    'http',
+    'diy'
 ]
