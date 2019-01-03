@@ -1,4 +1,4 @@
-# webpack相关
+# webpack
 
 ## 底层原理
 - 1.读取文件分析模块依赖
@@ -6,6 +6,7 @@
 - 3.针对不同的模块使用相应的loader
 - 4.编译模块，生成抽象语法树AST。
 - 5.循环遍历AST树，拼接输出js。
+![](https://img.alicdn.com/tps/TB1GVGFNXXXXXaTapXXXXXXXXXX-4436-4244.jpg)
 
 ## 基本配置 ?
 
