@@ -4,4 +4,7 @@
 
 ## DIY promise
 
-Promise.all 的promise并不是一个个的顺序执行的，而是同时开始、并行执行的。
+https://juejin.im/post/5c2b34a15188257abf1d96eb
+https://juejin.im/post/5a006ec351882554b836f1fd
+
+https://github.com/Jocs/jocs.github.io/issues/7

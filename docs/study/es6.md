@@ -210,8 +210,7 @@ obj.b.c()  //打出的是window对象！！
 
 ## 手写 promise
 [这里](diy.html#diy-promise)
-https://juejin.im/post/5c2b34a15188257abf1d96eb
-https://mp.weixin.qq.com/s/aj45Rfpv5X0CxCpYRCLcmQ
+
 
 ## promise 异常捕获
 在多个Promise调用链中如何在某个then中捕捉到错误，但是不停止then语句的执行？

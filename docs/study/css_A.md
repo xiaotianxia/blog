@@ -48,13 +48,7 @@ box-sizing: border-box; -> width = 200px
 [2](https://www.jianshu.com/p/ac7771ea1e9e)
 [3](https://www.jianshu.com/p/74c7d9c6f721)
 
-<<<<<<< HEAD:docs/interview/css_A.md
-## 包含块 <i class="el-icon-question"></i>
-<i class="el-icon-success"></i>
-=======
 ## 包含块 ?
->>>>>>> 741f1bec15fc239f96f143ea6b4246f2b196351f:docs/study/css_A.md
-
 ![1](https://upload-images.jianshu.io/upload_images/7897087-caaac90e45744798.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/720/format/webp)
 
 ## margin折叠 ?
