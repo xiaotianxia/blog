@@ -92,6 +92,7 @@ person.\__proto__ == Person.prototype。
 ## js 类型判断 ?
 
 ## 跨域 ?
+https://www.pandashen.com/2018/06/11/20180611010638/
 
 
 参考

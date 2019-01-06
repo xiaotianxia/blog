@@ -209,7 +209,7 @@ obj.b.c()  //打出的是window对象！！
 [1](https://blog.csdn.net/qbian/article/details/79360972)
 
 ## 手写 promise
-[这里](diy.html#diy-promise)
+[这里](diy.html#promise)
 
 
 ## promise 异常捕获
