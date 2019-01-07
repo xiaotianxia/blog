@@ -87,6 +87,8 @@ person.\__proto__ == Person.prototype。
 
 ## 继承 ?
 
+[es6继承](es6.html#class)
+
 
 
 ## js 类型判断 ?

@@ -8,6 +8,7 @@
 如没有微任务，则结束当前宏任务，继续执行下一宏任务。这个执行过程称为event-loop。
 
 ![](https://image-static.segmentfault.com/402/025/4020255170-59bc9e1671029)
+![](https://user-gold-cdn.xitu.io/2019/1/5/1681c75cd2176add?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 ### example
 ```js
