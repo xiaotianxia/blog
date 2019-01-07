@@ -13,13 +13,13 @@
 ```js
 //=================极简版====================
 module.export={
-    entrty:'',//入口
-    output:'',//打包出口
-    devServer:{},//开发服务器
-    module:{},//模块配置
-    plugins:[],//插件的配置
-    mode:''//更改模式（开发模式、线上模式）
-    resolve:{}//配置解析
+    entrty: '',//入口
+    output: '',//打包出口
+    devServer: {},//开发服务器
+    module: {},//模块配置
+    plugins: [],//插件的配置
+    mode: ''//更改模式（开发模式、线上模式）
+    resolve: {}//配置解析
 }
 ```
 
@@ -139,10 +139,48 @@ module.exports = function(source) {
 [2](https://www.jianshu.com/p/60a8bd26796c)
 
 
-插件：
-https://segmentfault.com/a/1190000016816813
 ## 编写plugin ?
+使用插件
+```js
+// webpack.config.js
+var HelloWorldPlugin = require('hello-world');
 
+module.exports = {
+    // ... config settings here ...
+    plugins: [new HelloWorldPlugin({ options: true })]
+};
+```
+webpack 插件由以下组成：
+- 一个 JavaScript 命名函数。
+- 在插件函数的 prototype 上定义一个 apply 方法。
+- 指定一个绑定到 webpack 自身的事件钩子。
+- 处理 webpack 内部实例的特定数据。
+- 功能完成后调用 webpack 提供的回调。
+
+```js
+// A JavaScript class.
+class MyExampleWebpackPlugin {
+    // 在插件函数的 prototype 上定义一个 `apply` 方法。
+    apply(compiler) {
+        // 指定一个挂载到 webpack 自身的事件钩子。
+        compiler.hooks.emit.tapAsync(
+            'MyExampleWebpackPlugin',
+            (compilation, callback) => {
+                console.log('This is an example plugin!');
+                console.log('Here’s the `compilation` object which represents a single build of assets:', compilation);
+
+                compilation.addModule(/* ... */);
+
+                callback();
+            }
+        );
+    }
+}
+```
+
+参考
+[1](中文)(https://www.webpackjs.com/contribute/writing-a-plugin/)
+[2](英文es6)(https://webpack.js.org/contribute/writing-a-plugin/)
 
 
 ## webpack4 新特性 ?
