@@ -216,3 +216,15 @@ obj.b.c()  //打出的是window对象！！
 在多个Promise调用链中如何在某个then中捕捉到错误，但是不停止then语句的执行？
 
 ## Proxy
+
+## async await
+
+
+
+
+
+
+
+
+
+
