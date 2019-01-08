@@ -11,6 +11,7 @@ function uniq(arr) {
 ```js
 var arr = [ 1,5,1,7,5,9];
 Math.max(...arr);  // 9 
+
 //or
 Math.max.apply(Math, arr);
 //or
