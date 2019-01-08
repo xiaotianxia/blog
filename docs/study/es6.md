@@ -268,6 +268,34 @@ window.addEventListener('unhandledrejection', function(e) {
 ```
 然而自己在浏览器上常识并不好使。。。。
 
+## Symbol
+实现私有变量
+```js
+// 定义symbol
+const _x = Symbol('x')
+
+class A {
+    constructor (x) {
+        // 利用symbol声明私有变量
+        this[_x] = x
+    }
+    showX () {
+        return this[_x]
+    }
+}
+
+let a = new A(1);
+
+// 自行定义一个相同的Symbol
+const x = Symbol('x')
+// 无法访问
+a[x]        // undefined
+// 可以访问
+a.showX()   //1
+```
+参考
+[1](https://juejin.im/post/5c25faf3f265da61380f4b17)
+
 ## Proxy
 
 ## async await
