@@ -27,26 +27,26 @@ GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和
 ## 缓存
 
 它们的优先级是：(由上到下寻找，找到即返回；找不到则继续)
-Service Worker
-Memory Cache
-Disk Cache
-网络请求
+- Service Worker
+- Memory Cache
+- Disk Cache
+- 网络请求
 
 
 当浏览器要请求资源时
 
-调用 Service Worker 的 fetch 事件响应
-查看 memory cache
-查看 disk cache。这里又细分：
+- 调用 Service Worker 的 fetch 事件响应
+- 查看 memory cache
+- 查看 disk cache。这里又细分：
 
 如果有强制缓存且未失效，则使用强制缓存，不请求服务器。这时的状态码全部是 200
+
 如果有强制缓存但已失效，使用对比缓存，比较后确定 304 还是 200
 
-
-发送网络请求，等待网络响应
-把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
-把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
-把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
+- 发送网络请求，等待网络响应
+- 把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
+- 把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
+- 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
 
 
 https://juejin.im/post/5c22ee806fb9a049fb43b2c5

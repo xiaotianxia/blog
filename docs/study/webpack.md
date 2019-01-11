@@ -197,3 +197,9 @@ class MyExampleWebpackPlugin {
 [1](http://louiszhai.github.io/2019/01/04/webpack4/)
 
 
+
+
+异步加载
+https://blog.csdn.net/zhbhun/article/details/46826129
+
+
