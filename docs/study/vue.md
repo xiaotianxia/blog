@@ -190,18 +190,9 @@ inject 选项应该是一个字符串数组或一个对象，该对象的 key �
 
 
 
-
 参考 
 [1](https://juejin.im/post/5be01d0ce51d450700084925)
 [2](https://www.haorooms.com/post/vue_7secret)
 [3](https://juejin.im/post/5b174de8f265da6e410e0b4e)
 [4](https://www.haorooms.com/post/vue_project_cg)
 [5](https://juejin.im/post/5c204c98e51d454637699e33)
-
-
-
-异步加载
-https://blog.csdn.net/zhbhun/article/details/46826129
-
-源码分析
-https://juejin.im/user/5b0f4be36fb9a009f74bf263/posts

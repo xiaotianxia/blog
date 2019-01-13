@@ -11,11 +11,12 @@ module.exports = [
     'css_AAAA',
     'else_A',
     'vue',
+    'vue_code',
     'algorithm',
     'webpack',
     'es6',
     'egs_A',
-    'interview_1',
+    'questions',
     'mobile',
     'http',
     'diy'
