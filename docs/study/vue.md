@@ -162,6 +162,32 @@ inject 选项应该是一个字符串数组或一个对象，该对象的 key �
 参考
 [1](https://segmentfault.com/a/1190000015884505)
 
+### sync修饰符
+父组件
+```html
+<child :isShow.sync="isShow" v-show="isShow"/>
+//下面写法的语法糖
+<child @update:isShow="e => isShow = e;" v-show="isShow"/>
+```
+子组件
+```html
+<input type="button" value="点我隐身" @click="upIsShow">
+<script>
+    export default {
+        methods:{
+            upIsShow(){
+                this.$emit("update:isShow",false);
+            }
+        }
+    }
+</script>
+```
+
+
+
+参考
+[1](https://www.jianshu.com/p/d42c508ea9de)
+
 
 
 

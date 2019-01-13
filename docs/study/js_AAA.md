@@ -16,6 +16,10 @@
 - 7、执行微任务，执行完毕
 - 8、依次循环。。。
 
+process.nextTick 的执行优先级高于 Promise 的?
+
+setTimeout 的执行优先级高于 setImmediate 的?
+
 ![](https://image-static.segmentfault.com/402/025/4020255170-59bc9e1671029)
 ![](https://user-gold-cdn.xitu.io/2019/1/5/1681c75cd2176add?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
