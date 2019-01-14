@@ -96,7 +96,8 @@ Function.prototype.bind2 = function (context) {
         self.apply(context, args.concat(bindArgs));
     }
 }
-
+```
+```js
 // 满足条件1 2 
 Function.prototype.bind2 = function (context) {
 

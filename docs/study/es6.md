@@ -364,8 +364,6 @@ async function doIt() {
 }
 doIt();
 ```
-
-
 参考
 [1](https://juejin.im/post/5c39523651882525a67c53d6)
 

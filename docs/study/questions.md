@@ -23,7 +23,7 @@ a == 1 && a == 2 && a == 3 // true
 function sleep(seconds) {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve('request done! ' + Math.random());
+            resolve('request done!' + Math.random());
         }, seconds);
     })
 }
