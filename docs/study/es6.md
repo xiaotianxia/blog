@@ -38,15 +38,14 @@
 
 ## let const
 - let 用来声明变量，并且会在当前作用域形成代码块 TDZ(Temporal Dead Zone)暂时性死区
-- const 用来声明常量，所谓常量就是**物理指针**不可以更改的变量。
-即任何改变内存地址的操作都不允许。除此之外特性跟 let 一样。对于引用类型的数据，在使用时要注意。
+- const 用来声明常量，所谓常量就是**物理指针**不可以更改的变量。即任何改变内存地址的操作都不允许。除此之外特性跟 let 一样。对于引用类型的数据，在使用时要注意。
 - const 声明的对象或数组可以改变，只要不改变其内存地址。不能做到冻结对象，要冻结对象还要使用Object.freeze();
 ```js
 var constantize = (obj) => {
   	Object.freeze(obj);
   	Object.keys(obj).forEach(key => {
     	if (typeof obj[key] === 'object') {
-      		constantize( obj[key] );
+      		constantize(obj[key]);
     	}
   	});
 };
@@ -269,7 +268,7 @@ window.addEventListener('unhandledrejection', function(e) {
 然而自己在浏览器上常识并不好使。。。。
 
 ## Symbol
-实现私有变量
+可用来实现私有变量
 ```js
 // 定义symbol
 const _x = Symbol('x')
@@ -296,10 +295,61 @@ a.showX()   //1
 参考
 [1](https://juejin.im/post/5c25faf3f265da61380f4b17)
 
-## Proxy
+## Proxy Reflect
+
+
+Reflect
+https://www.jianshu.com/p/4a5eca0536c3
+https://www.cnblogs.com/diligenceday/p/5474126.html
+
+参考
+[1](https://juejin.im/post/5b62e19cf265da0fa1224248)
 
 ## async await
+特点：
+- async 函数是 Generators和Promises特性功能的语法糖
+- 建立在 promise 之上。它会声明一个异步函数，并隐式地返回一个Promise。因此可以直接return变量，无需使用 Promise.resolve 进行转换。
+- 和 promise 一样，是非阻塞的。但不用写 then 及其回调函数，这减少代码行数，也避免了代码嵌套。而且，所有异步调用，可以写在同一个代码块中，无需定义多余的中间变量。
+- 它的最大价值在于，可以使异步代码在形式上更接近于同步代码。
+- 与 await 一起使用，await 只能在 async 函数体内。
+- await 是个运算符，用于组成表达式，它会阻塞后面的代码。如果等到的是 Promise 对象，则得到其 resolve 值。否则，会得到一个表达式的运算结果。
 
+举例：某业务，每一个步骤都需要之前每个步骤的结果。promise 写法：
+```js
+function doIt() {
+    console.time("doIt");
+    const time1 = 300;
+    step1(time1)
+        .then(time2 => {
+            return step2(time1, time2)
+                .then(time3 => [time1, time2, time3]);
+        })
+        .then(times => {
+            const [time1, time2, time3] = times;
+            return step3(time1, time2, time3);
+        })
+        .then(result => {
+            console.log(`result is ${result}`);
+        });
+}
+doIt();
+```
+async/await 写法：
+```js
+async function doIt() {
+    console.time("doIt");
+    const time1 = 300;
+    const time2 = await step1(time1);
+    const time3 = await step2(time1, time2);
+    const result = await step3(time1, time2, time3);
+    console.log(`result is ${result}`);
+}
+doIt();
+```
+
+
+参考
+[1](https://juejin.im/post/5c39523651882525a67c53d6)
 
 
 
