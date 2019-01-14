@@ -295,17 +295,35 @@ a.showX()   //1
 参考
 [1](https://juejin.im/post/5c25faf3f265da61380f4b17)
 
-## Proxy Reflect
+## Proxy/Reflect
+Proxy 拦截对象行为
+```js
+var obj = new Proxy({}, {
+    get: function (target, key, receiver) {
+        console.log(`getting ${key}!`);
+        return Reflect.get(target, key, receiver);
+    },
+    set: function (target, key, value, receiver) {
+        console.log(`setting ${key}!`);
+        return Reflect.set(target, key, value, receiver);
+    }
+});
+```
 
-
-Reflect
-https://www.jianshu.com/p/4a5eca0536c3
-https://www.cnblogs.com/diligenceday/p/5474126.html
+### Reflect
+- 为操作对象而提供的新API
+- 不是构造函数，只这么调用 Reflect['method']
+- Proxy 有的方法，Reflect都有
+- 举例：
+    - 'a' in obj --> Reflect.has(obj, 'a);
+    - delete obj.a --> Reflect.deleteProperty(obj, 'a');
+    - Object.defineProperty(target, property, attributes) 失败会报错 --> Reflect.defineProperty(target, property, attributes) 返回true/false
+    - 等等
 
 参考
 [1](https://juejin.im/post/5b62e19cf265da0fa1224248)
 
-## async await
+## async/await
 特点：
 - async 函数是 Generators和Promises特性功能的语法糖
 - 建立在 promise 之上。它会声明一个异步函数，并隐式地返回一个Promise。因此可以直接return变量，无需使用 Promise.resolve 进行转换。
