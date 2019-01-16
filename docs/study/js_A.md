@@ -86,8 +86,38 @@ person.\__proto__ == Person.prototype。
 
 
 ## 继承 ?
-
 [es6继承](es6.html#class)
+
+```js
+function Hello(name) {
+  this.name = name;
+}
+
+Hello.prototype.hello = function hello() {
+  return 'Hello ' + this.name + '!';
+};
+
+Hello.sayHelloAll = function () {
+  return 'Hello everyone!';
+};
+
+function HelloWorld() {
+  Hello.call(this, 'World');
+}
+
+HelloWorld.prototype = Object.create(Hello.prototype);
+HelloWorld.prototype.constructor = HelloWorld;
+HelloWorld.sayHelloAll = Hello.sayHelloAll;
+
+HelloWorld.prototype.echo = function echo() {
+  alert(Hello.prototype.hello.call(this));
+};
+
+var hw = new HelloWorld();
+hw.echo();
+
+alert(Hello.sayHelloAll());
+```
 
 
 

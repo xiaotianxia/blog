@@ -27,7 +27,7 @@ node环境中：
 [1](https://juejin.im/post/5bee24866fb9a049f361ad15)
 [2](https://juejin.im/post/5c36b3b0f265da611f07e409)
 
-### example
+### example 1
 ```js
 (function test() {
     setTimeout(function() {console.log(4)}, 0);
@@ -52,3 +52,50 @@ Promise.then是异步执行的(微任务)，而创建Promise实例（executor）
 
 参考：
 [1](https://juejin.im/post/5b73d7a6518825610072b42b)
+
+## example 2
+```js
+async function async1() {
+    console.log( 'async1 start' )
+    await async2()
+    console.log( 'async1 end' )
+}
+
+async function async2() {
+    console.log( 'async2' )
+}
+
+console.log( 'script start' )
+
+setTimeout( function () {
+    console.log( 'setTimeout' )
+}, 0 )
+
+async1();
+
+new Promise( function ( resolve ) {
+    console.log( 'promise1' )
+    resolve();
+} ).then( function () {
+    console.log( 'promise2' )
+} )
+
+console.log( 'script end' )
+```
+-->
+任务队列布局如下：
+![](https://user-gold-cdn.xitu.io/2019/1/16/168570e33c19cb92?w=1958&h=262&f=png&s=137573)
+
+```bash
+    script start
+    async1 start
+    async2
+    promise1
+    script end
+    promise2
+    async1 end
+    setTimeout
+```
+
+参考 
+[1](https://segmentfault.com/a/1190000017224799)

@@ -364,8 +364,13 @@ async function doIt() {
 }
 doIt();
 ```
+await 在等什么 
+- 如果它等到的不是一个 Promise 对象，那 await 表达式的运算结果就是它等到的东西。
+- 如果它等到的是一个 Promise 对象，它会阻塞后面的代码，等着 Promise 对象 resolve，然后得到 resolve 的值，作为 await 表达式的运算结果。
+
 参考
-[1](https://juejin.im/post/5c39523651882525a67c53d6)
+[1](https://segmentfault.com/a/1190000007535316)
+[2](https://juejin.im/post/5c39523651882525a67c53d6)
 
 
 
