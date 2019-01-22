@@ -21,6 +21,9 @@ BFC就是页面上的一个隔离的独立容器，容器里面的子元素不�
 - overflow的值不为visible的元素；
 - 弹性盒 flex boxes(元素的display: flex或inline-flex)
 
+参考
+[1](https://github.com/kaola-fed/blog/blob/master/source/_posts/%E5%AD%A6%E4%B9%A0BFC.md)
+
 ## 重绘与重排 ?
 
 **重绘(repaint、redraw)**: 一个元素外观的改变所触发的浏览器行为，例如改变visibility、outline、背景色等属性。浏览器会根据元素的新属性重新绘制，使元素呈现新的外观。重绘不会带来重新布局，并不一定伴随回流。
