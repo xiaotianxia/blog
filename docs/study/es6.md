@@ -268,7 +268,7 @@ window.addEventListener('unhandledrejection', function(e) {
 然而自己在浏览器上常识并不好使。。。。
 
 ## Symbol
-可用来实现私有变量
+### 可用来实现私有变量
 ```js
 // 定义symbol
 const _x = Symbol('x')
@@ -294,6 +294,20 @@ a.showX()   //1
 ```
 参考
 [1](https://juejin.im/post/5c25faf3f265da61380f4b17)
+
+### Symbol.iterator
+如果对象具有 Symbol.iterator 属性，则表示它是可迭代的。在 ES2015 中，字符串和集合对象（如Set, Map 和 Array）带有Symbol.iterator 属性，因此是可迭代的。
+
+如
+![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e5b38aef9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+普通对象不可迭代，但如果在其上定义了 Symbol.iterator 属性，则它可变为可迭代对象
+
+如
+![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e64eb4179?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+以上过程可以使用生成器（ generator ）函数进行大大简化：
+![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e706ed08f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
 ## Proxy/Reflect
 Proxy 拦截对象行为
@@ -371,6 +385,7 @@ await 在等什么
 参考
 [1](https://segmentfault.com/a/1190000007535316)
 [2](https://juejin.im/post/5c39523651882525a67c53d6)
+[3](https://juejin.im/post/5c45dffef265da61163a13e2)
 
 
 
