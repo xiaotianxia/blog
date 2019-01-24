@@ -19,5 +19,8 @@ module.exports = [
     'questions',
     'mobile',
     'http',
-    'diy'
+    'diy',
+    'api',
+    'conception',
+    'engineering'
 ]
