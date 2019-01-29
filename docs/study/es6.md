@@ -309,6 +309,7 @@ a.showX()   //1
 以上过程可以使用生成器（ generator ）函数进行大大简化：
 ![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e706ed08f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
+
 ## Proxy/Reflect
 Proxy 拦截对象行为
 ```js
