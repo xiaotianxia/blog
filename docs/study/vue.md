@@ -87,6 +87,38 @@ var vm = new Vue({
 </component>
 ```
 
+### 异步组件
+不需要首屏加载的组件都使用异步组件的方式来加载（如多tab），包括需要触发条件的动作也使用异步组件（如弹窗） 
+使用方式为：v-if来控制显示时机，引入组件的Promise即可。
+```html
+<template>
+    <div>
+        <HellowWorld v-if="showHello" />
+    </div>
+</template>
+<script>
+export default {
+    components: { HellowWorld: () => import('../components/HelloWorld.vue') },
+  
+    data() {
+        return {
+            showHello: false
+        }
+    },
+
+    methods: {
+        initAsync() {
+            addEventListener('scroll', (e) => {
+                if (scrollY > 100) {
+                    this.showHello = true
+                }
+            });
+        }
+    }
+}
+</script>
+```
+
 ### 深层组件通信 provide/inject
 ```html
 //父组件 parent.vu
