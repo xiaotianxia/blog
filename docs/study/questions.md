@@ -87,10 +87,10 @@ function add(){
     var args = [].slice.call(arguments);
        //方法一，新建_add函数实现柯里化
     var _add = function(){
-        if(arguments.length === 0){
+        if(arguments.length === 0) {
             //参数为空，对args执行加法
-            return args.reduce(function(a,b){return a+b});
-        }else {
+            return args.reduce(function(a,b) {return a+b;});
+        } else {
             //否则，保存参数到args，返回一个函数
             [].push.apply(args,arguments);
             return _add;

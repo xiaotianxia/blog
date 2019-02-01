@@ -15,7 +15,6 @@ module.exports = [
     'algorithm',
     'webpack',
     'es6',
-    'egs_A',
     'questions',
     'mobile',
     'http',
