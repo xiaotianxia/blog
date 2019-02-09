@@ -23,9 +23,10 @@ GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和
 对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；
 而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。
 
+参考
+[1](https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&amp;mid=100000054&amp;idx=1&amp;sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd)
 
 ## 缓存
-
 它们的优先级是：(由上到下寻找，找到即返回；找不到则继续)
 - Service Worker
 - Memory Cache
