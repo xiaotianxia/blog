@@ -1,6 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.serialize = exports.test = undefined;
@@ -13,10 +13,12 @@ var _ansiStyles = require('ansi-styles');
 
 var _ansiStyles2 = _interopRequireDefault(_ansiStyles);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {default: obj};
+}
 
-const toHumanReadableAnsi = text => {
-  return text.replace((0, _ansiRegex2.default)(), (match, offset, string) => {
+const toHumanReadableAnsi = text =>
+  text.replace((0, _ansiRegex2.default)(), (match, offset, string) => {
     switch (match) {
       case _ansiStyles2.default.red.close:
       case _ansiStyles2.default.green.close:
@@ -61,17 +63,25 @@ const toHumanReadableAnsi = text => {
         return '';
     }
   });
-}; /**
-    * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
-    *
-    * This source code is licensed under the MIT license found in the
-    * LICENSE file in the root directory of this source tree.
-    *
-    * 
-    */
+/**
+ * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ *
+ */
 
-const test = exports.test = val => typeof val === 'string' && val.match((0, _ansiRegex2.default)());
+const test = (exports.test = val =>
+  typeof val === 'string' && val.match((0, _ansiRegex2.default)()));
 
-const serialize = exports.serialize = (val, config, indentation, depth, refs, printer) => printer(toHumanReadableAnsi(val), config, indentation, depth, refs);
+const serialize = (exports.serialize = (
+  val,
+  config,
+  indentation,
+  depth,
+  refs,
+  printer
+) => printer(toHumanReadableAnsi(val), config, indentation, depth, refs));
 
-exports.default = { serialize, test };
+exports.default = {serialize: serialize, test: test};

@@ -1,6 +1,6 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
 exports.serialize = exports.test = undefined;
@@ -13,14 +13,17 @@ var _collections = require('../collections');
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 const SPACE = ' ';
 
 const COLLECTION_NAMES = ['DOMStringMap', 'NamedNodeMap'];
 
-const test = exports.test = val => val && val.constructor && COLLECTION_NAMES.indexOf(val.constructor.name) !== -1;
+const test = (exports.test = val =>
+  val &&
+  val.constructor &&
+  COLLECTION_NAMES.indexOf(val.constructor.name) !== -1);
 
 const convertCollectionToObject = collection => {
   let result = {};
@@ -36,12 +39,32 @@ const convertCollectionToObject = collection => {
   return result;
 };
 
-const serialize = exports.serialize = (collection, config, indentation, depth, refs, printer) => {
+const serialize = (exports.serialize = (
+  collection,
+  config,
+  indentation,
+  depth,
+  refs,
+  printer
+) => {
   if (++depth > config.maxDepth) {
     return '[' + collection.constructor.name + ']';
   }
 
-  return collection.constructor.name + SPACE + '{' + (0, _collections.printObjectProperties)(convertCollectionToObject(collection), config, indentation, depth, refs, printer) + '}';
-};
+  return (
+    collection.constructor.name +
+    SPACE +
+    '{' +
+    (0, _collections.printObjectProperties)(
+      convertCollectionToObject(collection),
+      config,
+      indentation,
+      depth,
+      refs,
+      printer
+    ) +
+    '}'
+  );
+});
 
-exports.default = { serialize, test };
+exports.default = {serialize: serialize, test: test};

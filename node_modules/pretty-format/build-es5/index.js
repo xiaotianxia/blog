@@ -22,10 +22,9 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 });
 
 var _core = createCommonjsModule(function (module) {
-var core = module.exports = { version: '2.5.3' };
+var core = module.exports = { version: '2.5.7' };
 if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 });
-
 var _core_1 = _core.version;
 
 var _aFunction = function (it) {
@@ -134,6 +133,11 @@ var _hide = _descriptors ? function (object, key, value) {
   return object;
 };
 
+var hasOwnProperty = {}.hasOwnProperty;
+var _has = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -151,7 +155,7 @@ var $export = function (type, name, source) {
   for (key in source) {
     // contains in native
     own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && key in exports) continue;
+    if (own && _has(exports, key)) continue;
     // export native or passed
     out = own ? target[key] : source[key];
     // prevent global pollution for namespaces
@@ -192,15 +196,10 @@ $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library`
 var _export = $export;
 
-var hasOwnProperty = {}.hasOwnProperty;
-var _has = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-var toString$2 = {}.toString;
+var toString$1 = {}.toString;
 
 var _cof = function (it) {
-  return toString$2.call(it).slice(8, -1);
+  return toString$1.call(it).slice(8, -1);
 };
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -268,11 +267,20 @@ var _arrayIncludes = function (IS_INCLUDES) {
   };
 };
 
+var _library = true;
+
+var _shared = createCommonjsModule(function (module) {
 var SHARED = '__core-js_shared__';
 var store = _global[SHARED] || (_global[SHARED] = {});
-var _shared = function (key) {
-  return store[key] || (store[key] = {});
-};
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: _core.version,
+  mode: _library ? 'pure' : 'global',
+  copyright: '© 2018 Denis Pushkarev (zloirock.ru)'
+});
+});
 
 var id = 0;
 var px = Math.random();
@@ -287,14 +295,14 @@ var _sharedKey = function (key) {
 };
 
 var arrayIndexOf = _arrayIncludes(false);
-var IE_PROTO$1 = _sharedKey('IE_PROTO');
+var IE_PROTO = _sharedKey('IE_PROTO');
 
 var _objectKeysInternal = function (object, names) {
   var O = _toIobject(object);
   var i = 0;
   var result = [];
   var key;
-  for (key in O) if (key != IE_PROTO$1) _has(O, key) && result.push(key);
+  for (key in O) if (key != IE_PROTO) _has(O, key) && result.push(key);
   // Don't enum bug & hidden keys
   while (names.length > i) if (_has(O, key = names[i++])) {
     ~arrayIndexOf(result, key) || result.push(key);
@@ -332,7 +340,7 @@ var _html = document$1 && document$1.documentElement;
 
 
 
-var IE_PROTO = _sharedKey('IE_PROTO');
+var IE_PROTO$1 = _sharedKey('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE$1 = 'prototype';
 
@@ -365,7 +373,7 @@ var _objectCreate = Object.create || function create(O, Properties) {
     result = new Empty();
     Empty[PROTOTYPE$1] = null;
     // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO] = O;
+    result[IE_PROTO$1] = O;
   } else result = createDict();
   return Properties === undefined ? result : _objectDps(result, Properties);
 };
@@ -374,15 +382,15 @@ var _objectCreate = Object.create || function create(O, Properties) {
 _export(_export.S, 'Object', { create: _objectCreate });
 
 var $Object = _core.Object;
-var create$1 = function create(P, D) {
+var create = function create(P, D) {
   return $Object.create(P, D);
 };
 
-var create = createCommonjsModule(function (module) {
-module.exports = { "default": create$1, __esModule: true };
+var create$1 = createCommonjsModule(function (module) {
+module.exports = { "default": create, __esModule: true };
 });
 
-var _Object$create = unwrapExports(create);
+var _Object$create = unwrapExports(create$1);
 
 // 7.1.13 ToObject(argument)
 
@@ -411,13 +419,13 @@ _objectSap('keys', function () {
   };
 });
 
-var keys$1 = _core.Object.keys;
+var keys = _core.Object.keys;
 
-var keys = createCommonjsModule(function (module) {
-module.exports = { "default": keys$1, __esModule: true };
+var keys$1 = createCommonjsModule(function (module) {
+module.exports = { "default": keys, __esModule: true };
 });
 
-var _Object$keys = unwrapExports(keys);
+var _Object$keys = unwrapExports(keys$1);
 
 // true  -> String#at
 // false -> String#codePointAt
@@ -434,8 +442,6 @@ var _stringAt = function (TO_STRING) {
       : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
-
-var _library = true;
 
 var _redefine = _hide;
 
@@ -509,7 +515,7 @@ var _iterDefine = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORC
   var VALUES_BUG = false;
   var proto = Base.prototype;
   var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
-  var $default = (!BUGGY && $native) || getMethod(DEFAULT);
+  var $default = $native || getMethod(DEFAULT);
   var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
   var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
   var methods, key, IteratorPrototype;
@@ -520,7 +526,7 @@ var _iterDefine = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORC
       // Set @@toStringTag to native iterators
       _setToStringTag(IteratorPrototype, TAG, true);
       // fix for some old engines
-      if (!_library && !_has(IteratorPrototype, ITERATOR)) _hide(IteratorPrototype, ITERATOR, returnThis);
+      if (!_library && typeof IteratorPrototype[ITERATOR] != 'function') _hide(IteratorPrototype, ITERATOR, returnThis);
     }
   }
   // fix Array#{values, @@iterator}.name in V8 / FF
@@ -616,13 +622,13 @@ var _wksExt = {
 	f: f$1
 };
 
-var iterator$2 = _wksExt.f('iterator');
+var iterator = _wksExt.f('iterator');
 
-var iterator = createCommonjsModule(function (module) {
-module.exports = { "default": iterator$2, __esModule: true };
+var iterator$1 = createCommonjsModule(function (module) {
+module.exports = { "default": iterator, __esModule: true };
 });
 
-unwrapExports(iterator);
+unwrapExports(iterator$1);
 
 var _meta = createCommonjsModule(function (module) {
 var META = _uid('meta');
@@ -679,7 +685,6 @@ var meta = module.exports = {
   onFreeze: onFreeze
 };
 });
-
 var _meta_1 = _meta.KEY;
 var _meta_2 = _meta.NEED;
 var _meta_3 = _meta.fastKey;
@@ -730,45 +735,45 @@ var _isArray = Array.isArray || function isArray(arg) {
 
 var hiddenKeys = _enumBugKeys.concat('length', 'prototype');
 
-var f$5 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+var f$4 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
   return _objectKeysInternal(O, hiddenKeys);
 };
 
 var _objectGopn = {
-	f: f$5
+	f: f$4
 };
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 
-var gOPN$1 = _objectGopn.f;
-var toString$3 = {}.toString;
+var gOPN = _objectGopn.f;
+var toString$2 = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
   ? Object.getOwnPropertyNames(window) : [];
 
 var getWindowNames = function (it) {
   try {
-    return gOPN$1(it);
+    return gOPN(it);
   } catch (e) {
     return windowNames.slice();
   }
 };
 
-var f$4 = function getOwnPropertyNames(it) {
-  return windowNames && toString$3.call(it) == '[object Window]' ? getWindowNames(it) : gOPN$1(_toIobject(it));
+var f$5 = function getOwnPropertyNames(it) {
+  return windowNames && toString$2.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(_toIobject(it));
 };
 
 var _objectGopnExt = {
-	f: f$4
+	f: f$5
 };
 
-var gOPD$1 = Object.getOwnPropertyDescriptor;
+var gOPD = Object.getOwnPropertyDescriptor;
 
-var f$6 = _descriptors ? gOPD$1 : function getOwnPropertyDescriptor(O, P) {
+var f$6 = _descriptors ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = _toIobject(O);
   P = _toPrimitive(P, true);
   if (_ie8DomDefine) try {
-    return gOPD$1(O, P);
+    return gOPD(O, P);
   } catch (e) { /* empty */ }
   if (_has(O, P)) return _propertyDesc(!_objectPie.f.call(O, P), O[P]);
 };
@@ -803,9 +808,9 @@ var META = _meta.KEY;
 
 
 
-var gOPD = _objectGopd.f;
+var gOPD$1 = _objectGopd.f;
 var dP$1 = _objectDp.f;
-var gOPN = _objectGopnExt.f;
+var gOPN$1 = _objectGopnExt.f;
 var $Symbol = _global.Symbol;
 var $JSON = _global.JSON;
 var _stringify = $JSON && $JSON.stringify;
@@ -828,7 +833,7 @@ var setSymbolDesc = _descriptors && _fails(function () {
     get: function () { return dP$1(this, 'a', { value: 7 }).a; }
   })).a != 7;
 }) ? function (it, key, D) {
-  var protoDesc = gOPD(ObjectProto$1, key);
+  var protoDesc = gOPD$1(ObjectProto$1, key);
   if (protoDesc) delete ObjectProto$1[key];
   dP$1(it, key, D);
   if (protoDesc && it !== ObjectProto$1) dP$1(ObjectProto$1, key, protoDesc);
@@ -882,12 +887,12 @@ var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key) {
   it = _toIobject(it);
   key = _toPrimitive(key, true);
   if (it === ObjectProto$1 && _has(AllSymbols, key) && !_has(OPSymbols, key)) return;
-  var D = gOPD(it, key);
+  var D = gOPD$1(it, key);
   if (D && _has(AllSymbols, key) && !(_has(it, HIDDEN) && it[HIDDEN][key])) D.enumerable = true;
   return D;
 };
 var $getOwnPropertyNames = function getOwnPropertyNames(it) {
-  var names = gOPN(_toIobject(it));
+  var names = gOPN$1(_toIobject(it));
   var result = [];
   var i = 0;
   var key;
@@ -897,7 +902,7 @@ var $getOwnPropertyNames = function getOwnPropertyNames(it) {
 };
 var $getOwnPropertySymbols = function getOwnPropertySymbols(it) {
   var IS_OP = it === ObjectProto$1;
-  var names = gOPN(IS_OP ? OPSymbols : _toIobject(it));
+  var names = gOPN$1(IS_OP ? OPSymbols : _toIobject(it));
   var result = [];
   var i = 0;
   var key;
@@ -1015,24 +1020,25 @@ _wksDefine('asyncIterator');
 
 _wksDefine('observable');
 
-var symbol$1 = _core.Symbol;
+var symbol = _core.Symbol;
 
-var symbol = createCommonjsModule(function (module) {
-module.exports = { "default": symbol$1, __esModule: true };
+var symbol$1 = createCommonjsModule(function (module) {
+module.exports = { "default": symbol, __esModule: true };
 });
 
-var _Symbol = unwrapExports(symbol);
+var _Symbol = unwrapExports(symbol$1);
 
 var _typeof_1 = createCommonjsModule(function (module, exports) {
+
 exports.__esModule = true;
 
 
 
-var _iterator2 = _interopRequireDefault(iterator);
+var _iterator2 = _interopRequireDefault(iterator$1);
 
 
 
-var _symbol2 = _interopRequireDefault(symbol);
+var _symbol2 = _interopRequireDefault(symbol$1);
 
 var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj; };
 
@@ -1057,13 +1063,13 @@ var _sameValue = Object.is || function is(x, y) {
 
 _export(_export.S, 'Object', { is: _sameValue });
 
-var is$2 = _core.Object.is;
+var is$1 = _core.Object.is;
 
-var is$1 = createCommonjsModule(function (module) {
-module.exports = { "default": is$2, __esModule: true };
+var is$2 = createCommonjsModule(function (module) {
+module.exports = { "default": is$1, __esModule: true };
 });
 
-var _Object$is = unwrapExports(is$1);
+var _Object$is = unwrapExports(is$2);
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 
@@ -1075,15 +1081,16 @@ _objectSap('getPrototypeOf', function () {
   };
 });
 
-var getPrototypeOf$1 = _core.Object.getPrototypeOf;
+var getPrototypeOf = _core.Object.getPrototypeOf;
 
-var getPrototypeOf = createCommonjsModule(function (module) {
-module.exports = { "default": getPrototypeOf$1, __esModule: true };
+var getPrototypeOf$1 = createCommonjsModule(function (module) {
+module.exports = { "default": getPrototypeOf, __esModule: true };
 });
 
-var _Object$getPrototypeOf = unwrapExports(getPrototypeOf);
+var _Object$getPrototypeOf = unwrapExports(getPrototypeOf$1);
 
 var classCallCheck = createCommonjsModule(function (module, exports) {
+
 exports.__esModule = true;
 
 exports.default = function (instance, Constructor) {
@@ -1096,6 +1103,7 @@ exports.default = function (instance, Constructor) {
 var _classCallCheck = unwrapExports(classCallCheck);
 
 var possibleConstructorReturn = createCommonjsModule(function (module, exports) {
+
 exports.__esModule = true;
 
 
@@ -1145,24 +1153,25 @@ var _setProto = {
 
 _export(_export.S, 'Object', { setPrototypeOf: _setProto.set });
 
-var setPrototypeOf$2 = _core.Object.setPrototypeOf;
+var setPrototypeOf = _core.Object.setPrototypeOf;
 
-var setPrototypeOf = createCommonjsModule(function (module) {
-module.exports = { "default": setPrototypeOf$2, __esModule: true };
+var setPrototypeOf$1 = createCommonjsModule(function (module) {
+module.exports = { "default": setPrototypeOf, __esModule: true };
 });
 
-unwrapExports(setPrototypeOf);
+unwrapExports(setPrototypeOf$1);
 
 var inherits = createCommonjsModule(function (module, exports) {
+
 exports.__esModule = true;
 
 
 
-var _setPrototypeOf2 = _interopRequireDefault(setPrototypeOf);
+var _setPrototypeOf2 = _interopRequireDefault(setPrototypeOf$1);
 
 
 
-var _create2 = _interopRequireDefault(create);
+var _create2 = _interopRequireDefault(create$1);
 
 
 
@@ -1193,15 +1202,15 @@ var _inherits = unwrapExports(inherits);
 _export(_export.S + _export.F * !_descriptors, 'Object', { defineProperty: _objectDp.f });
 
 var $Object$1 = _core.Object;
-var defineProperty$2 = function defineProperty(it, key, desc) {
+var defineProperty$1 = function defineProperty(it, key, desc) {
   return $Object$1.defineProperty(it, key, desc);
 };
 
-var defineProperty$1 = createCommonjsModule(function (module) {
-module.exports = { "default": defineProperty$2, __esModule: true };
+var defineProperty$2 = createCommonjsModule(function (module) {
+module.exports = { "default": defineProperty$1, __esModule: true };
 });
 
-var _Object$defineProperty = unwrapExports(defineProperty$1);
+var _Object$defineProperty = unwrapExports(defineProperty$2);
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
 
@@ -1241,13 +1250,13 @@ var core_getIterator = _core.getIterator = function (it) {
   return _anObject(iterFn.call(it));
 };
 
-var getIterator$1 = core_getIterator;
+var getIterator = core_getIterator;
 
-var getIterator = createCommonjsModule(function (module) {
-module.exports = { "default": getIterator$1, __esModule: true };
+var getIterator$1 = createCommonjsModule(function (module) {
+module.exports = { "default": getIterator, __esModule: true };
 });
 
-var _getIterator = unwrapExports(getIterator);
+var _getIterator = unwrapExports(getIterator$1);
 
 var _redefineAll = function (target, src, safe) {
   for (var key in src) {
@@ -1665,13 +1674,13 @@ var _setCollectionFrom = function (COLLECTION) {
 // https://tc39.github.io/proposal-setmap-offrom/#sec-map.from
 _setCollectionFrom('Map');
 
-var map$1 = _core.Map;
+var map = _core.Map;
 
-var map = createCommonjsModule(function (module) {
-module.exports = { "default": map$1, __esModule: true };
+var map$1 = createCommonjsModule(function (module) {
+module.exports = { "default": map, __esModule: true };
 });
 
-var _Map = unwrapExports(map);
+var _Map = unwrapExports(map$1);
 
 var colorName = {
 	"aliceblue": [240, 248, 255],
@@ -1922,41 +1931,48 @@ convert.rgb.hsl = function (rgb) {
 };
 
 convert.rgb.hsv = function (rgb) {
-	var r = rgb[0];
-	var g = rgb[1];
-	var b = rgb[2];
-	var min = Math.min(r, g, b);
-	var max = Math.max(r, g, b);
-	var delta = max - min;
+	var rdif;
+	var gdif;
+	var bdif;
 	var h;
 	var s;
-	var v;
 
-	if (max === 0) {
-		s = 0;
+	var r = rgb[0] / 255;
+	var g = rgb[1] / 255;
+	var b = rgb[2] / 255;
+	var v = Math.max(r, g, b);
+	var diff = v - Math.min(r, g, b);
+	var diffc = function (c) {
+		return (v - c) / 6 / diff + 1 / 2;
+	};
+
+	if (diff === 0) {
+		h = s = 0;
 	} else {
-		s = (delta / max * 1000) / 10;
+		s = diff / v;
+		rdif = diffc(r);
+		gdif = diffc(g);
+		bdif = diffc(b);
+
+		if (r === v) {
+			h = bdif - gdif;
+		} else if (g === v) {
+			h = (1 / 3) + rdif - bdif;
+		} else if (b === v) {
+			h = (2 / 3) + gdif - rdif;
+		}
+		if (h < 0) {
+			h += 1;
+		} else if (h > 1) {
+			h -= 1;
+		}
 	}
 
-	if (max === min) {
-		h = 0;
-	} else if (r === max) {
-		h = (g - b) / delta;
-	} else if (g === max) {
-		h = 2 + (b - r) / delta;
-	} else if (b === max) {
-		h = 4 + (r - g) / delta;
-	}
-
-	h = Math.min(h * 60, 360);
-
-	if (h < 0) {
-		h += 360;
-	}
-
-	v = ((max / 255) * 1000) / 10;
-
-	return [h, s, v];
+	return [
+		h * 360,
+		s * 100,
+		v * 100
+	];
 };
 
 convert.rgb.hwb = function (rgb) {
@@ -2687,7 +2703,6 @@ convert.rgb.gray = function (rgb) {
 	return [val / 255 * 100];
 };
 });
-
 var conversions_1 = conversions.rgb;
 var conversions_2 = conversions.hsl;
 var conversions_3 = conversions.hsv;
@@ -2876,6 +2891,7 @@ models.forEach(function (fromModel) {
 var colorConvert = convert;
 
 var ansiStyles = createCommonjsModule(function (module) {
+
 	var wrapAnsi16 = function wrapAnsi16(fn, offset) {
 		return function () {
 			var code = fn.apply(colorConvert, arguments);
@@ -3025,6 +3041,9 @@ var ansiStyles = createCommonjsModule(function (module) {
 			}
 		}
 
+		var ansi2ansi = function ansi2ansi(n) {
+			return n;
+		};
 		var rgb2rgb = function rgb2rgb(r, g, b) {
 			return [r, g, b];
 		};
@@ -3032,14 +3051,22 @@ var ansiStyles = createCommonjsModule(function (module) {
 		styles.color.close = '\x1B[39m';
 		styles.bgColor.close = '\x1B[49m';
 
-		styles.color.ansi = {};
-		styles.color.ansi256 = {};
+		styles.color.ansi = {
+			ansi: wrapAnsi16(ansi2ansi, 0)
+		};
+		styles.color.ansi256 = {
+			ansi256: wrapAnsi256(ansi2ansi, 0)
+		};
 		styles.color.ansi16m = {
 			rgb: wrapAnsi16m(rgb2rgb, 0)
 		};
 
-		styles.bgColor.ansi = {};
-		styles.bgColor.ansi256 = {};
+		styles.bgColor.ansi = {
+			ansi: wrapAnsi16(ansi2ansi, 10)
+		};
+		styles.bgColor.ansi256 = {
+			ansi256: wrapAnsi256(ansi2ansi, 10)
+		};
 		styles.bgColor.ansi16m = {
 			rgb: wrapAnsi16m(rgb2rgb, 10)
 		};
@@ -3057,6 +3084,10 @@ var ansiStyles = createCommonjsModule(function (module) {
 				}
 
 				var suite = colorConvert[key];
+
+				if (key === 'ansi16') {
+					key = 'ansi';
+				}
 
 				if ('ansi16' in suite) {
 					styles.color.ansi[key] = wrapAnsi16(suite.ansi16, 0);
@@ -3098,13 +3129,13 @@ var ansiStyles = createCommonjsModule(function (module) {
 	});
 });
 
-var getOwnPropertySymbols$1 = _core.Object.getOwnPropertySymbols;
+var getOwnPropertySymbols = _core.Object.getOwnPropertySymbols;
 
-var getOwnPropertySymbols = createCommonjsModule(function (module) {
-module.exports = { "default": getOwnPropertySymbols$1, __esModule: true };
+var getOwnPropertySymbols$1 = createCommonjsModule(function (module) {
+module.exports = { "default": getOwnPropertySymbols, __esModule: true };
 });
 
-var _Object$getOwnPropertySymbols = unwrapExports(getOwnPropertySymbols);
+var _Object$getOwnPropertySymbols = unwrapExports(getOwnPropertySymbols$1);
 
 /**
  * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
@@ -3226,28 +3257,28 @@ function printListItems(list, config, indentation, depth, refs, printer) {
 // without surrounding punctuation (for example, braces)
 function printObjectProperties(val, config, indentation, depth, refs, printer) {
   var result = '';
-  var keys$$1 = _Object$keys(val).sort();
+  var keys = _Object$keys(val).sort();
   var symbols = getSymbols(val);
 
   if (symbols.length) {
-    keys$$1 = keys$$1.filter(function (key) {
+    keys = keys.filter(function (key) {
       return !isSymbol$1(key);
     }).concat(symbols);
   }
 
-  if (keys$$1.length) {
+  if (keys.length) {
     result += config.spacingOuter;
 
     var indentationNext = indentation + config.indent;
 
-    for (var i = 0; i < keys$$1.length; i++) {
-      var key = keys$$1[i];
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
       var name = printer(key, config, indentationNext, depth, refs);
       var value = printer(val[key], config, indentationNext, depth, refs);
 
       result += indentationNext + name + ': ' + value;
 
-      if (i < keys$$1.length - 1) {
+      if (i < keys.length - 1) {
         result += ',' + config.spacingInner;
       } else if (!config.min) {
         result += ',';
@@ -3260,22 +3291,13 @@ function printObjectProperties(val, config, indentation, depth, refs, printer) {
   return result;
 }
 
-var _for$1 = _core.Symbol['for'];
+var _for = _core.Symbol['for'];
 
-var _for = createCommonjsModule(function (module) {
-module.exports = { "default": _for$1, __esModule: true };
+var _for$1 = createCommonjsModule(function (module) {
+module.exports = { "default": _for, __esModule: true };
 });
 
-var _Symbol$for = unwrapExports(_for);
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
+var _Symbol$for = unwrapExports(_for$1);
 
 var asymmetricMatcher = _Symbol$for('jest.asymmetricMatcher');
 var SPACE = ' ';
@@ -3283,25 +3305,25 @@ var SPACE = ' ';
 var serialize = function serialize(val, config, indentation, depth, refs, printer) {
   var stringedValue = val.toString();
 
-  if (stringedValue === 'ArrayContaining') {
+  if (stringedValue === 'ArrayContaining' || stringedValue === 'ArrayNotContaining') {
     if (++depth > config.maxDepth) {
       return '[' + stringedValue + ']';
     }
     return stringedValue + SPACE + '[' + printListItems(val.sample, config, indentation, depth, refs, printer) + ']';
   }
 
-  if (stringedValue === 'ObjectContaining') {
+  if (stringedValue === 'ObjectContaining' || stringedValue === 'ObjectNotContaining') {
     if (++depth > config.maxDepth) {
       return '[' + stringedValue + ']';
     }
     return stringedValue + SPACE + '{' + printObjectProperties(val.sample, config, indentation, depth, refs, printer) + '}';
   }
 
-  if (stringedValue === 'StringMatching') {
+  if (stringedValue === 'StringMatching' || stringedValue === 'StringNotMatching') {
     return stringedValue + SPACE + printer(val.sample, config, indentation, depth, refs);
   }
 
-  if (stringedValue === 'StringContaining') {
+  if (stringedValue === 'StringContaining' || stringedValue === 'StringNotContaining') {
     return stringedValue + SPACE + printer(val.sample, config, indentation, depth, refs);
   }
 
@@ -3315,21 +3337,13 @@ var test = function test(val) {
 var AsymmetricMatcher = { serialize: serialize, test: test };
 
 var ansiRegex = createCommonjsModule(function (module) {
+
 	module.exports = function () {
 		var pattern = ['[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[a-zA-Z\\d]*)*)?\\u0007)', '(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PRZcf-ntqry=><~]))'].join('|');
 
 		return new RegExp(pattern, 'g');
 	};
 });
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
 
 var toHumanReadableAnsi = function toHumanReadableAnsi(text) {
   return text.replace(ansiRegex(), function (match, offset, string) {
@@ -3428,22 +3442,13 @@ var _objectAssign = !$assign || _fails(function () {
 
 _export(_export.S + _export.F, 'Object', { assign: _objectAssign });
 
-var assign$1 = _core.Object.assign;
+var assign = _core.Object.assign;
 
-var assign = createCommonjsModule(function (module) {
-module.exports = { "default": assign$1, __esModule: true };
+var assign$1 = createCommonjsModule(function (module) {
+module.exports = { "default": assign, __esModule: true };
 });
 
-var _Object$assign = unwrapExports(assign);
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
+var _Object$assign = unwrapExports(assign$1);
 
 var SPACE$1 = ' ';
 
@@ -3489,15 +3494,6 @@ var DOMCollection = { serialize: serialize$2, test: test$2 };
 function escapeHTML(str) {
   return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
 
 // Return empty string if keys is empty.
 var printProps = function printProps(keys, props, config, indentation, depth, refs, printer) {
@@ -3549,23 +3545,15 @@ var printElementAsLeaf = function printElementAsLeaf(type, config) {
   return tagColor.open + '<' + type + tagColor.close + ' …' + tagColor.open + ' />' + tagColor.close;
 };
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
-
 var ELEMENT_NODE = 1;
 var TEXT_NODE = 3;
 var COMMENT_NODE = 8;
+var FRAGMENT_NODE = 11;
 
 var ELEMENT_REGEXP = /^((HTML|SVG)\w*)?Element$/;
 
 var testNode = function testNode(nodeType, name) {
-  return nodeType === ELEMENT_NODE && ELEMENT_REGEXP.test(name) || nodeType === TEXT_NODE && name === 'Text' || nodeType === COMMENT_NODE && name === 'Comment';
+  return nodeType === ELEMENT_NODE && ELEMENT_REGEXP.test(name) || nodeType === TEXT_NODE && name === 'Text' || nodeType === COMMENT_NODE && name === 'Comment' || nodeType === FRAGMENT_NODE && name === 'DocumentFragment';
 };
 
 var test$3 = function test(val) {
@@ -3590,24 +3578,16 @@ var serialize$3 = function serialize(node, config, indentation, depth, refs, pri
     return printComment(node.data, config);
   }
 
-  var type = node.tagName.toLowerCase();
+  var type = node.nodeType === FRAGMENT_NODE ? 'DocumentFragment' : node.tagName.toLowerCase();
+
   if (++depth > config.maxDepth) {
     return printElementAsLeaf(type, config);
   }
 
-  return printElement(type, printProps(Array.prototype.map.call(node.attributes, keysMapper).sort(), Array.prototype.reduce.call(node.attributes, propsReducer, {}), config, indentation + config.indent, depth, refs, printer), printChildren(Array.prototype.slice.call(node.childNodes), config, indentation + config.indent, depth, refs, printer), config, indentation);
+  return printElement(type, printProps(Array.prototype.map.call(node.attributes || [], keysMapper).sort(), Array.prototype.reduce.call(node.attributes || [], propsReducer, {}), config, indentation + config.indent, depth, refs, printer), printChildren(Array.prototype.slice.call(node.childNodes || node.children), config, indentation + config.indent, depth, refs, printer), config, indentation);
 };
 
 var DOMElement = { serialize: serialize$3, test: test$3 };
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
 
 // SENTINEL constants are from https://github.com/facebook/immutable-js
 var IS_ITERABLE_SENTINEL = '@@__IMMUTABLE_ITERABLE__@@';
@@ -3710,16 +3690,11 @@ var test$4 = function test(val) {
 
 var Immutable = { serialize: serialize$4, test: test$4 };
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
-
 var elementSymbol = _Symbol$for('react.element');
+var fragmentSymbol = _Symbol$for('react.fragment');
+var forwardRefSymbol = _Symbol$for('react.forward_ref');
+var providerSymbol = _Symbol$for('react.provider');
+var contextSymbol = _Symbol$for('react.context');
 
 // Given element.props.children, or subtree during recursive traversal,
 // return flattened array of children.
@@ -3737,19 +3712,45 @@ var getChildren = function getChildren(arg) {
 };
 
 var getType = function getType(element) {
-  if (typeof element.type === 'string') {
-    return element.type;
+  var type = element.type;
+  if (typeof type === 'string') {
+    return type;
   }
-  if (typeof element.type === 'function') {
-    return element.type.displayName || element.type.name || 'Unknown';
+  if (typeof type === 'function') {
+    return type.displayName || type.name || 'Unknown';
+  }
+  if (type === fragmentSymbol) {
+    return 'React.Fragment';
+  }
+  if ((typeof type === 'undefined' ? 'undefined' : _typeof(type)) === 'object' && type !== null) {
+    if (type.$$typeof === providerSymbol) {
+      return 'Context.Provider';
+    }
+
+    if (type.$$typeof === contextSymbol) {
+      return 'Context.Consumer';
+    }
+
+    if (type.$$typeof === forwardRefSymbol) {
+      var functionName = type.render.displayName || type.render.name || '';
+
+      return functionName !== '' ? 'ForwardRef(' + functionName + ')' : 'ForwardRef';
+    }
   }
   return 'UNDEFINED';
 };
 
+var getPropKeys = function getPropKeys(element) {
+  var props = element.props;
+
+
+  return _Object$keys(props).filter(function (key) {
+    return key !== 'children' && props[key] !== undefined;
+  }).sort();
+};
+
 var serialize$5 = function serialize(element, config, indentation, depth, refs, printer) {
-  return ++depth > config.maxDepth ? printElementAsLeaf(getType(element), config) : printElement(getType(element), printProps(_Object$keys(element.props).filter(function (key) {
-    return key !== 'children';
-  }).sort(), element.props, config, indentation + config.indent, depth, refs, printer), printChildren(getChildren(element.props.children), config, indentation + config.indent, depth, refs, printer), config, indentation);
+  return ++depth > config.maxDepth ? printElementAsLeaf(getType(element), config) : printElement(getType(element), printProps(getPropKeys(element), element.props, config, indentation + config.indent, depth, refs, printer), printChildren(getChildren(element.props.children), config, indentation + config.indent, depth, refs, printer), config, indentation);
 };
 
 var test$5 = function test(val) {
@@ -3758,19 +3759,19 @@ var test$5 = function test(val) {
 
 var ReactElement = { serialize: serialize$5, test: test$5 };
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
-
 var testSymbol = _Symbol$for('react.test.json');
 
+var getPropKeys$1 = function getPropKeys(object) {
+  var props = object.props;
+
+
+  return props ? _Object$keys(props).filter(function (key) {
+    return props[key] !== undefined;
+  }).sort() : [];
+};
+
 var serialize$6 = function serialize(object, config, indentation, depth, refs, printer) {
-  return ++depth > config.maxDepth ? printElementAsLeaf(object.type, config) : printElement(object.type, object.props ? printProps(_Object$keys(object.props).sort(),
+  return ++depth > config.maxDepth ? printElementAsLeaf(object.type, config) : printElement(object.type, object.props ? printProps(getPropKeys$1(object),
   // Despite ternary expression, Flow 0.51.0 found incorrect error:
   // undefined is incompatible with the expected param type of Object
   // $FlowFixMe
@@ -3783,16 +3784,7 @@ var test$6 = function test(val) {
 
 var ReactTestComponent = { serialize: serialize$6, test: test$6 };
 
-/**
- * Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- *      
- */
-
-var toString$1 = Object.prototype.toString;
+var toString$3 = Object.prototype.toString;
 var toISOString = Date.prototype.toISOString;
 var errorToString = Error.prototype.toString;
 var regExpToString = RegExp.prototype.toString;
@@ -3878,7 +3870,7 @@ function printBasicValue(val, printFunctionName, escapeRegex) {
     return printSymbol(val);
   }
 
-  var toStringed = toString$1.call(val);
+  var toStringed = toString$3.call(val);
 
   if (toStringed === '[object WeakMap]') {
     return 'WeakMap {}';
@@ -3893,7 +3885,7 @@ function printBasicValue(val, printFunctionName, escapeRegex) {
     return printSymbol(val);
   }
   if (toStringed === '[object Date]') {
-    return toISOString.call(val);
+    return isNaN(+val) ? 'Date { NaN }' : toISOString.call(val);
   }
   if (toStringed === '[object Error]') {
     return printError(val);
@@ -3927,7 +3919,7 @@ function printComplexValue(val, config, indentation, depth, refs, hasCalledToJSO
     return printer(val.toJSON(), config, indentation, depth, refs, true);
   }
 
-  var toStringed = toString$1.call(val);
+  var toStringed = toString$3.call(val);
   if (toStringed === '[object Arguments]') {
     return hitMaxDepth ? '[Arguments]' : (min ? '' : 'Arguments ') + '[' + printListItems(val, config, indentation, depth, refs, printer) + ']';
   }
