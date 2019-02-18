@@ -25,10 +25,10 @@ export default {
 	data () {
 		return {
 			list: [
-				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
-				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
-				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://p8rbt50i2.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
 			],
 
 			errorMsg: '',

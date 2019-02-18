@@ -36,6 +36,19 @@ BFC就是页面上的一个隔离的独立容器，容器里面的子元素不�
 - 可以将需要多次修改的DOM元素设置display:none，操作完再显示。（因为隐藏元素不在render树内，因此修改隐藏元素不会触发回流重绘）
 - 避免多次读取某些属性
 - 将复杂的节点元素脱离文档流，降低回流成本
+- 使用 transform 替代 top
+- 使用 visibility 替换 display: none ，因为前者只会引起重绘，后者会引发回流（改变了布局）
+- 不要把节点的属性值放在一个循环里当成循环里的变量。
+```js
+for(let i = 0; i < 1000; i++) {
+    // 获取 offsetTop 会导致回流，因为需要去获取正确的值
+    console.log(document.querySelector('.test').style.offsetTop)
+}
+```
+- 不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局
+- 动画实现的速度的选择，动画速度越快，回流次数越多，也可以选择使用 requestAnimationFrame
+- CSS 选择符从右往左匹配查找，避免节点层级过多
+- 将频繁重绘或者回流的节点设置为图层，图层能够阻止该节点的渲染行为影响别的节点。比如对于 video 标签来说，浏览器会自动将该节点变为图层。
 
 参考
 [1](https://segmentfault.com/a/1190000011297958#articleHeader1)

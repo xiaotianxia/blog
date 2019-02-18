@@ -6,7 +6,7 @@
 Photoshop中用钢笔工具勾出轮廓，转为选取，然后反选，删去多余部分，最后只留下要选择的区域，
 这一波操作想必是懂PS都非常熟悉的了，就像这样：
 
-![不重要的图 small](http://p8rbt50i2.bkt.clouddn.com/clip004.png)
+![不重要的图 small](http://pn4meizzc.bkt.clouddn.com/clip004.png)
 
 在CSS3中也有思思功能的属性：clip-path。顾名思义：裁剪路径，
 该属性可以将方方正正的元素裁剪成几乎任何你想要的形状。
@@ -53,11 +53,11 @@ clip-path: url(resources.svg#c1); /*还可以是远程的SVG*/
 ```
 SVG形状灵活，可以是各种不规则图形，甚至可以是文字，像这样：
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/clip010.png)
+![small demo](http://pn4meizzc.bkt.clouddn.com/clip010.png)
 
 甚至这样：
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/clip011.png)
+![small demo](http://pn4meizzc.bkt.clouddn.com/clip011.png)
 
 可跳到demo页查看。
 
@@ -81,7 +81,7 @@ inset( <length-percentage>{1,4} [ round <border-radius> ]? )
 ```
 inset()可以传入5个参数，分别对应top，right，bottom，left的裁剪位置，round radius（可选，圆角），参数之间用空格隔开。
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip005.png)
+![small demo](http://pn4meizzc.bkt.clouddn.com/blog/clip005.png)
 <spreadown>
     <iframe height='310' scrolling='no' title='1' src='//codepen.io/_tianxia/embed/dKxNgM/?height=310&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/dKxNgM/'>1</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/dKxNgM/"></show-in-codepen>
@@ -102,7 +102,7 @@ circle()可以传人2个可选参数；
 
 半径公式：如果半径使用百分比：圆的半径 = (sqrt(width^2 + height^2) / sqrt(2)) * 百分比 
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip006.png)
+![small demo](http://pn4meizzc.bkt.clouddn.com/blog/clip006.png)
 <spreadown>
     <iframe height='300' scrolling='no' title='2' src='//codepen.io/_tianxia/embed/ZRgeKE/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/ZRgeKE/'>2</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/ZRgeKE/"></show-in-codepen>
@@ -124,7 +124,7 @@ ellipse()可以传人3个可选参数；
 
 3. 椭圆中心位置，默认是元素的中心点
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip007.png)
+![small demo](http://pn4meizzc.bkt.clouddn.com/blog/clip007.png)
 <spreadown>
     <iframe height='300' scrolling='no' title='3' src='//codepen.io/_tianxia/embed/oyKZwW/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/oyKZwW/'>3</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/oyKZwW/"></show-in-codepen>
@@ -144,7 +144,7 @@ fill-rule可选，表示填充规则，用来确定该多边形的内部。可�
 
 后面的每对参数表示多边形的顶点坐标（X,Y），也就是连接点
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/blog/clip008.png)
+![small demo](http://pn4meizzc.bkt.clouddn.com/blog/clip008.png)
 <spreadown>
     <iframe height='300' scrolling='no' title='polygon' src='//codepen.io/_tianxia/embed/rKXyzV/?height=300&theme-id=33504&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/rKXyzV/'>polygon</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
     <show-in-codepen href="https://codepen.io/_tianxia/pen/rKXyzV/"></show-in-codepen>
