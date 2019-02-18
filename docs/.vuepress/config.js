@@ -5,6 +5,7 @@ const elseTitles = require('./titles/else');
 const studyTitles = require('./titles/study');
 
 module.exports = {
+    base: '/blog/vuepress/',
     dest: 'vuepress',
     llang: 'zh-CN',
     title: 'Denzel',
