@@ -2,7 +2,7 @@
 	<div class="menu-wrapper">
 		<ul v-if="menuList.length">
 			<li v-for="item in menuList" :style="{backgroundColor: item.color || '#44A1BE'}">
-				<a :href="item.path" target="_blank">{{item.title}}</a>
+				<a :href="base + item.path" target="_blank">{{item.title}}</a>
 			</li>
 		</ul>
 		<p v-else>暂无</p>
@@ -13,6 +13,7 @@
 export default {
 	data () {
 		return {
+			base: '',
 			menuList: [],
 			colorList: [
 				'#3498db', '#95a5a6', '#16a085', '#74b9ff', 
@@ -35,6 +36,7 @@ export default {
 	},
 
 	mounted () {
+		this.base = this.$site.base.substr(0, this.$site.base.lastIndexOf('/'));
 		let curPath = this.$page.path,
 			$pages = this.$site.pages || [];
 		this.menuList = $pages.filter(item => {
