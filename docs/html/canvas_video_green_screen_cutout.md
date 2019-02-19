@@ -104,7 +104,7 @@ export default {
 
 上周跟同学去了一趟溧阳天目湖的南山竹海，在景区被忽悠拍了一张照片，就是这张 ——
 
-![small demo](http://p8rbt50i2.bkt.clouddn.com/WechatIMG2.jpeg)
+![small demo](http://pn4meizzc.bkt.clouddn.com/WechatIMG2.jpeg)
 
 然后被朋友圈吐槽抠图。其实当时就是站在一块绿幕前拍的:smile: 。
 

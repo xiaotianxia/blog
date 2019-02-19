@@ -12,7 +12,7 @@ CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，�
 下文中可点击”点击展开“查看具体代码及效果，可以点击“show in codepen”跳转到codepen自行调试，如没有，请点击[原文链接](https://denzel.netlify.com/css/grid_layout.html?_=7654323456782357)查看原文。
 
 先看一个例子：
-![demo](http://p8rbt50i2.bkt.clouddn.com/bloggrid002.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/bloggrid002.png)
 这种布局已经司空见惯了。我们看用grid的话，可以有哪些骚操作：
 ```html
 <div class="grid">
@@ -70,19 +70,19 @@ CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，�
 
 ### 网格线(Grid Line)
 简单理解，就是网格元素之间的缝隙。它们既可以是垂直的，也可以是水平的，并位于行或列的任一侧。
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid003.jpg)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid003.jpg)
 
 ### 网格轨道(Grid Track)
 两个相邻网格线之间的空间。 可以把它们想象成网格的列或行。
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid004.jpg)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid004.jpg)
 
 ### 网格单元(Grid Cell)
 两个相邻的行和两个相邻的列网格线之间的空间。它是网格的一个“单元”。
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid005.jpg)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid005.jpg)
 
 ### 网格区域(Grid Area)
 四个网格线包围的总空间。 网格区域可以由任意数量的网格单元组成。
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid006.jpg)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid006.jpg)
 
 ## 属性列表
 
@@ -137,7 +137,7 @@ CSS网格布局是CSS中最强大的布局系统。 这是一个二维系统，�
 grid-template-columns: 100px 30% 200px;
 grid-template-rows: 50px 100px;
 ```
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid010.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid010.png)
 
 <spreadown>
 	<iframe height='325' scrolling='no' title='1' src='//codepen.io/_tianxia/embed/vrbJPG/?height=325&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/vrbJPG/'>1</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
@@ -150,7 +150,7 @@ grid-template-rows: 50px 100px;
 grid-template-columns: 100px 2fr 1fr;
 grid-template-rows: 50px 100px;
 ```
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid011.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid011.png)
 
 <spreadown>
 	<iframe height='330' scrolling='no' title='2' src='//codepen.io/_tianxia/embed/oymOLJ/?height=330&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/oymOLJ/'>2</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
@@ -179,10 +179,10 @@ auto-fit与auto-fill类似，只是在网格项放置之后，它只会在需要
 对于同样的四个项目的结构，二者的区别见下图：
 
 grid-template-columns: repeat(auto-fill, 100px);效果着这样婶儿的：
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid019.gif)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid019.gif)
 
 grid-template-columns: repeat(auto-fill, 100px);效果是这样婶儿的：
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid020.gif)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid020.gif)
 
 具体有什么用？:cold_sweat: 额。。。我也不太清楚，这里先不深究了。
 
@@ -209,7 +209,7 @@ grid-row：grid-row-start / grid-row-end的缩写
 grid-column: span 2;
 grid-row: span 2;
 ```
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid012.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid012.png)
 
 <spreadown>
 	<iframe height='370' scrolling='no' title='4' src='//codepen.io/_tianxia/embed/rKPgNo/?height=370&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/rKPgNo/'>4</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
@@ -247,7 +247,7 @@ grid-row-start: 3;
 grid-row-end: auto;
 ```
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid014.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid014.png)
 
 <spreadown>
 	<iframe height='400' scrolling='no' title='6' src='//codepen.io/_tianxia/embed/ERrzLa/?height=400&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/ERrzLa/'>6</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
@@ -258,7 +258,7 @@ grid-row-end: auto;
 grid-column: 2 / span 2;
 grid-row: 3 / span 2;
 ```
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid013.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid013.png)
 
 <spreadown>
 	<iframe height='400' scrolling='no' title='5' src='//codepen.io/_tianxia/embed/GGzavE/?height=400&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/GGzavE/'>5</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
@@ -306,9 +306,9 @@ grid-auto-rows和grid-auto-flow控制。
 
 看下前后对比图：
 
-前：![demo](http://p8rbt50i2.bkt.clouddn.com/grid015.png)
+前：![demo](http://pn4meizzc.bkt.clouddn.com/grid015.png)
 
-后：![demo](http://p8rbt50i2.bkt.clouddn.com/grid016.png)
+后：![demo](http://pn4meizzc.bkt.clouddn.com/grid016.png)
 
 <spreadown>
 	<iframe height='511' scrolling='no' title='9' src='//codepen.io/_tianxia/embed/eKQNYm/?height=511&theme-id=33504&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/_tianxia/pen/eKQNYm/'>9</a> by Denzel (<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
@@ -329,7 +329,7 @@ justify-content指定**网格轨道**沿着**列**轴对齐方式。
 ## 浏览器调试
 firefox里，可以通过设置显示网格的名称、行号等信息，点[这里](http://www.w3cplus.com/css/grid-inspector.html)看详情，非常方便，
 如下图：
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid017.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid017.png)
 
 ::: tip tip
 从图中可以看出，grid-column/row-start/end是可以为负数的，正负值差别是，位置将从相反的方向开始。
@@ -339,7 +339,7 @@ firefox里，可以通过设置显示网格的名称、行号等信息，点[这
 
 chrome的高一点版本(我的是67)，可以显示对应网格线，不知道能不能进一步设置？。。。
 如下图：
-![demo](http://p8rbt50i2.bkt.clouddn.com/grid018.png)
+![demo](http://pn4meizzc.bkt.clouddn.com/grid018.png)
 但是chrome有一个[网格布局高亮插件](https://github.com/ademilter/chrome-css-grid-highlighter)可以帮助到我们。
 
 ## 总结

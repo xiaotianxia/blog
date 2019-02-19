@@ -6,10 +6,10 @@
 在手机上浏览视频网站，能够根据用户当前使用的网络类型，在必要的时候给出提示，是一种很好的体验。
 
 像这样（手机UC浏览器）：
-![UC](http://p8rbt50i2.bkt.clouddn.com/blogWechatIMG491527678464_.pic.jpg)
+![UC](http://pn4meizzc.bkt.clouddn.com/blogWechatIMG491527678464_.pic.jpg)
 
 这样（手机QQ浏览器）：
-![QQ](http://p8rbt50i2.bkt.clouddn.com/blogWechatIMG501527678489_.pic.jpg)
+![QQ](http://pn4meizzc.bkt.clouddn.com/blogWechatIMG501527678489_.pic.jpg)
 
 这个功能还有一个用途：资源预加载。在wifi下，手机可以提前加载页面的静态资源，以此提升用户观览体验，
 在非wifi下可使用懒加载，为用户节省流量。
@@ -155,7 +155,7 @@ wimax: WiMAX
 <WebAPIs-Connection></WebAPIs-Connection>
 
 不支持navigator.connection，看不到效果？大概是这样子的（截图）——
-![demo截图](http://p8rbt50i2.bkt.clouddn.com/blog/WX20180531-115931@2x.png)
+![demo截图](http://pn4meizzc.bkt.clouddn.com/blog/WX20180531-115931@2x.png)
 
 ## 总结
 由于兼容性的限制，现在能做的功能真的**很——有——限**。

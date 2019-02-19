@@ -4,10 +4,10 @@
 
 ### 标准盒子模型
 box-sizing: content-box;
-![](http://p8rbt50i2.bkt.clouddn.com/WechatIMG5.jpeg)
+![](http://pn4meizzc.bkt.clouddn.com/WechatIMG5.jpeg)
 ### IE盒子模型
 box-sizing: border-box;
-![](http://p8rbt50i2.bkt.clouddn.com/WechatIMG6.jpeg)
+![](http://pn4meizzc.bkt.clouddn.com/WechatIMG6.jpeg)
 
 ```css
 div {

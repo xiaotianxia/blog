@@ -19,7 +19,7 @@ const SAMPLE_WIDTH = 50,
 export default {
 	data () {
 		return {
-			exterbalUrl: 'http://p8rbt50i2.bkt.clouddn.com/blog/else/miaoWechatIMG241526366731_.pic.jpg'
+			exterbalUrl: 'http://pn4meizzc.bkt.clouddn.com/blog/else/miaoWechatIMG241526366731_.pic.jpg'
 		}
 	},
 

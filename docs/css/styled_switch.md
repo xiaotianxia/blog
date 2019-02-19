@@ -27,7 +27,7 @@ input[type="checkbox"] {
 
 demo截图：
 
-![demo](http://p8rbt50i2.bkt.clouddn.com/blogswitch001.gif)
+![demo](http://pn4meizzc.bkt.clouddn.com/blogswitch001.gif)
 
 
 ## 方法二：opacity: 0(display:none) + 额外标签

@@ -7,7 +7,7 @@
         {{ data.tagline || $description || 'Welcome to your VuePress site' }}
       </p>
       <p class="action" v-if="data.actionText && data.actionLink">
-        <NavLink class="action-button" :item="actionLink"/>
+        <a href="https://xiaotianxia.github.io/blog/vuepress/js/" class="nav-link action-button">进入新地址 →</a>
       </p>
     </div>
     <!-- <div class="features" v-if="data.features && data.features.length">
