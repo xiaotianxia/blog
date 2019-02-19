@@ -1,0 +1,10 @@
+language: js
+sudo: required
+node_js:
+  - 11.0.0
+cache:
+  directories:
+    - node_modules
+script:
+    - ./deploy.sh
+branch: gh-pages
