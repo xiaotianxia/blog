@@ -7,4 +7,7 @@ cache:
     - node_modules
 script:
     - npm run build
+    - git add -A
+    - git commit -m 'deploy'
+    - git push -f git@github.com:xiaotianxia/xiaotianxia.github.io.git master
 branch: master
