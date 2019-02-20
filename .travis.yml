@@ -1,5 +1,5 @@
 language: js
-sudo: required
+# sudo: required
 node_js:
   - 11.0.0
 cache:
