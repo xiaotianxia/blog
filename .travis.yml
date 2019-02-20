@@ -6,5 +6,5 @@ cache:
   directories:
     - node_modules
 script:
-    - deploy.sh
+    - npm run build
 branch: master
