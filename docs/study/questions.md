@@ -115,6 +115,15 @@ function add(){
 [1](https://www.jianshu.com/p/f88a5175e7a2)
 [2](https://blog.csdn.net/qq_39207948/article/details/80593715)
 
+## ['1', '2', '3'].map(parseInt) 
+相当于
+```js
+    ['1', '2', '3'].map((item, index) => {
+        return parseInt(item, index);
+    });
+```
+
+参考 [1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/4)
 
 
 
