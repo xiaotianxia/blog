@@ -26,16 +26,19 @@ export default {
 ```
 
 ### this.$set() 使用
-
 a.数组的下标去修改数组的值，数据已经被修改了，但是不触发updated函数，视图不更新。
 
 b.vue中检测不到对象属性的添加和删除
 
 ### 生命周期函数/methods/watch里面不应该使用箭头函数
-
 箭头函数的this指向外层，即函数所在的所用域，普通函数的this指向函数的调用者
 
-### watch的immediate属性
+### delete 与 Vue.delete ($delete)
+- 都用于数组和对象
+- delete 删除数组后，被删除的元素还占据原来的位置，变成empty或undefined，其他元素的简直不发生变化
+- Vue.delete 直接删除了数组 改变了数组的键值。
+
+### watch 的 immediate 属性
 ```js
 created() {
     this.fetchPostList()
@@ -57,7 +60,7 @@ watch: {
 }
 ```
 
-### 注销watch
+### 注销 watch
 使用app.$watch()时，不用的时候须要注销掉，不然会引起内存泄露。该方法返回的就是一个注销方法，只要调用一下就可以了。
 ```js
 //注册watch

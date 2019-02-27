@@ -1,7 +1,7 @@
 module.exports = [
 	'',
     'svg_path_animation',
-    'clip_path',
+	'clip_path',
 	'columns',
 	'grid_layout',
 	'styled_switch',
