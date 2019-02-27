@@ -1,9 +1,6 @@
 # TODO
 
-
-## 文章
-
-### css 
+## css 
 
 滤镜 https://www.cssfilters.co/
     https://tympanus.net/Development/CreativeGooeyEffects/select.html
@@ -19,14 +16,11 @@ https://github.com/DylanPiercey/scroll-behaviour
 
 #### flex 
 
-### js
-
+## js
 
 ## npm 发布
 
 ## vue ssr
-## nuxt.js
-https://zh.nuxtjs.org/guide/installation
 
 ## webGL
 https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
@@ -34,12 +28,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API
 ## 爬虫
 puppeteer
 
-## 其他：
-	flutter 
-https://flutter.io/widgets-intro/
+## 其他
 
-	webpack
-		dll
+webpack
+	dll
 
-	worker
+worker
 
