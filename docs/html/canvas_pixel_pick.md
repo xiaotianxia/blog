@@ -1,6 +1,6 @@
 # canvas像素点获取 —— 拾色器、放大器
 
-[原文地址](https://denzel.netlify.com/html/canvas_pixel_pick.html)
+[原文地址](https://xiaotianxia.github.io/blog/vuepress/html/canvas_pixel_pick.html)
 
 ## 前言
 最近在学习canvas，然后照葫芦画瓢简单实现了几个小demo，跟大家一块学习一下。
@@ -301,7 +301,7 @@ export default {
 }
 ```
 
-另一篇：[canvas像素点操作 —— 视频绿幕抠图](https://denzel.netlify.com/html/canvas_video_green_screen_cutout.html)
+另一篇：[canvas像素点操作 —— 视频绿幕抠图](https://xiaotianxia.github.io/blog/vuepress/html/canvas_video_green_screen_cutout.html)
 
 ## 参考资料
 - [Pixel manipulation with canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas)

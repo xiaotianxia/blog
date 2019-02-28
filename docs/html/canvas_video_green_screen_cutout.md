@@ -1,9 +1,9 @@
 # canvas像素点操作 —— 视频绿幕抠图
 
-[原文地址](https://denzel.netlify.com/html/canvas_video_green_screen_cutout.html)
+[原文地址]([https://denzel.netlify.com](https://xiaotianxia.github.io/blog/vuepress)/html/canvas_video_green_screen_cutout.html)
 
 ## 主要内容
-上篇文章学习了canvas像素点的获取——[传送门](https://denzel.netlify.com/html/canvas_pixel_pick.html)，
+上篇文章学习了canvas像素点的获取——[传送门]([https://denzel.netlify.com](https://xiaotianxia.github.io/blog/vuepress)/html/canvas_pixel_pick.html)，
 今天学一下canvas像素点操作。
 
 

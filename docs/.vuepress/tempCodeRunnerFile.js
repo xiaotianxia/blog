@@ -1,0 +1,1 @@
+Vue.use(ElementUI)

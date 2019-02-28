@@ -1,6 +1,6 @@
 # HTML5.2新标签 —— dialog 
 
-[原文地址](https://denzel.netlify.com/html/dialog_element.html)
+[原文地址](https://xiaotianxia.github.io/blog/vuepress/html/dialog_element.html)
 
 ## 前言
 继HTML5新增了诸多新的标签之后，HTML5.2又引入了几个现代标签，其中就包括&lt;dialog&gt;标签。
