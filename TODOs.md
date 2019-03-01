@@ -14,9 +14,9 @@ overscroll-behavior
 polyfill 
 https://github.com/DylanPiercey/scroll-behaviour
 
-#### flex 
 
 ## js
+mutation
 
 ## npm 发布
 
