@@ -5,7 +5,6 @@ ES6
 工程化
 webpack 运行机制
 脚手架
-跨域
 安全问题
 Virtual DOM
 Diff 算法
