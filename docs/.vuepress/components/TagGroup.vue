@@ -58,7 +58,7 @@ export default {
 	ul li {
 		display: inline-block;
 		margin: 8px;
-		padding: 8px 16px;
+		padding: 4px 16px;
 		border-radius: 4px;
 	}
 	li a {
@@ -67,5 +67,8 @@ export default {
 		width: 100%;
 		height: 100%;
 		text-decoration: none!important;
+	}
+	li:hover {
+		opacity: .6;
 	}
 </style>
