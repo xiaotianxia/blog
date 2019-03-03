@@ -125,7 +125,14 @@ function add(){
 
 参考 [1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/4)
 
-
+## 实现一个 new
+```js
+    function _new(fn, ...arg) {
+    const obj = Object.create(fn.prototype);
+    const ret = fn.apply(obj, arg);
+    return ret instanceof Object ? ret : obj;
+}
+```
 
 
 

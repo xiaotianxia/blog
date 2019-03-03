@@ -18,6 +18,8 @@ https://github.com/DylanPiercey/scroll-behaviour
 ## js
 mutation
 
+typedArray  dataView
+
 ## npm 发布
 
 ## vue ssr
