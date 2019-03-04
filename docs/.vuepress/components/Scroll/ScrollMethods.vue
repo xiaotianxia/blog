@@ -18,15 +18,15 @@
 	            </el-form-item>
 
                 <el-form-item label-width="0">
-	                <el-button @click="onScrollTo" type="primary" size="mini">scroll({top: {{queryParams.top}}, left: {{queryParams.left}}, behavior: {{queryParams.smooth ? 'smooth' : 'auto'}}})</el-button>
+	                <el-button @click="onScrollTo" type="primary" size="mini">scroll({top: {{queryParams.top}}, left: {{queryParams.left}}, behavior: '{{queryParams.smooth ? 'smooth' : 'auto'}}'})</el-button>
 	            </el-form-item>
 
                 <el-form-item label-width="0">
-	                <el-button @click="onScroll" type="primary" size="mini">scrollTo({top: {{queryParams.top}}, left: {{queryParams.left}}, behavior: {{queryParams.smooth ? 'smooth' : 'auto'}}})</el-button>
+	                <el-button @click="onScroll" type="primary" size="mini">scrollTo({top: {{queryParams.top}}, left: {{queryParams.left}}, behavior: '{{queryParams.smooth ? 'smooth' : 'auto'}}'})</el-button>
 	            </el-form-item>
 
                 <el-form-item label-width="0">
-	                <el-button @click="onScrollBy" type="primary" size="mini">scrollBy({top: {{queryParams.top}}, left: {{queryParams.left}}, behavior: {{queryParams.smooth ? 'smooth' : 'auto'}}})</el-button>
+	                <el-button @click="onScrollBy" type="primary" size="mini">scrollBy({top: {{queryParams.top}}, left: {{queryParams.left}}, behavior: '{{queryParams.smooth ? 'smooth' : 'auto'}}'})</el-button>
 	            </el-form-item>
 	        </el-form>
         </div>
