@@ -16,5 +16,5 @@ module.exports = [
 	'communication_using_postmessage',
 	'upload_using_filereader_createobjecturl',
 	'simple_code_preview',
-	'scroll_behavior'
+	'scroll_behaviors'
 ]
