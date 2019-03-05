@@ -24,6 +24,7 @@ export default {
         height: 32px;
         line-height: 32px;
         background-color: #ecf0f1;
+        z-index: 999；
     }
     .scrollToTop:hover {
         background-color: #bdc3c7;
