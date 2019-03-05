@@ -44,8 +44,8 @@ export default {
     data () {
         return {
             queryParams: {
-                block: 'start', //竖直方向
-                inline: 'start', //水平方向
+                block: 'center', //竖直方向
+                inline: 'center', //水平方向
                 smooth: false
             }
         }
@@ -69,19 +69,22 @@ export default {
 
 <style scoped>
     .wrapper {
-        margin: 0 auto;
+        display: flex;
+        margin: 10px auto;
+    }
+
+    .scroll-wrapper,
+    .scroll-operation {
+        flex-basis: 48%;
     }
 
     .scroll-wrapper {
-        display: inline-block;
-        width: 300px;
         height: 300px;
         overflow: auto;
         overscroll-behavior: contain;
     }
 
     .scroll-operation {
-        display: inline-block;
         vertical-align: top;
     }
 

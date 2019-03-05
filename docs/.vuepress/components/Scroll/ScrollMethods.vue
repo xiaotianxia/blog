@@ -79,19 +79,23 @@ export default {
 
 <style scoped>
     .wrapper {
-        margin: 0 auto;
+        display: flex;
+        margin: 10px auto;
+    }
+
+    .scroll-wrapper,
+    .scroll-operation {
+        flex-basis: 48%;
     }
 
     .scroll-wrapper {
-        display: inline-block;
-        width: 300px;
         height: 300px;
         overflow: auto;
         overscroll-behavior: contain;
+        margin-right: 10px;
     }
 
     .scroll-operation {
-        display: inline-block;
         vertical-align: top;
     }
 
@@ -103,7 +107,6 @@ export default {
     }
 
     .el-form .el-form-item {
-        padding-left: 20px;
         margin-bottom: 4px;
     }
     .el-button--primary {
