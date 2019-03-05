@@ -126,6 +126,12 @@ function add(){
 参考 [1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/4)
 
 ## 实现一个 new
+当代码 new Foo(...) 执行时，会发生以下事情：
+
+- 一个继承自 Foo.prototype 的新对象被创建。
+- 使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。
+- 由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。
+
 ```js
     function _new(fn, ...arg) {
     const obj = Object.create(fn.prototype);

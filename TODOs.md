@@ -18,7 +18,7 @@ https://github.com/DylanPiercey/scroll-behaviour
 ## js
 mutation
 
-typedArray  dataView
+typedArray  DataView
 
 ## npm 发布
 
