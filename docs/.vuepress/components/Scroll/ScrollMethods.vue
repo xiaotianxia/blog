@@ -79,13 +79,13 @@ export default {
 
 <style scoped>
     .wrapper {
-        display: flex;
         margin: 10px auto;
     }
 
     .scroll-wrapper,
     .scroll-operation {
-        flex-basis: 48%;
+        display: inline-block;
+        width: 48%;
     }
 
     .scroll-wrapper {
