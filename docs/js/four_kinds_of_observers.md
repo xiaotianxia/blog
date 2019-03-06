@@ -1,6 +1,5 @@
 # JS中的观察者们 —— 四种 Observers
 
-## 前言
 观察者(Observer)
 
 ## Intersection Observer
@@ -8,16 +7,15 @@
 <Observers-IntersectionObserver/>
 
 ### 推荐阅读
-- [IntersectionObserver polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
 - [IntersectionObserver’s Coming into View](https://developers.google.com/web/updates/2016/04/intersectionobserver)
 - [Observing Intersection Observers](https://davidwalsh.name/intersection-observers)
 - [IntersectionObserver.IntersectionObserver()](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
 - [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
+- - [IntersectionObserver polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
 
 ## Mutation Observer
 
 <Observers-MutationObserver/>
-
 
 ### 推荐阅读
 - [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
@@ -49,6 +47,22 @@ window.resize
 ## Performance Observer
 
 <Observers-PerformanceObserver/>
+
+const observer = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+        // `name` will be either 'first-paint' or 'first-contentful-paint'.
+        const metricName = entry.name;
+        const time = Math.round(entry.startTime + entry.duration);
+
+        report('send', 'event', {
+            eventCategory: 'Performance Metrics',
+            eventAction: metricName,
+            eventValue: time,
+            nonInteraction: true,
+        });
+    }
+});
+observer.observe({entryTypes: ['paint']});
 
 ### 推荐阅读
 - [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)

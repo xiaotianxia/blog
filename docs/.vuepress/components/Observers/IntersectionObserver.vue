@@ -1,6 +1,6 @@
 <template>
 	<div class="intersection-wrapper">
-		<p v-if="errorMsg != ''" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
+		<p v-if="errorMsg" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
 		<div v-else class="wrapper">
 			<div class="sectionInfo js-info">{{info}}</div>
 			<div class="sectionContent js-content">
@@ -29,16 +29,18 @@ export default {
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/764d0c29ly1fvrk7lg8nij20g80dcmxr.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
+				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
 			],
-
 			errorMsg: '',
-
 			info: ''
 		}
 	},
 
 	methods: {
 		reserveCallback (entries) {
+			console.log(entries)
 			let ratio = entries[0].intersectionRatio,
 				$target = entries[0].target;
 			this.info = ratio;
@@ -48,7 +50,7 @@ export default {
 		},
 
 		onPlay ($target) {
-			this.onEndAllVideos();
+			this.onPauseAllVideos($target);
 			let $videoWrapper = $target.querySelector('.js-video'),
 				$coverWrapper = $target.querySelector('.js-cover');
 			$coverWrapper.classList.add('hide');
@@ -56,11 +58,18 @@ export default {
 			$videoWrapper.querySelector('video').play();
 		},
 
-		onEndAllVideos () {
-			let $videoWrappers = document.querySelectorAll('.js-video');
+		onPause ($target) {
+			let $videoWrapper = $target.querySelector('.js-video'),
+				$coverWrapper = $target.querySelector('.js-cover');
+			$coverWrapper.classList.remove('hide');
+			$videoWrapper.classList.add('hide');
+			$videoWrapper.querySelector('video').pause();
+		},
 
-			$videoWrappers.forEach(($item, index) => {
-				$item.querySelector('video').pause();
+		onPauseAllVideos ($target) {
+			let $items = document.querySelectorAll('.js-item');
+			$items.forEach(($item, index) => {
+				this.onPause($item);
 			});
 		},
 
@@ -86,6 +95,8 @@ export default {
 			for(let i = 0, len = $targets.length; i < len; i ++) {
 				this.observer.observe($targets[i]);
 			}
+
+			//TODO 前端的断开监控
 		}
 	},
 
@@ -139,10 +150,8 @@ export default {
 		position: relative;
 		height: 500px;
 		border: 1px solid #ccc;
-	}
-	.wrapper .list {
-		height: 100%;
 		overflow: auto;
+		overscroll-behavior: contain;
 	}
 	.wrapper .list::-webkit-scrollbar {
         display: none;
