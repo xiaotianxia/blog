@@ -5,7 +5,8 @@
 			<div class="sectionInfo js-info">{{info}}</div>
 			<div class="sectionContent js-content">
 				<ul class="list">
-					<li v-for="item in list" class="item js-item">
+					<li v-for="(item, index) in list" class="item js-item">
+						<span class="label">{{index + 1}}</span>
 						<div class="cover js-cover">
 							<img :src="item.cover" alt="封面">
 							<i class="btn-start el-icon-caret-right" @click="onClickCover"></i>
@@ -156,6 +157,9 @@ export default {
 	.wrapper .list::-webkit-scrollbar {
         display: none;
     }
+	.wrapper .list .item {
+		position: relative;
+	}
     .wrapper .list .item:not(:last-child) {
 		height: 280px;
 		padding: 20px 0;
@@ -168,6 +172,19 @@ export default {
     .wrapper .list .item:last-child {
     	padding-bottom: 0;
     }
+	.wrapper .item .label {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		background-color: crimson;
+		border-radius: 50%;
+		color: #fff;
+		z-index: 999;
+	}
     .wrapper .item .cover,
     .wrapper .item .video {
 		position: relative;
