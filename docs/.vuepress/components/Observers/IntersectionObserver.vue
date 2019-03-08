@@ -5,7 +5,7 @@
 			<div class="sectionContent js-content">
 				<ul class="list">
 					<li v-for="(item, index) in list" class="item js-item">
-						<span class="label">{{index + 1}}：<span class="js-span"></span></span>
+						<span class="label">{{index + 1}}(<span class="js-span"></span>)</span>
 						<div class="cover js-cover">
 							<img :src="item.cover" alt="封面">
 							<i class="btn-start el-icon-caret-right" @click="onClickCover"></i>
