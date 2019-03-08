@@ -2,11 +2,10 @@
 	<div class="intersection-wrapper">
 		<p v-if="errorMsg" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
 		<div v-else class="wrapper">
-			<div class="sectionInfo js-info">{{info}}</div>
 			<div class="sectionContent js-content">
 				<ul class="list">
 					<li v-for="(item, index) in list" class="item js-item">
-						<span class="label">{{index + 1}}</span>
+						<span class="label">{{index + 1}}：<span class="js-span"></span></span>
 						<div class="cover js-cover">
 							<img :src="item.cover" alt="封面">
 							<i class="btn-start el-icon-caret-right" @click="onClickCover"></i>
@@ -34,24 +33,22 @@ export default {
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
 				{cover: 'https://wx1.sinaimg.cn/large/74cd34adly1fvogc7wyf3j20dc0dct9g.jpg', url: 'http://pn4meizzc.bkt.clouddn.com/video.ogv'},
 			],
-			errorMsg: '',
-			info: ''
+			errorMsg: ''
 		}
 	},
 
 	methods: {
 		reserveCallback (entries) {
-			console.log(entries)
 			let ratio = entries[0].intersectionRatio,
 				$target = entries[0].target;
-			this.info = ratio;
-			if(1 - ratio <= 0.01) {
+			$target.querySelector('.js-span').innerText = ratio;
+			if(1 - ratio <= 0.03) {
 				this.onPlay($target);
 			}
 		},
 
 		onPlay ($target) {
-			this.onPauseAllVideos($target);
+			this.onPauseAllVideos();
 			let $videoWrapper = $target.querySelector('.js-video'),
 				$coverWrapper = $target.querySelector('.js-cover');
 			$coverWrapper.classList.add('hide');
@@ -67,7 +64,7 @@ export default {
 			$videoWrapper.querySelector('video').pause();
 		},
 
-		onPauseAllVideos ($target) {
+		onPauseAllVideos () {
 			let $items = document.querySelectorAll('.js-item');
 			$items.forEach(($item, index) => {
 				this.onPause($item);
@@ -75,6 +72,7 @@ export default {
 		},
 
 		onClickCover (e) {
+			this.onPauseAllVideos();
 			let $cover = e.target,
 				$coverWrapper = $cover.parentNode,
 				$videoWrapper = $coverWrapper.nextSibling;
@@ -96,8 +94,6 @@ export default {
 			for(let i = 0, len = $targets.length; i < len; i ++) {
 				this.observer.observe($targets[i]);
 			}
-
-			//TODO 前端的断开监控
 		}
 	},
 
@@ -113,7 +109,7 @@ export default {
 		this.observer = new IntersectionObserver(this.reserveCallback, {
 			root: $referenceBox,
 			rootMargin: '0px',
-			threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
+			threshold: [0.7, 0.8, 0.9, 1]
 		});
 
 		this.addObserver($targets);
@@ -149,21 +145,22 @@ export default {
 	}
 	.wrapper .sectionContent {
 		position: relative;
-		height: 500px;
+		height: 450px;
 		border: 1px solid #ccc;
+		padding: 40px 0;
 		overflow: auto;
 		overscroll-behavior: contain;
 	}
-	.wrapper .list::-webkit-scrollbar {
+	.wrapper .sectionContent::-webkit-scrollbar {
         display: none;
     }
 	.wrapper .list .item {
 		position: relative;
-	}
-    .wrapper .list .item:not(:last-child) {
 		height: 280px;
 		padding: 20px 0;
 		overflow: hidden;
+	}
+    .wrapper .list .item:not(:last-child) {
 		border-bottom: 10px solid #576574;
     }
     .wrapper .list .item:first-child {
@@ -174,16 +171,17 @@ export default {
     }
 	.wrapper .item .label {
 		position: absolute;
-		left: 0;
-		top: 0;
+		left: 10px;
+		top: 10px;
 		display: inline-block;
-		width: 30px;
+		max-width: 300px;
 		height: 30px;
 		line-height: 30px;
+		padding: 0 10px;
 		background-color: crimson;
-		border-radius: 50%;
+		border-radius: 8px;
 		color: #fff;
-		z-index: 999;
+		z-index: 10;
 	}
     .wrapper .item .cover,
     .wrapper .item .video {
@@ -192,6 +190,10 @@ export default {
     	height: 100%;
     	overflow: hidden;
     }
+	.wrapper .item .video video {
+		width: 100%;
+    	height: 100%;
+	}
     .wrapper .item .cover.hide,
     .wrapper .item .video.hide {
 		display: none;

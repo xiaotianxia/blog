@@ -11,7 +11,7 @@
 - [Observing Intersection Observers](https://davidwalsh.name/intersection-observers)
 - [IntersectionObserver.IntersectionObserver()](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
 - [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
-- - [IntersectionObserver polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
+- [IntersectionObserver polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
 
 ## Mutation Observer
 
