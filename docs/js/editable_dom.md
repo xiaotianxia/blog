@@ -34,7 +34,7 @@ document.querySelector('#id').isContentEditable   //true
 ```
 
 ## user-modify
-这家伙是一个CSS属性！但其功能不可小觑，可以称得上是CSS版的contenteditable。
+这家伙是一个CSS属性！但其功能不可小觑，是CSS版的contenteditable。
 
 ```css
 user-modify: read-only;   //只读
