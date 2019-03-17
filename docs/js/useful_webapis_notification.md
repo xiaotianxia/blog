@@ -84,7 +84,7 @@ data () {
             badge: 'https://denzel.netlify.com/hero.png',
             image: 'https://denzel.netlify.com/hero.png',
             // silent: true,
-            sound: 'http://pn4meizzc.bkt.clouddn.com/blogsmile.wav',
+            sound: 'http://poijlzkaq.bkt.clouddn.com/blogsmile.wav',
             dir: 'rtl',
             data: {
                 t: new Date()
@@ -154,17 +154,17 @@ methods: {
 
 chromium应该算是支持的最好的了
 
-![small-demo chromium](http://pn4meizzc.bkt.clouddn.com/blog/notification_chromium.png)
+![small-demo chromium](http://poijlzkaq.bkt.clouddn.com/blog/notification_chromium.png)
 
 chrome67和Firefox样式基本一样
 
 chrome67
 
-![small-demo chrome](http://pn4meizzc.bkt.clouddn.com/blog/notification%E2%80%94%E2%80%94chrome67.png)
+![small-demo chrome](http://poijlzkaq.bkt.clouddn.com/blog/notification%E2%80%94%E2%80%94chrome67.png)
 
 Firefox
 
-![small-demo Firefox](http://pn4meizzc.bkt.clouddn.com/blog/natification_firefox.png)
+![small-demo Firefox](http://poijlzkaq.bkt.clouddn.com/blog/natification_firefox.png)
 
 ## 兼容性
 PC端的表现见上图，手机端嘛...chrome、Firefox等全跪:joy: ，反而UC浏览器貌似支持这个属性，但是我的UC显示是denied，

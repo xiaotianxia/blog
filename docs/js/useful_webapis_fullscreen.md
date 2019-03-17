@@ -4,10 +4,10 @@
 
 ## 前言
 全屏下播放视频已经很常见了，像这样
-![](http://pn4meizzc.bkt.clouddn.com/fullscreen.jpeg)
+![](http://poijlzkaq.bkt.clouddn.com/fullscreen.jpeg)
 而在web页面里，几乎所有元素都是可以全屏显示的。全屏模式下，一切“闲杂”元素退出，
 舞台只为你而亮，请开始你的表演。
-![](http://pn4meizzc.bkt.clouddn.com/blogtimg.jpeg)
+![](http://poijlzkaq.bkt.clouddn.com/blogtimg.jpeg)
 
 今天跟大家一块学习HTML5的全屏模式——fullscreen API。
 
@@ -20,9 +20,9 @@ Chrome和Safari下，貌似表现的与**display:inline**一样，虽然我设�
 如下图：
 
 Chrome、Safari：
-![](http://pn4meizzc.bkt.clouddn.com/fullscreen002.png)
+![](http://poijlzkaq.bkt.clouddn.com/fullscreen002.png)
 Firefox：
-![](http://pn4meizzc.bkt.clouddn.com/fullscreen003.png)
+![](http://poijlzkaq.bkt.clouddn.com/fullscreen003.png)
 关于样式稍后再说，我们先从头开始看。
 
 首先看下mdn的解释：
@@ -74,11 +74,11 @@ div:-webkit-full-screen {
 ```
 
 全屏下Chrome会有默认加上白背景色和一个很大的z-index，这样婶的
-![](http://pn4meizzc.bkt.clouddn.com/blogfullscreen001.png)
+![](http://poijlzkaq.bkt.clouddn.com/blogfullscreen001.png)
 所以手动改变全屏下的样式是有必要的。
 
 而Firefox下，则看到了这样的代码，
-![](http://pn4meizzc.bkt.clouddn.com/fullscreen004.png)
+![](http://poijlzkaq.bkt.clouddn.com/fullscreen004.png)
 而且试着改变这些样式貌似都不好使，求大神指点啊！！
 ```css
 div:-moz-full-screen {
@@ -96,7 +96,7 @@ div:-moz-full-screen {
 ```
 这个自测只有最新的Firefox支持。
 如下图：
-![](http://pn4meizzc.bkt.clouddn.com/blogfullscreen005.png)
+![](http://poijlzkaq.bkt.clouddn.com/blogfullscreen005.png)
 
 >另：backdrop这个词还有两个地方用到：一个是[dialog](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog)这个标签的伪元素，用来设置弹窗背景样式，这个浏览器的支持还是很好的。
 还有一个是css滤镜[backdrop-filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter)，可自行查看。

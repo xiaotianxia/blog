@@ -1,7 +1,7 @@
 <template>
 	<div class="wx-wrapper">
 		<p class="wx-txt">欢迎关注</p>
-		<img class="wx-img" src="http://pn4meizzc.bkt.clouddn.com/wxqr.png">
+		<img class="wx-img" src="http://poijlzkaq.bkt.clouddn.com/wxqr.png">
 	</div>
 </template>
 
