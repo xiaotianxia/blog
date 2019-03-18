@@ -165,7 +165,7 @@ export default {
 		overscroll-behavior: contain;
         background-color: #000;
 	}
-	.wrapper .sectionContent::-webkit-scrollbar {
+	.wrapper .sectionContent::scrollbar {
         display: none;
     }
 	.wrapper .list .item {

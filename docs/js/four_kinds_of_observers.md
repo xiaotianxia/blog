@@ -4,6 +4,7 @@
 
 ## Intersection Observer
 
+### demo
 <Observers-IntersectionObserver/>
 
 ### 推荐阅读
@@ -15,6 +16,7 @@
 
 ## Mutation Observer
 
+### demo
 <Observers-MutationObserver/>
 
 ### 推荐阅读
@@ -35,7 +37,10 @@ window.resize
 - 1.对于不可替换内联元素不触发
 - 2.CSS transform 操作不触发
 
+### demo
 <Observers-ResizeObserver/>
+
+<CanIUse :word="'resizeobserver'" />
 
 ### 推荐阅读
 - [JavaScript中的ResizeObserver](https://www.w3cplus.com/javascript/ResizeObserver-api.html)
@@ -46,6 +51,7 @@ window.resize
 
 ## Performance Observer
 
+#### demo
 <Observers-PerformanceObserver/>
 
 const observer = new PerformanceObserver((list) => {
