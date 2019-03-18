@@ -27,7 +27,7 @@ input[type=checkbox] {
 ```
 
 demo截图
-![demo截图](http://pn4meizzc.bkt.clouddn.com/blogchekbox001.gif)
+![demo截图](http://poijlzkaq.bkt.clouddn.com/blogchekbox001.gif)
 
 或者看这里
 <show-in-codepen :href="'https://codepen.io/_tianxia/pen/NMJyMR'"></show-in-codepen>
@@ -84,7 +84,7 @@ demo截图
 }
 ```
 demo截图
-![demo截图](http://pn4meizzc.bkt.clouddn.com/chekbox002.gif)
+![demo截图](http://poijlzkaq.bkt.clouddn.com/chekbox002.gif)
 
 或者看这里
 <show-in-codepen :href="'https://codepen.io/_tianxia/pen/ZoPMeE'"></show-in-codepen>
@@ -138,7 +138,7 @@ demo截图
 }
 ```
 demo截图
-![demo截图](http://pn4meizzc.bkt.clouddn.com/chekbox003.gif)
+![demo截图](http://poijlzkaq.bkt.clouddn.com/chekbox003.gif)
 
 或者看这里
 <show-in-codepen :href="'https://codepen.io/_tianxia/pen/vjPwmb'"></show-in-codepen>

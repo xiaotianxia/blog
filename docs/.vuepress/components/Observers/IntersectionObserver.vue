@@ -35,6 +35,7 @@ export default {
 				{cover: 'http://poijlzkaq.bkt.clouddn.com/6095487609.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896502100868.mp4', description: '呵呵呵呵呵呵呵呵'},
 				{cover: 'http://poijlzkaq.bkt.clouddn.com/48666754765.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896503859343.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
 				{cover: 'http://poijlzkaq.bkt.clouddn.com/434689743867.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896506605984.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
+
 			],
 			errorMsg: ''
 		}
