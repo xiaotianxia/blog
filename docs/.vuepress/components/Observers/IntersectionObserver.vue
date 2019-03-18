@@ -53,18 +53,23 @@ export default {
 		onPlay ($target) {
 			this.onPauseAllVideos();
 			let $videoWrapper = $target.querySelector('.js-video'),
-				$coverWrapper = $target.querySelector('.js-cover');
+                $coverWrapper = $target.querySelector('.js-cover'),
+                $video = $videoWrapper.querySelector('video');
 			$coverWrapper.classList.add('hide');
 			$videoWrapper.classList.remove('hide');
-			$videoWrapper.querySelector('video').play();
+            $video.play().then(() => {
+                $video.muted = false;
+            });
 		},
 
 		onPause ($target) {
 			let $videoWrapper = $target.querySelector('.js-video'),
-				$coverWrapper = $target.querySelector('.js-cover');
+                $coverWrapper = $target.querySelector('.js-cover'),
+                $video = $videoWrapper.querySelector('video');
 			$coverWrapper.classList.remove('hide');
 			$videoWrapper.classList.add('hide');
-			$videoWrapper.querySelector('video').pause();
+			$video.muted = true;
+			$video.pause();
 		},
 
 		onPauseAllVideos () {
@@ -78,17 +83,21 @@ export default {
 			this.onPauseAllVideos();
 			let $cover = e.target,
 				$coverWrapper = $cover.parentNode,
-				$videoWrapper = $coverWrapper.nextSibling;
+                $videoWrapper = $coverWrapper.nextSibling,
+                $video = $videoWrapper.querySelector('video');
 			$coverWrapper.classList.add('hide');
 			$videoWrapper.classList.remove('hide');
-			$videoWrapper.querySelector('video').play();
+			$video.muted = false;
+            $video.play();
 		},
 
 		onClickVideo (e) {
 			let $video = e.target;
 			if($video.paused) {
+                $video.muted = false;
 				$video.play();
 			} else {
+                $video.muted = true;
 				$video.pause();
 			}
 		},
@@ -144,7 +153,7 @@ export default {
 		line-height: 48px;
 		text-align: center;
 		background-color: #2c3e50;
-		color: #fff;
+		color: #ffffff;
 	}
 	.wrapper .sectionContent {
 		position: relative;
