@@ -40,6 +40,7 @@ window.resize
 ### demo
 <Observers-ResizeObserver/>
 
+实验阶段，好多浏览器没有实现。
 <CanIUse :word="'resizeobserver'" />
 
 ### 推荐阅读
