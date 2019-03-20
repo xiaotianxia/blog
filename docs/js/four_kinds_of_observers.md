@@ -71,6 +71,33 @@ const observer = new PerformanceObserver((list) => {
 });
 observer.observe({entryTypes: ['paint']});
 
+https://juejin.im/post/5b7a51886fb9a019ea01f593
+
+
+const measure = (fn, name = fn.name) => {
+  const startName = prefixStart(name)
+  const endName = prefixEnd(name)
+  performance.mark(startName)
+  fn()
+  performance.mark(endName)
+  // 调用 measure
+  performance.measure(name, startName, endName)
+}
+const getDuration = entries => {
+  // 直接获取 duration
+  const [{ duration }] = entries
+  return duration
+}
+const retrieveResult = key => getDuration(performance.getEntriesByName(key))
+
+// 使用时
+function foo() {
+  // some code
+}
+measure(foo)
+const duration = retrieveResult('foo')
+console.log('duration of foo is:', duration)
+
 ### 推荐阅读
 - [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
 - [PerformanceObserver()](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/PerformanceObserver)
