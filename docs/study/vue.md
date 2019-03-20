@@ -201,7 +201,7 @@ inject 选项应该是一个字符串数组或一个对象，该对象的 key �
 父组件
 ```html
 <child :isShow.sync="isShow" v-show="isShow"/>
-//下面写法的语法糖
+//是下面写法的语法糖
 <child @update:isShow="e => isShow = e;" v-show="isShow"/>
 ```
 子组件
@@ -217,6 +217,20 @@ inject 选项应该是一个字符串数组或一个对象，该对象的 key �
     }
 </script>
 ```
+### 监听子组件(包括第三方子组件)的生命周期钩子
+只需要这样：
+```html
+<Child @hook:mounted="childMounted"/>
+```
+```js
+methods: {
+    childMounted() {
+        console.log("Child was mounted");
+    }
+  }
+```
+见[这里](https://codesandbox.io/s/18r05pkmn7)
+
 参考
 [1](https://www.jianshu.com/p/d42c508ea9de)
 [2](https://juejin.im/post/5be01d0ce51d450700084925)
