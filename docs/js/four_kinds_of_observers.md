@@ -73,30 +73,30 @@ observer.observe({entryTypes: ['paint']});
 
 https://juejin.im/post/5b7a51886fb9a019ea01f593
 
+var measure = (fn, startName = 'start', endName = 'end', name = fn.name) => {
+    performance.mark(startName)
+    fn()
+    performance.mark(endName)
+    performance.measure(name, startName, endName)
 
-const measure = (fn, name = fn.name) => {
-  const startName = prefixStart(name)
-  const endName = prefixEnd(name)
-  performance.mark(startName)
-  fn()
-  performance.mark(endName)
-  // 调用 measure
-  performance.measure(name, startName, endName)
+    var getDuration = entries => {
+        var { duration } = entries[entries.length - 1]
+            return duration
+    }
+
+    return getDuration(performance.getEntriesByName(name))
 }
-const getDuration = entries => {
-  // 直接获取 duration
-  const [{ duration }] = entries
-  return duration
-}
-const retrieveResult = key => getDuration(performance.getEntriesByName(key))
+
+
 
 // 使用时
 function foo() {
-  // some code
+    var now = new Date()
+  //for(let i = 0; i < 100000; i ++) {}
+  while(new Date() - now < 3000) {}
 }
-measure(foo)
-const duration = retrieveResult('foo')
-console.log('duration of foo is:', duration)
+
+measure(foo, 'start1', 'end1')
 
 ### 推荐阅读
 - [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
