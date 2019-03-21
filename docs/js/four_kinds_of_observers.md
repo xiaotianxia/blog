@@ -3,19 +3,23 @@
 观察者(Observer)
 
 ## Intersection Observer
-
+```js
+var observer = new IntersectionObserver(callback[, options]);
+```
+做一个视频流的简单demo，当视频滚动到全部出现在屏幕的时候播放，并暂停其他“滚出”屏幕的或者还未“滚进来”的视频。
 ### demo
 <Observers-IntersectionObserver/>
 
 ### 推荐阅读
+- [Intersection Observer](https://www.w3.org/TR/2018/WD-intersection-observer-20181106/)
 - [IntersectionObserver’s Coming into View](https://developers.google.com/web/updates/2016/04/intersectionobserver)
 - [Observing Intersection Observers](https://davidwalsh.name/intersection-observers)
-- [IntersectionObserver.IntersectionObserver()](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
 - [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver)
 - [IntersectionObserver polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)
 
 ## Mutation Observer
 
+下面是一个简单的demo,任何对节点的操作都会收到MutationObserver API的通知。
 ### demo
 <Observers-MutationObserver/>
 
@@ -53,17 +57,12 @@ window.resize
 ## Performance Observer
 
 #### demo
-
 <spreadown defaultShow>
 	<iframe height="393" style="width: 100%;" scrolling="no" title="PerformanceObserver demo" src="//codepen.io/_tianxia/embed/oVargZ/?height=393&theme-id=33504&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">See the Pen <a href='https://codepen.io/_tianxia/pen/oVargZ/'>PerformanceObserver demo</a> by Denzel(<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
 	<show-in-codepen href="https://codepen.io/_tianxia/pen/oVargZ"></show-in-codepen>
 </spreadown>
 
 ### 推荐阅读
-- [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
-- [PerformanceObserver()](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/PerformanceObserver)
-- [Performance Timeline](https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline)
-
-## 总结
-- [现代浏览器支持的不同类型的观察者](https://www.w3cplus.com/javascript/different-types-of-observers-supported-by-modern-browsers.html)
-
+- [Performance Timeline Level 2](https://www.w3.org/TR/2019/WD-performance-timeline-2-20190321/)
+- [Paint Timing 1](https://w3c.github.io/paint-timing/)
+- [Long Tasks API 1](https://www.w3.org/TR/2017/WD-longtasks-1-20170907/)
