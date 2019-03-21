@@ -53,57 +53,16 @@ window.resize
 ## Performance Observer
 
 #### demo
-<Observers-PerformanceObserver/>
 
-const observer = new PerformanceObserver((list) => {
-    for (const entry of list.getEntries()) {
-        // `name` will be either 'first-paint' or 'first-contentful-paint'.
-        const metricName = entry.name;
-        const time = Math.round(entry.startTime + entry.duration);
-
-        report('send', 'event', {
-            eventCategory: 'Performance Metrics',
-            eventAction: metricName,
-            eventValue: time,
-            nonInteraction: true,
-        });
-    }
-});
-observer.observe({entryTypes: ['paint']});
-
-https://juejin.im/post/5b7a51886fb9a019ea01f593
-
-var measure = (fn, startName = 'start', endName = 'end', name = fn.name) => {
-    performance.mark(startName)
-    fn()
-    performance.mark(endName)
-    performance.measure(name, startName, endName)
-
-    var getDuration = entries => {
-        var { duration } = entries[entries.length - 1]
-            return duration
-    }
-
-    return getDuration(performance.getEntriesByName(name))
-}
-
-
-
-// 使用时
-function foo() {
-    var now = new Date()
-  //for(let i = 0; i < 100000; i ++) {}
-  while(new Date() - now < 3000) {}
-}
-
-measure(foo, 'start1', 'end1')
+<spreadown defaultShow>
+	<iframe height="393" style="width: 100%;" scrolling="no" title="PerformanceObserver demo" src="//codepen.io/_tianxia/embed/oVargZ/?height=393&theme-id=33504&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">See the Pen <a href='https://codepen.io/_tianxia/pen/oVargZ/'>PerformanceObserver demo</a> by Denzel(<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
+	<show-in-codepen href="https://codepen.io/_tianxia/pen/oVargZ"></show-in-codepen>
+</spreadown>
 
 ### 推荐阅读
 - [PerformanceObserver](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver)
 - [PerformanceObserver()](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/PerformanceObserver)
 - [Performance Timeline](https://developer.mozilla.org/en-US/docs/Web/API/Performance_Timeline)
-
-
 
 ## 总结
 - [现代浏览器支持的不同类型的观察者](https://www.w3cplus.com/javascript/different-types-of-observers-supported-by-modern-browsers.html)
