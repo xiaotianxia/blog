@@ -213,7 +213,15 @@ observer.observe(target);
 
 ## Performance Observer
 PerformanceObserver 是个相对比较复杂的API，用来监控各种性能相关的指标。
+该API由一系列API组成：
+- [Performance Timeline Level 2](https://www.w3.org/TR/2019/WD-performance-timeline-2-20190321/)
+- [Paint Timing 1](https://w3c.github.io/paint-timing/)
+- [Navigation Timing Level 2](https://w3c.github.io/navigation-timing/)
+- [User Timing Level 3](https://www.w3.org/TR/2019/WD-user-timing-3-20190308/)
+- [Resource Timing Level 2](https://www.w3.org/TR/2019/WD-resource-timing-2-20190307/)
+- [Long Tasks API 1](https://www.w3.org/TR/2017/WD-longtasks-1-20170907/)
 
+若真细研究起来，东西还是很多的。这里只简单地介绍一下（因为我也没搞太清楚😂）。
 
 ### 怎么用
 ```js
@@ -253,6 +261,8 @@ observer.observe({
 </spreadown>
 
 ### 参考资料
+- [PerformanceObserver()](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/PerformanceObserver)
+- [现代浏览器支持的不同类型的观察者](https://www.w3cplus.com/javascript/different-types-of-observers-supported-by-modern-browsers.html)
 - [Performance Timeline Level 2](https://www.w3.org/TR/2019/WD-performance-timeline-2-20190321/)
 - [Paint Timing 1](https://w3c.github.io/paint-timing/)
 - [Navigation Timing Level 2](https://w3c.github.io/navigation-timing/)
