@@ -167,22 +167,38 @@ mounted () {
 - [Getting to Know Mutation Observers](https://dev.opera.com/articles/mutation-observers-tutorial/)
 
 ## Resize Observer
-window.resize
-之前为了监听div的尺寸变化，都将侦听器附加到window中的resize事件
+从名字就可以知道该API是干嘛的了：监听元素的尺寸变化。
 
-触发：
-- 1.元素被插入或移除时触发
-- 2.元素display从显示变成 none 或相反过程时触发
+之前为了监听元素的尺寸变化，都将侦听器附加到window中的resize事件。对于不受窗口变化影响的元素就没那么简单了。
+现在我们可以使用该API轻松的实现。
 
-不触发
-- 1.对于不可替换内联元素不触发
-- 2.CSS transform 操作不触发
+### 怎么用
+同样只需要两步：
+```js
+var observer = new ResizeObserver(callback);
+observer.observe(target);
+```
+
+但是它的触发也是有条件的，下面是触发和不触发的条件：
+- 触发
+  - 1.元素被插入或移除时触发
+  - 2.元素display从显示变成 none 或相反过程时触发
+
+- 不触发
+  - 1.对于不可替换内联元素不触发
+  - 2.CSS transform 操作不触发
 
 ### demo 🌰↓
 <Observers-ResizeObserver/>
 
-实验阶段，好多浏览器没有实现。
+遗憾的是该API仍处于实验阶段，好多浏览器没有实现。
+
 <CanIUse :word="'resizeobserver'" />
+
+不过，由于MutationObserver已经被大部分浏览器支持，且有[polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill)的支持，
+我们可以轻松的利用他来代替ResizeObserver。
+
+<CanIUse :word="'mutationobserver'" />
 
 ### 推荐阅读
 - [JavaScript中的ResizeObserver](https://www.w3cplus.com/javascript/ResizeObserver-api.html)
