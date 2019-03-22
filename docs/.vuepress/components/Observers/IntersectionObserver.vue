@@ -1,5 +1,6 @@
 <template>
 	<div class="intersection-wrapper">
+		<label for="c1"><input id="c1" type="checkbox" v-model="showConsole">看log(打开开发者工具看log)</label>
 		<p v-if="errorMsg" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
 		<div v-else class="wrapper">
 			<div class="sectionContent js-content">
@@ -37,12 +38,16 @@ export default {
 				{cover: 'http://poijlzkaq.bkt.clouddn.com/434689743867.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896506605984.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
 
 			],
-			errorMsg: ''
+			errorMsg: '',
+			showConsole: false
 		}
 	},
 
 	methods: {
 		reserveCallback (entries) {
+			if(this.showConsole) {
+				console.log(entries);
+			}
 			let ratio = entries[0].intersectionRatio,
 				$target = entries[0].target;
 			$target.querySelector('.js-span').innerText = ratio;
