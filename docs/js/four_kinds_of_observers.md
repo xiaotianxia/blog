@@ -189,7 +189,11 @@ observer.observe(target);
   - 2.CSS transform 操作不触发
 
 ### demo 🌰↓
+
 <Observers-ResizeObserver/>
+
+拖动右下角变换元素尺寸或点击随机按钮设置随机尺寸，都会收到通知(里面的小星星转动速度变化)。
+而通过transform变化视觉上的尺寸时是没有通知的。
 
 遗憾的是该API仍处于实验阶段，好多浏览器没有实现。
 
@@ -208,14 +212,50 @@ observer.observe(target);
 
 
 ## Performance Observer
+PerformanceObserver 是个相对比较复杂的API，用来监控各种性能相关的指标。
+
+
+### 怎么用
+```js
+var observer = new PerformanceObserver(callback);
+observer.observe({ entryTypes: [entryTypes] });
+```
+entryTypes: 需要监控的指标名，这些指标都可以通过 performance.getEntries() 获取到，此外还可以通过 performance.getEntriesByName() 、performance.getEntriesByType()
+分别针对 name 和 entryType 来过滤。
+
+- mark 获取所有通过 performance.mark(markName) 做的所有标记
+- measure 获取通过 performance.measure(measureName, markName_start, markName_end) 得到的所有测量值
+- longtask 监听长任务（超过50ms 的任务）（不足：**只能监控到长任务的存在，貌似不能定位到具体任务**）
+- paint 获取绘制相关的性能指标，分为两种：“first-paint”、“first-contentful-paint”
+- navigation 各种与页面有关的时间，可通过 performance.timing 获取
+- resource 各种与资源加载相关的信息
+
+相较之前的各种操作，现在我们代码仅需要像这样就可以了——
+```js
+const observer = new PerformanceObserver((list) => {
+   let output;
+   for (const item of list.getEntries()) {
+       //业务代码
+   }
+});
+
+observer.observe({
+    //按需要填写
+    entryTypes: ['mark', 'measure', 'longtask', 'paint', 'navigation', 'resource'] 
+});
+```
 
 #### demo 🌰↓
+
 <spreadown defaultShow>
 	<iframe height="393" style="width: 100%;" scrolling="no" title="PerformanceObserver demo" src="//codepen.io/_tianxia/embed/oVargZ/?height=393&theme-id=33504&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">See the Pen <a href='https://codepen.io/_tianxia/pen/oVargZ/'>PerformanceObserver demo</a> by Denzel(<a href='https://codepen.io/_tianxia'>@_tianxia</a>) on <a href='https://codepen.io'>CodePen</a>.</iframe>
 	<show-in-codepen href="https://codepen.io/_tianxia/pen/oVargZ"></show-in-codepen>
 </spreadown>
 
-### 推荐阅读
+### 参考资料
 - [Performance Timeline Level 2](https://www.w3.org/TR/2019/WD-performance-timeline-2-20190321/)
 - [Paint Timing 1](https://w3c.github.io/paint-timing/)
+- [Navigation Timing Level 2](https://w3c.github.io/navigation-timing/)
+- [User Timing Level 3](https://www.w3.org/TR/2019/WD-user-timing-3-20190308/)
+- [Resource Timing Level 2](https://www.w3.org/TR/2019/WD-resource-timing-2-20190307/)
 - [Long Tasks API 1](https://www.w3.org/TR/2017/WD-longtasks-1-20170907/)
