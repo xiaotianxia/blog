@@ -1,6 +1,12 @@
 # JS中的观察者们 —— 四种 Observers
 
-观察者(Observer)
+> [原文链接](https://xiaotianxia.github.io/blog/vuepress/js/four_kinds_of_observers.html)
+
+今天跟大家一块学习一下JS中的几个观察者(Observer) API，他们是 ——
+- [Intersection Observer](#intersection-observer)
+- [Mutation Observer](#mutation-observer)
+- [Resize Observer](#resize-observer)
+- [Performance Observer](#performance-observer)
 
 ## Intersection Observer
 当你想监听某个元素，当它在视口中可见的时候希望可以得到通知，这个API就是最佳的选择了。以往我们的做法是绑定容器的scroll事件，或者设定时器不停地调用getBoundingClientRect() 获取元素位置，
@@ -94,6 +100,8 @@ mounted () {
     this.addObserver($targets);
     }
 ```
+[完整代码](https://github.com/xiaotianxia/blog/blob/678a850ab72f9c6cc302c5c4dc0ec6f4a61de5d5/docs/.vuepress/components/Observers/IntersectionObserver.vue)
+
 上面的demo也有很大的不足之处：对所有的视频元素都进行了监听，并且对“消失”的视频没有关掉观察器，当视频数增多时，势必会引起性能上的问题。
 如果真的应用在业务中还需要进一步的优化。
 
@@ -159,6 +167,7 @@ mounted () {
     observer.observe(this.$list, config);
 }
 ```
+[完整代码](https://github.com/xiaotianxia/blog/blob/678a850ab72f9c6cc302c5c4dc0ec6f4a61de5d5/docs/.vuepress/components/Observers/MutationObserver.vue)
 
 ### 参考资料
 - [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
@@ -195,6 +204,8 @@ observer.observe(target);
 拖动右下角变换元素尺寸或点击随机按钮设置随机尺寸，都会收到通知(里面的小星星转动速度变化)。
 而通过transform变化视觉上的尺寸时是没有通知的。
 
+[完整代码](https://github.com/xiaotianxia/blog/blob/678a850ab72f9c6cc302c5c4dc0ec6f4a61de5d5/docs/.vuepress/components/Observers/ResizeObserver.vue)
+
 遗憾的是该API仍处于实验阶段，好多浏览器没有实现。
 
 <CanIUse :word="'resizeobserver'" />
@@ -221,7 +232,7 @@ PerformanceObserver 是个相对比较复杂的API，用来监控各种性能相
 - [Resource Timing Level 2](https://www.w3.org/TR/2019/WD-resource-timing-2-20190307/)
 - [Long Tasks API 1](https://www.w3.org/TR/2017/WD-longtasks-1-20170907/)
 
-若真细研究起来，东西还是很多的。这里只简单地介绍一下（因为我也没搞太清楚😂）。
+若真细研究起来东西还是很多的,这里只简单地介绍一下（因为我也没搞太清楚😂）。
 
 ### 怎么用
 ```js
@@ -260,12 +271,8 @@ observer.observe({
 	<show-in-codepen href="https://codepen.io/_tianxia/pen/oVargZ"></show-in-codepen>
 </spreadown>
 
+由于时间、精力有限，上述内容如有错误，欢迎不吝赐教🙏。
+
 ### 参考资料
 - [PerformanceObserver()](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/PerformanceObserver)
-- [现代浏览器支持的不同类型的观察者](https://www.w3cplus.com/javascript/different-types-of-observers-supported-by-modern-browsers.html)
-- [Performance Timeline Level 2](https://www.w3.org/TR/2019/WD-performance-timeline-2-20190321/)
-- [Paint Timing 1](https://w3c.github.io/paint-timing/)
-- [Navigation Timing Level 2](https://w3c.github.io/navigation-timing/)
-- [User Timing Level 3](https://www.w3.org/TR/2019/WD-user-timing-3-20190308/)
-- [Resource Timing Level 2](https://www.w3.org/TR/2019/WD-resource-timing-2-20190307/)
-- [Long Tasks API 1](https://www.w3.org/TR/2017/WD-longtasks-1-20170907/)
+- [Different Types Of Observers Supported By Modern Browsers](https://www.zeolearn.com/magazine/different-types-of-observers-supported-by-modern-browsers)
