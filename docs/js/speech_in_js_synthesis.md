@@ -44,7 +44,7 @@ speechSynthesis对象有以下方法：
 
 speechSynthesis.getVoices()返回因每个浏览器不同及版本的不同返回不太一样，大致是这样：
 
-![截图](http://pn4meizzc.bkt.clouddn.com/blog/1111111.png)
+![截图](http://poijlzkaq.bkt.clouddn.com/blog/1111111.png)
 
 ::: warning 注意
 语言包获取不稳定，有时候返回为空，可以用定时器多试几次。

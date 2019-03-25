@@ -151,7 +151,7 @@ export default {
         height: 448px;
         font-size: 12px;
         border-radius: 35px;
-        background-image: url('http://pn4meizzc.bkt.clouddn.com/iphone-bg1.png');
+        background-image: url('http://poijlzkaq.bkt.clouddn.com/iphone-bg1.png');
         box-sizing: border-box;
     }
     .phone-body {
