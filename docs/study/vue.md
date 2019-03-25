@@ -26,16 +26,19 @@ export default {
 ```
 
 ### this.$set() 使用
-
 a.数组的下标去修改数组的值，数据已经被修改了，但是不触发updated函数，视图不更新。
 
 b.vue中检测不到对象属性的添加和删除
 
 ### 生命周期函数/methods/watch里面不应该使用箭头函数
-
 箭头函数的this指向外层，即函数所在的所用域，普通函数的this指向函数的调用者
 
-### watch的immediate属性
+### delete 与 Vue.delete ($delete)
+- 都用于数组和对象
+- delete 删除数组后，被删除的元素还占据原来的位置，变成empty或undefined，其他元素的简直不发生变化
+- Vue.delete 直接删除了数组 改变了数组的键值。
+
+### watch 的 immediate 属性
 ```js
 created() {
     this.fetchPostList()
@@ -57,7 +60,7 @@ watch: {
 }
 ```
 
-### 注销watch
+### 注销 watch
 使用app.$watch()时，不用的时候须要注销掉，不然会引起内存泄露。该方法返回的就是一个注销方法，只要调用一下就可以了。
 ```js
 //注册watch
@@ -198,7 +201,7 @@ inject 选项应该是一个字符串数组或一个对象，该对象的 key �
 父组件
 ```html
 <child :isShow.sync="isShow" v-show="isShow"/>
-//下面写法的语法糖
+//是下面写法的语法糖
 <child @update:isShow="e => isShow = e;" v-show="isShow"/>
 ```
 子组件
@@ -214,6 +217,20 @@ inject 选项应该是一个字符串数组或一个对象，该对象的 key �
     }
 </script>
 ```
+### 监听子组件(包括第三方子组件)的生命周期钩子
+只需要这样：
+```html
+<Child @hook:mounted="childMounted"/>
+```
+```js
+methods: {
+    childMounted() {
+        console.log("Child was mounted");
+    }
+  }
+```
+见[这里](https://codesandbox.io/s/18r05pkmn7)
+
 参考
 [1](https://www.jianshu.com/p/d42c508ea9de)
 [2](https://juejin.im/post/5be01d0ce51d450700084925)

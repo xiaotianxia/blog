@@ -1,13 +1,13 @@
 # Columns —— CSS多栏布局
 
-[原文链接](https://denzel.netlify.com/css/columns.html?_=7654323456782357)
+[原文链接](https://xiaotianxia.github.io/blog/vuepress/css/columns.html?_=7654323456782357)
 
 ## 前言
 人们阅读文本时，如果眼睛从一行的终点移动到下一个行的开始需要太长时间，它们就会丢失它们所在的行。
 因此，为了最大限度地利用大屏幕，如果可以将文本分成多块列并排放置，就像报纸一样，想必会方便很多。
 而CSS3里的多栏(multi-col)布局，就是为此而生了。
 
-若文章页混乱，请移步原文地址：[原文链接](https://denzel.netlify.com/css/columns.html?_=7654323456782357)
+若文章页混乱，请移步原文地址：[原文链接](https://xiaotianxia.github.io/blog/vuepress/css/columns.html?_=7654323456782357)
 
 这个属性相当简单，今天跟大家一起学习一下。
 

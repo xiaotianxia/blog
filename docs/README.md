@@ -10,6 +10,6 @@ features:
   details: 来嘛
 - title: 哈哈哈
   details: 快
-footer: Copyright © 2018 - present Denzel
+footer: Copyright © 2019 - present Denzel
 ---
 

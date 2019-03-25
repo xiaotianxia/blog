@@ -4,7 +4,7 @@
 		<div v-else class="wrapper">
 			<div class="editBox">
 				<div class="btns">
-					<button @click="onAddAttr">添加属性</button>
+					<button @click="onAddAttr">添加\删除属性</button>
 					<button @click="onEditStyle">修改样式</button>
 				</div>
 				<div class="listWrapper">
@@ -16,7 +16,7 @@
 					</ul>
 				</div>
 				<div class="operate">
-					<input type="text" @keyup="onAddItem" placeholder="输入文字回车添加">
+					<input type="text" @keyup="onAddItem" placeholder="输入文字回车添加节点">
 				</div>
 			</div>
 			<div class="logBox">
@@ -25,9 +25,9 @@
 					<ul class="list">
 						<li v-for="(item, index) in logs" class="item">
 							<div>变动类型：{{item.type}}</div>
-							<div v-if="item.target && item.addedNodes.length">增加节点：{{item.addedNodes[0].innerHTML}}</div>
-							<div v-if="item.target && item.removedNodes.length">删除节点：{{item.removedNodes[0].innerHTML}}</div>
-							<div v-if="item.target && item.target.data">变化内容 text：{{item.data}}</div>
+							<div v-if="item.addedNodes.length">增加节点：{{item.addedNodes[0].innerHTML}}</div>
+							<div v-if="item.removedNodes.length">删除节点：{{item.removedNodes[0].innerHTML}}</div>
+							<div v-if="item.target.data">变化内容 text：{{item.data}}</div>
 							<div v-if="item.attributeName">变化属性：{{item.attributeName}}</div>
 						</li>
 					</ul>
@@ -42,12 +42,9 @@ export default {
 	data () {
 		return {
 			list: [
-				{text: '测试'},
-				{text: '测试测试测试测试测试测试测试测试测试测试测试测试'}
+				{text: '测试 可编辑文本'}
 			],
-
 			errorMsg: '',
-
 			logs: []
 		}
 	},
@@ -141,6 +138,9 @@ export default {
 		border: 1px solid #b2bec3;
 		box-sizing: border-box;
 	}
+	.mutation-wrapper .editBox .list {
+		background-color: #2980b9;
+	}
 	.mutation-wrapper .editBox .list .item {
 		padding-left: 10px;
 		outline: none;
@@ -173,6 +173,7 @@ export default {
 	.mutation-wrapper .editBox .list .item .text {
 		display: inline-block;
 		width: 90%;
+		color: #fff;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -182,6 +183,7 @@ export default {
 		display: inline-block;
 		vertical-align: middle;
 		cursor: pointer;
+		color: #fff;
 	}
 	.mutation-wrapper .editBox .btns {
 		padding: 5px 10px;

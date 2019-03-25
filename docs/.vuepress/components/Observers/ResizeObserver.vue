@@ -3,7 +3,8 @@
 		<p v-if="errorMsg != ''" class="txt-red"><i class="el-icon-info"></i>{{errorMsg}}，请更新chrome浏览器查看。</p>
 		<div v-else class="wrapper">
 			<div class="btns">
-				<button @click="onChangeSize">随机宽高</button>
+				<button @click="onChangeSize">random</button>
+				<button @click="onTransform">transform</button>
 			</div>	
 			<p>width:{{log.width}}px <br> height:{{log.height}}px</p>
 			<div :style="{width: width, height: height}" class="box js-box">
@@ -33,6 +34,14 @@ export default {
 				height = parseInt(Math.random() * 151 + 50, 10) + 'px';
 			this.width = width;
 			this.height = height;
+		},
+
+		onTransform () {
+			if(this.$box.classList.contains('transfrom')) {
+				this.$box.classList.remove('transfrom');
+			} else {
+				this.$box.classList.add('transfrom');
+			}
 		},
 
 		observerCallback (entries) {
@@ -72,7 +81,8 @@ export default {
 		padding: 20px;
 	}
 	.resize-wrapper .wrapper button {
-		padding: 4px 20px;
+		margin: 0 4px;
+		padding: 4px 10px;
 		cursor: pointer;
 	}
 	.resize-wrapper .wrapper .box {
@@ -84,12 +94,17 @@ export default {
 		margin: 10px auto;
 		padding: 20px;
 		border: 8px solid #38ada9;
+		overflow: hidden;
+		resize: both;
+	}
+	.resize-wrapper .wrapper .box.transfrom {
+		transform: scale(.5, .5);
 	}
 	.resize-wrapper .wrapper .box .child {
 		width: 50px;
 		height: 50px;
 		text-align: center;
-		line-height: 52px;
+		line-height: 50px;
 		color: #e74c3c;
 		font-size: 50px;
 		animation-name: roll;

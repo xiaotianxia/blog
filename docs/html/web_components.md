@@ -1,6 +1,6 @@
 # 浅尝 Web Components 
 
-[原文地址](https://denzel.netlify.com/html/web_components.html)
+[原文地址](https://xiaotianxia.github.io/blog/vuepress/html/web_components.html)
 
 ## 前言
 Web Components涉及到的内容还是很多的，每一块都有很多东西可以讲，国外的好多大佬已经产出了好多优秀的文章。

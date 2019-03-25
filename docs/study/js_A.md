@@ -56,8 +56,6 @@ xhr.onreadystatechange = function() {
 参考[1](https://juejin.im/post/5bf6330f6fb9a049b41c1934)
 
 ## js原型 ?
-
-
 ```js
 function Person () {}
 var person = new Person();
@@ -218,7 +216,7 @@ alert(Hello.sayHelloAll());
 [1](https://github.com/ljianshu/Blog/issues/4)
 
 ## 跨域 ?
-跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
+- 跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
 
 解决跨域常用方案：
 - jsonp (JSON with Padding) 只支持GET请求
