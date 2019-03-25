@@ -24,7 +24,7 @@ module.exports = {
     themeConfig: {
         repo: 'xiaotianxia',
 
-        logo: '../../hero.png',
+        logo: '../../../hero.png',
 
         editLinks: false,
 
