@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: ../../../hero.gif
+heroImage: hero.gif
 actionText: 进入 →
 actionLink: /js/
 features:
