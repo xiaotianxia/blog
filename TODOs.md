@@ -13,7 +13,6 @@ https://www.w3.org/TR/selectors-4/#matches
 
 
 ## js
-mutation
 typedArray  DataView
 npm 发布
 vue ssr
