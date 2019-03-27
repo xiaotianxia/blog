@@ -29,3 +29,15 @@ webpack
     
 worker
 
+//数学运算
+
+1.0 + 0.2
+0.2 + 0.4
+1.8 + 4.6
+19.9 * 100
+10.125.toFixed(2) 
+10.135.toFixed(2) 
+https://www.cnblogs.com/snandy/p/4943138.html
+https://blog.csdn.net/fendouzhe123/article/details/28901211
+单侧
+
