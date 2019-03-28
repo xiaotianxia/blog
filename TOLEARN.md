@@ -7,5 +7,3 @@ http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html
 命令行工具
 cli
 
-
-http://caniuse.bitsofco.de/
