@@ -13,7 +13,6 @@ https://www.w3.org/TR/selectors-4/#matches
 
 
 ## js
-mutation
 typedArray  DataView
 npm 发布
 vue ssr
@@ -29,4 +28,27 @@ webpack
 	dll
     
 worker
+
+vuepress 升级
+
+
+//数学运算 工具
+
+1.0 + 0.2
+0.2 + 0.4
+1.8 + 4.6
+19.9 * 100
+10.125.toFixed(2) 
+10.135.toFixed(2) 
+
+精度、大数计算
+https://www.cnblogs.com/snandy/p/4943138.html
+https://blog.csdn.net/fendouzhe123/article/details/28901211
+单测
+
+select 带page
+
+
+
+
 

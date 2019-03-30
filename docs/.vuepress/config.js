@@ -8,10 +8,10 @@ module.exports = {
     base: '/blog/vuepress/',
     dest: 'vuepress',
     llang: 'zh-CN',
-    title: 'Denzel',
-    description: '前端笔记',
+    title: '前端学习笔记',
+    description: '前端学习笔记',
     head: [
-        ['meta', { name: 'keywords', content: 'web前端,HTML5,CSS3,Javascript,SVG,canvas' }],
+        ['meta', { name: 'keywords', content: 'web前端,HTML5,CSS3,Javascript,SVG,canvas,vue' }],
         ['meta', { name: 'anthor', content: 'Denzel' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -24,7 +24,7 @@ module.exports = {
     themeConfig: {
         repo: 'xiaotianxia',
 
-        logo: '/hero.png',
+        logo: 'hero.png',
 
         editLinks: false,
 
