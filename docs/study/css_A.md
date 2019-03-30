@@ -102,6 +102,21 @@ box-sizing: border-box; -> width = 200px
 }
 ```
 
+## display:none; 和 visibility:hidden; 的图片加载问题
+
+- img标签
+  - img标签上的图片总是浏览器会加载
+- 背景图片
+  - visibility:hidden;的元素背景图片总会加载
+  - display:none;的元素背景图片总会加载
+  - 父级元素是display:none;的子元素的背景图片不会加载
+- 其他
+  - 伪元素的背景图片，只有伪元素生效，图片才会加载
+  - 已经请求过的相同图片不会重复请求
+  - 不存在的元素，即时样式表里有写，也不会请求加载
+
+## 
+
 
 
 
