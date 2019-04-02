@@ -21,7 +21,7 @@ Math.max.bind(Math, ...arr)();
 ```
 
 ## 数组扁平化
-reduce:
+reduce递归：
 ```js
     function flatten (arr) {
         return arr.reduce((pre, cur) => {
@@ -29,11 +29,25 @@ reduce:
         }, [])
     }
 ```
-toString:
+迭代：
+```js
+const flatten = function (arr) {
+    while (arr.some(item => Array.isArray(item))) {
+        arr = [].concat(...arr)
+    }
+    return arr
+}
+```
+toString: 只适用于简单数组
 ```js
     function flatten (arr){
         return arr.toString().split(',');
+        //return arr.join(',').split(',').map(item => Number(item))
     }
+```
+ES10:
+```js
+    arr.flat(Infinity);
 ```
 
 ## 数字转中文
