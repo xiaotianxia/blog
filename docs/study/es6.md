@@ -166,9 +166,11 @@ obj.b.c()  //打出的是window对象！！
 	    static sex = 'female';
 	    constructor (name, job, married) {
 	        super(name, job);
+            this.married = married;
 	    }
 	    
 	    sayName () {
+            //super.sayName();
 	        return 'Hi, I\'m ' + this.name;
 	    }
 	}
