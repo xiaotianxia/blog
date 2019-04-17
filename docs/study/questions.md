@@ -140,6 +140,60 @@ function add(){
 }
 ```
 
+## 结果是？
+```js
+var obj = {
+    '2': 3,
+    '3': 4,
+    'length': 2,
+    'splice': Array.prototype.splice,
+    'push': Array.prototype.push
+}
+obj.push(1)
+obj.push(2)
+console.log(obj)
+```
+[empty × 2, 1, 2, splice: ƒ, push: ƒ]  类数组
+
+解释：
+- js判断类数组的方法：
+```js
+/**
+ * @param {?Object} obj
+ * @return {boolean}
+ */
+function isArrayLike(obj) {
+    if (!obj || typeof obj !== 'object')
+        return false;
+    try {
+        if (typeof obj.splice === 'function') {
+            const len = obj.length;
+            return typeof len === 'number' && (len >>> 0 === len && (len > 0 || 1 / len > 0));
+        }
+    } catch (e) {}
+    return false;
+}
+// 判断的过程：
+// 1 存在且是对象
+// 2 对象上的splice 属性是函数类型
+// 3 对象上有 length 属性且为正整数
+```
+- push 方法根据 length 属性来决定从哪里开始插入给定的值。如果 length 不能被转成一个数值或不存在，则插入的元素索引为 0。
+
+[1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/76)
+[2](https://juejin.im/post/5ca2fdcee51d4562754be20a)
+
+## 实现一个 instanceof
+```js
+// a instanceof b
+function _instanceof(a, b) {
+    while (a) {
+        if (a.__proto__ === b.prototype) return true;
+        a = a.__proto__;
+    }
+    return false;
+}
+```
 
 
 
