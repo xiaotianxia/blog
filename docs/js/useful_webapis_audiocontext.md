@@ -22,7 +22,7 @@ AudioContext设计的API简直太多了，而且目前好多API还处在实验�
 注意这可不是用audio标签播放的音频的文件，而是用js控制浏览器发出的声音哈。可以调节音量、频率等参数再试听一下。
 
 怎么实现的呢？先看下面这个图 ——
-![](http://poijlzkaq.bkt.clouddn.com/audio-context.png)
+![](http://pq3mt9wke.bkt.clouddn.com/audio-context.png)
 这就是实现出声必须的流程图。首先需要一个音频环境(audio context)， 然后有一个音频数据的输入(input)，再加上处理程序(effects)，然后是音频的输出(destination)，最后把他们连起来(connection) ——
 
 音频数据的输入可以是自定义的数据、页面上的audio元素的音频、从用户设备输入的音频或视频、远程的音频文件等。

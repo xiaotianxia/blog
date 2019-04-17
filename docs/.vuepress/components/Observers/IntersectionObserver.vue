@@ -29,13 +29,13 @@ export default {
 	data () {
 		return {
 			list: [
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/3213214321.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552895951232209.mp4', description: '大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫'},
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/143124321.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552895945898993.mp4', description: '小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟'},
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/586337357.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896499270164.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/678976986798.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896500269933.mp4', description: '嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿'},
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/6095487609.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896502100868.mp4', description: '呵呵呵呵呵呵呵呵'},
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/48666754765.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896503859343.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
-				{cover: 'http://poijlzkaq.bkt.clouddn.com/434689743867.png', url: 'http://poijlzkaq.bkt.clouddn.com/1552896506605984.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/3213214321.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552895951232209.mp4', description: '大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫大花猫呀大花猫'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/143124321.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552895945898993.mp4', description: '小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟小乌龟啊小乌龟'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/586337357.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552896499270164.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/678976986798.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552896500269933.mp4', description: '嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿嘿'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/6095487609.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552896502100868.mp4', description: '呵呵呵呵呵呵呵呵'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/48666754765.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552896503859343.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
+				{cover: 'http://pq3mt9wke.bkt.clouddn.com/434689743867.png', url: 'http://pq3mt9wke.bkt.clouddn.com/1552896506605984.mp4', description: '哈哈哈哈哈哈哈哈哈哈'},
 
 			],
 			errorMsg: '',

@@ -57,7 +57,7 @@ export default {
 				badge: 'https://denzel.netlify.com/hero.png',
 				image: 'https://denzel.netlify.com/hero.png',
 				// silent: true,
-				sound: 'http://poijlzkaq.bkt.clouddn.com/blogsmile.wav',
+				sound: 'http://pq3mt9wke.bkt.clouddn.com/blogsmile.wav',
 				dir: 'rtl',
 				data: {
 					t: new Date()

@@ -104,7 +104,7 @@ export default {
 		transform: translate(-50%, 0);
 		padding-top: 40%;
 		width: 40%;
-		background-image: url('http://poijlzkaq.bkt.clouddn.com/blog/sample.jpg');
+		background-image: url('http://pq3mt9wke.bkt.clouddn.com/blog/sample.jpg');
 		background-size: 100% 100%;
 	}
 

@@ -27,7 +27,7 @@ column-rule-style /*分割线样式*/
 column-rule-color /*分割线颜色*/
 ```
 一个相对完整的多栏布局结构是这样的：
-![demo](http://poijlzkaq.bkt.clouddn.com/columns.svg)
+![demo](http://pq3mt9wke.bkt.clouddn.com/columns.svg)
 ::: tip TIP
 多栏容器中的其他元素，样式中的百分比是相对其所在的某一栏的。
 见下例中的图片，宽度是100%。

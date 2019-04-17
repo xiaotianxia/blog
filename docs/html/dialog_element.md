@@ -14,9 +14,9 @@
 以上就是dialog的原生态样式，未添加任何额外样式。这在Chrome和Firefox里表现是一致的，它们各自的默认样式是这样的，基本一致——
 
 Chrome：
-![](http://poijlzkaq.bkt.clouddn.com/dialog002.png)
+![](http://pq3mt9wke.bkt.clouddn.com/dialog002.png)
 Firefox:
-![](http://poijlzkaq.bkt.clouddn.com/dialog001.png)
+![](http://pq3mt9wke.bkt.clouddn.com/dialog001.png)
 
 嫌丑？！如果给它加上瘦脸（去掉默认样式），加上美颜（css），再加上特效（js），一样可以十分性感:smile:。
 
@@ -57,7 +57,7 @@ dialog::backdrop {
 ```
 浏览器对backdrop也有默认的样式。
 chrome：
-![](http://poijlzkaq.bkt.clouddn.com/blogdialog003.png)
+![](http://pq3mt9wke.bkt.clouddn.com/blogdialog003.png)
 
 ### 再举个栗子
 <Dialog-Demo2/>

@@ -23,7 +23,7 @@ document.designMode = 'on'
 再用鼠标点一点页面，是不是发现了神奇的现象？！
 
 参考下图：
-![示意图](http://poijlzkaq.bkt.clouddn.com/blogeditable.gif)
+![示意图](http://pq3mt9wke.bkt.clouddn.com/blogeditable.gif)
 整个页面都变成了可编辑状态。
 这时候，所有元素的isContentEditable属性都变成了true：
 
