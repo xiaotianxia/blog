@@ -4,8 +4,10 @@
 */
 "use strict";
 
+const parseJson = require("json-parse-better-errors");
 const asyncLib = require("neo-async");
 const path = require("path");
+const { Source } = require("webpack-sources");
 const util = require("util");
 const {
 	Tapable,
@@ -26,38 +28,76 @@ const RequestShortener = require("./RequestShortener");
 const { makePathsRelative } = require("./util/identifier");
 const ConcurrentCompilationError = require("./ConcurrentCompilationError");
 
+/** @typedef {import("../declarations/WebpackOptions").Entry} Entry */
+/** @typedef {import("../declarations/WebpackOptions").WebpackOptions} WebpackOptions */
+
+/**
+ * @typedef {Object} CompilationParams
+ * @property {NormalModuleFactory} normalModuleFactory
+ * @property {ContextModuleFactory} contextModuleFactory
+ * @property {Set<string>} compilationDependencies
+ */
+
 class Compiler extends Tapable {
 	constructor(context) {
 		super();
 		this.hooks = {
+			/** @type {SyncBailHook<Compilation>} */
 			shouldEmit: new SyncBailHook(["compilation"]),
+			/** @type {AsyncSeriesHook<Stats>} */
 			done: new AsyncSeriesHook(["stats"]),
+			/** @type {AsyncSeriesHook<>} */
 			additionalPass: new AsyncSeriesHook([]),
-			beforeRun: new AsyncSeriesHook(["compilation"]),
-			run: new AsyncSeriesHook(["compilation"]),
+			/** @type {AsyncSeriesHook<Compiler>} */
+			beforeRun: new AsyncSeriesHook(["compiler"]),
+			/** @type {AsyncSeriesHook<Compiler>} */
+			run: new AsyncSeriesHook(["compiler"]),
+			/** @type {AsyncSeriesHook<Compilation>} */
 			emit: new AsyncSeriesHook(["compilation"]),
+			/** @type {AsyncSeriesHook<Compilation>} */
 			afterEmit: new AsyncSeriesHook(["compilation"]),
+
+			/** @type {SyncHook<Compilation, CompilationParams>} */
 			thisCompilation: new SyncHook(["compilation", "params"]),
+			/** @type {SyncHook<Compilation, CompilationParams>} */
 			compilation: new SyncHook(["compilation", "params"]),
+			/** @type {SyncHook<NormalModuleFactory>} */
 			normalModuleFactory: new SyncHook(["normalModuleFactory"]),
+			/** @type {SyncHook<ContextModuleFactory>}  */
 			contextModuleFactory: new SyncHook(["contextModulefactory"]),
+
+			/** @type {AsyncSeriesHook<CompilationParams>} */
 			beforeCompile: new AsyncSeriesHook(["params"]),
+			/** @type {SyncHook<CompilationParams>} */
 			compile: new SyncHook(["params"]),
+			/** @type {AsyncParallelHook<Compilation>} */
 			make: new AsyncParallelHook(["compilation"]),
+			/** @type {AsyncSeriesHook<Compilation>} */
 			afterCompile: new AsyncSeriesHook(["compilation"]),
+
+			/** @type {AsyncSeriesHook<Compiler>} */
 			watchRun: new AsyncSeriesHook(["compiler"]),
+			/** @type {SyncHook<Error>} */
 			failed: new SyncHook(["error"]),
+			/** @type {SyncHook<string, string>} */
 			invalid: new SyncHook(["filename", "changeTime"]),
+			/** @type {SyncHook} */
 			watchClose: new SyncHook([]),
 
 			// TODO the following hooks are weirdly located here
 			// TODO move them for webpack 5
+			/** @type {SyncHook} */
 			environment: new SyncHook([]),
+			/** @type {SyncHook} */
 			afterEnvironment: new SyncHook([]),
+			/** @type {SyncHook<Compiler>} */
 			afterPlugins: new SyncHook(["compiler"]),
+			/** @type {SyncHook<Compiler>} */
 			afterResolvers: new SyncHook(["compiler"]),
+			/** @type {SyncBailHook<string, Entry>} */
 			entryOption: new SyncBailHook(["context", "entry"])
 		};
+
 		this._pluginCompat.tap("Compiler", options => {
 			switch (options.name) {
 				case "additional-pass":
@@ -74,19 +114,27 @@ class Compiler extends Tapable {
 			}
 		});
 
+		/** @type {string=} */
 		this.name = undefined;
+		/** @type {Compilation=} */
 		this.parentCompilation = undefined;
+		/** @type {string} */
 		this.outputPath = "";
+
 		this.outputFileSystem = null;
 		this.inputFileSystem = null;
 
+		/** @type {string|null} */
 		this.recordsInputPath = null;
+		/** @type {string|null} */
 		this.recordsOutputPath = null;
 		this.records = {};
-
+		this.removedFiles = new Set();
+		/** @type {Map<string, number>} */
 		this.fileTimestamps = new Map();
+		/** @type {Map<string, number>} */
 		this.contextTimestamps = new Map();
-
+		/** @type {ResolverFactory} */
 		this.resolverFactory = new ResolverFactory();
 
 		// TODO remove in webpack 5
@@ -129,21 +177,33 @@ class Compiler extends Tapable {
 			}
 		};
 
-		this.options = {};
+		/** @type {WebpackOptions} */
+		this.options = /** @type {WebpackOptions} */ ({});
 
 		this.context = context;
 
 		this.requestShortener = new RequestShortener(context);
 
+		/** @type {boolean} */
 		this.running = false;
+
+		/** @type {boolean} */
+		this.watchMode = false;
+
+		/** @private @type {WeakMap<Source, { sizeOnlySource: SizeOnlySource, writtenTo: Map<string, number> }>} */
+		this._assetEmittingSourceCache = new WeakMap();
+		/** @private @type {Map<string, number>} */
+		this._assetEmittingWrittenFiles = new Map();
 	}
 
 	watch(watchOptions, handler) {
 		if (this.running) return handler(new ConcurrentCompilationError());
 
 		this.running = true;
+		this.watchMode = true;
 		this.fileTimestamps = new Map();
 		this.contextTimestamps = new Map();
+		this.removedFiles = new Set();
 		return new Watching(this, watchOptions, handler);
 	}
 
@@ -152,6 +212,10 @@ class Compiler extends Tapable {
 
 		const finalCallback = (err, stats) => {
 			this.running = false;
+
+			if (err) {
+				this.hooks.failed.call(err);
+			}
 
 			if (callback !== undefined) return callback(err, stats);
 		};
@@ -244,18 +308,19 @@ class Compiler extends Tapable {
 	}
 
 	purgeInputFileSystem() {
-		if (this.inputFileSystem && this.inputFileSystem.purge)
+		if (this.inputFileSystem && this.inputFileSystem.purge) {
 			this.inputFileSystem.purge();
+		}
 	}
 
 	emitAssets(compilation, callback) {
 		let outputPath;
-
 		const emitFiles = err => {
 			if (err) return callback(err);
 
-			asyncLib.forEach(
+			asyncLib.forEachLimit(
 				compilation.assets,
+				15,
 				(source, file, callback) => {
 					let targetFile = file;
 					const queryStringIdx = targetFile.indexOf("?");
@@ -269,19 +334,86 @@ class Compiler extends Tapable {
 							outputPath,
 							targetFile
 						);
-						if (source.existsAt === targetPath) {
-							source.emitted = false;
-							return callback();
-						}
-						let content = source.source();
+						// TODO webpack 5 remove futureEmitAssets option and make it on by default
+						if (this.options.output.futureEmitAssets) {
+							// check if the target file has already been written by this Compiler
+							const targetFileGeneration = this._assetEmittingWrittenFiles.get(
+								targetPath
+							);
 
-						if (!Buffer.isBuffer(content)) {
-							content = Buffer.from(content, "utf8");
-						}
+							// create an cache entry for this Source if not already existing
+							let cacheEntry = this._assetEmittingSourceCache.get(source);
+							if (cacheEntry === undefined) {
+								cacheEntry = {
+									sizeOnlySource: undefined,
+									writtenTo: new Map()
+								};
+								this._assetEmittingSourceCache.set(source, cacheEntry);
+							}
 
-						source.existsAt = targetPath;
-						source.emitted = true;
-						this.outputFileSystem.writeFile(targetPath, content, callback);
+							// if the target file has already been written
+							if (targetFileGeneration !== undefined) {
+								// check if the Source has been written to this target file
+								const writtenGeneration = cacheEntry.writtenTo.get(targetPath);
+								if (writtenGeneration === targetFileGeneration) {
+									// if yes, we skip writing the file
+									// as it's already there
+									// (we assume one doesn't remove files while the Compiler is running)
+									return callback();
+								}
+							}
+
+							// get the binary (Buffer) content from the Source
+							/** @type {Buffer} */
+							let content;
+							if (typeof source.buffer === "function") {
+								content = source.buffer();
+							} else {
+								const bufferOrString = source.source();
+								if (Buffer.isBuffer(bufferOrString)) {
+									content = bufferOrString;
+								} else {
+									content = Buffer.from(bufferOrString, "utf8");
+								}
+							}
+
+							// Create a replacement resource which only allows to ask for size
+							// This allows to GC all memory allocated by the Source
+							// (expect when the Source is stored in any other cache)
+							cacheEntry.sizeOnlySource = new SizeOnlySource(content.length);
+							compilation.assets[file] = cacheEntry.sizeOnlySource;
+
+							// Write the file to output file system
+							this.outputFileSystem.writeFile(targetPath, content, err => {
+								if (err) return callback(err);
+
+								// information marker that the asset has been emitted
+								compilation.emittedAssets.add(file);
+
+								// cache the information that the Source has been written to that location
+								const newGeneration =
+									targetFileGeneration === undefined
+										? 1
+										: targetFileGeneration + 1;
+								cacheEntry.writtenTo.set(targetPath, newGeneration);
+								this._assetEmittingWrittenFiles.set(targetPath, newGeneration);
+								callback();
+							});
+						} else {
+							if (source.existsAt === targetPath) {
+								source.emitted = false;
+								return callback();
+							}
+							let content = source.source();
+
+							if (!Buffer.isBuffer(content)) {
+								content = Buffer.from(content, "utf8");
+							}
+
+							source.existsAt = targetPath;
+							source.emitted = true;
+							this.outputFileSystem.writeFile(targetPath, content, callback);
+						}
 					};
 
 					if (targetFile.match(/\/|\\/)) {
@@ -290,7 +422,9 @@ class Compiler extends Tapable {
 							this.outputFileSystem.join(outputPath, dir),
 							writeOut
 						);
-					} else writeOut();
+					} else {
+						writeOut();
+					}
 				},
 				err => {
 					if (err) return callback(err);
@@ -316,10 +450,11 @@ class Compiler extends Tapable {
 		const idx1 = this.recordsOutputPath.lastIndexOf("/");
 		const idx2 = this.recordsOutputPath.lastIndexOf("\\");
 		let recordsOutputPathDirectory = null;
-		if (idx1 > idx2)
+		if (idx1 > idx2) {
 			recordsOutputPathDirectory = this.recordsOutputPath.substr(0, idx1);
-		if (idx1 < idx2)
+		} else if (idx1 < idx2) {
 			recordsOutputPathDirectory = this.recordsOutputPath.substr(0, idx2);
+		}
 
 		const writeFile = () => {
 			this.outputFileSystem.writeFile(
@@ -329,7 +464,9 @@ class Compiler extends Tapable {
 			);
 		};
 
-		if (!recordsOutputPathDirectory) return writeFile();
+		if (!recordsOutputPathDirectory) {
+			return writeFile();
+		}
 		this.outputFileSystem.mkdirp(recordsOutputPathDirectory, err => {
 			if (err) return callback(err);
 			writeFile();
@@ -350,7 +487,7 @@ class Compiler extends Tapable {
 				if (err) return callback(err);
 
 				try {
-					this.records = JSON.parse(content.toString("utf-8"));
+					this.records = parseJson(content.toString("utf-8"));
 				} catch (e) {
 					e.message = "Cannot parse records: " + e.message;
 					return callback(e);
@@ -370,7 +507,9 @@ class Compiler extends Tapable {
 	) {
 		const childCompiler = new Compiler(this.context);
 		if (Array.isArray(plugins)) {
-			for (const plugin of plugins) plugin.apply(childCompiler);
+			for (const plugin of plugins) {
+				plugin.apply(childCompiler);
+			}
 		}
 		for (const name in this.hooks) {
 			if (
@@ -384,8 +523,9 @@ class Compiler extends Tapable {
 					"thisCompilation"
 				].includes(name)
 			) {
-				if (childCompiler.hooks[name])
+				if (childCompiler.hooks[name]) {
 					childCompiler.hooks[name].taps = this.hooks[name].taps.slice();
+				}
 			}
 		}
 		childCompiler.name = compilerName;
@@ -397,11 +537,14 @@ class Compiler extends Tapable {
 		childCompiler.contextTimestamps = this.contextTimestamps;
 
 		const relativeCompilerName = makePathsRelative(this.context, compilerName);
-		if (!this.records[relativeCompilerName])
+		if (!this.records[relativeCompilerName]) {
 			this.records[relativeCompilerName] = [];
-		if (this.records[relativeCompilerName][compilerIndex])
+		}
+		if (this.records[relativeCompilerName][compilerIndex]) {
 			childCompiler.records = this.records[relativeCompilerName][compilerIndex];
-		else this.records[relativeCompilerName].push((childCompiler.records = {}));
+		} else {
+			this.records[relativeCompilerName].push((childCompiler.records = {}));
+		}
 
 		childCompiler.options = Object.create(this.options);
 		childCompiler.options.output = Object.create(childCompiler.options.output);
@@ -493,3 +636,48 @@ class Compiler extends Tapable {
 }
 
 module.exports = Compiler;
+
+class SizeOnlySource extends Source {
+	constructor(size) {
+		super();
+		this._size = size;
+	}
+
+	_error() {
+		return new Error(
+			"Content and Map of this Source is no longer available (only size() is supported)"
+		);
+	}
+
+	size() {
+		return this._size;
+	}
+
+	/**
+	 * @param {any} options options
+	 * @returns {string} the source
+	 */
+	source(options) {
+		throw this._error();
+	}
+
+	node() {
+		throw this._error();
+	}
+
+	listMap() {
+		throw this._error();
+	}
+
+	map() {
+		throw this._error();
+	}
+
+	listNode() {
+		throw this._error();
+	}
+
+	updateHash() {
+		throw this._error();
+	}
+}

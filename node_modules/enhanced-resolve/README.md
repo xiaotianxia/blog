@@ -61,7 +61,7 @@ For more examples creating different types resolvers (sync/async, context, etc) 
 | modules                  | ["node_modules"]            | A list of directories to resolve modules from, can be absolute path or folder name |
 | unsafeCache              | false                       | Use this cache object to unsafely cache the successful requests |
 | plugins                  | []                          | A list of additional resolve plugins which should be applied |
-| symlinks                 | false                       | Whether to resolve symlinks to their symlinked location |
+| symlinks                 | true                        | Whether to resolve symlinks to their symlinked location |
 | cachePredicate           | function() { return true }; | A function which decides whether a request should be cached or not. An object is passed to the function with `path` and `request` properties. |
 | moduleExtensions         | []                          | A list of module extensions which should be tried for modules |
 | resolveToContext         | false                       | Resolve to a context instead of a file |
@@ -82,9 +82,10 @@ class MyResolverPlugin {
   }
 
   apply(resolver) {
-    resolver.plugin(this.source, (request, callback) => {
+    const target = resolver.ensureHook(this.target);
+    resolver.getHook(this.source).tapAsync("MyResolverPlugin", (request, resolveContext, callback) => {
       // Any logic you need to create a new `request` can go here
-      resolver.doResolve(this.target, request, null, callback);
+      resolver.doResolve(target, request, null, resolveContext, callback);
     });
   }
 }

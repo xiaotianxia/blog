@@ -25,23 +25,11 @@ function addStyles (styles /* Array<StyleObject> */, shadowRoot) {
   for (var i = 0; i < styles.length; i++) {
     var item = styles[i]
     var style = injectedStyles[item.id]
-    if (style) {
-      style.refs++
-      for (var j = 0; j < style.parts.length; j++) {
-        style.parts[j](item.parts[j])
-      }
-      for (; j < item.parts.length; j++) {
-        style.parts.push(addStyle(item.parts[j], shadowRoot))
-      }
-      if (style.parts.length > item.parts.length) {
-        style.parts.length = item.parts.length
-      }
-    } else {
-      var parts = []
+    if (!style) {
       for (var j = 0; j < item.parts.length; j++) {
-        parts.push(addStyle(item.parts[j], shadowRoot))
+        addStyle(item.parts[j], shadowRoot)
       }
-      injectedStyles[item.id] = { id: item.id, refs: 1, parts: parts }
+      injectedStyles[item.id] = true
     }
   }
 }

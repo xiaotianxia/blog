@@ -17,8 +17,8 @@ function escape(context, from) {
     } else {
         // Ensure context is escaped before globbing
         // Handles special characters in paths
-        var absoluteContext = _path2.default.resolve(context).replace(/\\/, '/').replace(/[\*|\?|\!|\(|\)|\[|\]|\{|\}]/g, function (substring) {
-            return '\\' + substring;
+        var absoluteContext = _path2.default.resolve(context).replace(/[\*|\?|\!|\(|\)|\[|\]|\{|\}]/g, function (substring) {
+            return '[' + substring + ']';
         });
 
         if (!from) {
