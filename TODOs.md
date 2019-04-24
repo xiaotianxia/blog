@@ -52,6 +52,11 @@ https://blog.csdn.net/fendouzhe123/article/details/28901211
 select组件 带page
 
 
+  // "gitHooks": {
+  //   "pre-commit": "lint-staged"
+  // },
+
+
 
 
 
