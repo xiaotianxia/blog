@@ -23,7 +23,7 @@ module.exports = ctx => ({
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
     ['link', { rel: 'icon', href: '/logo.png' }],
     //解决https加载http资源block问题
-    ['meta', { 'http-equiv': 'Content-Security-Policy', content: 'upgrade-insecure-requests' }]
+    // ['meta', { 'http-equiv': 'Content-Security-Policy', content: 'upgrade-insecure-requests' }]
   ],
   theme: '@vuepress/vue',
   markdown: {
