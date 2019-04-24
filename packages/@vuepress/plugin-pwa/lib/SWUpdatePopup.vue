@@ -49,12 +49,12 @@ export default {
 
     message () {
       const c = this.popupConfig
-      return (c && c.message) || defaultPopupConfig['/'].message
+      return (c && c.message) || defaultPopupConfig['/zh/'].message
     },
 
     buttonText () {
       const c = this.popupConfig
-      return (c && c.buttonText) || defaultPopupConfig['/'].buttonText
+      return (c && c.buttonText) || defaultPopupConfig['/zh/'].buttonText
     }
   },
 
