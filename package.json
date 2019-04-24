@@ -26,9 +26,6 @@
     "test": "node scripts/test.js",
     "tsc": "lerna run tsc"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
   "lint-staged": {
     "*.{js,vue}": [
       "eslint --fix",
