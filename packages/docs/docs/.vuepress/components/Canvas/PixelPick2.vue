@@ -18,7 +18,7 @@ export default {
 			canvas: null,
 			ctx: null,
 			color: null,
-			exterbalUrl: 'http://pq3mt9wke.bkt.clouddn.com/blog/else/miaoWechatIMG241526366731_.pic.jpg'
+			exterbalUrl: '../../../../static/blog/else/miaoWechatIMG241526366731_.pic.jpg'
 		}
 	},
 

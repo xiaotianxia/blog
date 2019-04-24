@@ -53,7 +53,7 @@ context.getImageData(x, y, width, height);
 color/alpha 以数组形式存在，并存储于 ImageData 对象的 data 属性中。
 
 这个样子：
-![](http://pq3mt9wke.bkt.clouddn.com/canvas001.gif)
+![](../../../../static/canvas001.gif)
 
 先来一下demo，通过getImageData方法获取鼠标指针处的像素值。
 
@@ -137,7 +137,7 @@ data () {
 		canvas: null,
 		ctx: null,
 		color: null,
-		exterbalUrl: 'http://pq3mt9wke.bkt.clouddn.com/blog/else/miaoWechatIMG241526366731_.pic.jpg'
+		exterbalUrl: '../../../../static/blog/else/miaoWechatIMG241526366731_.pic.jpg'
 	}
 },
 
@@ -209,7 +209,7 @@ const SAMPLE_WIDTH = 50,
 export default {
 	data () {
 		return {
-			exterbalUrl: 'http://pq3mt9wke.bkt.clouddn.com/blog/else/miaoWechatIMG241526366731_.pic.jpg'
+			exterbalUrl: '../../../../static/blog/else/miaoWechatIMG241526366731_.pic.jpg'
 		}
 	},
 

@@ -9,7 +9,7 @@ navigator.geolocation返回一个geolocation对象，该对象有一个方法get
 navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
 ```
 successCallback定位成功后回调，返回一个position对象，其大概结构是这样的：
-![geolocation对象](http://pq3mt9wke.bkt.clouddn.com/blogWX20180528-105336.png)
+![geolocation对象](../../../../static/blogWX20180528-105336.png)
 
 ```js
 coords.latitude: 十进制数的纬度
@@ -32,7 +32,7 @@ timestamp: 响应的日期/时间
 
 errorCallback定位失败时返回错误信息，大致这样：
 
-![geolocation对象](http://pq3mt9wke.bkt.clouddn.com/WX20180528-110527.png)
+![geolocation对象](../../../../static/WX20180528-110527.png)
 
 ```js
 code: 错误编码：

@@ -1,0 +1,2 @@
+1. qshell account <name> <AK> <SK>
+2. qshell qdownload 10 ./qshell.conf

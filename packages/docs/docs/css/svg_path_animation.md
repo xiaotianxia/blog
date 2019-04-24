@@ -6,7 +6,7 @@
 很多电商网站里，在加入购物车时都会有一个形象的动画，让宝贝以类似抛物线的轨迹飞进购物车，就像不要钱一样:joy: 。
 像这样：
 
-![](http://pq3mt9wke.bkt.clouddn.com/path006.gif)
+![](../../../../static/path006.gif)
 
 实现这种效果可能有很多方法，但是用SVG可以快速简单的实现。今天我们一块学习一下这个方法。
 
@@ -71,8 +71,8 @@ path有以下这些指令：
 
 如下面俩图：
 
-![small demo](http://pq3mt9wke.bkt.clouddn.com/path005.gif)
-![small demo](http://pq3mt9wke.bkt.clouddn.com/path003.gif)
+![small demo](../../../../static/path005.gif)
+![small demo](../../../../static/path003.gif)
 
 同学们可以自行感受下，
 <spreadown>
@@ -84,7 +84,7 @@ path有以下这些指令：
 
 这样：
 
-![](http://pq3mt9wke.bkt.clouddn.com/blogpath.gif)
+![](../../../../static/blogpath.gif)
 
 只要在页面上获取到这三个点，就可以了。
 

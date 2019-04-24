@@ -12,7 +12,7 @@
 当你想监听某个元素，当它在视口中可见的时候希望可以得到通知，这个API就是最佳的选择了。以往我们的做法是绑定容器的scroll事件，或者设定时器不停地调用getBoundingClientRect() 获取元素位置，
 这样做的性能会很差，因为每次获取元素的位置都会引起整个布局的重新计算。还有一个场景是，如果你的元素被放在iframe里，如一些广告，想要知道他们何时出现几乎是不可能的。
 
-![demo](http://pq3mt9wke.bkt.clouddn.com/observer001.gif)
+![demo](../../../../static/observer001.gif)
 
 现在，我们完全可以把这些工作交给IntersectionObserver了。
 
@@ -35,7 +35,7 @@ var observer = new IntersectionObserver(callback[, options]);
   - rootMargin 一个在计算交叉值时添加至root的边界盒中的一组偏移量，写法类似CSS的margin
   - threshold 规定了一个监听目标与边界盒交叉区域的比例值，可以是一个具体的数值或是一组0.0到1.0之间的数组
 
-![smalldemo](http://pq3mt9wke.bkt.clouddn.com/intersectratio.png)
+![smalldemo](../../../../static/intersectratio.png)
 
 开始监听元素：
 ```js

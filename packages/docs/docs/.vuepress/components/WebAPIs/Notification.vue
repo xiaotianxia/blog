@@ -57,7 +57,7 @@ export default {
 				badge: 'https://denzel.netlify.com/hero.png',
 				image: 'https://denzel.netlify.com/hero.png',
 				// silent: true,
-				sound: 'http://pq3mt9wke.bkt.clouddn.com/blogsmile.wav',
+				sound: '../../../../static/blogsmile.wav',
 				dir: 'rtl',
 				data: {
 					t: new Date()
@@ -83,7 +83,7 @@ export default {
             //若没拒绝获取权限
 	        } else if (Notification.permission != "denied") {
 	        	//向用户获取权限
-	            Notification.requestPermission(function (permission) {
+	            Notification.requestPermission(() => {
 	              	this.newNotification();
 	            });
 	        }

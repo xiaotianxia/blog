@@ -107,13 +107,13 @@ if (supportsImports()) {
 
 ## Shadow DOM
 首先需要设置一下：打开开发者工具，f1打开设置(或右上角三个点)，然后勾上Show user agent shadow DOM ——
-![](http://pq3mt9wke.bkt.clouddn.com/component005.png)
+![](../../../../static/component005.png)
 
 然后再看下，video标签是这样的 ——
-![](http://pq3mt9wke.bkt.clouddn.com/component006.png)
+![](../../../../static/component006.png)
 
 甚至一个普通的input ——
-![](http://pq3mt9wke.bkt.clouddn.com/component008.png)
+![](../../../../static/component008.png)
 
 之前被隐藏掉的DOM部分就是shadow DOM。顾名思义，它是其宿主元素的影子，通常用来封装组件的内部结构。
 
@@ -122,7 +122,7 @@ if (supportsImports()) {
 这让我想到，我们是不是可以通过修改元素里面的shadow DOM的样式来改变该元素的样式呢？
 答案是 —— 是的，但也**不完全**是...
 
-![](http://pq3mt9wke.bkt.clouddn.com/component009.png)
+![](../../../../static/component009.png)
 
 从上图audio标签的结构和浏览器默认样式可以看到，我们可以像这样修改对应的样式：
 ```css
@@ -134,11 +134,11 @@ audio::-webkit-media-controls {
 
 于是，默认的audio样式(新版chrome)——
 
-![small](http://pq3mt9wke.bkt.clouddn.com/componet003.png)
+![small](../../../../static/componet003.png)
 
 经过改造后，可以变成这样——
 
-![small](http://pq3mt9wke.bkt.clouddn.com/component004.png)
+![small](../../../../static/component004.png)
 
 ::: warning
 然而并不是所有样式都可以这样覆盖改造，像pseudo="-internal-media-controls-loading-panel"这样以"-internal-"开头的是不可以的。
@@ -276,7 +276,7 @@ document.body.appendChild(flagIcon);
 
 demo截图：
 
-![](http://pq3mt9wke.bkt.clouddn.com/component001.gif)
+![](../../../../static/component001.gif)
 
 demo地址：
 <show-in-codepen href="https://codepen.io/_tianxia/pen/mGZOOG/"></show-in-codepen>
