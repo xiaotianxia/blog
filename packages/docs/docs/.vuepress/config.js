@@ -30,7 +30,7 @@ module.exports = ctx => ({
   },
   themeConfig: {
     repo: 'xiaotianxia',
-    logo: 'logo.png',
+    logo: '/logo.png',
     editLinks: true,
     docsDir: 'packages/docs/docs',
     searchMaxSuggestions: 10,
