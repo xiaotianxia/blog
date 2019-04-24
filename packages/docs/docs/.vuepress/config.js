@@ -21,7 +21,9 @@ module.exports = ctx => ({
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-    ['link', { rel: 'icon', href: `/logo.png` }]
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    //解决https加载http资源block问题
+    ['meta', { 'http-equiv': 'Content-Security-Policy', content: 'block-all-mixed-content' }]
   ],
   theme: '@vuepress/vue',
   markdown: {
