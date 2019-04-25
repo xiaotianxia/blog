@@ -11,7 +11,7 @@ export default {
         let gitalk = new Gitalk({
             clientID: '9edaa9de02dd59b49389',
             clientSecret: '1a0807fe475170542e089e0bb66190bdafa55844',
-            repo: 'https://github.com/xiaotianxia/blog',
+            repo: 'blog',
             owner: 'xiaotianxia',
             admin: ['xiaotianxia'],
             id: location.pathname,      // Ensure uniqueness and length less than 50
