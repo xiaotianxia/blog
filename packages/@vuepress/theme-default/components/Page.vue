@@ -58,10 +58,13 @@
     </div>
 
     <slot name="bottom"/>
+
+    <comment-tool></comment-tool>
   </main>
 </template>
 
 <script>
+import CommentTool from './CommentTool';
 import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
@@ -128,6 +131,10 @@ export default {
         || `Edit this page`
       )
     }
+  },
+
+  components: {
+    CommentTool
   },
 
   methods: {
