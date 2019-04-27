@@ -35,7 +35,7 @@ export default {
             playing: false,
             canvasFillStyle: 'rgb(241, 196, 15)',
             songlist: [
-                {name: '远程音乐', url: 'https://reneroth.org/projects/codepen/dornendiamant.ogg'},
+                {name: '远程音乐', url: '../../../../../../static/Do-Re-Mi.mp3'},
             ]
         }
     },

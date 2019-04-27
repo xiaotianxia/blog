@@ -19,7 +19,7 @@ export default {
     data () {
         return {
             activeName: 'element',
-            audioSrc: 'https://reneroth.org/projects/codepen/dornendiamant.ogg'
+            audioSrc: '../../../../../../static/Do-Re-Mi.mp3'
         }
     },
 
