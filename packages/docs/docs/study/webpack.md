@@ -104,25 +104,16 @@ module.exports = {
 [2](https://www.jianshu.com/p/d22f678af5b7)
  
 ## 运行原理
-
-解析webpack配置参数，合并从shell传入和webpack.config.js文件里配置的参数，生产最后的配置结果。
-
-注册所有配置的插件，好让插件监听webpack构建生命周期的事件节点，以做出对应的反应。
-
-从配置的entry入口文件开始解析文件构建AST语法树，找出每个文件所依赖的文件，递归下去。
-
-在解析文件递归的过程中根据文件类型和loader配置找出合适的loader用来对文件进行转换。
-
-递归完后得到每个文件的最终结果，根据entry配置生成代码块chunk。
-
-输出所有chunk到文件系统。
+- 解析webpack配置参数，合并从shell传入和webpack.config.js文件里配置的参数，生产最后的配置结果。
+- 注册所有配置的插件，好让插件监听webpack构建生命周期的事件节点，以做出对应的反应。
+- 从配置的entry入口文件开始解析文件构建AST语法树，找出每个文件所依赖的文件，递归下去。
+- 在解析文件递归的过程中根据文件类型和loader配置找出合适的loader用来对文件进行转换。
+- 递归完后得到每个文件的最终结果，根据entry配置生成代码块chunk。
+- 输出所有chunk到文件系统。
 
 ## 编写loader ?
-
-loader的功能：对模块源码的转换
-
-loader大概就是这样一个JavaScript文件：
-
+- loader的功能：对模块源码的转换，将所有类型的文件转换为 webpack 能够处理(webpack只识别js)的有效模块
+- loader大概就是这样一个JavaScript文件：
 ```js
 module.exports = function(source) {
     //可以通过 this 访问Loader API
@@ -140,14 +131,17 @@ module.exports = function(source) {
 
 
 ## 编写plugin ?
-使用插件
+- 插件的功能：执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。
+- 使用插件
 ```js
 // webpack.config.js
 var HelloWorldPlugin = require('hello-world');
 
 module.exports = {
     // ... config settings here ...
-    plugins: [new HelloWorldPlugin({ options: true })]
+    plugins: [
+        new HelloWorldPlugin({ someOption: true })
+    ]
 };
 ```
 webpack 插件由以下组成：
@@ -197,10 +191,28 @@ class MyExampleWebpackPlugin {
 [1](http://louiszhai.github.io/2019/01/04/webpack4/)
 
 
-异步加载
-https://blog.csdn.net/zhbhun/article/details/46826129
+## 异步加载 
+使用
+```js
+require.ensure(
+  dependencies: String[],
+  callback: function(require),
+  errorCallback: function(error),
+  chunkName: String
+)
+```
 
-优化
+vue-router中使用：
+```js
+const Foo = r => require.ensure([], () => r(require('./Foo.vue')), 'group-foo');
+```
+可以被import替代
+### vue中懒加载组件
+```js
+const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue');
+```
+
+## webpack优化配置
 https://www.cnblogs.com/imwtr/p/7801973.html
 
 
