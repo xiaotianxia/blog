@@ -90,6 +90,7 @@ function camelCaseToUnderline (name) {
   })
 }
 ```
+
 ## 下划线写法转驼峰写法
 ```js
 function underlineToCamelCase (name) {
@@ -104,6 +105,8 @@ function underlineToCamelCase (name) {
   })
 }
 ```
+
+## 柯里化的通用实现
 
 
 
