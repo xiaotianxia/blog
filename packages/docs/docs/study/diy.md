@@ -131,3 +131,21 @@ https://juejin.im/post/5c2b34a15188257abf1d96eb
 https://juejin.im/post/5a006ec351882554b836f1fd
 
 https://github.com/Jocs/jocs.github.io/issues/7
+
+## instanceof
+
+```js
+// 对象a的__proto__属性指向其构造函数的prototype
+// L insatanceof R ==> L.__proto__[n个] === R.prototype
+function instance_of (L, R) {//L 表示左表达式，R 表示右表达式
+    var O = R.prototype;
+    L = L.__proto__;
+    while (true) { 
+        if (L === null) 
+            return false; 
+        if (O === L)  // 这里重点：当 O 严格等于 L 时，返回 true 
+            return true; 
+        L = L.__proto__; 
+    } 
+}
+```

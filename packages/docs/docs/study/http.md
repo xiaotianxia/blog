@@ -27,27 +27,33 @@ GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和
 [1](https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&amp;mid=100000054&amp;idx=1&amp;sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd)
 
 ## 缓存
-它们的优先级是：(由上到下寻找，找到即返回；找不到则继续)
-- Service Worker
-- Memory Cache
-- Disk Cache
-- 网络请求
+- 它们的优先级是：(由上到下寻找，找到即返回；找不到则继续)
+    - Service Worker
+    - Memory Cache
+    - Disk Cache
+    - 网络请求
 
-
-当浏览器要请求资源时
-
-- 调用 Service Worker 的 fetch 事件响应
-- 查看 memory cache
-- 查看 disk cache。这里又细分：
-
-如果有强制缓存且未失效，则使用强制缓存，不请求服务器。这时的状态码全部是 200
-
-如果有强制缓存但已失效，使用对比缓存，比较后确定 304 还是 200
+- 当浏览器要请求资源时
+    - 调用 Service Worker 的 fetch 事件响应
+    - 查看 memory cache
+    - 查看 disk cache。这里又细分：
+        - 如果有强制缓存且未失效，则使用强制缓存，不请求服务器。这时的状态码全部是 200
+        - 如果有强制缓存但已失效，使用对比缓存，比较后确定 304 还是 200
 
 - 发送网络请求，等待网络响应
 - 把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
 - 把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
 - 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
 
+[参考](https://juejin.im/post/5c22ee806fb9a049fb43b2c5)
 
-https://juejin.im/post/5c22ee806fb9a049fb43b2c5
+## DNS解析过程
+Domain Name Server，域名服务器,是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。
+
+- 1.判断本地的HOSTS文件是否存在相应映射文件。存在就返回
+- 2.不存在的话，查询本地DNS解析缓存。
+- 3.查询TCP/IP中设置的首个DNS服务器，查询本地区域是否存在相应映射。
+- 4.如果查询的域名不由本地区域管理，查看本地DNS缓存中是否存在映射。
+- 5.跳转至根DNS服务器，查询负责该请求的顶级域，并返回一个负责该域的IP地址。
+- 6.本地DNS在根据该顶级域去联系负责该IP地址的域。
+- 7.如果采用转发模式，会将返回结果交由上一级DNS服务器处理，如果不能处理，交由根DNS服务器处理或者上上级处理。

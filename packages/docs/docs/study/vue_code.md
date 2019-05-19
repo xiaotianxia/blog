@@ -62,3 +62,13 @@ vue自己实现了一个时间循环队列，使用顺序：setImmediate --> Mes
 源码分析
 https://juejin.im/user/5b0f4be36fb9a009f74bf263/posts
 https://github.com/muwoo/blogs
+
+## defineProperty、Proxy
+- defineProperty 缺点
+    - 属性的新加或者删除也无法监听
+    - 数组元素的增加和删除也无法监听
+    - 无法监听es6的Set、WeakSet、Map、WeakMap的变化
+    - 无法监听Class类型的数据
+    
+- Proxy缺点
+    - 兼容性差，IE任意版本都不支持

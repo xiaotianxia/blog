@@ -12,6 +12,7 @@
 [1](https://bluest.xyz/critical-rendering-path-optimization.html)
 
 ## 网页性能优化方法 ?
+![](../../../../static/performance.jpeg)
 
 | 网页内容         | 服务器                           | cookie             | js           |
 | -------------  | -------------------------------- | ------------------ | ------------ |

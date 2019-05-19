@@ -311,6 +311,24 @@ a.showX()   //1
 以上过程可以使用生成器（ generator ）函数进行大大简化：
 ![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e706ed08f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
 
+### Symbol、Symbol.for、Symbol.keyFor
+```js
+Symbol('red') === Symbol('red');   //false
+Symbol.for('red') === Symbol.for('red');   //true
+```
+```js
+var s1 = Symbol.for("foo");
+Symbol.keyFor(s1) // "foo"
+
+var s2 = Symbol("foo");
+Symbol.keyFor(s2) // undefined
+```
+### Symbol应用
+- 使用Symbol来作为对象属性名(key)
+- 使用Symbol来替代常量
+- 使用Symbol定义类的私有属性/方法
+
+[参考](https://www.jianshu.com/p/f40a77bbd74e)
 
 ## Proxy/Reflect
 Proxy 拦截对象行为
