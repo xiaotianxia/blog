@@ -125,8 +125,17 @@ const Foo = r => require.ensure([], () => r(require('./Foo.vue')), 'group-foo');
 const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue');
 ```
 
+## 配置相关
+### JS Tree Shaking
+- webpack4 无需手动配置UglifyjsWebpackPlugin，只需要配置mode为"production"，即可显式激活 UglifyjsWebpackPlugin 插件 (根据版本不同，更新的webpack v4.x不配置mode也会自动激活插件)
+
+- JS 的 Tree Shaking 依赖的是 ES2015 的模块系统（比如：import和export），所以如果依赖包没有使用 CommonJS 或者 ES6 的写法，是不会生效的
+- import { chunk } from "lodash"; 需换成 lodash-es -> import { chunk } from "lodash-es";
+
 ## webpack优化配置
 https://www.cnblogs.com/imwtr/p/7801973.html
+
+
 
 
 
