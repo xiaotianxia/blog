@@ -1,4 +1,4 @@
-# js AAA
+# js 高级
 
 ## 微任务、宏任务、Event-Loop
 
@@ -99,3 +99,48 @@ console.log( 'script end' )
 
 参考 
 [1](https://segmentfault.com/a/1190000017224799)
+
+## node 中的 eventloop
+nodejs的event loop分为6个阶段，它们会按照顺序反复运行，分别如下：
+- 1. timers：执行setTimeout() 和 setInterval()中到期的callback。
+- 2. I/O callbacks：上一轮循环中有少数的I/Ocallback会被延迟到这一轮的这一阶段执行
+- 3. idle, prepare：队列的移动，仅内部使用
+- 4. poll：最为重要的阶段，执行I/O callback，在适当的条件下会阻塞在这个阶段
+- 5. check：执行setImmediate的callback
+- 6. close callbacks：执行close事件的callback，例如socket.on("close",func)
+
+不同于浏览器的是，在每个阶段完成后，而不是MacroTask任务完成后，microTask队列就会被执行。这就导致了同样的代码在不同的上下文环境下会出现不同的结果。
+![1](https://images2018.cnblogs.com/blog/1112801/201804/1112801-20180403204200761-655432817.png)
+
+```js
+setTimeout(()=>{
+    console.log('timer1');
+
+    Promise.resolve().then(function() {
+        console.log('promise1');
+    })
+}, 0);
+
+setTimeout(()=>{
+    console.log('timer2');
+
+    Promise.resolve().then(function() {
+        console.log('promise2');
+    })
+}, 0);
+
+// 浏览器输出：
+// time1
+// promise1
+// time2
+// promise2
+
+// Node输出：
+// time1
+// time2
+// promise1
+// promise2
+```
+
+参考
+[1](https://www.cnblogs.com/xuzhudong/p/8711069.html)

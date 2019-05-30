@@ -231,6 +231,9 @@ methods: {
 ```
 见[这里](https://codesandbox.io/s/18r05pkmn7)
 
+### 用 Object.freeze 优化长列表性能
+
+
 参考
 [1](https://www.jianshu.com/p/d42c508ea9de)
 [2](https://juejin.im/post/5be01d0ce51d450700084925)
@@ -238,3 +241,4 @@ methods: {
 [4](https://juejin.im/post/5b174de8f265da6e410e0b4e)
 [5](https://www.haorooms.com/post/vue_project_cg)
 [6](https://juejin.im/post/5c204c98e51d454637699e33)
+[7](https://juejin.im/post/5ce3b519f265da1bb31c0d5f)

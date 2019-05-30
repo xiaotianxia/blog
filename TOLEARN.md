@@ -21,12 +21,13 @@ webpack 性能优化手段
     Promise 实现
 如何实现登录功能
 SSR
+状态管理
 webpack热更新原理
-EventLoop: node、browser差异
 HTML5离线缓存
 sass基本用法
 CSS modules
 一套完整的响应式布局方案
+serverless
 
 
 

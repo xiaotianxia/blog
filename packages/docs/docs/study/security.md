@@ -30,9 +30,9 @@
     - 对引号、尖括号、斜杠进行转义
 - HttpOnly Cookie
     - 设置 cookie 时，将其属性设为 HttpOnly (只能通过服务端设置) ，就可以避免该网页的 cookie 被客户端恶意 js 窃取，保护用户 cookie 信息。
-    - 当 cookie 带h ttpOnly 选项时，客户端则无法通过 js 代码去访问（包括读取、修改、删除等）这个 cookie
+    - 当 cookie 带 httpOnly 选项时，客户端则无法通过 js 代码去访问（包括读取、修改、删除等）这个 cookie
 
-## CSRF攻击的原理、具体案例，如何防御
+## CSRF攻击的原理，如何防御
 ### 原理
 CSRF(Cross Site Request Forgery)，即跨站请求伪造。它利用用户已登录的身份，在用户毫不知情的情况下，以用户的名义完成非法操作。
 ![CSRF](https://camo.githubusercontent.com/a24b3da2f84bbf939f49451010bcfb8292423a6b/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f312f32342f313638383033306132343730323330313f773d34333226683d33303326663d706e6726733d3434343837)
@@ -40,9 +40,6 @@ CSRF(Cross Site Request Forgery)，即跨站请求伪造。它利用用户已登
 - 用户已经登录了站点 A，并在本地记录了 cookie
 - 在用户没有登出站点 A 的情况下（也就是 cookie 生效的情况下），访问了恶意攻击者提供的引诱危险站点 B (B 站点要求访问站点A)。
 - 站点 A 没有做任何 CSRF 防御
-
-### 案例
-
 
 ### 防御
 防范 CSRF 攻击可以遵循以下几种规则：
@@ -71,7 +68,7 @@ CSRF(Cross Site Request Forgery)，即跨站请求伪造。它利用用户已登
 ### HTTP劫持
 - iframe类型
 - js插入
-- 
+
 ### DNS劫持
 - 直接修改网站IP
 

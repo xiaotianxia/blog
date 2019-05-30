@@ -7,6 +7,20 @@ function uniq(arr) {
 }
 ```
 
+## 取交集
+```js
+let a = new Set([1, 2, 3]);
+let b = new Set([4, 3, 2]);
+let intersect = new Set([...a].filter(x => b.has(x)));
+```
+
+## 取差集
+```js
+let a = new Set([1, 2, 3]);
+let b = new Set([4, 3, 2]);
+let difference = new Set([...a].filter(x => !b.has(x)));
+```
+
 ## 最快捷的数组求最大值 ?
 ```js
 var arr = [ 1,5,1,7,5,9];
