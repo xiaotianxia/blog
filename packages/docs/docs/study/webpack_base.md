@@ -131,6 +131,9 @@ const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue');
 
 - JS 的 Tree Shaking 依赖的是 ES2015 的模块系统（比如：import和export），所以如果依赖包没有使用 CommonJS 或者 ES6 的写法，是不会生效的
 - import { chunk } from "lodash"; 需换成 lodash-es -> import { chunk } from "lodash-es";
+    - 对于lodash，还可以通过其他的方式实现按需打包
+        - babel插件 babel-plugin-lodash，通过配置.babelrc实现
+        - webpack插件 lodash-webpack-plugin，通过配置webpack.config.js实现
 
 ## webpack优化配置
 https://www.cnblogs.com/imwtr/p/7801973.html
