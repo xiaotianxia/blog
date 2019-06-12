@@ -27,9 +27,13 @@ HTML5离线缓存
 sass基本用法
 CSS modules
 一套完整的响应式布局方案
+函数式编程理解
 serverless
+flutter
 
+各种配置：babel、postcss、eslint、stylelint
 
+history模式、hash模式区别？如何将hash模式变成history模式？
 
 
 

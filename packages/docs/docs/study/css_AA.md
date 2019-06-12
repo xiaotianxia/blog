@@ -34,10 +34,11 @@
     　　- 4、CSSOM和DOM开始合并构成渲染树，每个节点开始包含具体的样式信息。
     　　- 5、计算渲染树中个各个节点的位置信息，即布局阶段。
     　　- 6、将布局后的渲染树显示到界面上。
-　　- 可以看出，当cssdom还没构建完成时，页面是不会渲染到浏览器界面的，也就是css加载过程中会阻塞页面的渲染。
+　　- 可以看出，当CSSOM还没构建完成时，页面是不会渲染到浏览器界面的，也就是css加载过程中会阻塞页面的渲染。
 - 怎么防止 CSS 阻塞渲染？ 原则就是尽快的提供CSS。
     - 在引入顺序上，CSS 资源的引入要优于js脚本的引入 
     - 关键 CSS 内联，非关键 CSS 预加载，参考 [html-critical-webpack-plugin](https://www.npmjs.com/package/html-critical-webpack-plugin)
+    - 利用“媒体查询”：link标签的media属性，只有符合“媒体查询”条件时，浏览器才阻塞渲染，直至样式表下载并处理完毕，否则不会阻塞
 
 https://www.jianshu.com/p/cbd593748567
 https://github.com/addyosmani/critical
