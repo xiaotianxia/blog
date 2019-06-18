@@ -233,6 +233,37 @@ methods: {
 
 ### 用 Object.freeze 优化长列表性能
 
+### Vue中的错误、警告捕获
+全局捕获：
+```js
+//捕获错误
+Vue.config.errorHandler = function(err, vm, info) {
+    console.log(`Error: ${err.toString()}\nInfo: ${info}`);
+}
+//捕获浸膏
+Vue.config.warnHandler = function(msg, vm, trace) {
+    console.log(`Warn: ${msg}\nTrace: ${trace}`);
+}
+```
+组件级捕获：
+- 生命周期钩子 errorCaptured
+```js
+errorCaptured(err, vm, info) {
+    console.log(`cat EC: ${err.toString()}\ninfo: ${info}`); 
+    return false;
+}
+```
+- renderError 只在开发者环境下工作。
+```js
+new Vue({
+    render (h) {
+        throw new Error('oops');
+    },
+    renderError (h, err) {
+        return h('pre', { style: { color: 'red' }}, err.stack);
+    }
+}).$mount('#app');
+```
 
 参考
 [1](https://www.jianshu.com/p/d42c508ea9de)
