@@ -1,6 +1,8 @@
 # 概念
 
 ## TCP三次握手/四次挥手
+![](../../../../static/three-handshake.png)
+![](../../../../static/four-wave.png)
 https://my.oschina.net/liting/blog/402859
 
 ## CSP (Content Security Policy)
@@ -8,12 +10,12 @@ https://my.oschina.net/liting/blog/402859
 CSP 的实质就是白名单制度，开发者明确告诉客户端，哪些外部资源可以加载和执行，等同于提供白名单。它的实现和执行全部由浏览器完成，开发者只需提供配置。
 - 两种方法可以启用 CSP
     - 通过 HTTP 头信息的Content-Security-Policy的字段。
-    - 通过网页的<meta>标签。
+    - 通过网页的meta标签。
 ```
 Content-Security-Policy: script-src 'self'; object-src 'none';
 style-src cdn.example.org third-party.org; child-src https:
 ```
-或 
+或  
 ```
 <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:">
 ```
