@@ -9,7 +9,6 @@ cli
 https://juejin.im/post/5bead1b25188251e1a1f4d34
 
 
-
 项目
 
 
@@ -37,10 +36,8 @@ CSS modules
     柯里化
 
 
-websock的底层原理
 __proto__和prototype
 文件上传方案
-图片压缩的原理
 
 node相关
     pm2除了监控还能干什么，如何实现
