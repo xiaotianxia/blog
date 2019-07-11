@@ -20,8 +20,8 @@ webpack 性能优化手段
     Promise 实现
 算法
     各种排序
-    上亿规模的数据中找到最大的一个数
     两个排序好的数组，怎么样找他的中位数
+    diff算法
 正则
     url
     千分数
@@ -45,6 +45,8 @@ node相关
     express和koa2的区别
 
 数据库相关
+
+Service Worker 
 
 
 serverless

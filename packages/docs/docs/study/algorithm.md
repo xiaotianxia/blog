@@ -37,10 +37,12 @@ Math.max.bind(Math, ...arr)();
 ## 数组扁平化
 reduce递归：
 ```js
-    function flatten (arr) {
-        return arr.reduce((pre, cur) => {
-            return pre.concat(Array.isArray(cur) ? flatten(cur) : cur);
-        }, [])
+    function flattenDeep (arr) {
+        return arr.reduce((acc, val) =>
+            Array.isArray(val) 
+            ? acc.concat(flattenDeep(val))
+            : acc.concat(val),
+        []);
     }
 ```
 迭代：
@@ -121,9 +123,28 @@ function underlineToCamelCase (name) {
 ```
 
 ## 柯里化的通用实现
-
-
-
+```js
+const curry = (fn, ...args) => {
+    args.length < fn.length
+        //参数长度不够时，重新柯里化该函数。等待接收新参数
+        ? (...arguments) => curry(fn, ...args, ...arguments)
+        //参数长度满足时，执行函数
+        : fn(...args);
+}
+```
+举例：
+```js
+function sumFun (a, b, c) {
+    return a + b + c;
+} 
+var sum = curry(sumFun);
+sum(1,2,3)  // 6
+sum(1,2)(3)  // 6
+sum(1)(2)(3)  // 6
+sum(1)(2,3)  // 6
+```
+https://juejin.im/post/5bf9bb7ff265da616916e816
+https://www.zhangxinxu.com/wordpress/2013/02/js-currying/
 
 
 

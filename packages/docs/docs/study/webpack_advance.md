@@ -88,3 +88,6 @@ class MyExampleWebpackPlugin {
 
 参考
 [1](http://louiszhai.github.io/2019/01/04/webpack4/)
+
+## webpack热更新原理
+[1](https://zhuanlan.zhihu.com/p/30669007)

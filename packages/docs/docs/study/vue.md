@@ -273,3 +273,13 @@ new Vue({
 [5](https://www.haorooms.com/post/vue_project_cg)
 [6](https://juejin.im/post/5c204c98e51d454637699e33)
 [7](https://juejin.im/post/5ce3b519f265da1bb31c0d5f)
+
+### Vue 的父组件和子组件生命周期钩子执行顺序
+- 加载渲染过程：
+父beforeCreate->父created->父beforeMount->子beforeCreate->子created->子beforeMount->子mounted->父mounted
+- 子组件更新过程：
+父beforeUpdate->子beforeUpdate->子updated->父updated
+- 父组件更新过程：
+父beforeUpdate->父updated
+- 销毁过程：
+父beforeDestroy->子beforeDestroy->子destroyed->父destroyed
