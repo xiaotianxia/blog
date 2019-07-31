@@ -45,7 +45,7 @@ export default {
 					});
 				}, err => {
 					console.log(err);
-					errMsg = err.message || '出错';
+					this.errMsg = err.message || '出错';
 				}, options);
 			} else {
 				alert('您的浏览器不支持定位');

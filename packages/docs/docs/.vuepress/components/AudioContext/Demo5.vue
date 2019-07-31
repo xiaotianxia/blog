@@ -35,7 +35,7 @@ export default {
             playing: false,
             canvasFillStyle: 'rgb(241, 196, 15)',
             songlist: [
-                {name: '远程音乐', url: '../../../../../../static/Do-Re-Mi.mp3'},
+                {name: '远程音乐', url: 'https://mp3.ibaotu.com/d007/41155_Happy%20Hop.mp3'},
             ]
         }
     },
