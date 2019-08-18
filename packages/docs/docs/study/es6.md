@@ -82,7 +82,7 @@ const obj = {
 obj.a.call('123')  //打出来的结果依然是window对象
 ```
 - 箭头函数不会创建自己的this,它只会从自己的作用域链的上一层继承this。
-箭头函数不使用自身的this，而是一层一层的向上查找，直到有this。
+箭头函数不使用自身的this，而是一层一层的向上查找，直到有this，即箭头函数的this指向的是外层不是箭头函数的this。
 ```js
 const obj = {
     a: function() { console.log(this) },

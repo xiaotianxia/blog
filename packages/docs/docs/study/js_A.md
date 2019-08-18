@@ -233,5 +233,18 @@ alert(Hello.sayHelloAll());
 [1](https://juejin.im/post/5c23993de51d457b8c1f4ee1)
 [2](https://www.pandashen.com/2018/06/11/20180611010638/)
 
+## isNaN 和 Number.isNaN 区别
+```js
+var a = 2 / "foo"; // NaN
+var b = "foo";
 
+typeof a // 'number'
+```
+isNaN(a);  // true
+isNaN(b);  // true
+
+Number.isNaN(a);  // true
+Number.isNaN(b);  // false
+- 
+[1](https://segmentfault.com/a/1190000015142897)
 

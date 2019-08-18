@@ -61,7 +61,7 @@ Function.prototype.apply2 = function (context, arr) {
 ## bind
 bind的特点：
 - 1.bind() 方法会创建一个新函数。
-- 2.一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。喜事的this指向实例对象，而不是context。
+- 2.一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。此时的this指向实例对象，而不是context。
 ```js
 /*
 ** var foo = {
@@ -140,7 +140,7 @@ https://github.com/Jocs/jocs.github.io/issues/7
 function instance_of (L, R) {//L 表示左表达式，R 表示右表达式
     var O = R.prototype;
     L = L.__proto__;
-    while (true) { 
+    while (true) { ·
         if (L === null) 
             return false; 
         if (O === L)  // 这里重点：当 O 严格等于 L 时，返回 true 
@@ -149,3 +149,5 @@ function instance_of (L, R) {//L 表示左表达式，R 表示右表达式
     } 
 }
 ```
+
+https://juejin.im/post/5d2ee123e51d4577614761f8#heading-15
