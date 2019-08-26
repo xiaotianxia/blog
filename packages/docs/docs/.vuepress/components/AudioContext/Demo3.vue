@@ -19,7 +19,7 @@ export default {
     data () {
         return {
             activeName: 'element',
-            audioSrc: '../../../../../../static/Do-Re-Mi.mp3'
+            audioSrc: 'https://mp3.ibaotu.com/d007/41155_Happy%20Hop.mp3'
         }
     },
 

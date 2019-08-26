@@ -150,4 +150,16 @@ function instance_of (L, R) {//L 表示左表达式，R 表示右表达式
 }
 ```
 
-https://juejin.im/post/5d2ee123e51d4577614761f8#heading-15
+## new
+new 关键字调用函数都的具体过程:
+- 首先创建一个空的对象，空对象的__proto__属性指向构造函数的原型对象
+- 把上面创建的空对象赋值构造函数内部的this，用构造函数内部的方法修改空对象
+- 如果构造函数返回一个非基本类型的值，则返回这个值，否则返回上面创建的对象
+```js
+function _new(fn, ...arg) {
+    var obj = Object.create(fn.prototype);
+    var result = fn.apply(obj, ...arg);
+    return Object.prototype.toString.call(result) == '[object Object]' ? result : obj;
+}
+```
+[1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/12)
