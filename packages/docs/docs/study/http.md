@@ -1,6 +1,6 @@
 # http
 
-## get post ?
+## get 、post ?
 
 - GET在浏览器回退时是无害的，而POST会再次提交请求。
 - GET产生的URL地址可以被Bookmark，而POST不可以。
@@ -45,7 +45,8 @@ GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和
 - 把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
 - 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
 
-[参考](https://juejin.im/post/5c22ee806fb9a049fb43b2c5)
+[1](https://juejin.im/post/5c22ee806fb9a049fb43b2c5)
+[2](https://www.jianshu.com/p/54cc04190252)
 
 ## DNS解析过程
 Domain Name Server，域名服务器,是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。
