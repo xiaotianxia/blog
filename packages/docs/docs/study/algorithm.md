@@ -109,16 +109,10 @@ function camelCaseToUnderline (name) {
 
 ## 下划线写法转驼峰写法
 ```js
-function underlineToCamelCase (name) {
-    if (typeof name !== 'string') {
-        throw TypeError('传入参数不正确, 要求为字符串类型');
-    }
-    return name.replace(/_([a-z|A-Z])/g, function (matchStr, char, index) {
-    if (index > 0) {
-        return char.toUpperCase();
-    }
-    return matchStr;
-  })
+function underlineToCamelCase (s) {
+    return s.replace(/-\w/g, function(x) {
+        return x.slice(1).toUpperCase();
+    })
 }
 ```
 

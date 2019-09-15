@@ -14,7 +14,7 @@
 
 实际上————
 
-GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。
+GET和POST本质上就是TCP连接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同。
 
 两者有一个最大的区别就是——
 
@@ -49,7 +49,7 @@ GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和
 [2](https://www.jianshu.com/p/54cc04190252)
 
 ## DNS解析过程
-Domain Name Server，域名服务器,是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。
+Domain Name Server，域名服务器，是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。
 
 - 1.判断本地的HOSTS文件是否存在相应映射文件。存在就返回
 - 2.不存在的话，查询本地DNS解析缓存。
