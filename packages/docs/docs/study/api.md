@@ -4,7 +4,7 @@
 
 ## fetch
 基本使用
-```
+```js
 fetch(url, {
     //请求方法，默认为GET
     method: 'post',
