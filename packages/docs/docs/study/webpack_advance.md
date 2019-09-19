@@ -8,6 +8,9 @@
 - 递归完后得到每个文件的最终结果，根据entry配置生成代码块chunk。
 - 输出所有chunk到文件系统。
 
+![](https://img.alicdn.com/tps/TB1GVGFNXXXXXaTapXXXXXXXXXX-4436-4244.jpg)
+
+
 ## loader
 - loader的功能：对模块源码的转换，将所有类型的文件转换为 webpack 能够处理(webpack只识别js)的有效模块
 - loader大概就是这样一个JavaScript文件：
@@ -88,6 +91,20 @@ class MyExampleWebpackPlugin {
 
 参考
 [1](http://louiszhai.github.io/2019/01/04/webpack4/)
+
+## webpack配置优化
+从减少打包时间、缩小打包体积的角度入手
+
+- 优化 Loader 的文件搜索范围，从 include 和 exclude 配置入手，配合文件缓存 loader: 'babel-loader?cacheDirectory=true'；
+- HappyPack，将 Loader 的同步执行转换为并行的，充分利用系统资源来加快打包效率；
+- DllPlugin，将特定的类库提前打包然后引入；
+- 代码压缩，一般使用 UglifyJS 来压缩代码，不过这是单线程的，可使用 webpack-parallel-uglify-plugin 来并行运行 UglifyJS，从而提高效率;
+- 按需加载，一个项目难免会存在几十个页面的路由，如果所有页面的都打包进一个 js 文件（文件就会过大），加载第一个页面就会耗费很长时间。实现按需加载，每个页面（路由）打包成一个文件。另外，对于一些库文件也可以打包成一个文件。
+- Scope Hoisting，范围提升，会分析出模块之间的依赖关系，尽可能的把打包出来的模块合并到一个函数中去；（Scope Hoisting 的实现原理其实很简单：分析出模块之间的依赖关系，尽可能的把打散的模块合并到一个函数中去，但前提是不能造成代码冗余。
+因此只有那些被引用了一次的模块才能被合并。）
+- Tree Shaking，（树抖动，将一些要掉落的叶子或小树杈抖落）删除项目中未被引用的代码；
+
+[1](https://www.cnblogs.com/imwtr/p/7801973.html)
 
 ## webpack热更新原理
 [1](https://zhuanlan.zhihu.com/p/30669007)

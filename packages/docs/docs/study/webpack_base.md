@@ -1,13 +1,5 @@
 # webpack 基础
 
-## 底层原理
-- 1.读取文件分析模块依赖
-- 2.对模块进行解析执行(深度遍历)
-- 3.针对不同的模块使用相应的loader
-- 4.编译模块，生成抽象语法树AST。
-- 5.循环遍历AST树，拼接输出js。
-![](https://img.alicdn.com/tps/TB1GVGFNXXXXXaTapXXXXXXXXXX-4436-4244.jpg)
-
 ## 基本配置 ?
 
 ```js
@@ -134,9 +126,6 @@ const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue');
     - 对于lodash，还可以通过其他的方式实现按需打包
         - babel插件 babel-plugin-lodash，通过配置.babelrc实现
         - webpack插件 lodash-webpack-plugin，通过配置webpack.config.js实现
-
-## webpack优化配置
-https://www.cnblogs.com/imwtr/p/7801973.html
 
 
 
