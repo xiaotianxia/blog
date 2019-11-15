@@ -22,6 +22,7 @@
 - npm 发布
 - vue ssr
 - DOM API 新    DomParser
+- 文本阅读器
 
 
 ## 其他
