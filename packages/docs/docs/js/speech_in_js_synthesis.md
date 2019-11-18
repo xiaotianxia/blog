@@ -105,6 +105,8 @@ mounted () {
 - 结合前一篇的文字识别，识别出的文字再转化成语音就完美了
 - 等等
 
+<Speech-TextReader></Speech-TextReader>
+
 ## 参考资料
 - [SpeechSynthesisUtterance](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
 - [HTML5语音合成Speech Synthesis API简介](http://www.zhangxinxu.com/wordpress/2017/01/html5-speech-recognition-synthesis-api/)
