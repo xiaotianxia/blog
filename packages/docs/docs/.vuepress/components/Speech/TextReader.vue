@@ -1,8 +1,12 @@
 <template>
     <div class="reader">
-        <div class="reader-text">
-            <h2 class="reader-text-item">沙扬娜拉</h2>
-            <span v-for="(item, index) in readData.texts" class="reader-text-item" :class="{speak: index === readData.index}">{{item}}</span><br>
+        <div class="reader-text js-reader-text">
+            <h2 class="reader-text-title">
+                {{readData.title}}
+                <p class="author"> —— {{readData.author}}</p>
+            </h2>
+
+            <span v-for="(item, index) in readData.texts" class="reader-text-item" :class="{speak: index === readData.index, 'js-speak': index === readData.index}">{{item}}<br></span>
         </div>
         <div class="reader-oprations">
             <el-button @click="onRead" type="primary" size="mini">开始</el-button>
@@ -23,12 +27,38 @@ export default {
                 text: ''
             },
             readData: {
+                title: '再别康桥',
+                author: '作者: 徐志摩',
                 texts: [
-                    '最是那一低头的温柔，',
-                    '像一朵水莲花不胜凉风的娇羞，',
-                    '道一声珍重，道一声珍重，',
-                    '那一声珍重里有蜜甜的忧愁——',
-                    '沙扬娜拉！',
+                    '轻轻的我走了，',
+                    '正如我轻轻的来；',
+                    '我轻轻的招手，',
+                    '作别西天的云彩。',
+                    '那河畔的金柳，',
+                    '是夕阳中的新娘；',
+                    '波光里的艳影，',
+                    '在我的心头荡漾。',
+                    '软泥上的青荇，',
+                    '油油的在水底招摇；',
+                    '在康河的柔波里，',
+                    '我甘心做一条水草！',
+                    '那榆荫下的一潭，',
+                    '不是清泉，',
+                    '是天上虹；',
+                    '揉碎在浮藻间，',
+                    '沉淀着彩虹似的梦。',
+                    '寻梦？撑一支长篙，',
+                    '向青草更青处漫溯；',
+                    '满载一船星辉，',
+                    '在星辉斑斓里放歌。',
+                    '但我不能放歌，',
+                    '悄悄是别离的笙箫；',
+                    '夏虫也为我沉默，',
+                    '沉默是今晚的康桥！',
+                    '悄悄的我走了，',
+                    '正如我悄悄的来；',
+                    '我挥一挥衣袖，',
+                    '不带走一片云彩。',
                 ],
                 index: 0
             },
@@ -53,14 +83,23 @@ export default {
                     this.speechInstance = null;
                     return;
                 }
+                this.scroll();
                 this.speak();
             }
+        },
+
+        scroll () {
+            this.$reader.querySelector('.js-speak').scrollIntoViewIfNeeded(true);
         },
 
         onRead () {
             this.readData.index = 0;
             this.speak();
         }
+    },
+
+    mounted() {
+        this.$reader = document.querySelector('.js-reader-text');
     }
 }
 </script>
@@ -74,6 +113,21 @@ export default {
             padding: 10px;
             border: 1px solid #000;
             text-align: center;
+            margin: 0 auto;
+            width: 350px;
+            max-height: 400px;
+            overflow: auto;
+
+            .reader-text-title {
+                font-size: 14px;
+
+                .author {
+                    text-align: right;
+                    font-size: 12px;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
 
             .reader-text-item {
                 transition: all .2s ease;
