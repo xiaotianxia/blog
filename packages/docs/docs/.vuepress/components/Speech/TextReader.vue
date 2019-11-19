@@ -82,8 +82,8 @@ export default {
 
         bindEvents () {
             this.speechInstance.onend = e => {
-                if (this.readData.index === this.readData.texts.length) {
-                    speechSynthesis.cancel();
+                if (this.readData.index === this.readData.texts.length - 1) {
+                    this.onStop();
                     return;
                 }
                 this.scroll();
@@ -96,7 +96,8 @@ export default {
         },
 
         scroll () {
-            this.$reader.querySelector('.js-next').scrollIntoViewIfNeeded({
+            let $next = this.$reader.querySelector('.js-next');
+            $next && $next.scrollIntoViewIfNeeded({
                 block: 'center',
                 behavior: 'smooth'
             });
@@ -118,6 +119,7 @@ export default {
             this.speechInstance = null;
             this.readData.index = -1;
             this.reading = false;
+            this.$reader.scrollTo({top: 0});
         }
     },
 
