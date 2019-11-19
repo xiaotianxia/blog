@@ -1,16 +1,16 @@
 <template>
-    <div class="reader">{{readData.index}}
+    <div class="reader">
         <div class="reader-text js-reader-text">
             <h2 class="reader-text-title">
                 {{readData.title}}
                 <p class="author"> —— {{readData.author}}</p>
             </h2>
 
-            <span v-for="(item, index) in readData.texts" class="reader-text-item" :class="{speak: index === readData.index, 'js-speak': index === (readData.index + 1 >= readData.length ? readData.length - 1 : readData.index + 1)}">{{item}}<br></span>
+            <span v-for="(item, index) in readData.texts" class="reader-text-item" :class="{speak: index === readData.index, 'js-next': index === (readData.index + 1 >= readData.length ? readData.length - 1 : readData.index + 1)}">{{item}}<br></span>
         </div>
         <div class="reader-oprations">
-            <el-button @click="onRead" type="primary" size="mini">开始</el-button>
-            <el-button @click="onStop" size="mini">停止</el-button>
+            <el-button v-if="!reading" @click="onRead" type="primary" size="mini">朗读</el-button>
+            <el-button v-else @click="onStop" size="mini">停止</el-button>
         </div>
     </div>
 </template>
@@ -76,19 +76,27 @@ export default {
                 this.speechInstance.text = this.readData.texts[this.readData.index];
                 typeof speechSynthesis !== "undefined" && speechSynthesis.speak(this.speechInstance);
 
-                this.speechInstance.onend = e => {
-                    if (this.readData.index === this.readData.texts.length) {
-                        speechSynthesis.cancel();
-                        return;
-                    }
-                    this.scroll();
-                    this.speak();
+                this.bindEvents();
+            }
+        },
+
+        bindEvents () {
+            this.speechInstance.onend = e => {
+                if (this.readData.index === this.readData.texts.length) {
+                    speechSynthesis.cancel();
+                    return;
                 }
+                this.scroll();
+                this.speak();
+            }
+
+            this.speechInstance.onstart= () => {
+                this.reading = true;
             }
         },
 
         scroll () {
-            this.$reader.querySelector('.js-speak').scrollIntoViewIfNeeded({
+            this.$reader.querySelector('.js-next').scrollIntoViewIfNeeded({
                 block: 'center',
                 behavior: 'smooth'
             });
@@ -109,6 +117,7 @@ export default {
             speechSynthesis.cancel();
             this.speechInstance = null;
             this.readData.index = -1;
+            this.reading = false;
         }
     },
 

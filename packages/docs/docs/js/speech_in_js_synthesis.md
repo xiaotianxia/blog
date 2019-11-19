@@ -37,7 +37,7 @@ SpeechSynthesisUtterance实例有以下属性，可以通过设置一下属性�
 speechSynthesis对象有以下方法：
 
 - speak() – 只能接收SpeechSynthesisUtterance作为唯一的参数，作用是读合成的话语。
-- stop() – 立即终止合成过程。
+- cancel() – 立即终止合成过程。
 - pause() – 暂停合成过程。
 - resume() – 重新开始合成过程。
 - getVoices() – 此方法不接受任何参数，用来返回浏览器支持的语音包列表，是个数组。
