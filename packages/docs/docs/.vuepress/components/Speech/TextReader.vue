@@ -1,15 +1,16 @@
 <template>
-    <div class="reader">
+    <div class="reader">{{readData.index}}
         <div class="reader-text js-reader-text">
             <h2 class="reader-text-title">
                 {{readData.title}}
                 <p class="author"> —— {{readData.author}}</p>
             </h2>
 
-            <span v-for="(item, index) in readData.texts" class="reader-text-item" :class="{speak: index === readData.index, 'js-speak': index === readData.index}">{{item}}<br></span>
+            <span v-for="(item, index) in readData.texts" class="reader-text-item" :class="{speak: index === readData.index, 'js-speak': index === (readData.index + 1 >= readData.length ? readData.length - 1 : readData.index + 1)}">{{item}}<br></span>
         </div>
         <div class="reader-oprations">
             <el-button @click="onRead" type="primary" size="mini">开始</el-button>
+            <el-button @click="onStop" size="mini">停止</el-button>
         </div>
     </div>
 </template>
@@ -18,6 +19,7 @@
 export default {
     data () {
         return {
+            reading: false,
             params: {
                 voiceURI: 'Ting-Ting',
                 lang: 'zh-CN',
@@ -60,7 +62,7 @@ export default {
                     '我挥一挥衣袖，',
                     '不带走一片云彩。',
                 ],
-                index: 0
+                index: -1
             },
             speechInstance: null,
         }
@@ -68,37 +70,49 @@ export default {
 
     methods: {
         speak () {
-            this.speechInstance = new SpeechSynthesisUtterance();
-            Object.keys(this.params).forEach(key => {
-                this.speechInstance[key] = this.params[key];
-            });
-            console.log(this.readData.texts[this.readData.index]);
-            this.speechInstance.text = this.readData.texts[this.readData.index];
-
-            typeof speechSynthesis !== "undefined" && speechSynthesis.speak(this.speechInstance);
-
-            this.speechInstance.onend = e => {
+            if (this.speechInstance) {
                 this.readData.index ++;
-                if (this.readData.index === this.readData.texts.length) {
-                    this.speechInstance = null;
-                    return;
+                console.log(this.readData.texts[this.readData.index]);
+                this.speechInstance.text = this.readData.texts[this.readData.index];
+                typeof speechSynthesis !== "undefined" && speechSynthesis.speak(this.speechInstance);
+
+                this.speechInstance.onend = e => {
+                    if (this.readData.index === this.readData.texts.length) {
+                        speechSynthesis.cancel();
+                        return;
+                    }
+                    this.scroll();
+                    this.speak();
                 }
-                this.scroll();
-                this.speak();
             }
         },
 
         scroll () {
-            this.$reader.querySelector('.js-speak').scrollIntoViewIfNeeded(true);
+            this.$reader.querySelector('.js-speak').scrollIntoViewIfNeeded({
+                block: 'center',
+                behavior: 'smooth'
+            });
         },
 
         onRead () {
-            this.readData.index = 0;
+            this.onStop();
+
+            this.speechInstance = new SpeechSynthesisUtterance();
+            Object.keys(this.params).forEach(key => {
+                this.speechInstance[key] = this.params[key];
+            });
+
             this.speak();
+        },
+
+        onStop () {
+            speechSynthesis.cancel();
+            this.speechInstance = null;
+            this.readData.index = -1;
         }
     },
 
-    mounted() {
+    mounted () {
         this.$reader = document.querySelector('.js-reader-text');
     }
 }
@@ -112,6 +126,7 @@ export default {
         .reader-text {
             padding: 10px;
             border: 1px solid #000;
+            background-color: #fffbf6;
             text-align: center;
             margin: 0 auto;
             width: 350px;
