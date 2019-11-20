@@ -87,6 +87,7 @@ mounted () {
 
 ## 试一下吧
 <Speech-Synthesis></Speech-Synthesis>
+<show-in-codepen href="https://codepen.io/_tianxia/pen/WNNPVob"></show-in-codepen>
 
 粗略测试，Mac下Chrome支持volume、pitch两个参数，语速rate不支持；Firefox和Safari对volume、rate和pitch三个参数都不支持。
 
