@@ -3,7 +3,8 @@
 		<RemoteScript :src="'https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js'"/>
 		<ul>
             <li>
-                <a href="https://github.com/xiaotianxia/blog/blob/gh-pages/static/word%E6%96%87%E6%A1%A31.docx" @click.prevent="onPreview">word文档1</a>
+                <a href="https://github.com/xiaotianxia/blog/blob/gh-pages/static/word%E6%96%87%E6%A1%A31.docx?raw=true">word文档1</a>
+                <el-button @click.prevent="onPreview('https://github.com/xiaotianxia/blog/blob/gh-pages/static/word%E6%96%87%E6%A1%A31.docx?raw=true')">预览</el-button>
             </li>
         </ul>
 		
@@ -30,12 +31,10 @@ export default {
 	},
 
 	methods: {
-		onPreview (e) {
-            const { innerText, href } = e.target;
-
+		onPreview (url) {
             const req = new XMLHttpRequest();
             req.withCredentials = true; 
-            req.open('GET', href, true);
+            req.open('GET', url, true);
             req.responseType = 'blob';
 
             req.onload = () => {
@@ -44,6 +43,7 @@ export default {
                 reader.onloadend = event => {
                     var arrayBuffer = reader.result;
                     mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(resultObject => {
+                        this.show = true;
                         this.$refs['word-preview-content'].innerHTML = resultObject.value;
                     });
                 };
