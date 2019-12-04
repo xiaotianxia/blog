@@ -3,8 +3,8 @@
 		<RemoteScript :src="'https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js'"/>
 		<ul>
             <li>
-                <a href="../../../../static/word文档1.docx?raw=true">word文档1</a>
-                <el-button @click.prevent="onPreview('../../../../static/word文档1.docx?raw=true')">预览</el-button>
+                <a href="../../../static/word文档1.docx">word文档1</a>
+                <el-button @click.prevent="onPreview('../../../static/word文档1.docx')">预览</el-button>
             </li>
         </ul>
 		
