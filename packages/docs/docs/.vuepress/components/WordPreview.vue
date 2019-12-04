@@ -12,7 +12,7 @@
             title="提示"
             :visible.sync="show"
             fullscreen>
-            <div ref="word-preview-content"></div>
+            <div ref="wordPreviewContent"></div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="show = false">取 消</el-button>
                 <el-button type="primary" @click="show = false">确 定</el-button>
@@ -44,7 +44,9 @@ export default {
                     var arrayBuffer = reader.result;
                     mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(resultObject => {
                         this.show = true;
-                        this.$refs['word-preview-content'].innerHTML = resultObject.value;
+                        this.$nextTick(() => {
+                            this.$refs.wordPreviewContent.innerHTML = resultObject.value;
+                        });
                     });
                 };
                 reader.readAsArrayBuffer(data);
