@@ -68,6 +68,7 @@ export default {
                 let arrayBuffer = reader.result;
                 mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(resultObject => {
                     this.show = true;
+                    this.loading = false;
                     this.$nextTick(() => {
                         this.$refs.wordPreviewContent.innerHTML = resultObject.value;
                     });
