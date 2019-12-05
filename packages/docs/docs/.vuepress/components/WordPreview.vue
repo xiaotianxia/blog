@@ -4,7 +4,7 @@
 		<ul>
             <li>
                 <a href="../../static/word文档1.docx">word文档1</a>
-                <el-button @click.prevent="onPreview('../../static/word文档1.docx')">预览</el-button>
+                <el-button @click.prevent="onPreview('../../static/word文档1.docx')" :loading="loading">预览</el-button>
             </li>
         </ul>
 		
@@ -26,24 +26,28 @@
 export default {
 	data () {
 		return {
-			show: false
+            show: false,
+            loading: false
 		}
 	},
 
 	methods: {
 		onPreview (url) {
+            this.loading = true;
             const req = new XMLHttpRequest();
             req.withCredentials = true; 
             req.open('GET', url, true);
             req.responseType = 'blob';
 
             req.onload = () => {
+                this.show = true;
                 const data = req.response;
                 var reader = new FileReader();
                 reader.onloadend = event => {
                     var arrayBuffer = reader.result;
                     mammoth.convertToHtml({arrayBuffer: arrayBuffer}).then(resultObject => {
                         this.show = true;
+                        this.loading = false;
                         this.$nextTick(() => {
                             this.$refs.wordPreviewContent.innerHTML = resultObject.value;
                         });
