@@ -41,8 +41,9 @@
         - https://read.douban.com/reader/ebook/7412854/
         - https://techbrood.com/?q=webgl
         - http://3js.xyz/threejs.html#!api/object3d/LineSegments
-        - 
+        - models
         - https://free3d.com/zh/3d-models/animated-obj
+        - http://www.sweethome3d.com/freeModels.jsp
 
 - webpack
 	- dll
