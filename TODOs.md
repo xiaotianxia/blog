@@ -27,7 +27,7 @@
 - npm 发布
 - vue ssr
 - DOM API 新    DomParser
-- 日历组件
+- react、rn、electron...
 
 
 ## 其他
@@ -50,11 +50,6 @@
     
 - worker
 
-- word 预览
-
-
-- select组件 带page
-- form组件 可配 参考https://github.com/dream2023/vue-ele-form
 
 
 
