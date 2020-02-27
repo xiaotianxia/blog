@@ -23,6 +23,8 @@
 - vue ssr
 - DOM API 新    DomParser
 - event 
+    - customEvent
+    - createEvent
 - react、rn、electron...
 
 

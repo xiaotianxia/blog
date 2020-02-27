@@ -233,18 +233,21 @@ alert(Hello.sayHelloAll());
 [1](https://juejin.im/post/5c23993de51d457b8c1f4ee1)
 [2](https://www.pandashen.com/2018/06/11/20180611010638/)
 
-## isNaN 和 Number.isNaN 区别
+## 传统全局 isNaN、isFinite 和 Number.isNaN 、 Number.isFinite 的区别
+
+传统的全局方法isFinite()和isNaN()与Number.isNaN 、 Number.isFinite的区别在于，传统方法先调用Number()将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效，Number.isFinite()对于非数值一律返回false, Number.isNaN()只有对于NaN才返回true，非NaN一律返回false。[1](http://es6.ruanyifeng.com/#docs/number)
 ```js
-var a = 2 / "foo"; // NaN
-var b = "foo";
+isFinite(25) // true
+isFinite("25") // true
+Number.isFinite(25) // true
+Number.isFinite("25") // false
 
-typeof a // 'number'
+isNaN(NaN) // true
+isNaN("NaN") // true
+Number.isNaN(NaN) // true
+Number.isNaN("NaN") // false
+Number.isNaN(1) // false
 ```
-isNaN(a);  // true
-isNaN(b);  // true
 
-Number.isNaN(a);  // true
-Number.isNaN(b);  // false
-- 
 [1](https://segmentfault.com/a/1190000015142897)
 
