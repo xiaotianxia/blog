@@ -38,6 +38,8 @@
     
 - worker
 - typescript
+    https://typescript.bootcss.com/basic-types.html
+    https://www.tslang.cn/docs/handbook/basic-types.html
 
 
 

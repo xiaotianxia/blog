@@ -36,7 +36,7 @@
 ### 原理
 CSRF(Cross Site Request Forgery)，即跨站请求伪造。它利用用户已登录的身份，在用户毫不知情的情况下，以用户的名义完成非法操作。
 
-![CSRF](https://camo.githubusercontent.com/a24b3da2f84bbf939f49451010bcfb8292423a6b/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031392f312f32342f313638383033306132343730323330313f773d34333226683d33303326663d706e6726733d3434343837)
+![CSRF](https://github.com/xiaotianxia/blog/blob/gh-pages/static/csrf.png)
 
 完成 CSRF 攻击必须要有三个条件：
 - 用户已经登录了站点 A，并在本地记录了 cookie
