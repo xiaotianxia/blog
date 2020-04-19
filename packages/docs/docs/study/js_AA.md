@@ -54,5 +54,57 @@ function deepCopy(o) {
 ## call apply bind 
 [这里](diy.html#call)
 
+## toString 和 valueOf 区别
+这两个方法主要用于对象的隐式转换。
+
+当这两个函数同时存在时候，会** 先调用 valueOf ** ，若返回的不是原始类型，那么会调用 toString 方法，如果这时候 toString 方法返回的也不是原始数据类型，那么就会报错。
+
+用 String 的拆箱转换会优先调用 toString。
+
+```js
+let o = function () {
+    this.toString = () => {
+        return 'my is o,'
+    }
+    this.valueOf = () => {
+        return 99
+    }
+}
+let n = new o()
+console.log(n + 'abc') // 99abc
+console.log(n * 10) // 990
+```
+
+```js
+let o = function () {
+    this.toString = () => {
+        console.log('into toString')
+        return { 'string': 'ssss' }
+    }
+    this.valueOf = () => {
+        console.log('into valueOf')
+        return { 'val': 99 }
+    }
+}
+let n = new o()
+console.log(n + 'xx')
+//into valueOf
+//into toString
+//TypeError
+
+String(o)
+//into toString
+//into valueOf
+//TypeError
+```
+
+在 ES6 之后，还允许对象通过显式指定 @@toPrimitive Symbol 来覆盖原有的行为。
+```js
+o[Symbol.toPrimitive] = () => {console.log("toPrimitive"); return "hello"};
+
+o + "";
+// toPrimitive 
+// hello
+```
 
 

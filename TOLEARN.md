@@ -48,6 +48,8 @@ node相关
 
 Service Worker 
 
+设计模式
+
 
 serverless
 flutter
@@ -61,6 +63,8 @@ rollup
 
 软问题：
 你的技术亮点在哪里
+https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
+
 你遇到的最有难度的技术问题是什么
 
 

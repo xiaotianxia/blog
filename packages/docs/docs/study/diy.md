@@ -185,3 +185,25 @@ function render(template, data) {
     return template; // 如果模板没有模板字符串直接返回
 }
 ```
+
+## compose 实现
+举例：
+```js
+const add = num => num  + 10;
+const multiply = num => num * 2;
+const foo = compose(multiply, add);
+foo(5) => 30;
+```
+实现：
+```js
+// 摘自 https://github.com/reactjs/redux/blob/master/src/compose.
+export default function compose(...funcs) {
+    if (funcs.length === 0) {
+        return arg => arg;
+    }
+    if (funcs.length === 1) {
+        return funcs[0];
+    }
+    return funcs.reduce((a, b) => (...args) => a(b(...args)));
+}
+```
