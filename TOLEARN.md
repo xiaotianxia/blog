@@ -53,7 +53,6 @@ Service Worker
 
 serverless
 flutter
-rollup
 
 边缘问题
     Linux命令

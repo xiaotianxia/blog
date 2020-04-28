@@ -14,6 +14,23 @@ let b = new Set([4, 3, 2]);
 let intersect = new Set([...a].filter(x => b.has(x)));
 ```
 
+## 取多个数组的交集
+
+```js
+var intersection = function(...args) {
+    if (args.length === 0) {
+    return []
+  }
+  if (args.length === 1) {
+    return args[0]
+  }
+  return [...new Set(args.reduce((result, arg) => {
+    return result.filter(item => arg.includes(item))
+  }))]
+};
+
+```
+
 ## 取差集
 ```js
 let a = new Set([1, 2, 3]);
