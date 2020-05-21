@@ -18,4 +18,5 @@ module.exports = [
 	'simple_code_preview',
 	'scroll_behaviors',
 	'word_preview',
+	'kinds_of_xs_and_ys',
 ]

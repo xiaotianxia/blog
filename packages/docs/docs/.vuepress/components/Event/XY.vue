@@ -1,26 +1,26 @@
 <template>
     <div class="event-wrapper">
         <div class="play-board">
-            offsetX: <span>{{result.offsetX}}</span>
-            offsetY: <span>{{result.offsetY}}</span><br>
+            <span class="title">offsetX:</span> <span class="result">{{result.offsetX}}</span>
+            <span class="title">offsetY:</span> <span class="result">{{result.offsetY}}</span><br>
 
-            clientX: <span>{{result.clientX}}</span>            
-            clientY: <span>{{result.clientY}}</span><br>
+            <span class="title">clientX:</span> <span class="result">{{result.clientX}}</span>
+            <span class="title">clientY:</span> <span class="result">{{result.clientY}}</span><br>
 
-            pageX: <span>{{result.pageX}}</span>            
-            pageY: <span>{{result.pageY}}</span><br>
+            <span class="title">pageX:</span> <span class="result">{{result.pageX}}</span>
+            <span class="title">pageY:</span> <span class="result">{{result.pageY}}</span><br>
 
-            screenX: <span>{{result.screenX}}</span>            
-            screenY: <span>{{result.screenY}}</span><br>
+            <span class="title">screenX:</span> <span class="result">{{result.screenX}}</span> </span>
+            <span class="title">screenY:</span> <span class="result">{{result.screenY}}</span><br>
 
-            layerX: <span>{{result.layerX}}</span>            
-            layerY: <span>{{result.layerY}}</span><br>
+            <span class="title">layerX:</span> <span class="result">{{result.layerX}}</span>
+            <span class="title">layerY:</span> <span class="result">{{result.layerY}}</span><br>
 
-            x: <span>{{result.x}}</span>            
-            y: <span>{{result.y}}</span><br>
+            <span class="title">x:</span> <span class="result">{{result.x}}</span>
+            <span class="title">y:</span> <span class="result">{{result.y}}</span><br>
 
-            movementX: <span>{{result.movementX}}</span>            
-            movementY: <span>{{result.movementY}}</span>
+            <span class="title">movementX:</span> <span class="result">{{result.movementX}}</span>
+            <span class="title">movementY:</span> <span class="result">{{result.movementY}}</span>
         </div>
     </div>
 </template>
@@ -62,13 +62,21 @@ export default {
         left: 0;
         top: 0;
         padding: 10px;
-        width: 200px;
+        width: 300px;
         height: 100px;
         color: #fff;
         background-color: rgba(44, 62, 80, .7);
         font-size: 12px;
     }
     .play-board span {
+        display: inline-block;
+    }
+    .play-board span.title {
+        width: 85px;
+    }
+
+    .play-board span.result {
+        width: 40px;
         color: gold;
         font-weight: bold;
         margin-right: 10px;
