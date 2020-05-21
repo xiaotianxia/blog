@@ -30,7 +30,7 @@
 
 
 ## 其他
-- 爬虫 puppeteer
+- puppeteer
 
 - webGL
 
