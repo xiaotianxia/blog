@@ -85,7 +85,7 @@ person.\__proto__ == Person.prototype。
 ## 继承 ?
 [es6继承](es6.html#class)
 ```js
-// 常用的继承方法： 寄生组合式继承  see：https://zhuanlan.zhihu.com/p/25578222
+// 常用的继承方法： 寄生组合式继承  see: https://zhuanlan.zhihu.com/p/25578222
 function Parent(name) {
     this.name = name;
 }
@@ -128,7 +128,7 @@ Child.prototype.constructor = Child;
 ```
 
 ```js
-// es6  setPrototypeOf
+// es6  setPrototypeOf   慢  see: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
 Object.setPrototypeOf(Child, Parent);
 ```
 
