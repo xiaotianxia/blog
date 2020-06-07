@@ -138,6 +138,9 @@ Object.setPrototypeOf(Child, Parent);
     // 或
     Child.__proto__ = Parent;
 ```
+参考：
+[1](https://zhuanlan.zhihu.com/p/25578222)
+[2](https://juejin.im/post/5c433e216fb9a049c15f841b)
 
 ## js 类型及其判断 ?
 ### 数据类型
