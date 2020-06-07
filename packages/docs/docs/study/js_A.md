@@ -85,20 +85,21 @@ person.\__proto__ == Person.prototype。
 ## 继承 ?
 [es6继承](es6.html#class)
 ```js
+// 常用的继承方法： 寄生组合式继承  see：https://zhuanlan.zhihu.com/p/25578222
 function Hello(name) {
-  this.name = name;
+    this.name = name;
 }
 
 Hello.prototype.hello = function hello() {
-  return 'Hello ' + this.name + '!';
+    return 'Hello ' + this.name + '!';
 };
 
 Hello.sayHelloAll = function () {
-  return 'Hello everyone!';
+    return 'Hello everyone!';
 };
 
 function HelloWorld() {
-  Hello.call(this, 'World');
+    Hello.call(this, 'World');
 }
 
 HelloWorld.prototype = Object.create(Hello.prototype);
@@ -106,7 +107,7 @@ HelloWorld.prototype.constructor = HelloWorld;
 HelloWorld.sayHelloAll = Hello.sayHelloAll;
 
 HelloWorld.prototype.echo = function echo() {
-  alert(Hello.prototype.hello.call(this));
+    alert(Hello.prototype.hello.call(this));
 };
 
 var hw = new HelloWorld();

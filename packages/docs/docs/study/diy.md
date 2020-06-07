@@ -158,7 +158,7 @@ new 关键字调用函数都的具体过程:
 ```js
 function _new(fn, ...arg) {
     var obj = Object.create(fn.prototype);
-    var result = fn.apply(obj, ...arg);
+    var result = fn.apply(obj, arg);
     return Object.prototype.toString.call(result) == '[object Object]' ? result : obj;
 }
 ```
