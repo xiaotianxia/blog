@@ -86,34 +86,57 @@ person.\__proto__ == Person.prototype。
 [es6继承](es6.html#class)
 ```js
 // 常用的继承方法： 寄生组合式继承  see：https://zhuanlan.zhihu.com/p/25578222
-function Hello(name) {
+function Parent(name) {
     this.name = name;
 }
-
-Hello.prototype.hello = function hello() {
-    return 'Hello ' + this.name + '!';
-};
-
-Hello.sayHelloAll = function () {
-    return 'Hello everyone!';
-};
-
-function HelloWorld() {
-    Hello.call(this, 'World');
+Parent.prototype.sayName = function() {
+    console.log('parent name:', this.name);
 }
 
-HelloWorld.prototype = Object.create(Hello.prototype);
-HelloWorld.prototype.constructor = HelloWorld;
-HelloWorld.sayHelloAll = Hello.sayHelloAll;
+function Child(name, parentName) {
+    // 借用构造函数实现对实例属性的继承，类似 super()
+    Parent.call(this, parentName);  
+    this.name = name;    
+}
 
-HelloWorld.prototype.echo = function echo() {
-    alert(Hello.prototype.hello.call(this));
-};
+// 使用原型链实现对原型属性和方法的继承
+Child.prototype = Object.create(Parent.prototype);   // 这里的几种其他写法，见下
+Child.prototype.constructor = Child;
 
-var hw = new HelloWorld();
-hw.echo();
+Child.prototype.sayName = function() {
+    console.log('child name:', this.name);
+}
 
-alert(Hello.sayHelloAll());
+var parent = new Parent('father');
+parent.sayName();      // parent name: father
+
+var child = new Child('son', 'father');
+child.sayName();       // child name: son
+```
+
+Child.prototype = Object.create(Parent.prototype); Child.prototype.constructor = Child;  // 这里的几种其他写法
+```js
+// 手动实现 Object.create
+function create(proto) {
+    function F() {};
+    F.prototype = proto;
+    return new F();
+}
+
+Child.prototype = create(Parent.prototype);
+Child.prototype.constructor = Child; 
+```
+
+```js
+// es6  setPrototypeOf
+Object.setPrototypeOf(Child, Parent);
+```
+
+```js
+// __proto__
+    Child.prototype.__proto__ = Parent.prototype;
+    // 或
+    Child.__proto__ = Parent;
 ```
 
 ## js 类型及其判断 ?
