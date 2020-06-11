@@ -55,12 +55,12 @@ webpack 插件由以下组成：
 
 ```js
 // A JavaScript class.
-class MyExampleWebpackPlugin {
+class HelloWorldPlugin {
     // 在插件函数的 prototype 上定义一个 `apply` 方法。
     apply(compiler) {
         // 指定一个挂载到 webpack 自身的事件钩子。
         compiler.hooks.emit.tapAsync(
-            'MyExampleWebpackPlugin',
+            'HelloWorldPlugin',
             (compilation, callback) => {
                 console.log('This is an example plugin!');
                 console.log('Here’s the `compilation` object which represents a single build of assets:', compilation);
@@ -75,8 +75,8 @@ class MyExampleWebpackPlugin {
 ```
 
 参考
-[1](中文)(https://www.webpackjs.com/contribute/writing-a-plugin/)
-[2](英文es6)(https://webpack.js.org/contribute/writing-a-plugin/)
+[1](https://juejin.im/post/5ec169786fb9a043721b46ad#heading-15)
+[2](https://www.webpackjs.com/contribute/writing-a-plugin/)
 
 
 ## webpack4 新特性 ?

@@ -127,6 +127,7 @@ Function.prototype.bind2 = function (context) {
 
 ## promise
 
+https://juejin.im/post/5b2f02cd5188252b937548ab
 https://juejin.im/post/5c2b34a15188257abf1d96eb
 https://juejin.im/post/5a006ec351882554b836f1fd
 
