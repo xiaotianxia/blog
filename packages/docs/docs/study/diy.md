@@ -40,6 +40,7 @@ Function.prototype.call2 = function (context) {
     return result;
 }
 ```
+此代码也有缺点，修改原对象(添加了一个之前不存在的fn)，有可能造成bug，如Object.freeze(context)等
 
 ## apply 
 ```js
