@@ -116,7 +116,7 @@ child.sayName();       // child name: son
 
 Child.prototype = Object.create(Parent.prototype); Child.prototype.constructor = Child;  // 这里的几种其他写法
 ```js
-// 手动实现 Object.create
+// 1： 手动实现 Object.create
 function create(proto) {
     function F() {};
     F.prototype = proto;
@@ -128,12 +128,12 @@ Child.prototype.constructor = Child;
 ```
 
 ```js
-// es6  setPrototypeOf   慢  see: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
+// 2：es6  setPrototypeOf   慢  see: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
 Object.setPrototypeOf(Child, Parent);
 ```
 
 ```js
-// __proto__
+// 3：__proto__
     Child.prototype.__proto__ = Parent.prototype;
     // 或
     Child.__proto__ = Parent;

@@ -141,13 +141,11 @@ https://github.com/Jocs/jocs.github.io/issues/7
 // L insatanceof R ==> L.__proto__[n个] === R.prototype
 function instance_of (L, R) {//L 表示左表达式，R 表示右表达式
     var O = R.prototype;
-    L = L.__proto__;
+    let proto = L.__proto__;  // or  L = Object.getProrotypeOf(L)
     while (true) { ·
-        if (L === null) 
-            return false; 
-        if (O === L)  // 这里重点：当 O 严格等于 L 时，返回 true 
-            return true; 
-        L = L.__proto__; 
+        if (proto === null) { return false; };
+        if (proto === R.prototype) { return true; }  // 这里重点：当 O 严格等于 L 时，返回 true 
+        proto = proto.__proto__; 
     } 
 }
 ```
