@@ -58,3 +58,7 @@ Domain Name Server，域名服务器，是进行域名(domain name)和与之相�
 - 5.跳转至根DNS服务器，查询负责该请求的顶级域，并返回一个负责该域的IP地址。
 - 6.本地DNS在根据该顶级域去联系负责该IP地址的域。
 - 7.如果采用转发模式，会将返回结果交由上一级DNS服务器处理，如果不能处理，交由根DNS服务器处理或者上上级处理。
+
+## cookie 的几个属性
+domain 、 path 、 expired、 max-age 、 secure 、httpOnly 、sameSite
+[参考](https://juejin.im/post/5e718ecc6fb9a07cda098c2d#heading-2)
