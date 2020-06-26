@@ -4,7 +4,6 @@
 ```js
 a == 1 && a == 2 && a == 3
 ```
-√
 
 ```js
 const a = {
@@ -125,21 +124,6 @@ function add(){
 
 参考 [1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/4)
 
-## 实现一个 new
-当代码 new Foo(...) 执行时，会发生以下事情：
-
-- 一个继承自 Foo.prototype 的新对象被创建。
-- 使用指定的参数调用构造函数 Foo ，并将 this 绑定到新创建的对象。new Foo 等同于 new Foo()，也就是没有指定参数列表，Foo 不带任何参数调用的情况。
-- 由构造函数返回的对象就是 new 表达式的结果。如果构造函数没有显式返回一个对象，则使用步骤1创建的对象。
-
-```js
-    function _new(fn, ...arg) {
-    const obj = Object.create(fn.prototype);
-    const ret = fn.apply(obj, arg);
-    return ret instanceof Object ? ret : obj;
-}
-```
-
 ## 结果是？
 ```js
 var obj = {
@@ -183,17 +167,6 @@ function isArrayLike(obj) {
 [1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/76)
 [2](https://juejin.im/post/5ca2fdcee51d4562754be20a)
 
-## 实现一个 instanceof
-```js
-// a instanceof b
-function _instanceof(a, b) {
-    while (a) {
-        if (a.__proto__ === b.prototype) return true;
-        a = a.__proto__;
-    }
-    return false;
-}
-```
 
 
 
