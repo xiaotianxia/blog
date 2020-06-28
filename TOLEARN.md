@@ -1,60 +1,9 @@
-webpack 运行机制
-脚手架
-
-docker
-http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html
 
 命令行工具
 cli
 https://juejin.im/post/5bead1b25188251e1a1f4d34
 
 
-项目
-
-
-CI/CD 整体流程
-
-canvas 优化绘制性能
-webpack 性能优化手段
-手写系列
-    Promise 实现
-算法
-    各种排序
-    两个排序好的数组，怎么样找他的中位数
-    diff算法
-正则
-    url
-    千分数
-
-SSR
-状态管理
-webpack热更新原理
-CSS modules
-一套完整的响应式布局方案
-函数式编程理解
-    柯里化
-
-
-node相关
-    pm2除了监控还能干什么，如何实现
-    express中间件如何实现
-    express和koa2的区别
-
-数据库相关
-
-Service Worker 
-
-设计模式
-
-
-serverless
-flutter
-
-边缘问题
-    Linux命令
-
-案例
-    很多的列表，像头条的新闻列表，用户看得多了，列表越来越大，怎么样处理，思考一下
 
 软问题：
 你的技术亮点在哪里
@@ -63,14 +12,13 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
 你遇到的最有难度的技术问题是什么
 
 
-
-- 手写：promise 
 - 软：
-    - 了解一个知识点的基础上，能更进一步的去看它的底层原理，进一步去了解内部的实现。    - 其他领域： node、webGL、  
-    - 找到业务的痛点并用技术方案针对性去解决、主动推动一件事    - 技术热情: 喜欢折腾
+    - 了解一个知识点的基础上，能更进一步的去看它的底层原理，进一步去了解内部的实现。    
+    - 其他领域： node、webGL、  
+    - 找到业务的痛点并用技术方案针对性去解决、主动推动一件事
+    - 技术热情: 喜欢折腾
 - 从印象最深的一个项目入手谈：业务目标、方案选型、技术细节、可量化结果
 - 业务整理
-
 
 
 - 知识点
@@ -80,16 +28,27 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
     - 安全
     - 设计模式
     - 算法
-    - css 布局 适配
     - 框架  vue技巧 vue源码 横向比较 周边应用 vue3
     - 工具： webpack各种配置 原理 优化
     - 手写类 各种实现
     - 移动端 适配 兼容
     - node
+    - 边缘
+        - 数据库
+        - docker
+    - 新事物
+        - serverless
+        - flutter
+        - 微前端
+    - css 
+        - 布局 适配
+        - css3 动画 新属性
 - 业务
     - 技术栈
-    - 开发调试过程
-    - 上线部署过程
+    - 难点 痛点 
+    - 工程化
+        - 开发调试过程
+        - 上线部署过程
 
 
 

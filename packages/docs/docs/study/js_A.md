@@ -242,24 +242,6 @@ Object.setPrototypeOf(Child, Parent);
 参考
 [1](https://github.com/ljianshu/Blog/issues/4)
 
-## 跨域 ?
-- 跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
-
-解决跨域常用方案：
-- jsonp (JSON with Padding) 只支持GET请求
-- CORS (Cross-origin resource sharing) 跨域HTTP请求的根本解决方案
-- postMessage
-- websocket
-- Node中间件代理
-- nginx反向代理
-- window.name + iframe
-- location.hash + iframe
-- document.domain + iframe 只能用于二级域名相同的情况
-
-参考
-[1](https://juejin.im/post/5c23993de51d457b8c1f4ee1)
-[2](https://www.pandashen.com/2018/06/11/20180611010638/)
-
 ## 传统全局 isNaN、isFinite 和 Number.isNaN 、 Number.isFinite 的区别
 
 传统的全局方法isFinite()、isNaN()与Number.isNaN 、 Number.isFinite的区别在于，传统方法先调用Number()将非数值的值转为数值，再进行判断，而后两个新方法只对数值有效，Number.isFinite()对于非数值一律返回false, Number.isNaN()只有对于NaN才返回true，非NaN一律返回false。[1](http://es6.ruanyifeng.com/#docs/number)

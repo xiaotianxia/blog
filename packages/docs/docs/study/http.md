@@ -42,8 +42,9 @@ GET和POST本质上就是TCP连接，并无差别。但是由于HTTP的规定和
 
 - 发送网络请求，等待网络响应
 - 把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
-- 把响应内容 的引用 存入 memory cache (无视 HTTP 头信息的配置)
+- 把响应内容的引用存入 memory cache (无视 HTTP 头信息的配置)
 - 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
+![](https://user-gold-cdn.xitu.io/2020/4/3/17140208a7a34c56?imageslim)
 
 [1](https://juejin.im/post/5c22ee806fb9a049fb43b2c5)
 [2](https://www.jianshu.com/p/54cc04190252)
@@ -66,7 +67,7 @@ domain 、 path 、 expired、 max-age 、 secure 、httpOnly 、sameSite
 ## TCP三次握手/四次挥手
 ![](../../../../static/three-handshake.png)
 ![](../../../../static/four-wave.png)
-https://my.oschina.net/liting/blog/402859
+[参考](https://baijiahao.baidu.com/s?id=1654225744653405133&wfr=spider&for=pc)
 
 ## CSP (Content Security Policy)
 “网页安全政策”。
@@ -84,9 +85,27 @@ style-src cdn.example.org third-party.org; child-src https:
 ```
 以上的配置意为：
 - 脚本：只信任当前域名
-- object标签：不信任任何URL，即不加载任何资源
-- 样式表：只信任cdn.example.org和third-party.org
+- object 标签：不信任任何URL，即不加载任何资源
+- 样式表：只信任 cdn.example.org 和 third-party.org
 - 框架（frame）：必须使用HTTPS协议加载
 - 其他资源：没有限制
 
-http://www.ruanyifeng.com/blog/2016/09/csp.html
+[参考](http://www.ruanyifeng.com/blog/2016/09/csp.html)
+
+## 跨域
+- 跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。
+
+解决跨域常用方案：
+- jsonp (JSON with Padding) 只支持GET请求
+- CORS (Cross-origin resource sharing) 跨域HTTP请求的根本解决方案
+- postMessage
+- websocket
+- Node中间件代理
+- nginx反向代理
+- window.name + iframe
+- location.hash + iframe
+- document.domain + iframe 只能用于二级域名相同的情况
+
+参考
+[1](https://juejin.im/post/5c23993de51d457b8c1f4ee1)
+[2](https://www.pandashen.com/2018/06/11/20180611010638/)

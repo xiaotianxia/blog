@@ -274,6 +274,39 @@ new Vue({
 [6](https://juejin.im/post/5c204c98e51d454637699e33)
 [7](https://juejin.im/post/5ce3b519f265da1bb31c0d5f)
 
+### $on 或 $once 代替 beforeDestroy 或 destroyed 生命周期来销毁事件或定时器
+before:
+```js
+export default {
+    mounted() {
+        this.timer = setInterval(() => {
+            console.log(Date.now())
+        }, 1000)
+    },
+    beforeDestroy() {
+        clearInterval(this.timer)
+    }
+}
+```
+after:
+```js
+export default {
+    mounted() {
+        this.creatInterval('hello')
+        this.creatInterval('world')
+    },
+    creatInterval(msg) {
+        let timer = setInterval(() => {
+            console.log(msg)
+        }, 
+        1000)
+        this.$once('hook:beforeDestroy', function() {
+            clearInterval(timer)
+        })
+    }
+}
+```
+
 ### Vue 的父组件和子组件生命周期钩子执行顺序
 - 加载渲染过程：
 父beforeCreate->父created->父beforeMount->子beforeCreate->子created->子beforeMount->子mounted->父mounted
