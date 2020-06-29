@@ -3,19 +3,19 @@
 ## 输入 url 后发生了什么
 [见参考]（https://juejin.im/post/5e82aa8df265da47ca6910b5#heading-3
 
-### async defer
+## async defer
 **延迟加载**：
 - defer 和async 属性 提供给开发者一个方式来告诉浏览器哪些脚本是需要异步加载的。
 
 **加载及执行顺序**：
-![](https://camo.githubusercontent.com/78835bfd6ba8899decaabec54b713bced79907c2/68747470733a2f2f757365722d676f6c642d63646e2e786974752e696f2f323031382f362f31362f313634303635366537303736356163373f773d36383926683d31313226663d6a70656726733d3136383935)
+![](../../../../static/defer-async.jpg)
 - 在加载多个JS脚本的时候，async是无顺序的加载，而defer是有顺序的加载。
 
 参考：
 [1](https://www.zcfy.cc/article/building-the-dom-faster-speculative-parsing-async-defer-and-preload-x2605-mozilla-hacks-8211-the-web-developer-blog-4224.html?t=new)
 [2](https://github.com/ljianshu/Blog/issues/51)
 
-### preload  prefetch dns-prefetch
+## preload  prefetch dns-prefetch
 **dns-prefetch 多用于预解析CDN的地址的DNS**
 ```html
     <link rel="dns-prefetch" href="//example.com">
@@ -75,7 +75,7 @@
 - 使用 visibility 替换 display: none ，因为前者只会引起重绘，后者会引发回流（改变了布局）
 - 不要把节点的属性值放在一个循环里当成循环里的变量。
 ```js
-for(let i = 0; i < 1000; i++) {
+for (let i = 0; i < 1000; i++) {
     // 获取 offsetTop 会导致回流，因为需要去获取正确的值
     console.log(document.querySelector('.test').style.offsetTop)
 }
@@ -83,8 +83,34 @@ for(let i = 0; i < 1000; i++) {
 - 不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局
 - 动画实现的速度的选择，动画速度越快，回流次数越多，也可以选择使用 requestAnimationFrame
 - CSS 选择符从右往左匹配查找，避免节点层级过多
-- 将频繁重绘或者回流的节点设置为图层，图层能够阻止该节点的渲染行为影响别的节点。比如对于 video 标签来说，浏览器会自动将该节点变为图层。
-
-参考
+- 将频繁重绘或者回流的节点提升为合成层。将元素提升为合成层有以下优点：
+    - 合成层的位图，会交由 GPU 合成，比 CPU 处理要快
+    - 当需要 repaint 时，只需要 repaint 本身，不会影响到其他的层
+    - 对于 transform 和 opacity 效果，不会触发 layout 和 paint
 [1](https://segmentfault.com/a/1190000011297958#articleHeader1)
-[2](https://mp.weixin.qq.com/s?timestamp=1545144084&src=3&ver=1&signature=7YtbKqhExARr1YWMXH7v1D*EX2qKZ2Hkc8qCBP8jhJxsO7Oj8*aGya4vtcJedluvnbXXqK9YPvc*8P6O9lz7e0ruXAfGQn3buRvdEyYpJIc8uvTklHPwIJoMkjKrlkBNv3NDvGg6zRQEKuBYefXXEfX8hwHHrMpOsIiT0SWDYh0=)
+
+## 为什么浏览器读取css规则的顺序是从右到左
+
+从右到左匹配性能更好，效率更高。
+
+根据2009年Google和Firefox的测试，right-to-left方式可以避免70%左右的无效匹配。right-to-left 比 left-to-right 的无效匹配次数更少，从而匹配快、性能更优，所以目前主流的浏览器基本采取right-to-left的方式读取css规则。
+
+所以后代选择器不是那么被推荐的选择器。
+
+## CSS 阻塞渲染
+- CSS 如何阻塞渲染？
+    - 浏览器渲染流程：
+        - 1、浏览器开始解析目标HTML文件，执行流的顺序为自上而下。
+        - 2、HTML解析器将HTML结构转换为基础的DOM(文档对象模型)，构建DOM树完成后，触发DomContendLoaded事件。
+        - 3、CSS解析器将CSS解析为CSSOM(层叠样式表对象模型)，一棵仅含有样式信息的树。
+        - 4、CSSOM和DOM开始合并构成渲染树，每个节点开始包含具体的样式信息。
+        - 5、计算渲染树中个各个节点的位置信息，即布局阶段。
+        - 6、将布局后的渲染树显示到界面上。
+        - 可以看出，当CSSOM还没构建完成时，页面是不会渲染到浏览器界面的，也就是css加载过程中会阻塞页面的渲染。
+- 怎么防止 CSS 阻塞渲染？ 原则就是尽快的提供CSS。
+    - 在引入顺序上，CSS 资源的引入要优于js脚本的引入 
+    - 关键 CSS 内联，非关键 CSS 预加载，参考 [html-critical-webpack-plugin](https://www.npmjs.com/package/html-critical-webpack-plugin)
+    - 利用“媒体查询”：link标签的media属性，只有符合“媒体查询”条件时，浏览器才阻塞渲染，直至样式表下载并处理完毕，否则不会阻塞
+
+[1](https://www.jianshu.com/p/cbd593748567)
+[2](https://github.com/addyosmani/critical)
