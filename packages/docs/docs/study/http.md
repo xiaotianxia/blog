@@ -27,6 +27,7 @@ GET和POST本质上就是TCP连接，并无差别。但是由于HTTP的规定和
 [1](https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&amp;mid=100000054&amp;idx=1&amp;sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd)
 
 ## 缓存
+缓存位置：
 - 它们的优先级是：(由上到下寻找，找到即返回；找不到则继续)
     - Service Worker
     - Memory Cache
@@ -44,10 +45,12 @@ GET和POST本质上就是TCP连接，并无差别。但是由于HTTP的规定和
 - 把响应内容存入 disk cache (如果 HTTP 头信息配置可以存的话)
 - 把响应内容的引用存入 memory cache (无视 HTTP 头信息的配置)
 - 把响应内容存入 Service Worker 的 Cache Storage (如果 Service Worker 的脚本调用了 cache.put())
-![](https://user-gold-cdn.xitu.io/2020/4/3/17140208a7a34c56?imageslim)
+[1](https://juejin.im/post/5c22ee806fb9a049fb43b2c5#heading-2)
 
-[1](https://juejin.im/post/5c22ee806fb9a049fb43b2c5)
-[2](https://www.jianshu.com/p/54cc04190252)
+缓存策略：
+- 强缓存
+- 协商缓存
+[1](https://juejin.im/post/5c417993f265da61285a6075#heading-0)
 
 ## DNS解析过程
 Domain Name Server，域名服务器，是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。

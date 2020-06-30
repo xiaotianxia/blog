@@ -12,8 +12,7 @@
 - 在加载多个JS脚本的时候，async是无顺序的加载，而defer是有顺序的加载。
 
 参考：
-[1](https://www.zcfy.cc/article/building-the-dom-faster-speculative-parsing-async-defer-and-preload-x2605-mozilla-hacks-8211-the-web-developer-blog-4224.html?t=new)
-[2](https://github.com/ljianshu/Blog/issues/51)
+[1](https://juejin.im/post/5e143104e51d45414a4715f7#heading-27)
 
 ## preload  prefetch dns-prefetch
 **dns-prefetch 多用于预解析CDN的地址的DNS**
@@ -86,7 +85,14 @@ for (let i = 0; i < 1000; i++) {
 - 将频繁重绘或者回流的节点提升为合成层。将元素提升为合成层有以下优点：
     - 合成层的位图，会交由 GPU 合成，比 CPU 处理要快
     - 当需要 repaint 时，只需要 repaint 本身，不会影响到其他的层
-    - 对于 transform 和 opacity 效果，不会触发 layout 和 paint
+    - 对于 transform 和 opacity 效果，不会触发 layout 和 paint，如果不是合成层，则其依然会触发 paint
+
+元素提升为合成层方式：
+- 最常用的方式：translate3d、translateZ
+- opacity 属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
+- will-change 属性，一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，其它属性并不会变成复合层）
+- video 、 iframe 、 canvas 、webgl 等元素
+- 其它，譬如以前的flash插件
 [1](https://segmentfault.com/a/1190000011297958#articleHeader1)
 
 ## 为什么浏览器读取css规则的顺序是从右到左
@@ -98,7 +104,7 @@ for (let i = 0; i < 1000; i++) {
 所以后代选择器不是那么被推荐的选择器。
 
 ## CSS 阻塞渲染
-- CSS 如何阻塞渲染？
+- CSS 如何阻塞渲染？[1](https://juejin.im/post/5e143104e51d45414a4715f7#heading-20)
     - 浏览器渲染流程：
         - 1、浏览器开始解析目标HTML文件，执行流的顺序为自上而下。
         - 2、HTML解析器将HTML结构转换为基础的DOM(文档对象模型)，构建DOM树完成后，触发DomContendLoaded事件。
@@ -114,3 +120,6 @@ for (let i = 0; i < 1000; i++) {
 
 [1](https://www.jianshu.com/p/cbd593748567)
 [2](https://github.com/addyosmani/critical)
+
+## 关键渲染路径(Critical Rendering Path)? 如何优化 ?
+[1](https://juejin.im/post/5e143104e51d45414a4715f7#heading-22)
