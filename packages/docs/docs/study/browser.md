@@ -90,6 +90,7 @@ for (let i = 0; i < 1000; i++) {
 元素提升为合成层方式：
 - 最常用的方式：translate3d、translateZ
 - opacity 属性/过渡动画（需要动画执行的过程中才会创建合成层，动画没有开始或结束后元素还会回到之前的状态）
+- filters
 - will-change 属性，一般配合opacity与translate使用（而且经测试，除了上述可以引发硬件加速的属性外，其它属性并不会变成复合层）
 - video 、 iframe 、 canvas 、webgl 等元素
 - 其它，譬如以前的flash插件

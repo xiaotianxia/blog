@@ -14,7 +14,7 @@ module.exports = [
     'algorithm-common',
     'webpack_base',
     'webpack_advance',
-    'node_base',
+    'node',
     'es6',
     'questions',
     'mobile',

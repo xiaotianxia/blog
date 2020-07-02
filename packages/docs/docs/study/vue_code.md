@@ -72,3 +72,6 @@ https://github.com/muwoo/blogs
     
 - Proxy缺点
     - 兼容性差，IE任意版本都不支持
+
+## vue 中发布订阅、响应式 代码解析
+[1](https://github.com/xiaomuzhu/ElemeFE-node-interview/blob/master/JavaScript%E5%9F%BA%E7%A1%80/Proxy.md#22-%E5%8D%87%E7%BA%A7%E6%94%B9%E9%80%A0)
