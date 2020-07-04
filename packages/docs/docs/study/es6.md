@@ -400,35 +400,82 @@ await 在等什么
 - 如果它等到的不是一个 Promise 对象，那 await 表达式的运算结果就是它等到的东西。
 - 如果它等到的是一个 Promise 对象，它会阻塞后面的代码，等着 Promise 对象 resolve，然后得到 resolve 的值，作为 await 表达式的运算结果。
 
-参考
 [1](https://segmentfault.com/a/1190000007535316)
 [2](https://juejin.im/post/5c39523651882525a67c53d6)
 [3](https://juejin.im/post/5c45dffef265da61163a13e2)
 
-## Set、Map、WeakSet 和 WeakMap
-* Set
-  
-  * 成员唯一、无序且不重复
-  * [value,  value]，键值与键名是一致的（或者说只有键值，没有键名）
-  * 可以遍历，方法有：add、delete、has
-* WeakSet
-  
-  * 成员都是对象
-  * 成员都是弱引用，可以被垃圾回收机制回收，可以用来保存DOM节点，不容易造成内存泄漏
-  * 不能遍历，方法有add、delete、has
-* Map
-  
-  * 本质上是键值对的集合，类似集合
-  * 可以遍历，方法很多可以跟各种数据格式转换
-* WeakMap
-  
-  * 只接受对象最为键名（null除外），不接受其他类型的值作为键名
-  * 键名是弱引用，键值可以是任意的，键名所指向的对象可以被垃圾回收，此时键名是无效的
-  * 不能遍历，方法有get、set、has、delete
+## Set、WeakSet 和 Map、 WeakMap
+- Set
+    - 成员唯一、无序且不重复
+    - [value,  value]，键值与键名是一致的（或者说只有键值，没有键名）
+    - 操作方法有：add() 、 delete() 、 has() 、 clear()
+    - 可以遍历，方法有：keys() 、 values() 、 entries() 、 forEach()
 
-参考 [1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/6)
+- WeakSet
+    - 成员都是对象
+    - 成员都是弱引用，可以被垃圾回收机制回收，可以用来保存DOM节点，不容易造成内存泄漏
+    - 操作方法有：add() 、 delete() 、 has()
+    - 不能遍历
+
+- Map
+    - 本质上是键值对的集合，类似集合
+    - 可以遍历，方法很多可以跟各种数据格式转换
+
+- WeakMap
+    - 只接受对象最为键名（null除外），不接受其他类型的值作为键名
+    - 键名是弱引用，键值可以是任意的，键名所指向的对象可以被垃圾回收，此时键名是无效的
+    - 操作方法有： get() 、 set() 、 delete() 、 has()
+    - 不能遍历
+
+[1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/6)
+
+对弱引用的理解
+- WeakSet 类似于 Set ，仅存储对象。WeakMap 类似于 Map，键必须是对象。
+- WeakMap/WeakSet 中对对象是弱引用，垃圾回收机制不会考虑 WeakMap 对该对象的引用，也就是 JavaScript不会阻止将对象从内存移除。
+- WeakSet / WeakMap 没有部署 Iterator 接口，所以不能用for...of遍历。因为垃圾回收机制随时会对他们的值进行回收，所以个数并不确定。
+```js
+let obj = {id: 1}
+const wm = new WeakMap([[obj, 'sina']])
+obj = null  // 重写obj {id: 1}将会从内存移除，不考虑 wm 还在引用它
+```
+- 使用
+    - 记录访问次数
+    ```js
+    let jack = { name: "jack" };
+    const vistedCount = new WeakMap();
+    vistedCount.set(jack, 123);
+    // 当 jack 离开，就不需要保存其访问记录
+    jack = null;
+    // 除了 vistedCount 没有其他引用了
+    // 所以这个对象会自动的从内存和 vistedCount 中删除，不会造成内存泄漏
+    ```
+    - 注册监听事件
+    ```js
+    const listener = new WeakMap();
+    listener
+        .set(ele1, func1);
+        .set(ele2, func2);
+    ele1.addEventListener('click', listener.get(ele1), false);
+    ele2.addEventListener('click', listener.get(ele2), false);
+    // 监听函数放在 WeakMap 中，一旦DOM移除，监听函数也随之从内存移除，不会造成内存泄漏。
+    ```
+[2](https://www.jianshu.com/p/c99dd69a8f2c)
 
 
+## let 、cosnt 与 var 的区别
+let:
+- 不存在变量提升
+- 暂时性死区
+- 不允许重复声明
+const
+- 与 let 类似，声明的变量指向同一地址，不允许改变，因此基本类型不能改变值，引用类型可以改变内部属性，但不能改变指向。
+
+## 箭头函数与普通函数区别
+- 箭头函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象，箭头函数没有自己的this。
+- 不可以当作构造函数，也就是说，不可以使用new命令，没有super、new.target。没有自己的this，因此不可以用作构造函数，不能用 call()，apply()，bind()这些方法去改变 this 的指向
+- 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+- 不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+- 没有 prototype 属性
 
 
 

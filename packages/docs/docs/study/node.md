@@ -100,7 +100,7 @@ RPC（Remote Procedure Call）中文名「远程过程调用」，又是一个�
 ## 怎样让一个js文件变得像 linux 命令一样可执行?
 - 1) 在 myCommand.js 文件头部加入 #!/usr/bin/env node 
 - 2) chmod 命令把 js 文件改为可执行即可
-- 3) 进入文件目录，命令行输入 myComand 就是相当于 node myComand.js了
+- 3) 进入文件目录，命令行输入 myComand 就是相当于 node myComand.js 了
 
 
 
