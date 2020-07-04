@@ -209,9 +209,6 @@ obj.b.c()  //打出的是window对象！！
 参考
 [1](https://blog.csdn.net/qbian/article/details/79360972)
 
-## 手写 promise
-[这里](diy.html#promise)
-
 
 ## promise 异常捕获
 一般情况下，当Promise调用链中抛出一个异常时，异常信息会沿着链路向后传递，直至被捕获。

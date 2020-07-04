@@ -33,10 +33,11 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
     - 手写类 各种实现
     - 移动端 适配 兼容
     - node
-    - 边缘
+    - 周边
         - 数据库
         - docker
         - linux
+        - 位运算
     - 新事物
         - serverless
         - flutter

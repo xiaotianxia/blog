@@ -6,6 +6,17 @@
 - 3. DOM删除而事件未清除
 - 4. 没关掉的计时器
 
+## GC (Garbage Collection, 垃圾回收)机制
+- 引用类型是在没有引用之后, 通过 v8 的 GC 自动回收, 
+- 值类型如果是处于闭包的情况下, 要等闭包没有引用才会被 GC 回收, 非闭包的情况下等待 v8 的新生代 (new space) 切换的时候回收
+[1](https://elemefe.github.io/node-interview/#/sections/zh-cn/common?id=%e5%86%85%e5%ad%98%e9%87%8a%e6%94%be)
+[2](https://zhuanlan.zhihu.com/p/25736931)
+
+## 防止内存泄漏
+- ESLint 检测代码检查非期望的全局变量。
+- 使用闭包的时候，避免写出复杂的闭包。
+- 绑定事件的时候，一定得在恰当的时候清除事件。
+
 ## 实现一个深拷贝 ?
 ```js
 function deepCopy(o) {
