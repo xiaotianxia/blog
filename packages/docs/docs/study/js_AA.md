@@ -19,6 +19,15 @@
 
 ## 实现一个深拷贝 ?
 ```js
+const newObj = JSON.parse(JSON.stringify(oldObj));
+```
+缺点：
+- 1.无法实现对函数 、RegExp等特殊对象的克隆
+- 2.会抛弃对象的constructor,所有的构造函数会指向Object
+- 3.对象有循环引用,会报错
+
+```js
+// 简化版
 function deepCopy(o) {
     if (o instanceof Array) {
         var n = [];
@@ -41,6 +50,15 @@ function deepCopy(o) {
 }
 //考虑到了数组、对象、函数三种引用类型
 ```
+还需考虑
+- 对函数 、RegExp 、 Date 、 Map 、 Set 等特殊对象的处理
+- 循环引用
+
+升级版
+[1](https://github.com/xiaomuzhu/ElemeFE-node-interview/blob/master/JavaScript%E5%9F%BA%E7%A1%80/javascript%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%85%8B%E9%9A%86.md)
+号称终极版
+![代码](https://user-gold-cdn.xitu.io/2019/9/1/16ce893e6ec12377?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+[2](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1)
 
 ## 防抖与节流 ?
 - 函数防抖(debounce) 
@@ -62,43 +80,41 @@ function deepCopy(o) {
 参考
 [1](https://juejin.im/post/5c6bab91f265da2dd94c9f9e)
 
-## call apply bind 
-[这里](diy.html#call)
 
 ## toString 和 valueOf 区别
 这两个方法主要用于对象的隐式转换。
 
-当这两个函数同时存在时候，会** 先调用 valueOf ** ，若返回的不是原始类型，那么会调用 toString 方法，如果这时候 toString 方法返回的也不是原始数据类型，那么就会报错。
+当这两个方法同时存在时候，会** 先调用 valueOf ** ，若返回的不是原始类型，那么会调用 toString 方法，如果这时候 toString 方法返回的也不是原始数据类型，那么就会报错。
 
 用 String 的拆箱转换会优先调用 toString。
 
 ```js
-let o = function () {
-    this.toString = () => {
+let o = {
+    toString: () => {
         return 'my is o,'
-    }
-    this.valueOf = () => {
+    },
+    valueOf: () => {
         return 99
     }
 }
-let n = new o()
-console.log(n + 'abc') // 99abc
-console.log(n * 10) // 990
+console.log(o + 'abc') // 99abc
+console.log(o * 10) // 990
 ```
 
 ```js
-let o = function () {
-    this.toString = () => {
+let o = {
+    // 返回引用类型
+    toString: () => {
         console.log('into toString')
         return { 'string': 'ssss' }
-    }
-    this.valueOf = () => {
+    },
+    valueOf: () => {
         console.log('into valueOf')
         return { 'val': 99 }
     }
 }
-let n = new o()
-console.log(n + 'xx')
+
+console.log(o + 'xx')
 //into valueOf
 //into toString
 //TypeError
@@ -111,11 +127,25 @@ String(o)
 
 在 ES6 之后，还允许对象通过显式指定 @@toPrimitive Symbol 来覆盖原有的行为。
 ```js
-o[Symbol.toPrimitive] = () => {console.log("toPrimitive"); return "hello"};
+let o = {
+    [Symbol.toPrimitive]: () => {console.log("toPrimitive"); return "hello"}
+};
 
 o + "";
 // toPrimitive 
 // hello
 ```
+[1](https://juejin.im/post/5cec1bcff265da1b8f1aa08f#heading-23)
 
+## 私有变量实现
+- 约定
+- 闭包
+- WeakMap
+- Symbol
+- Proxy
+[1](https://juejin.im/post/5bf41990e51d4552ee424d2c)
+[2](https://juejin.im/post/5a8e9b6d5188257a5f1ed826#heading-5)
+
+## ECMAScript中所有函数的参数都是按值传递的。
+[1](https://juejin.im/post/5902a37ca22b9d0065cc4f7a)
 

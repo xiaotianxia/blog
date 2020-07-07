@@ -102,5 +102,54 @@ RPC（Remote Procedure Call）中文名「远程过程调用」，又是一个�
 - 2) chmod 命令把 js 文件改为可执行即可
 - 3) 进入文件目录，命令行输入 myComand 就是相当于 node myComand.js 了
 
+## AMD, CMD, CommonJS 、 es6 module 区别
+- ADM: 依赖前置，提前执行。也就是说，在define方法里传入的依赖模块(数组)，会在一开始就下载并执行。
+- CMD: 推崇依赖就近，延迟执行。也就是说，只有到require时依赖模块才执行。
+- CommonJS: 
+    - 所有代码都运行在模块作用域，不会污染全局作用域；
+    - 模块是同步加载的，即只有加载完成，才能执行后面的操作；
+    - 模块在首次执行后就会缓存，再次加载只返回缓存结果，如果想要再次执行，可清除缓存；
+    - CommonJS输出是值的拷贝(即，require返回的值是被输出的值的拷贝，模块内部的变化也不会影响这个值)。
+- es6 module: 
+    - CommonJS模块是运行时加载，ES6 Module是编译时输出接口；
+    - CommonJS加载的是整个模块，将所有的接口全部加载进来，ES6 Module可以单独加载其中的某个接口；
+    - CommonJS输出是值的拷贝，ES6 Module输出的是值的引用，被输出模块的内部的改变会影响引用的改变；
+    - CommonJS this指向当前模块，ES6 Module this指向undefined;
+[1](https://juejin.im/post/5db95e3a6fb9a020704bcd8d)
+
+## UMD
+```js
+(function(root, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        console.log('是commonjs模块规范，nodejs环境');
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        console.log('是AMD模块规范，如require.js');
+        define(factory());
+    } else if (typeof define === 'function' && define.cmd) {
+        console.log('是CMD模块规范，如sea.js');
+        define(function(require, exports, module) {
+            module.exports = factory();
+        });
+    } else {
+        console.log('没有模块环境，直接挂载在全局对象上');
+        root.umdModule = factory();
+    }
+}(this, function() {
+    return {
+        name: '我是一个umd模块'
+    };
+}));
+```
+
+## commonjs 、 es6 的模块循环引用
+CommonJS 和 es6 的处理方式不同
+- CommonJS
+    - 互相require： CommonJS的做法是，一旦出现某个模块被"循环加载"，就只输出已经执行的部分，还未执行的部分不会输出。
+- es6
+    - ES6根本不会关心是否发生了"循环加载"，只是生成一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。
+[1](http://www.ruanyifeng.com/blog/2015/11/circular-dependency.html)
+
+
 
 
