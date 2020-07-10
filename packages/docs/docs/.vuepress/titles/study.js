@@ -7,6 +7,7 @@ module.exports = [
     'css_A',
     'css_AA',
     'css_AAA',
+    'promise',
     'performance',
     'vue',
     'vue_code',

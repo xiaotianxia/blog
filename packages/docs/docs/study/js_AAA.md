@@ -1,20 +1,18 @@
 # js 高级
 
-## 微任务、宏任务、Event-Loop
+## 微任务、宏任务、event loop
 
-- 宏任务：I/0(用户交互)、setTimeout、setInterval、setImmediate、requestAnimationFrame
-- 微任务：Promise.then catch finally、MutationObserver等、process.nextTick(node)
-- 任务队列执行的过程：每次宏任务执行完，都去检查是否有微任务存在，如有，依次执行微任务，微任务执行结束后，返回继续执行下一个宏任务；
-如没有微任务，则结束当前宏任务，继续执行下一宏任务。这个执行过程称为event-loop。
+- 宏任务：I/0(用户交互)、setTimeout、setInterval、setImmediate、requestAnimationFrame 、I/O 、UI rendering
+- 微任务：Promise.then catch finally、MutationObserver等、process.nextTick(node)、 Promise为基础开发的其它技术，比如fetch API、V8的垃圾回收过程
+- 任务队列执行的过程：每次宏任务执行完，都去检查是否有微任务存在，如有，依次执行微任务，微任务执行结束后，返回继续执行下一个宏任务；如没有微任务，则结束当前宏任务，继续执行下一宏任务。这个执行过程称为 event loop。
 
-- 1、先执行主线程
-- 2、遇到宏任务，放到宏队列
-- 3、遇到微任务，放到微队列
-- 4、主线程执行完毕
-- 5、执行微任务，微队列执行完毕
-- 6、执行一次宏任务中的一个任务，执行完毕
-- 7、执行微任务，执行完毕
-- 8、依次循环。。。
+event loop执行顺序
+- 1 一开始整个脚本作为一个宏任务执行
+- 2 执行过程中同步代码直接执行，宏任务进入宏任务队列，微任务进入微任务队列
+- 3 当前宏任务执行完出队，检查微任务列表，有则依次执行，直到全部执行完
+- 4 执行浏览器UI线程的渲染工作
+- 5 检查是否有Web Worker任务，有则执行
+- 6 执行完本轮的宏任务，回到2，依此循环，直到宏任务和微任务队列都为空
 
 node环境中：
 - process.nextTick 的执行优先级高于 Promise 的

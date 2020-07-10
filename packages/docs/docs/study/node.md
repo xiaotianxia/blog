@@ -150,6 +150,8 @@ CommonJS 和 es6 的处理方式不同
     - ES6根本不会关心是否发生了"循环加载"，只是生成一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。
 [1](http://www.ruanyifeng.com/blog/2015/11/circular-dependency.html)
 
+[参考](https://elemefe.github.io/node-interview/#/sections/zh-cn/)
+
 
 
 
