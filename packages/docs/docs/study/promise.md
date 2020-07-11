@@ -1,30 +1,29 @@
 # Promise
 
 [参考](https://juejin.im/post/5e58c618e51d4526ed66b5cf#heading-25)
-## 1
-链式调用后面的内容需要等前一个调用执行完才会执行
+## 链式调用后面的内容需要等前一个调用执行完才会执行
 ```js
 function promise1 () {
-  let p = new Promise((resolve) => {
-    console.log('promise1');
-    resolve('1')
-  })
-  return p;
+    let p = new Promise((resolve) => {
+        console.log('promise1');
+        resolve('1')
+    });
+    return p;
 }
 function promise2 () {
-  return new Promise((resolve, reject) => {
-    reject('error')
-  })
+    return new Promise((resolve, reject) => {
+        reject('error')
+    })
 }
 promise1()
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-  .finally(() => console.log('finally1'))
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    .finally(() => console.log('finally1'))
 
 promise2()
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
-  .finally(() => console.log('finally2'))
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+    .finally(() => console.log('finally2'))
 ```
 结果：
 ```
@@ -51,26 +50,27 @@ promise2()
 就像是这里的finally()会等promise1().then()执行完才会将finally()加入微任务队列，其实如果这道题中你把finally()换成是then()也是这样的:
 ```js
 function promise1 () {
-  let p = new Promise((resolve) => {
-    resolve('1')
-  })
-  return p;
+    let p = new Promise((resolve) => {
+        resolve('1')
+    })
+    return p;
 }
 function promise2 () {
-  let p = new Promise((resolve) => {
-    resolve('2')
-  })
-  return p;
+    let p = new Promise((resolve) => {
+        resolve('2')
+    })
+    return p;
 }
 promise1()
-  .then(res => console.log(res))
-  .then(() => console.log('3')).then(() => console.log('4'))
+    .then(res => console.log(res))
+    .then(() => console.log('3')).then(() => console.log('4'))
 
 
 promise2()
-  .then(res => console.log(res))
-  .then(() => console.log('5')).then(() => console.log('6'))
+    .then(res => console.log(res))
+    .then(() => console.log('5')).then(() => console.log('6'))
 ```
+
 结果
 ```
 1
@@ -80,3 +80,7 @@ promise2()
 4
 6
 ```
+s
+## async/await 相关代码执行顺序
+可以理解为「紧跟着await后面的语句相当于放到了new Promise中，下一行及之后的语句相当于放在Promise.then中」
+[参考](https://juejin.im/post/5e58c618e51d4526ed66b5cf#heading-33)
