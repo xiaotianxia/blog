@@ -80,7 +80,7 @@ promise2()
 4
 6
 ```
-s
+
 ## async/await 相关代码执行顺序
 可以理解为「紧跟着await后面的语句相当于放到了new Promise中，下一行及之后的语句相当于放在Promise.then中」
 [参考](https://juejin.im/post/5e58c618e51d4526ed66b5cf#heading-33)
