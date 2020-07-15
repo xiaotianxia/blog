@@ -39,7 +39,7 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
         - docker
         - linux
         - 位运算
-    - 新事物
+    - 新
         - serverless
         - flutter
         - 微前端
