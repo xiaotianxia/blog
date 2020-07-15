@@ -244,19 +244,45 @@ Object.setPrototypeOf(Child, Parent);
 
 ## 传统全局 isNaN、isFinite 和 Number.isNaN 、 Number.isFinite 的区别
 
-传统的全局方法isFinite()、isNaN()与Number.isNaN 、 Number.isFinite的区别在于，传统方法先调用Number()将非数值的值转为数值，再进行判断，而后两个新方法只对数值有效，Number.isFinite()对于非数值一律返回false, Number.isNaN()只有对于NaN才返回true，非NaN一律返回false。[1](http://es6.ruanyifeng.com/#docs/number)
+传统的全局方法 isFinite() 、 isNaN() 与 Number.isNaN 、 Number.isFinite 的区别在于，传统方法先调用Number() 将非数值的值转为数值，再进行判断，而后两个新方法只对数值有效， Number.isFinite() 对于非数值一律返回false, Number.isNaN() 只有对于 NaN 才返回 true ，非 NaN 一律返回 false 。[1](http://es6.ruanyifeng.com/#docs/number)
 ```js
 isFinite(25) // true
 isFinite("25") // true
+
 Number.isFinite(25) // true
 Number.isFinite("25") // false
 
 isNaN(NaN) // true
 isNaN("NaN") // true
+
 Number.isNaN(NaN) // true
 Number.isNaN("NaN") // false
 Number.isNaN(1) // false
 ```
 
 [1](https://segmentfault.com/a/1190000015142897)
+
+## this 指向问题
+[参考](https://juejin.im/post/5e6358256fb9a07cd80f2e70)
+- 默认绑定
+    - 非严格模式下 this 指向全局对象, 严格模式下 this 会绑定到 undefined
+- 隐式绑定
+    - 当函数引用有上下文对象时, 如 obj.foo() 的调用方式, foo 内的 this 指向 obj
+    - this 永远指向最后调用它的那个对象， 匿名函数的 this 永远指向 window
+    - 隐式绑定的隐式丢失问题 两种情况
+        - 使用另一个变量来给函数取别名
+        - 将函数作为参数传递时会被隐式赋值，回调函数丢失 this 绑定
+- 显式绑定
+    - 通过 call 、 apply 、 bind 方法直接指定 this 的绑定对象, 如f oo.call(obj)
+    - 使用 call 或者 apply 的函数是会直接执行的，bind 是创建一个新的函数，需要手动调用才会执行
+    - 如果 call 、 apply 、 bind 接收到的第一个参数是空或者 null 、 undefined 的话，则会忽略这个参数
+    - forEach 、 map 、filter 函数的第二个参数也是能显式绑定 this 的
+- new 绑定
+    - 构造函数创建的对象，作用域是可以理解为是这个构造函数，且这个构造函数的 this 是指向新建的对象的，因此this指向这个对象。
+- 箭头函数的 this
+    - 箭头函数里面的 this 是由外层作用域来决定的，且指向函数定义时的 this 而非执行时
+    - 字面量创建的对象，作用域是 window，如果里面有箭头函数属性的话，this 指向的是 window
+    - 箭头函数的 this 是无法通过 bind 、 call 、 apply 来直接修改，但是可以通过改变作用域中 this 的指向来间接修改。
+
+
 
