@@ -22,9 +22,9 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
 
 
 - 知识点
-    - 网络相关 http  websocket
-    - 浏览器原理 dom相关
-    - 性能优化
+    - 网络相关 http  websocket √
+    - 浏览器原理 dom相关  √
+    - 性能优化  √
     - 安全
     - 设计模式
     - 算法
@@ -32,7 +32,7 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
     - 工具： webpack各种配置 原理 优化
     - 手写类 各种实现
     - 移动端 适配 兼容
-    - node
+    - node √
     - 周边
         - 数据结构
         - 数据库

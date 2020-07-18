@@ -25,5 +25,6 @@ module.exports = [
     'api',
     'browser',
     'conception',
-    'engineering'
+    'engineering',
+    'linux',
 ]

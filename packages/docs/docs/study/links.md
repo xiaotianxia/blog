@@ -5,3 +5,6 @@
 - [正则](https://juejin.im/post/5965943ff265da6c30653879#heading-21)
 - [this](https://juejin.im/post/5e6358256fb9a07cd80f2e70#heading-41)
 
+- [面试](https://www.bilibili.com/video/BV1C7411j74Z?p=3)
+- [面试](https://github.com/silenceboychen/nodejs-interview/blob/master/skill.md)
+
