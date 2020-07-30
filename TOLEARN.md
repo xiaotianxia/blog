@@ -26,7 +26,7 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
     - 性能优化  √
     - 安全 √
     - 设计模式 √
-    - 算法
+    - ** 算法
     - 框架  
         - vue技巧
         - vue源码
@@ -35,6 +35,7 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
         - vue3
     - 工具
         - webpack各种配置 原理 优化
+        - rollup 横向比较
     - 手写类 各种实现
     - 移动端 适配 兼容
     - node √
@@ -44,7 +45,7 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
         - 数据库 sql
         - docker 
         - linux
-        - 位运算
+        - 位运算 √
         - graphql 
     - 新
         - serverless
