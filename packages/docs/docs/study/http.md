@@ -50,7 +50,9 @@ GET和POST本质上就是TCP连接，并无差别。但是由于HTTP的规定和
 缓存策略：
 - 强缓存
 - 协商缓存
+![](../../../../static/browser-cache.png)
 [1](https://juejin.im/post/5c417993f265da61285a6075#heading-0)
+[2](https://github.com/lgwebdream/FE-Interview/issues/14)
 
 ## DNS解析过程
 Domain Name Server，域名服务器，是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。
