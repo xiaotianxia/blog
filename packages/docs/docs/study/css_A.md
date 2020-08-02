@@ -115,7 +115,11 @@ box-sizing: border-box; -> width = 200px
   - 已经请求过的相同图片不会重复请求
   - 不存在的元素，即时样式表里有写，也不会请求加载
 
-## 
+## 伪类 伪元素
+![](https://user-gold-cdn.xitu.io/2019/9/1/16ceac430d44fc54?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](https://user-gold-cdn.xitu.io/2019/9/1/16ceac464bbf0add?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+[](https://github.com/lgwebdream/FE-Interview/issues/18)
+
 
 
 
