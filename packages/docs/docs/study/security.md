@@ -86,3 +86,4 @@ CSRF(Cross Site Request Forgery)，即跨站请求伪造。它利用用户已登
 
 参考
 [1](https://github.com/ljianshu/Blog/issues/56)
+[2](https://github.com/lgwebdream/FE-Interview/issues/16)
