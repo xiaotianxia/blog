@@ -65,4 +65,6 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
 
 
 - 防抖节流
+- 柯里化
+
 

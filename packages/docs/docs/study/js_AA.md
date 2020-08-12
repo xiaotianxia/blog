@@ -77,8 +77,89 @@ function deepCopy(o) {
         - 鼠标不断点击触发，mousedown(单位时间内只触发一次)
         - 监听滚动事件，比如是否滑到底部自动加载更多，用throttle来判断
 
+防抖
+```js
+/* 
+immediate:
+
+非立即执行:，如果你在一个事件触发的n秒内又触发了这个事件，那我就以新的事件的时间为准，n 秒后才执行
+
+立即执行：我不希望非要等到事件停止触发后才执行，我希望立刻执行函数，然后等到停止触发 n 秒后，才可以重新触发执行
+*/
+function debounce(fn, wait, immediate) {
+    let timer;
+    let debounced = function () {
+        let context = this;
+        let args = arguments;
+        if (timer) {
+            clearTimeout(timer);
+        }
+        let callNow = !timer;
+        if (immediate) {
+            // 已经执行过，不再执行  切换callNow状态
+            timer = setTimeout(function () {
+                timer = null;
+            }, wait);
+            if (callNow) {
+                fn.apply(context, args);
+            }
+        } else {
+            timer = setTimeout(function () {
+                fn.apply(context, args);
+            }, wait);
+        }
+    };
+
+    // 取消方法
+    debounced.cancel = function() {
+        clearTimeout(timeout);
+        timeout = null;
+    }
+
+    return debounced;
+}
+```
+
+节流
+```js
+// 立即执行版：
+function throttle(fn, wait) {
+    let context,
+        args;
+    let previous = 0;  // 第一次 now - previous > wait 肯定true，立即执行
+    return function() {
+        let now = + new Date();
+        context = this;
+        args = arguments;
+        if (now - previous > wait) {
+            fn.apply(context, args);
+            previous = now;
+        }
+    };
+}
+```
+
+```js
+// 非立即执行版
+function throttle(fn, wait) {
+    let timeout;
+    return function() {
+        let context = this;
+        let args = arguments;  
+        // 这里不需要清除定时器 清除了会重新计算时间 
+        // 清除这个定时器不代表timeout为空 
+        if (timeout) { return false;  }
+        timeout = setTimeout(function () { 
+            fn.apply(context, args);
+            timeout = null;
+        }, wait);
+    };   
+}
+```
+
 参考
 [1](https://juejin.im/post/5c6bab91f265da2dd94c9f9e)
+[2](https://juejin.im/post/6844903888978444296)
 
 
 ## toString 和 valueOf 区别
