@@ -40,6 +40,10 @@ https://juejin.im/post/5e6ca27e6fb9a07c8076cea5#heading-7
     - 移动端 适配 兼容
     - node √
     - webGL
+    - 各种配置
+        - webpack
+        - babel
+        - vue.config.js
     - 周边
         - 数据结构 √
         - 数据库 sql

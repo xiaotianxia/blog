@@ -146,11 +146,11 @@ function throttle(fn, wait) {
     return function() {
         let context = this;
         let args = arguments;  
-        // 这里不需要清除定时器 清除了会重新计算时间 
-        // 清除这个定时器不代表timeout为空 
+        // timeout存在，说明时间还不够，返回
         if (timeout) { return false;  }
         timeout = setTimeout(function () { 
             fn.apply(context, args);
+            // 切换timeout状态
             timeout = null;
         }, wait);
     };   
