@@ -213,3 +213,66 @@ export default function compose(...funcs) {
     return funcs.reduce((a, b) => (...args) => a(b(...args)));
 }
 ```
+
+
+## 柯里化
+柯里化的一个重要的作用是**延迟执行**，bind的作用也是延迟执行，所以bind实际上也是一种柯里化。
+
+1. 实现 add(1)(2, 3)(4)() = 10 的效果
+
+两个关键点：
+- 传入参数时，代码不执行输出结果，而是先收集起来
+- 当传入空的参数时，代表可以进行真正的运算
+```js
+function currying(fn) {
+    var allArgs = [];
+
+    return function next(...args) {
+        if (args.length > 0) {
+            // 收集参数
+            allArgs = allArgs.concat(args);
+            return next;
+        } else {
+            // 触发条件
+            fn.apply(null, allArgs);
+        }
+    }
+}
+```
+
+2. 实现 add(1)(2, 3)(4)(5) = 15 的效果。
+问题：怎么卖判断执行的时机？
+
+利用valueOf和toString：js在获取当前变量值的时候，会根据语境，隐式调用valueOf和toString方法进行获取需要的值。
+```js
+function currying(fn){
+    var allArgs = [];
+
+    function next(){
+        var args = [].slice.call(arguments);
+        allArgs = allArgs.concat(args);
+        return next;
+    }
+    // 字符类型
+    next.toString = function(){
+        return fn.apply(null, allArgs);
+    };
+    // 数值类型
+    next.valueOf = function(){
+        return fn.apply(null, allArgs);
+    }
+
+    return next;
+}
+var add = currying(function(){
+    var sum = 0;
+    for(var i = 0; i < arguments.length; i++){
+        sum += arguments[i];
+    }
+    return sum;
+});
+```
+
+[1](https://juejin.im/post/6844903645222273037)
+[2](https://juejin.im/post/5bf9bb7ff265da616916e816)
+[3](https://www.zhangxinxu.com/wordpress/2013/02/js-currying/)

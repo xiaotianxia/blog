@@ -78,42 +78,6 @@ Promise.all = arr => {
 };
 ```
 
-## add(1, 2, 3) === add(1,2)(3)() 柯里化实现
-```js
-// add 函数柯里化
-function add(){
-    //建立args,利用闭包特性，不断保存arguments
-    var args = [].slice.call(arguments);
-       //方法一，新建_add函数实现柯里化
-    var _add = function(){
-        if(arguments.length === 0) {
-            //参数为空，对args执行加法
-            return args.reduce(function(a,b) {return a+b;});
-        } else {
-            //否则，保存参数到args，返回一个函数
-            [].push.apply(args,arguments);
-            return _add;
-        }
-    }
-    //返回_add函数
-    return _add;
-    
-    //方法二，使用匿名函数
-    /*
-    return function () {
-        if (arguments.length === 0) {
-            return args.reduce(function(a,b){return a+b});
-        }
-        Array.prototype.push.apply(args, arguments);
-        return arguments.callee;
-    }
-    */
-}
-```
-参考
-[1](https://www.jianshu.com/p/f88a5175e7a2)
-[2](https://blog.csdn.net/qq_39207948/article/details/80593715)
-
 ## ['1', '2', '3'].map(parseInt) 
 相当于
 ```js
