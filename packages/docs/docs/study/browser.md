@@ -1,7 +1,8 @@
 # 浏览器原理
 
 ## 输入 url 后发生了什么
-[见参考]（https://juejin.im/post/5e82aa8df265da47ca6910b5#heading-3
+[1](https://xie.infoq.cn/article/ecfa81d2fc00c33b32167a536)
+[2](https://juejin.im/post/5e82aa8df265da47ca6910b5#heading-3)
 
 ## async defer
 **延迟加载**：
