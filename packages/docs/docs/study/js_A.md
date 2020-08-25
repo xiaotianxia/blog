@@ -142,6 +142,50 @@ Object.setPrototypeOf(Child, Parent);
 [1](https://zhuanlan.zhihu.com/p/25578222)
 [2](https://juejin.im/post/5c433e216fb9a049c15f841b)
 
+## es5 继承和 es6 继承的区别？
+1. 子类__proto__属性不一样
+```js
+// es6 继承
+class Super {}
+class Sub extends Super {}
+
+const sub = new Sub();
+
+Sub.__proto__ === Super;
+```
+子类可以直接通过 __proto__ 寻址到父类。
+
+```js
+// es5 继承
+function Super() {}
+function Sub() {}
+
+Sub.prototype = new Super();
+Sub.prototype.constructor = Sub;
+
+var sub = new Sub();
+
+Sub.__proto__ === Function.prototype;
+```
+而通过 ES5 的方式，Sub.__proto__ === Function.prototype
+
+2. ES5 和 ES6 子类 this 生成顺序不同。ES5 的继承先生成了子类实例，再调用父类的构造函数修饰子类实例，ES6 的继承先生成父类实例，再调用子类的构造函数修饰父类实例。这个差别使得 ES6 可以继承内置对象。
+```js
+function MyES5Array() {
+  Array.call(this, arguments);
+}
+
+// it's useless
+const arrayES5 = new MyES5Array(3); // arrayES5: MyES5Array {}
+
+class MyES6Array extends Array {}
+
+// it's ok
+const arrayES6 = new MyES6Array(3); // arrayES6: MyES6Array(3) []
+```
+
+https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/20
+
 ## js 类型及其判断 ?
 ### 数据类型
 - 基本数据类型：原始数据类型，包括undefined、null、Boolean、Number、String、Symbol (ES6新增，表示独一无二的值)。
