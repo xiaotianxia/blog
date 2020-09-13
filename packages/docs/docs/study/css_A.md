@@ -50,7 +50,7 @@ box-sizing: border-box; -> width = 200px
 [4](https://github.com/kaola-fed/blog/blob/master/source/_posts/%E5%AD%A6%E4%B9%A0BFC.md)
 
 ## 包含块 ?
-![1](https://upload-images.jianshu.io/upload_images/7897087-caaac90e45744798.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/720/format/webp)
+![参考](../../../../static/7897087-caaac90e45744798.jpg)
 
 ## margin折叠 ?
 
@@ -116,8 +116,8 @@ box-sizing: border-box; -> width = 200px
   - 不存在的元素，即时样式表里有写，也不会请求加载
 
 ## 伪类 伪元素
-![](https://user-gold-cdn.xitu.io/2019/9/1/16ceac430d44fc54?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-![](https://user-gold-cdn.xitu.io/2019/9/1/16ceac464bbf0add?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](../../../../static/weilei.jpg)
+![](../../../../static/16ceac464bbf0add.jpg)
 [](https://github.com/lgwebdream/FE-Interview/issues/18)
 
 

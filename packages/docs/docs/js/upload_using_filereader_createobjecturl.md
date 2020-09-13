@@ -93,13 +93,13 @@
 </html>
 ```
 #### demo截图：
-![方案1、2 上传图片](https://user-gold-cdn.xitu.io/2017/10/31/859831cc976efa49662af63e457d5f15)
+![方案1、2 上传图片](../../../../static/859831cc976efa49662af63e457d5f15.jpg)
 <hr>
 
-![方案1 上传视频](https://user-gold-cdn.xitu.io/2017/10/31/ab8defb7ab25f4f8a31d52ce7df85369)
+![方案1 上传视频](../../../../static/ab8defb7ab25f4f8a31d52ce7df85369.jpg)
 <hr>
 
-![方案2 上传视频](https://user-gold-cdn.xitu.io/2017/10/31/1369cacb3d77541ec913ca7d6906041a)
+![方案2 上传视频](../../../../static/1369cacb3d77541ec913ca7d6906041a.jpg)
 
 
 可以看出FileReader和URL.createObjectURL都能完美的实现图片的预览，但对于视频的上传，FileReader就不行了，浏览器立马崩溃了。。。，然而URL.createObjectURL方法却完美实现。

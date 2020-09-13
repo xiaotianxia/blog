@@ -8,7 +8,7 @@
 
 ## demo演示
 
-![demo演示](https://user-gold-cdn.xitu.io/2018/5/11/1634ddbac775667d?w=1420&h=818&f=gif&s=4853771)
+![demo演示](../../../../static/communication_using_postmessage-1.gif)
 
 ## 代码片段
 

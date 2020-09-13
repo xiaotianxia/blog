@@ -54,11 +54,13 @@ function deepCopy(o) {
 - 对函数 、RegExp 、 Date 、 Map 、 Set 等特殊对象的处理
 - 循环引用
 
-升级版
-[1](https://github.com/xiaomuzhu/ElemeFE-node-interview/blob/master/JavaScript%E5%9F%BA%E7%A1%80/javascript%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%85%8B%E9%9A%86.md)
+升级版 [参考](https://github.com/xiaomuzhu/ElemeFE-node-interview/blob/master/JavaScript%E5%9F%BA%E7%A1%80/javascript%E5%AE%9E%E7%8E%B0%E6%B7%B1%E5%85%8B%E9%9A%86.md)
+
 号称终极版
-![代码](https://user-gold-cdn.xitu.io/2019/9/1/16ce893e6ec12377?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-[2](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1)
+
+![代码](../../../../static/16ce893e6ec12377.jpg)
+
+[参考](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1)
 
 ## 防抖与节流 ?
 - 函数防抖(debounce) 

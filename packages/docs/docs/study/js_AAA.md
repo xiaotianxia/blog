@@ -19,7 +19,7 @@ node环境中：
 - setTimeout 的执行优先级高于 setImmediate 的(浏览器中往往正好相反)
 
 ![](https://image-static.segmentfault.com/402/025/4020255170-59bc9e1671029)
-![](https://user-gold-cdn.xitu.io/2019/1/5/1681c75cd2176add?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](../../../../static/1681c75cd2176add.jpg)
 
 参考
 [1](https://juejin.im/post/5bee24866fb9a049f361ad15)
@@ -82,7 +82,7 @@ console.log( 'script end' )
 ```
 -->
 任务队列布局如下：
-![](https://user-gold-cdn.xitu.io/2019/1/16/168570e33c19cb92?w=1958&h=262&f=png&s=137573)
+![](../../../../static//168570e33c19cb92.jpg)
 
 ```bash
     script start

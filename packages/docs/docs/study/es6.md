@@ -298,15 +298,15 @@ a.showX()   //1
 如果对象具有 Symbol.iterator 属性，则表示它是可迭代的。在 ES2015 中，字符串和集合对象（如Set, Map 和 Array）带有Symbol.iterator 属性，因此是可迭代的。
 
 如
-![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e5b38aef9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](../../../../static/16870f2e5b38aef9.jpg)
 
 普通对象不可迭代，但如果在其上定义了 Symbol.iterator 属性，则它可变为可迭代对象
 
 如
-![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e64eb4179?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](../../../../static/16870f2e64eb4179.jpg)
 
 以上过程可以使用生成器（ generator ）函数进行大大简化：
-![](https://user-gold-cdn.xitu.io/2019/1/21/16870f2e706ed08f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![](../../../../static/16870f2e706ed08f.jpg)
 
 ### Symbol、Symbol.for、Symbol.keyFor
 ```js

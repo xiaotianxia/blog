@@ -9,7 +9,7 @@
 代码很简单，利用URL.createObjectURL生成url赋给iframe，就可以不借助服务器实现代码预览了。
 
 ### demo截图
-![demo截图](https://user-gold-cdn.xitu.io/2017/11/4/b895b72865e7f026815fd9a0e29e7fac)
+![demo截图](../../../../static/b895b72865e7f026815fd9a0e29e7fac.jpg)
 
 #### 直接看代码:
 

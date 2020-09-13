@@ -63,7 +63,7 @@ sencond after next
 first after next
 ```
 从第一个中间件开始，最后从第一个中间件结束，就像针穿过洋葱一样，从最外层进去，然后从最外层出来一样。
-![洋葱模型](https://user-gold-cdn.xitu.io/2020/2/24/1707764a38486648?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+![洋葱模型](../../../../static/1707764a38486648.jpg)
 
 ## npm install 的执行过程
 - 发出npm install命令

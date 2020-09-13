@@ -5,15 +5,15 @@
 * [github地址](https://github.com/xiaotianxia/vue-chat)
 ### DEMO截图
 
-![demo](https://user-gold-cdn.xitu.io/2017/10/26/5378de6c205ec0c2c21b36036fcaed67)
+![demo](../../../../static/5378de6c205ec0c2c21b36036fcaed67.jpg)
 
-![demo](https://user-gold-cdn.xitu.io/2017/10/26/123a9d82b10f8a947fbaea507652ac41)
+![demo](../../../../static/123a9d82b10f8a947fbaea507652ac41.jpg)
 
-![demo](https://user-gold-cdn.xitu.io/2017/10/26/8401b3b91e184df557db5d5886b9f1f7)
+![demo](../../../../static/8401b3b91e184df557db5d5886b9f1f7.jpg)
 
-![demo](https://user-gold-cdn.xitu.io/2017/10/26/964de9389a8b7a085a130ce9d9adb6c2)
+![demo](../../../../static/964de9389a8b7a085a130ce9d9adb6c2.jpg)
 
-![demo](https://user-gold-cdn.xitu.io/2017/10/26/34c9135fe3ffb9296de42e2cbb58340a)
+![demo](../../../../static/34c9135fe3ffb9296de42e2cbb58340a.jpg)
 
 ### Build Setup
 ```bash

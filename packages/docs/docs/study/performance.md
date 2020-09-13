@@ -30,8 +30,6 @@
 
 ![](https://pic3.zhimg.com/80/v2-2b99a7aa0084a73cd156364af91e2842_1440w.jpg)
 
-![](../../../../static/performance)
-
 参考： 
 [1 配置ETag](https://blog.csdn.net/liaozhongping/article/details/51114264)
 
