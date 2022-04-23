@@ -23,7 +23,7 @@ function bubbleSort(arr) {
 ## 二分查找
 
 ```js
-//  二分查找比较简单，但是细节比较麻烦：边界的确定
+//  二分查找比较简单，但是细节比较麻烦：边界的确定，前提是有序数组
 //递归查找
 function erfen_digui(arr, val, left = 0, right = arr.length - 1) {
     if (left > right) {
@@ -46,11 +46,11 @@ function erfen_feidigui(arr, val) {
     while (left <= right) {
         let mid = left + Math.floor((right - left) / 2);
         if (arr[mid] === val) {
-        return `最终查找结果下标为${mid}`;
+            return `最终查找结果下标为${mid}`;
         } else if (arr[mid] > val) {
-        right = mid - 1;
+            right = mid - 1;
         } else {
-        left = mid + 1;
+            left = mid + 1;
         }
     }
     return -1;
