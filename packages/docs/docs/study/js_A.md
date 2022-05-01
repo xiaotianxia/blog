@@ -307,7 +307,6 @@ Number.isNaN(1) // false
 [1](https://segmentfault.com/a/1190000015142897)
 
 ## this 指向问题
-[参考](https://juejin.im/post/5e6358256fb9a07cd80f2e70)
 - 默认绑定
     - 非严格模式下 this 指向全局对象, 严格模式下 this 会绑定到 undefined
 - 隐式绑定
@@ -328,5 +327,7 @@ Number.isNaN(1) // false
     - 字面量创建的对象，作用域是 window，如果里面有箭头函数属性的话，this 指向的是 window
     - 箭头函数的 this 是无法通过 bind 、 call 、 apply 来直接修改，但是可以通过改变作用域中 this 的指向来间接修改。
 
+[1](https://juejin.im/post/5e6358256fb9a07cd80f2e70)
+[2](https://github.com/koala-coding/goodBlog/blob/master/docs/webframe/javascript/this.md)
 
 

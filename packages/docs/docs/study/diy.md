@@ -241,7 +241,7 @@ function currying(fn) {
 ```
 
 2. 实现 add(1)(2, 3)(4)(5) = 15 的效果。
-问题：怎么卖判断执行的时机？
+问题：怎么判断执行的时机？
 
 利用valueOf和toString：js在获取当前变量值的时候，会根据语境，隐式调用valueOf和toString方法进行获取需要的值。
 ```js

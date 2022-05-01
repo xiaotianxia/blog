@@ -1,5 +1,8 @@
 # node
 
+## node 特点
+[1](https://github.com/koala-coding/goodBlog/blob/master/docs/node/what.md)
+
 ## node 单线程
 进程是操作系统分配资源和调度任务的基本单位,线程是建立在进程上的一次程序运行单位，一个进程上可以有多个线程。
 
