@@ -192,6 +192,23 @@ function render(tpl, data) {
 }
 ```
 
+```js
+// 利用解构和模板字符串 见https://juejin.cn/post/7095626395669233701
+function render(template, data) {
+    eval(`var { ${Object.keys(data).join(',')} } = data;`);
+    return eval('`' + template + '`');
+}
+```
+
+```js
+function render(template, data) {
+  // 最简单版
+    with(data) {
+        return eval('`' + template + '`')
+    }
+}
+```
+
 ## compose 实现
 举例：
 ```js

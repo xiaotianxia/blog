@@ -54,7 +54,7 @@ box-sizing: border-box; -> width = 200px
 
 ## margin折叠 ?
 
-1. 都是整数：取最大的
+1. 都是正数：取最大的
 
 2. 都是负数：取最小的
 
