@@ -229,6 +229,8 @@ o + "";
 [1](https://juejin.im/post/5bf41990e51d4552ee424d2c)
 [2](https://juejin.im/post/5a8e9b6d5188257a5f1ed826#heading-5)
 
-## ECMAScript中所有函数的参数都是按值传递的。
+## ECMAScript中函数参数的按值方式。
+参数如果是基本类型是按值传递，如果是引用类型按共享传递。
+
 [1](https://juejin.im/post/5902a37ca22b9d0065cc4f7a)
 
