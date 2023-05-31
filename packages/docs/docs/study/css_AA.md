@@ -25,3 +25,10 @@
 [1](https://juejin.im/post/58e3a5a0a0bb9f0069fc16bb)
 [2](https://www.zhangxinxu.com/wordpress/2018/10/display-flex-css3-css/#flex-basis)
 
+
+
+## z-index
+![层叠水平](https://raw.githubusercontent.com/happylindz/blog/master/images/z-index/6.jpg)
+
+参考
+[1](https://github.com/happylindz/blog/issues/11)
