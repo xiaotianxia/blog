@@ -195,6 +195,12 @@ https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/20
     - ===不仅进行值得比较，还要进行数据类型的比较。
 - 引用类型值的比较：是引用的比较
 - 存储位置：基本类型存放在栈区，引用类型同时保存在栈和堆中，其指针存在栈区，指针指向堆中该实体的起始地址。
+
+### 类型转换
+#### == 操作符的强制类型转换规则
+![1](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/11/169686dbbe7e06c5~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.awebp)
+参考 
+[1](https://juejin.cn/post/6844903793893572622)
 ### 类型判断
 #### typeof
 **typeof返回一个表示数据类型的字符串**，返回结果包括：'number'、'boolean'、'string'、'symbol'、'object'、'undefined'、'function'等7种数据类型，
