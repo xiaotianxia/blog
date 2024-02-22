@@ -19,4 +19,5 @@ module.exports = [
 	'scroll_behaviors',
 	'word_preview',
 	'kinds_of_xs_and_ys',
+	'view_transitions',
 ]
