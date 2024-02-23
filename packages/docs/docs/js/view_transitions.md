@@ -6,20 +6,34 @@
 
 在原生APP中，我们经常会看到那种丝滑又舒适的页面切换动画，比如这样的
 
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-1.gif">
+
 Android 里一般称之为共享元素（shareElement）动画，也就是动画前后有一个（或多个）相同的元素，起到前后过渡的效果，可以很清楚的看到元素的变化过程，而并不是简单的消失和出现。
-现在，web 中（chrome 111+）也迎来了这样一个特性，叫做视图转换动画 View Transitions，又称“转场动画”，也能很轻松的实现这类效果。
+现在，web 中（chrome 111+）也迎来了这样一个特性，叫做视图转换动画  **View Transitions** ，又称“转场动画”，也能很轻松的实现这类效果。
 今天我们就通过一些 demo 一起了解一下这个API。
 
 ### 是什么
 
 先看两个较成熟的例子——
 
-demo地址
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-2.gif">
 
-demo地址
-注意：在浏览器的地址栏中键入 chrome://flags，找到 viewTransition API for navigations 并将其更改为“已启用（Enabled）”。
+[demo地址](https://deploy-preview-28--http203-playlist.netlify.app/)
+
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-3.gif">
+
+[demo地址](https://view-transition-astro-demo.netlify.app/)
+
+::: warning
+注意：在浏览器的地址栏中键入 chrome://flags，找到 viewTransition API for navigations 并将其更改为”已启用（Enabled）”。
+:::
+
+
+<img width="400" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-4.png">
 
 至此，web上动画的实现方式就有又多了一种——
+
+<img width="800" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-5.jpg">
 
 ### 怎么用
 
@@ -65,13 +79,20 @@ transition.updateCallbackDone.then(() => {
 ```
 
 🌰 举个最简单的例子（动态添加项目）
+
 左侧是直接插入元素，有测试通过 View Transitions API 插入
 
-代码地址
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-6.gif">
+
+[代码地址](https://codepen.io/_tianxia/pen/yLwwRPp)
+
 🌰 再举个例子 （暗模式背景切换简单应用）
+
 只需要通过 View Transitions API 切换不同的类名，即可实现流畅的切换动画
 
-代码地址
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-7.gif">
+
+[代码地址](https://codepen.io/_tianxia/pen/MWxBrWz)
 
 ### 命名
 
@@ -87,6 +108,8 @@ transition.updateCallbackDone.then(() => {
 
 通过调用 API，让浏览器为新旧两种不同视图分别捕获并建立了快照 (即 ::view-transition-old 旧快照 和 ::view-transition-new 新快照)，而后新旧两快照在 ::view-transition-image-pair 容器中完成转场动画的过渡。动画结束后则删除其相关伪元素 (快照和容器)。
 动画执行的基本过程如下图所示：
+
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-8.png">
 
 ::: warning TL;DR
 
@@ -105,29 +128,55 @@ transition.updateCallbackDone.then(() => {
 :::
 
 若需要使某个元素执行过渡动画，需要给每个元素添加一个自定义属性：view-transition-name，且每个元素的 view-transition-name 必须唯一，即同一个页面上渲染的元素(display非none) view-transition-name 不同重复。
+
 🌰 举个例子（点击删除元素）
+
 为了使每个元素被删除时消失的自然流畅，我们需要为每个元素添加不同的 view-transition-name。
 
-代码地址
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-9.gif">
+
+[代码地址](https://codepen.io/_tianxia/pen/eYXjeeK)
+
 否则效果是这样的（整体上淡入淡出，因为这时转场的元素是root）：
 
-代码地址
-这时候，每个被命名的元素都会生成一系列对应的伪元素：
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-10.gif">
 
+[代码地址](https://codepen.io/_tianxia/pen/BabEGex)
+
+这时候，每个被命名的元素都会生成一系列对应的伪元素：
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-11.png">
+
+::: warning
 视图变化其实和元素是否相同没有关联，有关联的只有 view-transition-name，浏览器是根据 view-transition-name 寻找的，也就是相同名称的元素在前后会有一个过渡动画。CSS动画或过渡只限制在同一个DOM元素，而 View Transitions API 即使是不同的 Dom 元素，也可以通过 view-transition-name 属性关联动画，实现转场过渡。
+:::
+
 🌰 举个例子 ：
+
 我们给两个不同的元素设置同一个 view-transition-name: spot，但是通过切换其 display 的 bolck 或 none 保证同一页面只有一个元素的 view-transition-name 是 spot。
 
-代码地址
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-12.gif">
+
+[代码地址](https://codepen.io/_tianxia/pen/yLwwEzp)
+
 🌰 再看个例子：
+
 实现思路与上面的例子基本一样
 
-代码地址
-动画调试
-调出动画调试工具（打开开发者工具 → ctrl/command + shift + p → 输入 animations；或者，右上角三个点 → more tools → Animations）,通过 Animations 工具调试动画的过程如下所示。可以调慢动画的速度或暂停动画，查看动画的整个过程以及过程中产生的各种伪元素。
-demo1：
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-13.gif">
 
-demo2：
+[代码地址](https://codepen.io/_tianxia/pen/mdooKEd)
+
+
+#### 动画调试
+调出动画调试工具（打开开发者工具 → ctrl/command + shift + p → 输入 animations；或者，右上角三个点 → more tools → Animations）,通过 Animations 工具调试动画的过程如下所示。可以调慢动画的速度或暂停动画，查看动画的整个过程以及过程中产生的各种伪元素。
+
+[demo1](https://codepen.io/_tianxia/full/mdooKEd)：
+
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-14.gif">
+
+[demo2](https://deploy-preview-28--http203-playlist.netlify.app/videos/deno/)：
+
+<img style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-15.png">
 
 #### 其他 demo
 
@@ -147,8 +196,19 @@ demo2：
 ```
 
 看下效果：
+- before：
+
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-16.gif">
+
+[demo地址](https://view-transition-demo-basic.netlify.app/) [参考代码](https://github.com/seyedi/view-transition-demo/tree/basic)
+
+- after：
+
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-17.gif">
+
+[demo地址](https://view-transition-demo-crossfade.netlify.app/) [参考代码](https://github.com/seyedi/view-transition-demo/tree/crossfade)
 	
-demo地址   参考代码	demo地址    参考代码
+
 也可以添加自定义转场动画 ——
 
 ```css
@@ -191,10 +251,22 @@ demo地址   参考代码	demo地址    参考代码
 
 看下效果 ——
 	
-demo地址    参考代码	demo地址    参考代码
-一个支持View Transitions API的框架 - astro
-● 官网地址
-● 使用文档
+- 动画1：
+
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-18.gif">
+
+[demo地址](https://view-transition-demo-slideup.netlify.app/) [参考代码](https://github.com/seyedi/view-transition-demo/blob/slideup/view-transition.css)
+
+- 动画2：
+
+<img width="250" style="border: 1px #a6a6a6 solid" src="../../../../static/view-transition-19.gif">
+
+[demo地址](https://bejamas-view-transition-demo.netlify.app/) [参考代码](https://github.com/seyedi/view-transition-demo/blob/main/view-transition.css)
+
+
+### 一个支持View Transitions API的框架 - astro
+
+[官网地址](https://astro.build/) [使用文档](https://docs.astro.build/en/guides/view-transitions/)
 
 #### 对于MPA
 
@@ -255,7 +327,7 @@ const myFade = {
 
 ### 参考文章
 
-- An Introduction to the View Transitions API
-- View Transitions API & meta frameworks: a practical guide
-- Smooth and simple transitions with the View Transitions API
-- 讲解 Web 转场动画 View Transitions API
+- [An Introduction to the View Transitions API](https://www.sitepoint.com/view-transitions-api-introduction/)
+- [View Transitions API & meta frameworks: a practical guide](https://bejamas.io/blog/what-is-view-transitions-api/)
+- [Smooth and simple transitions with the View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions?hl=en)
+- [讲解 Web 转场动画 View Transitions API](https://juejin.cn/post/7293118779780825138)
